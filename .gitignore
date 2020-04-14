@@ -21,3 +21,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# own files
+/Voytovsky_work
+
+# vim temporary
+*.sw?
