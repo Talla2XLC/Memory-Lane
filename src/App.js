@@ -9,6 +9,9 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Начнём по-тихоньку с проектом "Наследие"
+          Привет мир! Пока мир! 
+          Запрос
+          Запрос 2
         </p>
       </header>
     </div>
