@@ -76,7 +76,6 @@ width: 1440px;
   display: flex;
   flex-direction: column;
   text-align: left;
-  height: 460px;
   width: 640px;
   margin-left: 31px;
 }
@@ -84,7 +83,7 @@ width: 1440px;
 .descItem__text1 {
   height: 284px;
   font-family: Roboto;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 24px;
   letter-spacing: 0.05em;
   color: #000000;
