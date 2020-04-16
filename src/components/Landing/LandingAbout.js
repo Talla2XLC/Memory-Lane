@@ -28,7 +28,7 @@ const LandingAbout = () => {
           </div>
 
           <div className='descItem__text2 textBasic'>
-            MEMORY LANE  позволяет оцифровать семейный архив и сохранить историю своей жизни 
+            MEMORY LANE  позволяет оцифровать семейный архив и сохранить историю своей жизни<br /> 
             на долгие годы
           </div>
         </div>
