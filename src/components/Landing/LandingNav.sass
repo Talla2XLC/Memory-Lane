@@ -1,0 +1,50 @@
+.landing-nav
+  box-sizing: border-box
+  display: flex
+  flex-flow: row nowrap
+  justify-content: space-between
+  align-items: center
+  padding: 30px 80px 0 0
+  cursor: default
+  margin-right: 60px
+
+.logo-span
+  font-weight: bold
+  font-style: normal
+  font-size: 24px
+  line-height: 150%
+  text-transform: uppercase
+  letter-spacing: 0.1em
+  color: white
+  position: relative
+  &:after
+    content: ''
+    width: 0.5rem
+    height: 0.5rem
+    background: url('svg/logoDot.svg') no-repeat
+    position: absolute
+    bottom: 0.45rem
+    right: -0.7rem
+
+.nav-btn
+  background: none
+  border: none
+  cursor: pointer
+  text-transform: uppercase
+  padding: 0
+  font-size: 18px
+  letter-spacing: 0.1em
+  font-family: Rubik, sans-serif
+  font-style: normal
+  font-weight: 400
+  margin-left: 75px
+  transition: text-shadow .3s
+  color: #0A0653
+  &:hover
+    text-shadow: 0 0 1px #0A0653, 0 0 1px #0A0653
+  &:focus
+    outline: none
+  &:nth-of-type(1), &:nth-of-type(2)
+    color: white
+    &:hover
+      text-shadow: 0 0 2px white, 0 0 2px white

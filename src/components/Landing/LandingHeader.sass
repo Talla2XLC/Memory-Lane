@@ -1,46 +1,65 @@
 .landing-header
   display: flex
-  flex-flow: row nowrap
-  justify-content: center
-  padding: 140px
+  flex-flow: column nowrap
+  justify-content: space-between
+  padding: 0 65px 140px 65px
   position: relative
   box-sizing: border-box
+  cursor: default
+  min-height: 864px
+
+.header-shape
+  position: absolute
+  width: 912px
+  height: 864px
+  left: 1px
+  top: -1px
+  background: url('svg/landingHeader.svg') no-repeat
+  z-index: -1
 
 .header-content
-  width: 50%
   text-align: left
   display: flex
+  flex-flow: row nowrap
+  justify-content: space-between
+
+.header-content-txt
+  display: flex
   flex-flow: column nowrap
-  >h1, >h3
+  justify-content: center
+  align-items: flex-start
+  position: relative
+  bottom: 1rem
+  color: white
+  >h1, >span
     text-transform: uppercase
-    font-weight: normal
     margin: 0
-    cursor: default
+    line-height: 150%
   >h1
-    font-weight: bold
-    font-size: 72px
+    font-size: 48px
     margin-top: 18px
     margin-bottom: 40px
-  >h3, >span
-    font-size: 32px
-    line-height: 48px
-    letter-spacing: 0.04em
-    cursor: default
+    font-weight: bold
+    letter-spacing: 0.07em
+  >span
+    font-size: 18px  
+    font-weight: 300
+    letter-spacing: 0.1em
+    margin-bottom: 50px
 
-.headerSVG-div
-  width: 50%
+.header-content-img
+  z-index: -2
 
-.headerSVG
-
-.headerArrowBtn
-  align-self: center
-  position: absolute
-  bottom: 11rem
-  background: none
-  border: none
-  cursor: pointer
-  transition: transform 0.5s
+.header-btn
+  text-transform: uppercase
+  line-height: 150%
+  font-size: 24px !important
+  letter-spacing: 0.15em
+  background-color: #FB7268 !important
+  border: none !important
+  padding: 0.7rem 2.5rem !important
   &:hover
-    transform: scale(1.1)
+    background-color: #EC3727 !important
   &:focus
-    outline: none
+    outline: none !important
+    box-shadow: none !important
