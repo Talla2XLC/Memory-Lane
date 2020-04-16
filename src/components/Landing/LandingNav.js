@@ -6,13 +6,13 @@ export default class LandingNav extends Component {
   scrollToAbout(e){
     e.preventDefault();
     let aboutDiv = document.querySelector(".about");
-    aboutDiv.scrollIntoView({block: "center", behavior: "smooth"});
+    aboutDiv.scrollIntoView({block: "start", behavior: "smooth"});
   }
 
   scrollToFeatures(e){
     e.preventDefault();
-    let featuresDiv = document.querySelector(".features");
-    featuresDiv.scrollIntoView({block: "center", behavior: "smooth"});
+    let featuresDiv = document.querySelector(".landing-features");
+    featuresDiv.scrollIntoView({block: "start", behavior: "smooth"});
   }
 
   scrollToBottom(e){
@@ -26,15 +26,13 @@ export default class LandingNav extends Component {
   
   render() {
     return (
-      <div className="landing-nav">
+      <nav className="landing-nav">
         <span className="logo-span">Memory lane</span>
-        <nav className="main-nav">
-          <button className="nav-btn about-btn" onClick={ this.scrollToAbout }>О проекте</button>
-          <button className="nav-btn features-btn" onClick={ this.scrollToFeatures }>Возможности</button>
-          <button className="nav-btn form-btn" onClick={ this.scrollToBottom }>Регистрация</button>
-          <button className="nav-btn login-btn">Вход</button>
-        </nav>
-      </div>
+        <button className="nav-btn about-btn" onClick={ this.scrollToAbout }>О проекте</button>
+        <button className="nav-btn features-btn" onClick={ this.scrollToFeatures }>Возможности</button>
+        <button className="nav-btn form-btn" onClick={ this.scrollToBottom }>Регистрация</button>
+        <button className="nav-btn login-btn">Вход</button>
+      </nav>
     );
   }
 }
