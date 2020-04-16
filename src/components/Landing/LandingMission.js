@@ -108,6 +108,14 @@ width: 1440px;
   border-radius: 100px;
   letter-spacing: 0.04em;
   color: #FFFFFF;
+  cursor: pointer;
+  &: {
+    outline:none;
+  }
+}
+
+.button:focus {
+  outline: none;
 }
 
 .application {

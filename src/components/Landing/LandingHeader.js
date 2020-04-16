@@ -1,10 +1,10 @@
 import React from 'react';
 import './LandingHeader.sass';
-import { ReactComponent as HeaderSVG } from './svg/header.svg';
+import landingHeaderImg from './png/landing-header.png';
 import { ReactComponent as HeaderArrowSVG } from './svg/header_arrow.svg';
 
 function LandingHeader() {
-  function arrowClick(e){
+  function toForm(e){
     e.preventDefault();
     window.scrollTo({
       left: 0,
@@ -16,15 +16,14 @@ function LandingHeader() {
   return (
     <div className="landing-header">
     	<div className="header-content">
-        <h3>Сервис</h3>
-        <h1>Наследие</h1>
-        <span>Создаем цифровой семейный <br/>архив</span>
-        <button className="headerArrowBtn" onClick={ arrowClick }>
+        <h1>оцифруйте свой <br/>семейный архив! <br/>Создайте свое наследие!</h1>
+        <span>Online сервис по сохранению семейной истории</span>
+        <button className="headerArrowBtn" onClick={ toForm }>
           <HeaderArrowSVG />
         </button>
     	</div>
     	<div className="headerSVG-div">
-        <HeaderSVG />
+        <img src={landingHeaderImg} alt="header picture"/>
       </div>
     </div>
   );

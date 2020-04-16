@@ -1,41 +1,40 @@
 .landing-header
   display: flex
   flex-flow: row nowrap
-  justify-content: center
-  padding: 140px
+  justify-content: space-between
+  padding: 80px 117px 140px 117px
   position: relative
   box-sizing: border-box
+  background-color: #084161
+  cursor: default
 
 .header-content
-  width: 50%
-  text-align: left
+  text-align: center
   display: flex
   flex-flow: column nowrap
-  >h1, >h3
+  >h1, >span
     text-transform: uppercase
-    font-weight: normal
     margin: 0
-    cursor: default
-  >h1
+    line-height: 150%
+    color: white
     font-weight: bold
-    font-size: 72px
+    letter-spacing: 0.1em
+  >h1
+    font-size: 48px
     margin-top: 18px
     margin-bottom: 40px
-  >h3, >span
-    font-size: 32px
-    line-height: 48px
-    letter-spacing: 0.04em
-    cursor: default
+  >span
+    font-size: 18px  
+    font-weight: 500
 
 .headerSVG-div
-  width: 50%
 
 .headerSVG
 
 .headerArrowBtn
   align-self: center
   position: absolute
-  bottom: 11rem
+  bottom: 4rem
   background: none
   border: none
   cursor: pointer
@@ -44,3 +43,6 @@
     transform: scale(1.1)
   &:focus
     outline: none
+  >svg
+    stroke: white
+    fill: white

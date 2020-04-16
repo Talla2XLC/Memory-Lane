@@ -45,9 +45,7 @@ width: 1440px;
 }
 
 .about-icon {
-  // width: 934.45px;
-  // height: 700px;
-  margin-left: -73px;
+
 }
 
 .about-desc {
