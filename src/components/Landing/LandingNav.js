@@ -5,7 +5,7 @@ export default class LandingNav extends Component {
 
   scrollToAbout(e){
     e.preventDefault();
-    let aboutDiv = document.querySelector(".about");
+    let aboutDiv = document.querySelector(".about-title");
     aboutDiv.scrollIntoView({block: "start", behavior: "smooth"});
   }
 

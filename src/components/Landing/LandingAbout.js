@@ -5,7 +5,7 @@ import { ReactComponent as FamilySVG }  from './svg/about_picture.svg';
 const LandingAbout = () => {
   return (
     <AboutWrapper>
-      <h2 className='textBasic title'>о проекте</h2>
+      <h2 className='textBasic title about-title'>о проекте</h2>
       <div className='about'>
 
         <div className='aboutItem__img'>
@@ -14,10 +14,10 @@ const LandingAbout = () => {
 
         <div className='aboutItem__desc'>
           <div className='descItem__text1 textBasic'>
-            Большинство людей знают информацию максимум<br />
-            о двух поколениях своих предков. Знают о<br />
-            родителях, немного о бабушках, дедушках и очень<br />
-            мало о более глубоких корнях.
+            Большинство людей знают информацию <br />
+            максимум о двух поколениях своих предков. <br />
+            Знают о родителях, немного о бабушках, дедушках <br />
+            и очень мало о более глубоких корнях.
             
             <span className='descItem__text1span textBasic'>
               Как исправить эту грустную тенденцию?
@@ -48,7 +48,6 @@ width: 1440px;
 
 .title {
   width: 703px;
-  height: 46px;
   margin-left: 64px;
   text-align: left;
   font-family: Rubik;
@@ -68,7 +67,6 @@ width: 1440px;
 
 .aboutItem__img {
   width: 643px;
-  height: 436px;
   margin-left: 64px;
 }
 
@@ -81,7 +79,6 @@ width: 1440px;
 }
 
 .descItem__text1 {
-  height: 284px;
   font-family: Roboto;
   font-weight: 400;
   font-size: 24px;
@@ -92,11 +89,10 @@ width: 1440px;
 
 .descItem__text1span {
   display: block;
-  margin: 12px 0;
+  margin: 18px 0;
 }
 
 .descItem__text2 {
-  height: 106px;
   font-family: Rubik;
   font-weight: bold;
   font-size: 24px;
