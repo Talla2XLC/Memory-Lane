@@ -7,10 +7,12 @@
         }
     ],
     "require": {
-        "gabordemooij/redbean": "dev-master"
+        "gabordemooij/redbean": "dev-master",
+        "phpmailer/phpmailer": "^6.1"
     },
     "autoload": {
         "psr-4": {
+            "Core\\":"core/",
             "App\\":"App/"
         }
     }

@@ -1,7 +1,8 @@
 <?php
 
-namespace App;
-use App\App;
+namespace Core;
+
+
 class Router
 {
     /**
@@ -10,7 +11,7 @@ class Router
      */
     private function readRout()
     {
-        $rout = require_once 'routing.php';
+        $rout = require_once 'config/routing.php';
         $routes = $this->parserRout($rout);
         return $routes;     
     }

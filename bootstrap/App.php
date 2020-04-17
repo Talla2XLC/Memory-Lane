@@ -2,7 +2,7 @@
 
 namespace Bootstrap;
 
-use App\Router;
+use Core\Router;
 
 class App 
 {

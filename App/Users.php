@@ -2,20 +2,39 @@
 
 namespace App;
 
-class Users 
-{
-    public $title;
+use App\Interfaces\iUsers;
+use Core\Model;
+use Core\Application;
+use Core\Mailer;
 
+class Users extends Application implements iUsers
+{
     public function all()
     {
-        if(isset($_POST['token'])){
-            $token = $_POST['token'];
-            if($token == 'ge@t5eg'){
-                echo 'Ты классный';
-            }
-            
-        }else{
-            header("Location: /");
+        //$model = new Model();
+        $mailer = new Mailer();
+        
+
+        $mailer->mail->
+        //echo 'Сласс Users, метод all';
+    }
+
+    public function setUser()
+    {
+        $mailer =  
+    }
+
+    public function authUser()
+    {
+        
+        
+        if(isset($_POST['name'])){
+            $name = $_POST['name'];
+                        
         }
+        if(isset($_POST['email'])){
+            $email = $_POST['email'];
+        }
+
     }
 }
