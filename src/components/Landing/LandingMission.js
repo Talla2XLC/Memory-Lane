@@ -59,7 +59,7 @@ const MissionWrapper = styled.div`
   text-transform: uppercase;
   color: #0B0754;
   text-align: left;
-  padding: 200px 0 0 64px;
+  padding: 160px 0 100px 64px;
 }
 
 .mission {
