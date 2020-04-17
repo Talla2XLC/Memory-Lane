@@ -1,14 +1,13 @@
 .faceRecognition
   &__titel
     position: relative
-    padding-left: 92px
-    max-width: 380px
-    margin: 0 auto
-    margin-bottom: 46px
+    padding-left: 92px  
+    margin-bottom: 120px
     font-size: 32px
     line-height: 1.5
-    font-weight: normal
+    font-weight: bold
     text-transform: uppercase
+    text-align: left
     &::before
       content: ''
       position: absolute
@@ -17,35 +16,39 @@
       height: 60px
       background-image: url('../images/svg/faceRecognition_icon-1.svg')
       background-repeat: no-repeat
-  &__text
-    max-width: 550px
-    margin: 0 auto
-    margin-bottom: 50px
-    font-size: 20px
-    line-height: 1.5
-    font-weight: 300
-    text-align: left
-  &__inner
-    &-box
-      display: flex
-      justify-content: center
-      align-items: center
-      margin-bottom: 40px
-    &-titel     
-      max-width: 360px
+      
+  &__list
+    margin-bottom: 120px
+    display: flex
+    justify-content: space-around
+    list-style: none
+    margin: 0
+    padding: 0  
+
+  &__item
+    h3
       font-size: 32px
-      font-weight: 300
       line-height: 1.5
-      text-align: left
-      margin-right: 40px
-      &--2
-        max-width: 600px
-        margin: 0 auto
-        font-size: 32px
-        font-weight: 300
-        line-height: 1.5
-        text-align: left
-        margin-bottom: 40px
+      font-weight: 700
+      color: #FC4F4F
+    p
+      font-size: 24px
+      line-height: 1.5rem
+      text-align: center
+      max-width: 350px
+    
+
+
+  &__inner 
+
+    &-titel        
+      font-size: 32px
+      font-weight: 700
+      line-height: 1.5
+      text-align: center      
+      color: #FC4F4F
+      margin-bottom: 45px
+
     &-list
       margin: 0
       padding: 0
@@ -53,6 +56,35 @@
       display: flex
       justify-content: space-between
       margin-bottom: 86px
+
+    
+    &-item
+      &:nth-child(2)
+        img
+          margin-bottom: 3px
+      &:nth-child(3)
+        img
+          margin-bottom: 18px
+      &:last-child
+        li
+          margin-bottom: 8px
+
+      ul
+        list-style: none
+        margin: 0
+        padding: 0
+        text-align: left
+      li
+        margin-bottom: 10px       
+
+        &:last-child
+          background: green
+        span
+          font-weight: 700
+      
+        
+
+          
         
 
       
