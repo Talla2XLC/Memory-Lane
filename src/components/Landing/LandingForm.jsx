@@ -1,4 +1,4 @@
-import React                          from 'react';
+import React, { Component, Fragment } from 'react';
 import styled                         from 'styled-components';
 
 import { ReactComponent as FormIcon } from './svg/form_icon.svg';
@@ -11,101 +11,137 @@ import { ReactComponent as FormFB }   from './svg/form_fb.svg';
 import { ReactComponent as FormG }    from './svg/form_g.svg';
 import { ReactComponent as FormOK }   from './svg/form_ok.svg';
 
-const LandingForm = () => {
-  return (
-    <FormWrapper>
-      <div className='formWrapper'>
+import LandingFormModal               from './LandingFormModal';
 
-        <div className='formWrapperItem__titleContainer'>
-          <div className='titleContaierItem__img'>
-            <FormIcon />
-          </div>
+export default class LandingForm extends Component {
+  constructor(props) {
+    super(props)
 
-          <h2 className='textBasic titleContainerItem__title'>сохраните истории своей семьи в едином пространстве</h2>
-        </div>
+    this.state = {
+      isOpen: false,
+    }
+  }
 
-        <div className='formWrapperItem__img' style={{ backgroundImage: `url(${FormPicture})`}} />
+  openModal = () => {
+    this.setState({ isOpen: true });
+  }
 
-        <div className='formWrapperItem__wave' style={{ backgroundImage: `url(${FormWave})`}}>
+  handleSubmit = () => {
+    console.log('Submit function!');
+    this.setState({ isOpen: false });
+  }
 
-          <div className='waveItem__formContainer'>
+  handleCancel = () => {
+    console.log('Cancel function!');
+    this.setState({ isOpen: false });
+  }
 
-            <h2 className='textBasic formContainerItem__title'>
-              Скоро ЗАПУСК<br />
-              Запишитесь в ранний список
-            </h2>
+  render() {
+    return (
+      <FormWrapper>
+        <div className='formWrapper'>
 
-            <h3 className='textBasic formContainerItem__text'>
-              Станьте одним из первых пользователей сервиса
-            </h3>
-
-            <div className='formContainerItem__icons'>
-              <a href='#'><FormVK /></a>
-              <a href='#'><FormFB /></a>
-              <a href='#'><FormG /></a>
-              <a href='#'><FormOK /></a>
+          <div className='formWrapperItem__titleContainer'>
+            <div className='titleContaierItem__img'>
+              <FormIcon />
             </div>
 
-            <form className='formContainerItem__form' action='/' method='POST'>
-              <input
-                className='textBasic'
-                type='email'
-                id='email'
-                pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'
-                size='0'
-                placeholder='Введите электронную почту'
-                required
-              />
-
-              <input
-                className='textBasic'
-                type='text'
-                name='firstName'
-                placeholder='Введите имя'
-                id='firstName'
-              />
-
-              {/* <input
-                className='textBasic formItem__button'
-                type='submit'
-                value='Регистрация'
-              /> */}
-
-              <a href='#' className='textBasic formItem__button'>Регистрация</a>
-
-            </form>
-
+            <h2 className='textBasic titleContainerItem__title'>сохраните истории своей семьи в едином пространстве</h2>
           </div>
 
-        </div>
+          <div className='formWrapperItem__img' style={{ backgroundImage: `url(${FormPicture})`}} />
 
-        <div className='formWrapperItem__footer'>
+          <div className='formWrapperItem__wave' style={{ backgroundImage: `url(${FormWave})`}}>
 
-          <div className='footerItem__footerContainer'>
+            <div className='waveItem__formContainer'>
 
-            <div className='footerContainerItem__title'>
-              <div className='textBasic titleItem__text'>
-                Memory lane
+              <h2 className='textBasic formContainerItem__title'>
+                Скоро ЗАПУСК<br />
+                Запишитесь в ранний список
+              </h2>
+
+              <h3 className='textBasic formContainerItem__text'>
+                Станьте одним из первых пользователей сервиса
+              </h3>
+
+              <div className='formContainerItem__icons'>
+                <a href='#'><FormVK /></a>
+                <a href='#'><FormFB /></a>
+                <a href='#'><FormG /></a>
+                <a href='#'><FormOK /></a>
               </div>
-              <div className='titleItem__dot' />
-            </div>
 
-            <div className='textBasic titleItem__links'>
-              <a href='#' className='linksItem__link'>Политика конфидициальности</a>
-              <a href='#' className='linksItem__link'>Условия использования</a>
-              <a href='#' className='linksItem__link'>Связаться с нами</a>
-            </div>
+              <form className='formContainerItem__form' action='/' method='POST'>
+                <input
+                  className='textBasic'
+                  type='email'
+                  id='email'
+                  pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'
+                  size='0'
+                  placeholder='Введите электронную почту'
+                  required
+                />
 
-            <div className='textBasic titleItem__footer'>
-              &copy;2020 memory-lane. Все права защищены
+                <input
+                  className='textBasic'
+                  type='text'
+                  name='firstName'
+                  placeholder='Введите имя'
+                  id='firstName'
+                />
+
+                <input
+                  className='textBasic formItem__button'
+                  type='submit'
+                  value='Регистрация'
+                  onClick={this.openModal}
+                />
+
+                {/* <a href='#' className='textBasic formItem__button' >Регистрация</a> */}
+
+              </form>
+
+              <LandingFormModal
+                title="Test Dialog window"
+                isOpen={this.state.isOpen}
+                onCancel={this.handleCancel}
+                onSubmit={this.handleSubmit}
+              >
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a</p>
+              </LandingFormModal>
+
             </div>
 
           </div>
-        </div>
 
-      </div>
-    </FormWrapper>
-  );
+          <div className='formWrapperItem__footer'>
+
+            <div className='footerItem__footerContainer'>
+
+              <div className='footerContainerItem__title'>
+                <div className='textBasic titleItem__text'>
+                  Memory lane
+                </div>
+                <div className='titleItem__dot' />
+              </div>
+
+              <div className='textBasic titleItem__links'>
+                <a href='#' className='linksItem__link'>Политика конфидициальности</a>
+                <a href='#' className='linksItem__link'>Условия использования</a>
+                <a href='#' className='linksItem__link'>Связаться с нами</a>
+              </div>
+
+              <div className='textBasic titleItem__footer'>
+                &copy;2020 memory-lane. Все права защищены
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </FormWrapper>
+    );
+  }
 }
 
 const FormWrapper = styled.div`
@@ -314,5 +350,3 @@ input[type="submit"]:focus {
   color: #000000;
 }
 `;
-
-export default LandingForm;
