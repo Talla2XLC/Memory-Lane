@@ -2,7 +2,6 @@ import React from 'react';
 import './LandingFeatures.sass'
 import FaceRecognition from './LandingFeatures/LandingFeaturesService/faceRecognition.jsx';
 import ColorizationPhotos from './LandingFeatures/LandingFeaturesService/ColorizationPhotos';
-import SaveFamilyStories from './LandingFeatures/LandingFeaturesService/SaveFamilyStories';
 
 const LandingFeatures = () => {
   return (
@@ -18,8 +17,6 @@ const LandingFeatures = () => {
          
           <FaceRecognition />
           <ColorizationPhotos />
-          <SaveFamilyStories />
-
         </div>
 
       </div>
