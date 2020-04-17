@@ -21,7 +21,7 @@ class Users extends Application implements iUsers
 
     public function setUser()
     {
-        $mailer =  
+          
     }
 
     public function authUser()
