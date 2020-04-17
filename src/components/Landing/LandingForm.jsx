@@ -40,10 +40,10 @@ const LandingForm = () => {
             </h3>
 
             <div className='formContainerItem__icons'>
-              <FormVK />
-              <FormFB />
-              <FormG />
-              <FormOK />
+              <a href='#'><FormVK /></a>
+              <a href='#'><FormFB /></a>
+              <a href='#'><FormG /></a>
+              <a href='#'><FormOK /></a>
             </div>
 
             <form className='formContainerItem__form' action='/' method='POST'>
@@ -185,7 +185,7 @@ width: 1440px;
   margin-top: 30px;
 }
 
-.formContainerItem__icons > svg {
+.formContainerItem__icons > a {
   margin-right: 24px;
 }
 
@@ -296,7 +296,6 @@ input[type="submit"]:focus {
 
 .linksItem__link {
   margin-right: 137px;
-  text-decoration: none;
   font-family: Roboto;
   font-weight: normal;
   font-size: 16px;
