@@ -1,8 +1,15 @@
-import React, { Component }                  from 'react';
-import styled                                from 'styled-components';
-import { ReactComponent as FormIconSVG }     from './svg/form_icon.svg';
-import { ReactComponent as FormPictureSVG }  from './svg/form_picture.svg';
-import WaveBackground                        from './svg/form_wave.svg';
+import React                          from 'react';
+import styled                         from 'styled-components';
+
+import { ReactComponent as FormIcon } from './svg/form_icon.svg';
+
+import FormPicture                    from './svg/form_picture.svg';
+import FormWave                       from './svg/form_wave.svg';
+
+import { ReactComponent as FormVK }   from './svg/form_vk.svg';
+import { ReactComponent as FormFB }   from './svg/form_fb.svg';
+import { ReactComponent as FormG }    from './svg/form_g.svg';
+import { ReactComponent as FormOK }   from './svg/form_ok.svg';
 
 const LandingForm = () => {
   return (
@@ -11,35 +18,58 @@ const LandingForm = () => {
 
         <div className='formWrapperItem__titleContainer'>
           <div className='titleContaierItem__img'>
-            <FormIconSVG />
+            <FormIcon />
           </div>
 
           <h2 className='textBasic titleContainerItem__title'>сохраните истории своей семьи в едином пространстве</h2>
         </div>
 
-        <div className='formWrapperItem__img'>
-          <FormPictureSVG />
-        </div>
+        <div className='formWrapperItem__img' style={{ backgroundImage: `url(${FormPicture})`}} />
 
-        <div className='formWrapperItem__wave' style={{ backgroundImage: `url(${WaveBackground})`}}>
+        <div className='formWrapperItem__wave' style={{ backgroundImage: `url(${FormWave})`}}>
 
           <div className='waveItem__formContainer'>
 
-            <h2 class='textBasic formContainerItem__title'>
+            <h2 className='textBasic formContainerItem__title'>
               Скоро ЗАПУСК<br />
               Запишитесь в ранний список
             </h2>
 
-            <form action='/' method='POST'>
+            <h3 className='textBasic formContainerItem__text'>
+              Станьте одним из первых пользователей сервиса
+            </h3>
 
-                  
-                
-                
-                {/* <input type="text" name="email" placeholder="e-mail*" /><br />
-                <input type="text" name="firstName" placeholder="First Name*" id="firstName"/><br />
-             
-                <input type="submit" value="Register" /> */}
+            <div className='formContainerItem__icons'>
+              <FormVK />
+              <FormFB />
+              <FormG />
+              <FormOK />
+            </div>
 
+            <form className='formContainerItem__form' action='/' method='POST'>
+
+              <input
+                className='textBasic'
+                type='email'
+                id='email'
+                pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'
+                size='0'
+                placeholder='Введите электронную почту'
+                required
+              />
+
+              <input
+                type='text'
+                name='firstName'
+                placeholder='Введите имя'
+                id='firstName'
+              />
+
+              <input
+                className='formItem__button'
+                type='submit'
+                value='Регистрация'
+              />
 
             </form>
 
@@ -85,44 +115,103 @@ width: 1440px;
 }
 
 .formWrapperItem__img {
-  margin: 108px auto 0;
-  width: 969.44px;
-  height: 370px;
-  background-color: red;
-  outline: 1px solid red;
+  margin: 108px auto;
+  width: 970px;
+  min-height: 370px;
 }
 
 .formWrapperItem__wave {
-  display: flex;
-  min-height: 1440px;
+  margin-top: -260px;
+  background: no-repeat;
 }
 
 .waveItem__formContainer {
-  margin-left: 64px;
+  width: 850px;
+  margin-left: 42px;
+  margin-top: 700px;
   margin-bottom: 243px;
-  height: 534px;
-  outline: 1px solid yellow;
 }
 
 .formContainerItem__title {
-  position: absolute;
-  width: 844px;
-  height: 118px;
-  left: 64px;
-  top: 5900px;
-
+  min-height: 118px;
+  text-align: left;
   font-family: Rubik;
-
   font-weight: bold;
   font-size: 44px;
-
-
   letter-spacing: 0.07em;
   text-transform: uppercase;
-
   color: #FFFFFF;
 }
 
+.formContainerItem__text {
+  min-height: 36px;
+  text-align: left;
+  font-family: Roboto;
+  font-weight: normal;
+  font-size: 24px;
+  letter-spacing: 0.04em;
+  color: #FFFFFFFF;
+}
+
+.formContainerItem__icons {
+  min-height: 40px;
+  margin-top: 30px;
+  text-align: left;
+}
+
+.formContainerItem__icons > svg {
+  margin-right: 24px;
+}
+
+.formContainerItem__form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  text-align: left;
+}
+
+input {
+  margin-bottom: 50px;
+  height: 50px;
+  width: 500px;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+  background: #FFFFFF;
+}
+
+input:focus {
+  color: #000000!important;
+}
+
+input[placeholder] {
+  width: 500px;
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 24px;
+  letter-spacing: 0.1em;
+  text-indent: 20px;
+  color: #9C9C9C;
+}
+
+.formItem__button {
+  width: 336px;
+  min-height: 50px;
+  font-family: Roboto;
+  font-weight: normal;
+  font-size: 24px;
+  text-align: center;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background: #FB7268;
+  border-radius: 5px;
+}
+
+//? Not working here
+.formItem__button:active {
+  color: #050156;
+}
 `;
 
 export default LandingForm;
