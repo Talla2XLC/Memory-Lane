@@ -47,7 +47,6 @@ const LandingForm = () => {
             </div>
 
             <form className='formContainerItem__form' action='/' method='POST'>
-
               <input
                 className='textBasic'
                 type='email'
@@ -59,23 +58,51 @@ const LandingForm = () => {
               />
 
               <input
+                className='textBasic'
                 type='text'
                 name='firstName'
                 placeholder='Введите имя'
                 id='firstName'
               />
 
-              <input
-                className='formItem__button'
+              {/* <input
+                className='textBasic formItem__button'
                 type='submit'
                 value='Регистрация'
-              />
+              /> */}
+
+              <a href='#' className='textBasic formItem__button'>Регистрация</a>
 
             </form>
 
           </div>
 
         </div>
+
+        <div className='formWrapperItem__footer'>
+
+          <div className='footerItem__footerContainer'>
+
+            <div className='footerContainerItem__title'>
+              <div className='textBasic titleItem__text'>
+                Memory lane
+              </div>
+              <div className='titleItem__dot' />
+            </div>
+
+            <div className='textBasic titleItem__links'>
+              <a href='#' className='linksItem__link'>Политика конфидициальности</a>
+              <a href='#' className='linksItem__link'>Условия использования</a>
+              <a href='#' className='linksItem__link'>Связаться с нами</a>
+            </div>
+
+            <div className='textBasic titleItem__footer'>
+              &copy;2020 memory-lane. Все права защищены
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </FormWrapper>
   );
@@ -123,13 +150,14 @@ width: 1440px;
 .formWrapperItem__wave {
   margin-top: -260px;
   background: no-repeat;
+  padding-bottom: 100px;
 }
 
 .waveItem__formContainer {
   width: 850px;
   margin-left: 42px;
   margin-top: 700px;
-  margin-bottom: 243px;
+  text-align: left;
 }
 
 .formContainerItem__title {
@@ -145,7 +173,6 @@ width: 1440px;
 
 .formContainerItem__text {
   min-height: 36px;
-  text-align: left;
   font-family: Roboto;
   font-weight: normal;
   font-size: 24px;
@@ -156,7 +183,6 @@ width: 1440px;
 .formContainerItem__icons {
   min-height: 40px;
   margin-top: 30px;
-  text-align: left;
 }
 
 .formContainerItem__icons > svg {
@@ -167,7 +193,6 @@ width: 1440px;
   display: flex;
   flex-direction: column;
   margin-top: 40px;
-  text-align: left;
 }
 
 input {
@@ -208,9 +233,86 @@ input[placeholder] {
   border-radius: 5px;
 }
 
-//? Not working here
-.formItem__button:active {
-  color: #050156;
+//! Remove this after backend part completion
+.formItem__button {
+  padding: 6px;
+  text-decoration: none;
+}
+
+.formItem__button:hover,
+input[type="submit"]:hover {
+  background-color: #EC3727 !important;
+  transition: All 0.5s ease;
+}
+
+.formItem__button:focus,
+input[type="submit"]:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  transition: All 0.5s ease;
+}
+
+//* Footer
+.formWrapperItem__footer {
+  width: 1440px;
+  min-height: 464px;
+  background: #FFFFFF;
+}
+
+.footerItem__footerContainer {
+  margin-top: 80px;
+  margin-left: 64px;
+}
+
+.footerContainerItem__title {
+  display: flex;
+  width: 210px;
+}
+
+.titleItem__text {
+  width: 205px;
+  font-family: Rubik;
+  font-weight: bold;
+  font-size: 24px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #3441B2;
+}
+
+.titleItem__dot {
+  height: 7px;
+  width: 7px;
+  align-self: flex-end;
+  margin-bottom: 10px;
+  background: #FB7268;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.titleItem__links {
+  text-align: left;
+  margin: 64px 0 52px 0;
+}
+
+.linksItem__link {
+  margin-right: 137px;
+  text-decoration: none;
+  font-family: Roboto;
+  font-weight: normal;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  color: #000000;
+}
+
+.titleItem__footer {
+  text-align: left;
+  width: 374px;
+  font-family: Roboto;
+  font-weight: normal;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  font-variant: small-caps;
+  color: #000000;
 }
 `;
 
