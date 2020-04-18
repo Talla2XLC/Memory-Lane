@@ -11,7 +11,7 @@ class Application
 
         if($class == 'Core\Mailer'){
             $configObj = new Configuration('mail','glob');
-            $this->config = $configObj->conf;           
+            $this->config = $configObj->conf;         
         }
         
                 

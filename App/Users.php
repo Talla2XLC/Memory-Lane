@@ -14,14 +14,12 @@ class Users extends Application implements iUsers
         //$model = new Model();
         $mailer = new Mailer();
         
-
-        $mailer->mail->
         //echo 'Сласс Users, метод all';
     }
 
     public function setUser()
     {
-        $mailer =  
+          
     }
 
     public function authUser()
