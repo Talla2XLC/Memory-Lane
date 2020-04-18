@@ -1,11 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import styled                         from 'styled-components';
-
 import { ReactComponent as FormIcon } from './svg/form_icon.svg';
-
 import FormPicture                    from './svg/form_picture.svg';
 import FormWave                       from './svg/form_wave.svg';
-
 import { ReactComponent as FormVK }   from './svg/form_vk.svg';
 import { ReactComponent as FormFB }   from './svg/form_fb.svg';
 import { ReactComponent as FormG }    from './svg/form_g.svg';
@@ -13,22 +10,94 @@ import { ReactComponent as FormOK }   from './svg/form_ok.svg';
 
 import LandingFormModal               from './LandingFormModal';
 
-export default class LandingForm extends Component {
+function EmailErrorMessage(props) {
+  if (props.emailError) {
+    return <div className="{position: relative}"><span className="emailError">{props.emailError}</span></div>;
+  } else {
+    return null;
+  }
+}
+
+function NameErrorMessage(props) {
+  if (props.nameError) {
+    return <div className="{position: relative}"><span className="nameError">{props.nameError}</span></div>;
+  } else {
+    return null;
+  }
+}
+
+export default class LandingForm extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      isOpen: false,
+      name: '', 
+      email: '', 
+      nameError: false, 
+      emailError: false,
+      isOpen: false
+    };
+
+    this.openModal = this.openModal.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
+    this.emailChange = this.emailChange.bind(this);
+    this.nameChange = this.nameChange.bind(this);
+  }
+
+  nameChange(event) {
+    this.setState({name: event.target.value});        
+}
+
+  emailChange(event) {
+    this.setState({email: event.target.value});
+  }
+
+  isEmailValid(email){
+    const email_regexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    let isEmailValid = email_regexp.test(email);
+    if(isEmailValid){
+        this.setState({emailError: true});
+        return true;
+    } else if(email && !isEmailValid) {
+        this.setState({emailError: 'Неверно введён email'});
+        return false;
+    } else if(!email) {
+        this.setState({emailError: 'Введите свой email'});
+      return false;
     }
   }
 
-  openModal = () => {
-    this.setState({ isOpen: true });
+  isNameValid(name) {
+      const name_regexp = /^\D+$/;
+      let isNameValid = name_regexp.test(name);
+      if(isNameValid){
+          this.setState({nameError: true});
+          return true;
+      } else if (name && !isNameValid) {
+          this.setState({nameError: 'Имя не должно содержать цифры'});
+          return false;
+      } else if (!name) {
+          this.setState({nameError: 'Введите свое имя'});
+          return false; 
+      }
+    }
+
+  openModal = (event) => {
+    let isEmailValid = this.isEmailValid(this.state.email);
+    let isNamelValid = this.isNameValid(this.state.name);
+    if (isEmailValid && isNamelValid) this.setState({ isOpen: true }); 
+    // else {
+    //     alert('Данные введены неверно');
+    //  }
+    // this.setState({ isOpen: true });
+    event.preventDefault();
   }
 
   handleSubmit = () => {
-    console.log('Submit function!');
+    // console.log('Submit function!');
     this.setState({ isOpen: false });
+    // event.preventDefault();
   }
 
   handleCancel = () => {
@@ -75,25 +144,32 @@ export default class LandingForm extends Component {
                 <input
                   className='textBasic'
                   type='email'
-                  id='email'
-                  pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'
+                  // id='email'
+                  // pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'
                   size='0'
                   placeholder='Введите электронную почту'
+                  value={this.state.email} 
+                  onChange={this.emailChange}
+                  // style={(!this.state.name)?{border-color: red}:{border-color: #000}}
                   required
                 />
+                <EmailErrorMessage emailError={this.state.emailError}/>
 
                 <input
                   className='textBasic'
                   type='text'
-                  name='firstName'
+                  // name='firstName'
                   placeholder='Введите имя'
-                  id='firstName'
+                  // id='firstName'
+                  onChange={this.nameChange}
+                  value={this.state.name}
                 />
+                <NameErrorMessage nameError={this.state.nameError} />
 
                 <input
                   className='textBasic formItem__button'
                   type='submit'
-                  value='Регистрация'
+                  // value='Регистрация'
                   onClick={this.openModal}
                 />
 
@@ -107,7 +183,8 @@ export default class LandingForm extends Component {
                 onCancel={this.handleCancel}
                 onSubmit={this.handleSubmit}
               >
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a</p>
+                <h1>Спасибо!</h1>
+                <p>Вы&nbsp;добавлены<br/> в&nbsp;ранний список</p>
               </LandingFormModal>
 
             </div>
@@ -228,11 +305,10 @@ width: 1440px;
 .formContainerItem__form {
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
 }
 
 input {
-  margin-bottom: 50px;
+  margin-top: 50px;
   height: 50px;
   width: 500px;
   outline: none;
@@ -337,6 +413,15 @@ input[type="submit"]:focus {
   font-size: 16px;
   letter-spacing: 0.1em;
   color: #000000;
+}
+
+.emailError,
+.nameError {
+  width: 500px;
+  text-align: center;
+  position: absolute;
+  font-size: 18px;
+  color: white;
 }
 
 .titleItem__footer {
