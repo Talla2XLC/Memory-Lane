@@ -14,6 +14,8 @@ class Users extends Application implements iUsers
         //$model = new Model();
         $mailer = new Mailer();
         
+
+        
         //echo 'Сласс Users, метод all';
     }
 
