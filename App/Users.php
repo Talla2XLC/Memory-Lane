@@ -11,12 +11,7 @@ class Users extends Application implements iUsers
 {
     public function all()
     {
-        //$model = new Model();
-        $mailer = new Mailer();
         
-
-        
-        //echo 'Сласс Users, метод all';
     }
 
     public function setUser()
@@ -35,6 +30,8 @@ class Users extends Application implements iUsers
         if(isset($_POST['email'])){
             $email = $_POST['email'];
         }
-
+        if (isset($name) && isset($email)){
+            //тут сохроняем в DB
+        }
     }
 }
