@@ -28,7 +28,7 @@ const LandingAbout = () => {
           </div>
 
           <div className='descItem__text2 textBasic'>
-            MEMORY LANE  позволяет оцифровать семейный архив и сохранить историю своей жизни<br /> 
+            MEMORY LANE позволяет оцифровать семейный архив и сохранить историю своей жизни<br /> 
             на долгие годы
           </div>
         </div>
@@ -40,6 +40,7 @@ const LandingAbout = () => {
 const AboutWrapper = styled.div`
 background: #FFFFFF;
 width: 1440px;
+padding: 0 60px 0 65px;
 
 .textBasic {
   font-style: normal;
@@ -67,7 +68,6 @@ width: 1440px;
 
 .aboutItem__img {
   width: 643px;
-  margin-left: 64px;
 }
 
 .aboutItem__desc {
