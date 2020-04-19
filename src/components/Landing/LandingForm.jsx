@@ -1,111 +1,224 @@
-import React                          from 'react';
+import React, { Component, Fragment } from 'react';
 import styled                         from 'styled-components';
-
 import { ReactComponent as FormIcon } from './svg/form_icon.svg';
-
 import FormPicture                    from './svg/form_picture.svg';
 import FormWave                       from './svg/form_wave.svg';
-
 import { ReactComponent as FormVK }   from './svg/form_vk.svg';
 import { ReactComponent as FormFB }   from './svg/form_fb.svg';
 import { ReactComponent as FormG }    from './svg/form_g.svg';
 import { ReactComponent as FormOK }   from './svg/form_ok.svg';
 
-const LandingForm = () => {
-  return (
-    <FormWrapper>
-      <div className='formWrapper'>
+import LandingFormModal               from './LandingFormModal';
 
-        <div className='formWrapperItem__titleContainer'>
-          <div className='titleContaierItem__img'>
-            <FormIcon />
-          </div>
+function EmailErrorMessage(props) {
+  if (props.emailError) {
+    return <div className="{position: relative}"><span className="emailError">{props.emailError}</span></div>;
+  } else {
+    return null;
+  }
+}
 
-          <h2 className='textBasic titleContainerItem__title'>сохраните истории своей семьи в едином пространстве</h2>
-        </div>
+function NameErrorMessage(props) {
+  if (props.nameError) {
+    return <div className="{position: relative}"><span className="nameError">{props.nameError}</span></div>;
+  } else {
+    return null;
+  }
+}
 
-        <div className='formWrapperItem__img' style={{ backgroundImage: `url(${FormPicture})`}} />
+export default class LandingForm extends React.Component {
+  constructor(props) {
+    super(props)
 
-        <div className='formWrapperItem__wave' style={{ backgroundImage: `url(${FormWave})`}}>
+    this.state = {
+      name: '', 
+      email: '', 
+      nameError: false, 
+      emailError: false,
+      isOpen: false
+    };
 
-          <div className='waveItem__formContainer'>
+    this.openModal = this.openModal.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
+    this.emailChange = this.emailChange.bind(this);
+    this.nameChange = this.nameChange.bind(this);
+  }
 
-            <h2 className='textBasic formContainerItem__title'>
-              Скоро ЗАПУСК<br />
-              Запишитесь в ранний список
-            </h2>
+  nameChange(event) {
+    this.setState({name: event.target.value});        
+}
 
-            <h3 className='textBasic formContainerItem__text'>
-              Станьте одним из первых пользователей сервиса
-            </h3>
+  emailChange(event) {
+    this.setState({email: event.target.value});
+  }
 
-            <div className='formContainerItem__icons'>
-              <a href='#'><FormVK /></a>
-              <a href='#'><FormFB /></a>
-              <a href='#'><FormG /></a>
-              <a href='#'><FormOK /></a>
+  isEmailValid(email){
+    const email_regexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    let isEmailValid = email_regexp.test(email);
+    if(isEmailValid){
+        this.setState({emailError: true});
+        return true;
+    } else if(email && !isEmailValid) {
+        this.setState({emailError: 'Неверно введён email'});
+        return false;
+    } else if(!email) {
+        this.setState({emailError: 'Введите свой email'});
+      return false;
+    }
+  }
+
+  isNameValid(name) {
+      const name_regexp = /^\D+$/;
+      let isNameValid = name_regexp.test(name);
+      if(isNameValid){
+          this.setState({nameError: true});
+          return true;
+      } else if (name && !isNameValid) {
+          this.setState({nameError: 'Имя не должно содержать цифры'});
+          return false;
+      } else if (!name) {
+          this.setState({nameError: 'Введите свое имя'});
+          return false; 
+      }
+    }
+
+  openModal = (event) => {
+    let isEmailValid = this.isEmailValid(this.state.email);
+    let isNamelValid = this.isNameValid(this.state.name);
+    if (isEmailValid && isNamelValid) this.setState({ isOpen: true }); 
+    // else {
+    //     alert('Данные введены неверно');
+    //  }
+    // this.setState({ isOpen: true });
+    event.preventDefault();
+  }
+
+  handleSubmit = () => {
+    // console.log('Submit function!');
+    this.setState({ isOpen: false });
+    // event.preventDefault();
+  }
+
+  handleCancel = () => {
+    console.log('Cancel function!');
+    this.setState({ isOpen: false });
+  }
+
+  render() {
+    return (
+      <FormWrapper>
+        <div className='formWrapper'>
+
+          <div className='formWrapperItem__titleContainer'>
+            <div className='titleContaierItem__img'>
+              <FormIcon />
             </div>
 
-            <form className='formContainerItem__form' action='/' method='POST'>
-              <input
-                className='textBasic'
-                type='email'
-                id='email'
-                pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'
-                size='0'
-                placeholder='Введите электронную почту'
-                required
-              />
-
-              <input
-                className='textBasic'
-                type='text'
-                name='firstName'
-                placeholder='Введите имя'
-                id='firstName'
-              />
-
-              {/* <input
-                className='textBasic formItem__button'
-                type='submit'
-                value='Регистрация'
-              /> */}
-
-              <a href='#' className='textBasic formItem__button'>Регистрация</a>
-
-            </form>
-
+            <h2 className='textBasic titleContainerItem__title'>сохраните истории своей семьи в едином пространстве</h2>
           </div>
 
-        </div>
+          <div className='formWrapperItem__img' style={{ backgroundImage: `url(${FormPicture})`}} />
 
-        <div className='formWrapperItem__footer'>
+          <div className='formWrapperItem__wave' style={{ backgroundImage: `url(${FormWave})`}}>
 
-          <div className='footerItem__footerContainer'>
+            <div className='waveItem__formContainer'>
 
-            <div className='footerContainerItem__title'>
-              <div className='textBasic titleItem__text'>
-                Memory lane
+              <h2 className='textBasic formContainerItem__title'>
+                Скоро ЗАПУСК<br />
+                Запишитесь в ранний список
+              </h2>
+
+              <h3 className='textBasic formContainerItem__text'>
+                Станьте одним из первых пользователей сервиса
+              </h3>
+
+              <div className='formContainerItem__icons'>
+                <a href='#'><FormVK /></a>
+                <a href='#'><FormFB /></a>
+                <a href='#'><FormG /></a>
+                <a href='#'><FormOK /></a>
               </div>
-              <div className='titleItem__dot' />
-            </div>
 
-            <div className='textBasic titleItem__links'>
-              <a href='#' className='linksItem__link'>Политика конфидициальности</a>
-              <a href='#' className='linksItem__link'>Условия использования</a>
-              <a href='#' className='linksItem__link'>Связаться с нами</a>
-            </div>
+              <form className='formContainerItem__form' action='/' method='POST'>
+                <input
+                  className='textBasic'
+                  type='email'
+                  // id='email'
+                  // pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'
+                  size='0'
+                  placeholder='Введите электронную почту'
+                  value={this.state.email} 
+                  onChange={this.emailChange}
+                  // style={(!this.state.name)?{border-color: red}:{border-color: #000}}
+                  required
+                />
+                <EmailErrorMessage emailError={this.state.emailError}/>
 
-            <div className='textBasic titleItem__footer'>
-              &copy;2020 memory-lane. Все права защищены
+                <input
+                  className='textBasic'
+                  type='text'
+                  // name='firstName'
+                  placeholder='Введите имя'
+                  // id='firstName'
+                  onChange={this.nameChange}
+                  value={this.state.name}
+                />
+                <NameErrorMessage nameError={this.state.nameError} />
+
+                <input
+                  className='textBasic formItem__button'
+                  type='submit'
+                  // value='Регистрация'
+                  onClick={this.openModal}
+                />
+
+                {/* <a href='#' className='textBasic formItem__button' >Регистрация</a> */}
+
+              </form>
+
+              <LandingFormModal
+                title="Test Dialog window"
+                isOpen={this.state.isOpen}
+                onCancel={this.handleCancel}
+                onSubmit={this.handleSubmit}
+              >
+                <h1>Спасибо!</h1>
+                <p>Вы&nbsp;добавлены<br/> в&nbsp;ранний список</p>
+              </LandingFormModal>
+
             </div>
 
           </div>
-        </div>
 
-      </div>
-    </FormWrapper>
-  );
+          <div className='formWrapperItem__footer'>
+
+            <div className='footerItem__footerContainer'>
+
+              <div className='footerContainerItem__title'>
+                <div className='textBasic titleItem__text'>
+                  Memory lane
+                </div>
+                <div className='titleItem__dot' />
+              </div>
+
+              <div className='textBasic titleItem__links'>
+                <a href='#' className='linksItem__link'>Политика конфидициальности</a>
+                <a href='#' className='linksItem__link'>Условия использования</a>
+                <a href='#' className='linksItem__link'>Связаться с нами</a>
+              </div>
+
+              <div className='textBasic titleItem__footer'>
+                &copy;2020 memory-lane. Все права защищены
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </FormWrapper>
+    );
+  }
 }
 
 const FormWrapper = styled.div`
@@ -192,11 +305,10 @@ width: 1440px;
 .formContainerItem__form {
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
 }
 
 input {
-  margin-bottom: 50px;
+  margin-top: 50px;
   height: 50px;
   width: 500px;
   outline: none;
@@ -303,6 +415,15 @@ input[type="submit"]:focus {
   color: #000000;
 }
 
+.emailError,
+.nameError {
+  width: 500px;
+  text-align: center;
+  position: absolute;
+  font-size: 18px;
+  color: white;
+}
+
 .titleItem__footer {
   text-align: left;
   width: 374px;
@@ -314,5 +435,3 @@ input[type="submit"]:focus {
   color: #000000;
 }
 `;
-
-export default LandingForm;
