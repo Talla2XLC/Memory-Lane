@@ -133,14 +133,18 @@ export default class LandingForm extends React.Component {
                 Станьте одним из первых пользователей сервиса
               </h3>
 
-              <div className='formContainerItem__icons'>
-                <a href='#'><FormVK /></a>
-                <a href='#'><FormFB /></a>
-                <a href='#'><FormG /></a>
-                <a href='#'><FormOK /></a>
-              </div>
+              <form className='formContainerItem__form' action='/' method='POST'>                
+                <input
+                  className='textBasic'
+                  type='text'
+                  // name='firstName'
+                  placeholder='Введите имя'
+                  // id='firstName'
+                  onChange={this.nameChange}
+                  value={this.state.name}
+                />
+                <NameErrorMessage nameError={this.state.nameError} />
 
-              <form className='formContainerItem__form' action='/' method='POST'>
                 <input
                   className='textBasic'
                   type='email'
@@ -155,25 +159,19 @@ export default class LandingForm extends React.Component {
                 />
                 <EmailErrorMessage emailError={this.state.emailError}/>
 
-                <input
-                  className='textBasic'
-                  type='text'
-                  // name='firstName'
-                  placeholder='Введите имя'
-                  // id='firstName'
-                  onChange={this.nameChange}
-                  value={this.state.name}
-                />
-                <NameErrorMessage nameError={this.state.nameError} />
+                <div className='formContainerItem__icons'>
+                  <a href='#'><FormVK /></a>
+                  <a href='#'><FormFB /></a>
+                  <a href='#'><FormG /></a>
+                  <a href='#'><FormOK /></a>
+                </div>
 
                 <input
                   className='textBasic formItem__button'
                   type='submit'
-                  // value='Регистрация'
+                  value='Регистрация'
                   onClick={this.openModal}
                 />
-
-                {/* <a href='#' className='textBasic formItem__button' >Регистрация</a> */}
 
               </form>
 
@@ -263,13 +261,13 @@ width: 1440px;
 .formWrapperItem__wave {
   margin-top: -260px;
   background: no-repeat;
-  padding-bottom: 100px;
+  padding-bottom: 260px;
 }
 
 .waveItem__formContainer {
   width: 850px;
   margin-left: 42px;
-  margin-top: 700px;
+  margin-top: 600px;
   text-align: left;
 }
 
@@ -291,6 +289,7 @@ width: 1440px;
   font-size: 24px;
   letter-spacing: 0.04em;
   color: #FFFFFFFF;
+  margin-bottom: 0;
 }
 
 .formContainerItem__icons {
@@ -308,13 +307,17 @@ width: 1440px;
 }
 
 input {
-  margin-top: 50px;
+  margin-top: 40px;
   height: 50px;
   width: 500px;
   outline: none;
   border-radius: 5px;
   border: none;
   background: #FFFFFF;
+}
+
+input:nth-of-type(1) {
+  margin-top: 30px;
 }
 
 input:focus {
@@ -334,6 +337,7 @@ input[placeholder] {
 .formItem__button {
   width: 336px;
   min-height: 50px;
+  margin-top: 30px;
   font-family: Roboto;
   font-weight: normal;
   font-size: 24px;
