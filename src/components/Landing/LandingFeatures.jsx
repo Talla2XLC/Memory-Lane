@@ -1,14 +1,18 @@
 import React from 'react';
-import './LandingFeatures.sass'
+import './globalSass.sass';
+import './LandingFeatures.sass';
 import FaceRecognition from './LandingFeatures/LandingFeaturesService/faceRecognition.jsx';
 import ColorizationPhotos from './LandingFeatures/LandingFeaturesService/ColorizationPhotos';
 import SaveFamilyStories from './LandingFeatures/LandingFeaturesService/SaveFamilyStories';
+import '../Profile/HomeProfale';
+import HomeProfale from "../Profile/HomeProfale";
+import UserProfale from "../Profile/UserProfale";
 
 const LandingFeatures = () => {
   return (
     <div className="landing-features">
       <div className="sectionFeatures">
-        <div className="sectionFeatures__container">
+        <div className="container">
           <h2 className="sectionFeatures__titel"> Возможности сервиса</h2>
 
           <p className="sectionFeatures__text">
@@ -19,6 +23,8 @@ const LandingFeatures = () => {
           <FaceRecognition />
           <ColorizationPhotos />
           <SaveFamilyStories />
+          <HomeProfale />
+          <UserProfale />
 
         </div>
 

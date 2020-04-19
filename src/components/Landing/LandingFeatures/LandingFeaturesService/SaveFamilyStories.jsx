@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../globalSass.sass';
 import './SaveFamilyStories.sass';
 
 
