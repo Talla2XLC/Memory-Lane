@@ -2,6 +2,8 @@ import React from 'react';
 import './faceRecognition.sass';
 
 
+
+
 const FaceRecognition = () => {
 
   return (
@@ -29,7 +31,7 @@ const FaceRecognition = () => {
       </ul>
 
       <div className="faceRecognition__inner">
-        <h3 className="faceRecognition__inner-titel">РЕЗУЛЬТАТ</h3>
+        <h3 className="faceRecognition__inner-titel ">РЕЗУЛЬТАТ</h3>
 
         <ul className="faceRecognition__inner-list">
           <li className="faceRecognition__inner-item">
@@ -84,7 +86,7 @@ const FaceRecognition = () => {
               </li>
 
               <li>
-                Возраст - <span>42</span>
+                Возраст - <span>34</span>
               </li>
 
               <li>
@@ -92,7 +94,7 @@ const FaceRecognition = () => {
               </li>
 
               <li>
-                Сonfidence(Уверенность) - <span>0.9917</span>
+                Сonfidence(Уверенность) - <span>0.99325</span>
               </li>
 
               <li>
@@ -118,7 +120,7 @@ const FaceRecognition = () => {
               </li>
 
               <li>
-                Возраст - <span>42</span>
+                Возраст - <span>16</span>
               </li>
 
               <li>
@@ -126,7 +128,7 @@ const FaceRecognition = () => {
               </li>
 
               <li >
-                Сonfidence(Уверенность) - <span>0.9917</span>
+                Сonfidence(Уверенность) - <span>0.99706</span>
               </li>
 
               <li>
@@ -152,7 +154,7 @@ const FaceRecognition = () => {
               </li>
 
               <li>
-                Возраст - <span>42</span>
+                Возраст - <span>27</span>
               </li>
 
               <li>
@@ -160,7 +162,7 @@ const FaceRecognition = () => {
               </li>
 
               <li className = "faceRecognition__inner-item--bg">
-                Сonfidence(Уверенность) - <span>0.9917</span>
+                Сonfidence(Уверенность) - <span>0.99969</span>
               </li>
 
               <li>
