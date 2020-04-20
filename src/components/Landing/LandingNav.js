@@ -2,43 +2,37 @@ import React, { Component } from 'react';
 import './LandingNav.sass';
 
 export default class LandingNav extends Component {
-  constructor(props) {
-    super(props)
+
+  scrollToAbout(e){
+    e.preventDefault();
+    let aboutDiv = document.querySelector(".about-title");
+    aboutDiv.scrollIntoView({block: "start", behavior: "smooth"});
   }
 
-  toForm(e){
+  scrollToFeatures(e){
+    e.preventDefault();
+    let featuresDiv = document.querySelector(".landing-features");
+    featuresDiv.scrollIntoView({block: "start", behavior: "smooth"});
+  }
+
+  scrollToBottom(e){
     e.preventDefault();
     window.scrollTo({
       left: 0,
       top: document.body.scrollHeight,
       behavior: "smooth"
     });
-  }
-
-  toAbout(e){
-    e.preventDefault();
-    window.scrollTo({
-      left: 0,
-      top: document.body.scrollHeight,
-      behavior: "smooth"
-    });
-  }
-
-  scrollToMyRef = () => window.scrollTo(0, this.props.innerRef.current.scrollIntoView) 
+  } 
   
   render() {
-    const { innerRef } = this.props;
-
     return (
-      <div className="landing-nav">
+      <nav className="landing-nav">
         <span className="logo-span">Memory lane</span>
-        <nav className="main-nav">
-          <button className="nav-btn about-btn">О проекте</button>
-          <button className="nav-btn features-btn" ref={innerRef}>Возможности</button>
-          <button className="nav-btn form-btn" onClick={ this.toForm }>Регистрация</button>
-          <button className="nav-btn login-btn">Вход</button>
-        </nav>
-      </div>
+        <button className="nav-btn about-btn" onClick={ this.scrollToAbout }>О проекте</button>
+        <button className="nav-btn features-btn" onClick={ this.scrollToFeatures }>Возможности</button>
+        <button className="nav-btn form-btn" onClick={ this.scrollToBottom }>Регистрация</button>
+        <button className="nav-btn login-btn">Вход</button>
+      </nav>
     );
   }
 }

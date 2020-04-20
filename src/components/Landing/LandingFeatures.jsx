@@ -25,7 +25,6 @@ const LandingFeatures = () => {
           <SaveFamilyStories />
           <HomeProfale />
           <UserProfale />
-
         </div>
 
       </div>
