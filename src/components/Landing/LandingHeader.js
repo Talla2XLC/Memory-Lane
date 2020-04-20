@@ -2,7 +2,6 @@ import React from 'react';
 import './LandingHeader.sass';
 import LandingNav from './LandingNav.js';
 import landingHeaderImg from './jpg/header-img.jpg';
-import { ReactComponent as HeaderArrowSVG } from './svg/header_arrow.svg';
 
 function LandingHeader() {
   function toForm(e){

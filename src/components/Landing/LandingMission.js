@@ -6,39 +6,39 @@ import { ReactComponent as Icon3 } from './svg/icon_3.svg';
 import Background from './svg/background.svg';
 
 export default class LandingMission extends Component {
-    render() {
-        return (
-            <MissionWrapper>             
-                <h3 className='textBasic title'>мы поможем</h3>
-                <div className='mission' style={{ backgroundImage: `url(${Background})`}}>
-                    <div className='missionItem'>
-                        <div className='missionItem__img'>
-                            <Icon1/>
-                        </div>
-                        <span className='description'>записать вашу историю<br/>для потомков</span>
-                    </div>
-                    <div className='missionItem'>
-                        <div  className='missionItem__img'>
-                            <Icon2/>
-                        </div>
-                        <span className='description'>сохранить семейные фотографии<br/>в надёжном месте</span>
-                    </div>
-                    <div className='missionItem'>
-                        <div className='missionItem__img'>
-                            <Icon3/>
-                        </div>
-                        <span className='description'>поделится историями<br/>и фотографиями<br/>с друзьями и родными</span>
-                    </div>
-                    <div className='missionItem'>
-                        <div  className='missionItem__img'>
-                            <Icon2/>
-                        </div>
-                        <span className='description'>найти конкретного<br/>человека среди всех ваших<br/> фотографий</span>
-                    </div>             
-                </div> 
-            </MissionWrapper>
-        );
-    }
+  render() {
+    return (
+      <MissionWrapper>             
+        <h3 className='textBasic title'>мы поможем</h3>
+        <div className='mission' style={{ backgroundImage: `url(${Background})`}}>
+          <div className='missionItem'>
+            <div className='missionItem__img'>
+              <Icon1/>
+            </div>
+            <span className='description'>записать вашу историю<br/>для потомков</span>
+          </div>
+          <div className='missionItem'>
+            <div  className='missionItem__img'>
+              <Icon2/>
+            </div>
+            <span className='description'>сохранить семейные фотографии<br/>в надёжном месте</span>
+          </div>
+          <div className='missionItem'>
+            <div className='missionItem__img'>
+              <Icon3/>
+            </div>
+            <span className='description'>поделится историями<br/>и фотографиями<br/>с друзьями и родными</span>
+          </div>
+          <div className='missionItem'>
+            <div  className='missionItem__img'>
+              <Icon2/>
+            </div>
+            <span className='description'>найти конкретного<br/>человека среди всех ваших<br/> фотографий</span>
+          </div>             
+        </div> 
+      </MissionWrapper>
+    );
+  }
 }
 
 const MissionWrapper = styled.div`

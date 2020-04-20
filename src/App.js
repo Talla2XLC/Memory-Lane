@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
 import './App.sass';
-import Landing from './components/Landing.js';
+import Landing from './containers/Landing.js';
+import Main from './containers/Main.js';
 
-import setUserAction from "./actions/actionUser"
+import setUserAction from './actions/actionUser';
 
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { showLanding: false };
+  }
+
   render(){
     return (
       <div className="App">
-        <Landing />
+        {this.state.showLanding ? <Landing /> : <Main />}
       </div>
     );
   }
@@ -20,7 +26,7 @@ class App extends Component {
 function mapStateToProps(state) {
   return {
     user: state.userInfo.user
-  }
+  };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -28,7 +34,7 @@ function mapDispatchToProps(dispatch) {
     setUserFunction: user => {
       dispatch(setUserAction(user));
     }
-  }
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
