@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import 'normalize.css';
 import './stylesGlobal/fonts.sass';
 import './stylesGlobal/variables.sass';
+import './stylesGlobal/styles.sass';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
