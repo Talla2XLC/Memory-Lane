@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.sass';
 import Landing from './containers/Landing.js';
 import Main from './containers/Main.js';
-
 import setUserAction from './actions/actionUser';
 
 import { connect } from 'react-redux';
