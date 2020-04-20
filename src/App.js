@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.sass';
 import Landing from './components/Landing.js';
-
 import setUserAction from "./actions/actionUser"
 
 import { connect } from "react-redux";
