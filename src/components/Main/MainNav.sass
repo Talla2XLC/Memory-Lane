@@ -1,21 +1,8 @@
 .MainNav
   display: flex
   flex-direction: column
-  width: 112px
-  margin: 181px 61px 0
-
-.navigation-item
-  display: flex
-  flex-direction: column
-  magin-right: 36px
-  align-items: center
-
-  >img
-    width: 30px 
-    height: 30px
-    border-radius: 50%
-    border: 1px solid #000000
-
+  padding: 10vh 50px 0 65px
+  box-sizing: border-box
   >a
     display: block
     margin-top: 16px
@@ -26,5 +13,17 @@
     font-weight: normal
     font-size: 16px
     line-height: 19px
-    &:last-child
-      // margin-bottom: 0
+    &:last-of-type
+      margin-bottom: 0
+
+.navigation-item
+  display: flex
+  flex-direction: column
+  align-items: center
+
+.navItemSVG
+  width: 30px
+  height: 30px
+  border-radius: 50%
+  border: 1px solid #000000
+  margin-bottom: 15px

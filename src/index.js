@@ -5,12 +5,12 @@ import './stylesGlobal/fonts.sass';
 import './stylesGlobal/variables.sass';
 import './stylesGlobal/styles.sass';
 import './index.css';
-// import App from './App';
+import App from './App';
 import * as serviceWorker from './serviceWorker';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 import { BrowserRouter } from 'react-router-dom';
-import Router from './components/Main/Router'
+import Router from './Router'
 
 import { Provider } from "react-redux";
 import { createStore } from "redux";
@@ -21,9 +21,7 @@ const store = createStore(rootReducer);
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <Router />
-      </BrowserRouter>
+      <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
