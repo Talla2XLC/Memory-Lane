@@ -9,9 +9,6 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-import { BrowserRouter } from 'react-router-dom';
-import Router from './Router'
-
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import rootReducer from "./reducers/index"

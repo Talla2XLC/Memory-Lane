@@ -4,7 +4,6 @@ import Header from '../components/Main/Header';
 import MainNav from '../components/Main/MainNav';
 import Content from "../components/Main/Content";
 import {BrowserRouter} from "react-router-dom";
-import Router from "../Router";
 
 export default class Main extends Component {
   state = {
