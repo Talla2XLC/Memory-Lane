@@ -3,11 +3,11 @@ import LandingFormPortal  from './LandingFormPortal'
 import styled             from 'styled-components';
 
 const LandingFormModal = ({
-  title, isOpen, onCancel, onSubmit, children
+  title, isOpen, onCancel, onSubmit, children                                // accept these arguments by restructuring instead of props 
 }) => {
 
   return (
-    <>
+    <>                                                                      
       { isOpen &&
         <LandingFormPortal>
           <LandingFormModalWrapper>

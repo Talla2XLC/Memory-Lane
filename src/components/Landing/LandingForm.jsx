@@ -26,7 +26,7 @@ function NameErrorMessage(props) {
   }
 }
 
-export default class LandingForm extends React.Component {
+export default class LandingForm extends Component {
   constructor(props) {
     super(props)
 
@@ -37,23 +37,17 @@ export default class LandingForm extends React.Component {
       emailError: false,
       isOpen: false
     };
-
-    this.openModal = this.openModal.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleCancel = this.handleCancel.bind(this);
-    this.emailChange = this.emailChange.bind(this);
-    this.nameChange = this.nameChange.bind(this);
   }
 
-  nameChange(event) {
+  nameChange = (event) => {
     this.setState({name: event.target.value});        
 }
 
-  emailChange(event) {
+  emailChange = (event) => {
     this.setState({email: event.target.value});
   }
 
-  isEmailValid(email){
+  isEmailValid = (email) => {
     const email_regexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     let isEmailValid = email_regexp.test(email);
     if(isEmailValid){
@@ -68,7 +62,7 @@ export default class LandingForm extends React.Component {
     }
   }
 
-  isNameValid(name) {
+  isNameValid = (name) => {
       const name_regexp = /^\D+$/;
       let isNameValid = name_regexp.test(name);
       if(isNameValid){
@@ -87,15 +81,10 @@ export default class LandingForm extends React.Component {
     let isEmailValid = this.isEmailValid(this.state.email);
     let isNamelValid = this.isNameValid(this.state.name);
     if (isEmailValid && isNamelValid) this.setState({ isOpen: true }); 
-    // else {
-    //     alert('Данные введены неверно');
-    //  }
-    // this.setState({ isOpen: true });
     event.preventDefault();
   }
 
   handleSubmit = () => {
-    // console.log('Submit function!');
     this.setState({ isOpen: false });
     // event.preventDefault();
   }
@@ -154,7 +143,6 @@ export default class LandingForm extends React.Component {
                   placeholder='Введите электронную почту'
                   value={this.state.email} 
                   onChange={this.emailChange}
-                  // style={(!this.state.name)?{border-color: red}:{border-color: #000}}
                   required
                 />
                 <EmailErrorMessage emailError={this.state.emailError}/>
