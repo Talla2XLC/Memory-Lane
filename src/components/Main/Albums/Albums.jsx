@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import GalleryItem from './GalleryItem.jsx';
-import './Gallery.sass';
+import AlbumsItem from './AlbumsItem.jsx';
+import './Albums.sass';
 
 const galleryData = [
   {url: 'https://picsum.photos/400/400', name: 'itemName', autor: 'itemAutor', date: 'itemDate'},
@@ -15,7 +15,7 @@ const galleryData = [
   {url: 'https://picsum.photos/400/400', name: 'itemName4', autor: 'itemAutor4', date: 'itemDate5'}
 ];
 
-export default class Gallery extends Component {
+export default class Albums extends Component {
   constructor() {
     super();
     this.state = {
@@ -34,13 +34,14 @@ export default class Gallery extends Component {
           <div className='sorting__title'>Сортировка</div>
           <div className='sorting__date'>По дате</div>
           <div className='sorting__human'>По человеку</div>   
-          <div className='sorting__view'
-            onClick={this.changeView.bind(this)}>Вид</div>   
+          <div className='sorting__view'>
+            <button onClick={this.changeView.bind(this)}>Вид</button>
+          </div>
         </div>
         <div className={viewClass} > 
           {
             galleryData.map(card => {
-              return <GalleryItem url={card.url} name={card.name} autor={card.autor} date={card.date} />;
+              return <AlbumsItem url={card.url} name={card.name} autor={card.autor} date={card.date} />;
             })
           }
         </div>

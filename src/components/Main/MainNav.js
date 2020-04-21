@@ -14,14 +14,12 @@ export default class MainNav extends Component {
       
     const navigationItems = navItems.map(navItem =>
       (
-        <div className="navigation-item">
-          <img src="" alt="">
-          </img>
-
-          <Link key={ shortid.generate() } to={ `/${navItem.endpoint}/` }>
+        <Link key={ shortid.generate() } to={ `/${navItem.endpoint}/` }>
+          <div className="navigation-item">
+            <div className='navItemSVG' />
             {navItem.title}
-          </Link>
-        </div>
+          </div>
+        </Link>
       ) 
     )
 

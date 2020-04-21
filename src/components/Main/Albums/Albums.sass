@@ -2,12 +2,12 @@
   display: grid
   grid-gap: 35px 45px
   grid-template-columns: repeat(3, 1fr)
-  max-width: 1200px
   
 .smallView
   display: grid
   grid-gap: 25px 30px
   grid-template-columns: repeat(5, 1fr)
+  justify-items: stretch
 
 .galleryBlock
   padding: 0 160px 0 0
@@ -18,26 +18,31 @@
   grid-template-rows: 1fr 1fr
   grid-template-columns: 1fr 1fr 10fr
   &__title
-   grid-area: title
-   text-align: left 
-   font-style: normal
-   font-weight: normal
-   font-size: 32px
-   line-height: 120%
-   color: #000000
-   margin-bottom: 26px
+    grid-area: title
+    text-align: left
+    font-style: normal
+    font-weight: normal
+    font-size: 32px
+    line-height: 120%
+    color: #000000
+    margin-bottom: 26px
   &__date
-   grid-area: date
-   text-align: left
+    grid-area: date
+    text-align: left
   &__human
-   grid-area: human
-   text-align: left
+    grid-area: human
+    text-align: left
   &__view
-   grid-area: view
-   text-align: right
+    grid-area: view
+    text-align: right
+    >button
+      background: none
+      border: none
+      cursor: pointer
 
 .img 
   margin-bottom: 12px
+  width: 100%
 
 .itemName 
   font-size: 32px

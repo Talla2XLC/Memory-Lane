@@ -3,6 +3,8 @@ import './Main.sass'
 import Header from '../components/Main/Header';
 import MainNav from '../components/Main/MainNav';
 import Content from "../components/Main/Content";
+import {BrowserRouter} from "react-router-dom";
+import Router from "../Router";
 
 export default class Main extends Component {
   state = {
@@ -20,9 +22,13 @@ export default class Main extends Component {
 
     return (
       <div className="Main">
-        <Header />
-        <MainNav navItems={ navItems } />
-        <Content />
+        <BrowserRouter>
+          <Header />
+          <div className="central-content">
+            <MainNav navItems={ navItems } />
+            <Content />
+          </div>
+        </BrowserRouter>
       </div>
     )
   }
