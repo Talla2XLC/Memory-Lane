@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './Main.sass'
 import Header from '../components/Main/Header';
 import MainNav from '../components/Main/MainNav';
+import Content from "../components/Main/Content";
 
 export default class Main extends Component {
   state = {
@@ -21,6 +22,7 @@ export default class Main extends Component {
       <div className="Main">
         <Header />
         <MainNav navItems={ navItems } />
+        <Content />
       </div>
     )
   }
