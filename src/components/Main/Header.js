@@ -9,16 +9,12 @@ import styled from 'styled-components';
 export default function Header() {
     return (
             <HeaderhWrapper>
-                <div className='setingsMenuPosition'>
+                <div className='header__top'>
+                    <Notice />
                     <SetingsMenu/>
                 </div>
-                <div className='noticePosition'>
-                    <Notice />
-                </div> 
-                <div className='searchPosition'>
+                <div className='header__bottom'>
                     <Search/>
-                </div>
-                <div className='addSectionPosition'>
                     <AddSection/>
                 </div>
             </HeaderhWrapper>
@@ -26,31 +22,33 @@ export default function Header() {
   }  
 
 const HeaderhWrapper = styled.div`
-display: grid;
-grid-template-columns: 736px 529px 36px 30px 48px 68px;
-grid-template-rows: 28px 42px 26px 48px 37px;
-width: 1440px;
 
-.searchPosition {
-  grid-column: 2/span 2;
-  grid-row: 4/span 1;
+.header__top, 
+.header__bottom {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  mardin: 0;
+  margin-right: 150px;
 }
 
-.noticePosition {
-  grid-column: 3/span 1;
-  grid-row: 2/span 1;
+.header__top div, 
+header__bottom div {
+  align-self: center;
+  justify-content: space-evenly;
 }
 
-.setingsMenuPosition {
-  grid-column: 5/span 1;
-  grid-row: 2/span 1;
-  margin: -3px auto;
+.header__top div:nth-child(1) {
+  margin: 28px 30px 26px 0px;
 }
 
-.addSectionPosition {
-  grid-column: 5/span 1;
-  grid-row: 4/span 1;  
-  margin: 4px auto;
+.header__top div:nth-child(2) {
+  margin: 28px 0px 26px 0px;
+}
+
+.header__bottom div:nth-child(2) {
+  margin: 0px 0px 0px 30px;
+  padding: 0 4px;
 }
 
 `;
