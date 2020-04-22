@@ -7,7 +7,7 @@ export default class AlbumsItem extends Component {
   render() {
     return (
       <div>
-        <img className='img' src={this.props.url} />
+        <img className='img' src={this.props.url} alt='photo'/>
         <span className='itemName'>{this.props.name}</span>
         <div className='icons'>
           <Download className='download' />

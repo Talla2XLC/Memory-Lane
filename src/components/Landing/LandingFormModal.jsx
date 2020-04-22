@@ -1,9 +1,9 @@
-import React              from 'react'
+import React              from 'react';
 import LandingFormPortal  from './LandingFormPortal'
 import styled             from 'styled-components';
 
 const LandingFormModal = ({
-  title, isOpen, onCancel, onSubmit, children                                // accept these arguments by restructuring instead of props 
+  isOpen, onCancel, children                                // accept these arguments by restructuring instead of props 
 }) => {
 
   return (
@@ -14,15 +14,12 @@ const LandingFormModal = ({
             <div className="modalOverlay">
               <div className="modalWindow">
                 <div className="modalHeader">
-                  {/* <div className="modalTitle">{title}</div> */}
-                  <a className="times" onClick={onCancel}/>
+                  <button className="times" onClick={onCancel}></button>
                 </div>
                 <div className="modalBody">
                   {children}
                 </div>
                 <div className="modalFooter">
-                  {/* <button onClick={onCancel}>Cancel</button>
-                  <button onClick={onSubmit}>Submit</button> */}
                 </div>
               </div>
             </div>
@@ -105,10 +102,13 @@ const LandingFormModalWrapper = styled.div`
   position: absolute;
   right: 32px;
   top: 32px;
-  width: 32px;
+  width: 34px;
   height: 32px;
   opacity: 0.3;
   cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: #fff;
 }
 .times:hover {
   opacity: 1;
@@ -120,12 +120,16 @@ const LandingFormModalWrapper = styled.div`
   height: 33px;
   width: 2px;
   background-color: #333;
+  top: 0;
 }
 .times:before {
   transform: rotate(45deg);
+  right: 32px;
 }
 .times:after {
   transform: rotate(-45deg);
+  right: 32px;
 }
-`
+
+`;
 export default LandingFormModal
