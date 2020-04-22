@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component }           from 'react';
 import styled                         from 'styled-components';
 import { ReactComponent as FormIcon } from './svg/form_icon.svg';
 import FormPicture                    from './svg/form_picture.svg';
@@ -148,10 +148,10 @@ export default class LandingForm extends Component {
                 <EmailErrorMessage emailError={this.state.emailError}/>
 
                 <div className='formContainerItem__icons'>
-                  <a href='#'><FormVK /></a>
-                  <a href='#'><FormFB /></a>
-                  <a href='#'><FormG /></a>
-                  <a href='#'><FormOK /></a>
+                  <a href='https://vk.com/' alt='vk'><FormVK /></a>
+                  <a href='https://ru-ru.facebook.com/' alt='facebook'><FormFB /></a>
+                  <a href='https://www.google.com/' alt='google'><FormG /></a>
+                  <a href='https://ok.ru/' alt='ok'><FormOK /></a>
                 </div>
 
                 <input
@@ -189,9 +189,9 @@ export default class LandingForm extends Component {
               </div>
 
               <div className='textBasic titleItem__links'>
-                <a href='#' className='linksItem__link'>Политика конфидициальности</a>
-                <a href='#' className='linksItem__link'>Условия использования</a>
-                <a href='#' className='linksItem__link'>Связаться с нами</a>
+                <a href='http://memory-lane.ru/' className='linksItem__link' alt='Privacy policy'>Политика конфидициальности</a>
+                <a href='http://memory-lane.ru/' className='linksItem__link' alt='Terms of Use'>Условия использования</a>
+                <a href='http://memory-lane.ru' className='linksItem__link' alt='Contact us'>Связаться с нами</a>
               </div>
 
               <div className='textBasic titleItem__footer'>
