@@ -9,11 +9,14 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-import { Provider } from "react-redux";
-import { createStore } from "redux";
-import rootReducer from "./reducers/index"
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import rootReducer from './reducers/index';
+import thunk from 'redux-thunk';
+import {getUsers} from './actions/actionUser';
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(thunk));
+store.dispatch(getUsers());
 
 ReactDOM.render(
   <React.StrictMode>

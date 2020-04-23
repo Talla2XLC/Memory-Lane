@@ -1,31 +1,29 @@
-import axios from 'axios';
-
-function getUsers(limit) {
-  axios
-    .post(
-      'http://api.memory-lane.ru/db/getUsers/all',
-      {
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }
-    )
-    .then(response => {
-      let usersArr = response.data.result[0];
-      return usersArr;
-    });
-}
-
 const initialState = {
-  user: getUsers(100)
+  loading: true,
+  users: '',
+  error: null
 };
 
 export default function userInfo(state = initialState, action) {
   switch (action.type) {
-    case 'SET_USER':
-      return {...state, user: action.payload};
+    case 'USER_GET_STARTED':
+      return {
+        ...state,
+        loading: true
+      };
+    case 'USER_GET_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        users: action.payload
+      };
+    case 'USER_GET_FAILED':
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.err
+      };
     default:
       return state;
   }

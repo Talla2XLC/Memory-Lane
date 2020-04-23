@@ -14,7 +14,7 @@ export default class MainNav extends Component {
       
     const navigationItems = navItems.map(navItem =>
       (
-        <Link key={ shortid.generate() } to={ `/${navItem.endpoint}/` }>
+        <Link className="navigation-item-link" key={ shortid.generate() } to={ `/${navItem.endpoint}/` }>
           <div className="navigation-item">
             <div className='navItemSVG' />
             {navItem.title}
