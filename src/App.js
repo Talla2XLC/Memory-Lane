@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { showLanding: true };
+    this.state = { showLanding: false};
   }
 
   render(){
