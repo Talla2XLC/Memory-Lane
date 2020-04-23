@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AlbumsItem from './AlbumsItem.jsx';
 import './Albums.sass';
+import shortid from 'shortid';
 
 const galleryData = [
   {url: 'https://picsum.photos/400/400', name: 'itemName', autor: 'itemAutor', date: 'itemDate'},
@@ -41,7 +42,7 @@ export default class Albums extends Component {
         <div className={viewClass} > 
           {
             galleryData.map(card => {
-              return <AlbumsItem url={card.url} name={card.name} autor={card.autor} date={card.date} />;
+              return <AlbumsItem url={card.url} name={card.name} autor={card.autor} date={card.date} key={ shortid.generate() }/>;
             })
           }
         </div>
