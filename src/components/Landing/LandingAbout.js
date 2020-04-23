@@ -49,7 +49,6 @@ padding: 0 60px 0 65px;
 
 .title {
   width: 703px;
-  margin-left: 64px;
   text-align: left;
   font-family: Rubik;
   font-weight: bold;

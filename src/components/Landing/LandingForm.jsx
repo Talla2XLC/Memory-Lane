@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component }           from 'react';
 import styled                         from 'styled-components';
 import { ReactComponent as FormIcon } from './svg/form_icon.svg';
 import FormPicture                    from './svg/form_picture.svg';
@@ -26,7 +26,7 @@ function NameErrorMessage(props) {
   }
 }
 
-export default class LandingForm extends React.Component {
+export default class LandingForm extends Component {
   constructor(props) {
     super(props)
 
@@ -37,24 +37,18 @@ export default class LandingForm extends React.Component {
       emailError: false,
       isOpen: false
     };
-
-    this.openModal = this.openModal.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleCancel = this.handleCancel.bind(this);
-    this.emailChange = this.emailChange.bind(this);
-    this.nameChange = this.nameChange.bind(this);
   }
 
-  nameChange(event) {
+  nameChange = (event) => {
     this.setState({name: event.target.value});        
 }
 
-  emailChange(event) {
+  emailChange = (event) => {
     this.setState({email: event.target.value});
   }
 
-  isEmailValid(email){
-    const email_regexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  isEmailValid = (email) => {
+    const email_regexp = /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     let isEmailValid = email_regexp.test(email);
     if(isEmailValid){
         this.setState({emailError: true});
@@ -68,7 +62,7 @@ export default class LandingForm extends React.Component {
     }
   }
 
-  isNameValid(name) {
+  isNameValid = (name) => {
       const name_regexp = /^\D+$/;
       let isNameValid = name_regexp.test(name);
       if(isNameValid){
@@ -87,15 +81,10 @@ export default class LandingForm extends React.Component {
     let isEmailValid = this.isEmailValid(this.state.email);
     let isNamelValid = this.isNameValid(this.state.name);
     if (isEmailValid && isNamelValid) this.setState({ isOpen: true }); 
-    // else {
-    //     alert('Данные введены неверно');
-    //  }
-    // this.setState({ isOpen: true });
     event.preventDefault();
   }
 
   handleSubmit = () => {
-    // console.log('Submit function!');
     this.setState({ isOpen: false });
     // event.preventDefault();
   }
@@ -154,16 +143,15 @@ export default class LandingForm extends React.Component {
                   placeholder='Введите электронную почту'
                   value={this.state.email} 
                   onChange={this.emailChange}
-                  // style={(!this.state.name)?{border-color: red}:{border-color: #000}}
                   required
                 />
                 <EmailErrorMessage emailError={this.state.emailError}/>
 
                 <div className='formContainerItem__icons'>
-                  <a href='#'><FormVK /></a>
-                  <a href='#'><FormFB /></a>
-                  <a href='#'><FormG /></a>
-                  <a href='#'><FormOK /></a>
+                  <a href='https://vk.com/' alt='vk'><FormVK /></a>
+                  <a href='https://ru-ru.facebook.com/' alt='facebook'><FormFB /></a>
+                  <a href='https://www.google.com/' alt='google'><FormG /></a>
+                  <a href='https://ok.ru/' alt='ok'><FormOK /></a>
                 </div>
 
                 <input
@@ -201,9 +189,9 @@ export default class LandingForm extends React.Component {
               </div>
 
               <div className='textBasic titleItem__links'>
-                <a href='#' className='linksItem__link'>Политика конфидициальности</a>
-                <a href='#' className='linksItem__link'>Условия использования</a>
-                <a href='#' className='linksItem__link'>Связаться с нами</a>
+                <a href='http://memory-lane.ru/' className='linksItem__link' alt='Privacy policy'>Политика конфидициальности</a>
+                <a href='http://memory-lane.ru/' className='linksItem__link' alt='Terms of Use'>Условия использования</a>
+                <a href='http://memory-lane.ru' className='linksItem__link' alt='Contact us'>Связаться с нами</a>
               </div>
 
               <div className='textBasic titleItem__footer'>

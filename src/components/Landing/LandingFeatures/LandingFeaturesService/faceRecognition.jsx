@@ -16,14 +16,14 @@ const FaceRecognition = () => {
       <ul className="faceRecognition__list">
         <li className="faceRecognition__item">
           <h3>ШАГ 1</h3>
-          <img src={require('../images/jpg/img1.jpg')} alt = 'the photo' />
+          <img src={require('../images/jpg/img1.jpg')} alt = 'face1' />
           <p>
             Загружаете фото, указываете кто на этой фото
           </p>
         </li>
         <li className="faceRecognition__item">
           <h3>ШАГ 2</h3>
-          <img src={require('../images/jpg/img2.png')} alt = 'the photo' />
+          <img src={require('../images/jpg/img2.png')} alt = 'face2' />
           <p>
             Загружаем в систему семейный архив
           </p>
@@ -36,7 +36,7 @@ const FaceRecognition = () => {
         <ul className="faceRecognition__inner-list">
           <li className="faceRecognition__inner-item">
 
-          <img src={require('../images/jpg/img3.jpg')} alt = 'the photo' />
+          <img src={require('../images/jpg/img3.jpg')} alt = 'face3' />
             <ul>
 
               <li>
@@ -70,7 +70,7 @@ const FaceRecognition = () => {
             </ul>
           </li>
           <li className="faceRecognition__inner-item">
-          <img src={require('../images/jpg/img4.jpg')} alt = 'the photo' />
+          <img src={require('../images/jpg/img4.jpg')} alt = 'face4' />
             <ul>
 
               <li>
@@ -104,7 +104,7 @@ const FaceRecognition = () => {
             </ul>
           </li>
           <li className="faceRecognition__inner-item">
-          <img src={require('../images/jpg/img5.jpg')} alt = 'the photo' />
+          <img src={require('../images/jpg/img5.jpg')} alt = 'face5' />
             <ul>
 
               <li>
@@ -138,7 +138,7 @@ const FaceRecognition = () => {
             </ul>
           </li>
           <li className="faceRecognition__inner-item">
-            <img src={require('../images/jpg/img1.jpg')} alt = 'the photo' />
+            <img src={require('../images/jpg/img1.jpg')} alt = 'face6' />
             <ul>
 
               <li>
