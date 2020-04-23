@@ -96,7 +96,7 @@
     /**
      * Style
      */
-    "indent": [2, 4, { "SwitchCase": 1 }],            // http://eslint.org/docs/rules/indent
+    "indent": [2, 2, { "SwitchCase": 1 }],            // http://eslint.org/docs/rules/indent
     "quotes": [
       2, "single", "avoid-escape"    // http://eslint.org/docs/rules/quotes
     ],
