@@ -6,7 +6,7 @@ import './MainNav.sass'
 
 export default class MainNav extends Component {
   static propTypes = {
-    navItems: PropTypes.object.isRequired
+    navItems: PropTypes.array.isRequired
   }
 
   render() {
