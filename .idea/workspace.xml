@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a58cbe7-b10f-4994-ab24-ac1e6c37a5d0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Persons.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Persons.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stylesGlobal/styles.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/stylesGlobal/styles.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
