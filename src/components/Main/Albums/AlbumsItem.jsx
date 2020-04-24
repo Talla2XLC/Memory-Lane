@@ -4,9 +4,11 @@ import { ReactComponent as Download } from './svg/download.svg';
 import { ReactComponent as Forward } from './svg/forward.svg';
 
 export default class AlbumsItem extends Component {
+
+
   render() {
     return (
-      <div>
+      <div className='albumsWrapper flex-column'>
         <img className='img' src={this.props.url} alt='galery_pic'/>
           <span className='itemName'>{this.props.name}</span>
           <div className='icons'>
