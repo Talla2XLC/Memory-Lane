@@ -35,14 +35,13 @@
   &__view
     grid-area: view
     text-align: right
-    >button
-      background: none
-      border: none
-      cursor: pointer
-
+    & ul 
+      display: none
+ 
 .img 
   margin-bottom: 12px
   width: 100%
+  grid-area: "img"
 
 .itemName 
   font-size: 32px
@@ -73,3 +72,32 @@
 
 .itemDescription 
   text-align: left 
+
+
+.download
+  margin-left: auto
+  margin-right: auto
+  padding: 48px 178px
+  box-sizing: border-box
+  &__text
+   font-family: Roboto, sans-serif
+   font-size: 32px
+   text-align: center
+   color: #000000
+   &_light
+    color: #666565
+  &__button
+   background: #FFFFFF
+   border: 1px solid #000000
+   box-sizing: border-box
+   border-radius: 24px
+   font-family: Roboto
+   font-weight: 500
+   font-size: 16px
+   letter-spacing: 0.06em
+   color: #000000
+   padding: 12px 46px
+   box-sizing: border-box
+   margin: 24px 0 32px
+.area 
+  margin: 32px 0 24px 

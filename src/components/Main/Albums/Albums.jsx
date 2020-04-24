@@ -35,8 +35,8 @@ export default class Albums extends Component {
           <div className='sorting__title'>Сортировка</div>
           <div className='sorting__date'>По дате</div>
           <div className='sorting__human'>По человеку</div>   
-          <div className='sorting__view'>
-            <button onClick={this.changeView.bind(this)}>Вид</button>
+          <div className='sorting__view' onClick={this.changeView.bind(this)}>
+           Вид
           </div>
         </div>
         <div className={viewClass} > 
