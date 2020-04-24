@@ -20,7 +20,8 @@ export default class Albums extends Component {
   constructor() {
     super();
     this.state = {
-      biggerView: false
+      biggerView: false,
+      rowItemView: false
     };
   }
 
@@ -42,7 +43,7 @@ export default class Albums extends Component {
         <div className={viewClass} > 
           {
             galleryData.map(card => {
-              return <AlbumsItem url={card.url} name={card.name} autor={card.autor} date={card.date} key={ shortid.generate() }/>;
+              return <AlbumsItem view={this.state.rowItemView ? 'flex-row' : 'flex-column'} url={card.url} name={card.name} autor={card.autor} date={card.date} key={ shortid.generate() }/>;
             })
           }
         </div>
