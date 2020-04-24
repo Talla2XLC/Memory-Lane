@@ -10,16 +10,14 @@ export default class AlbumsItem extends Component {
     return (
       <div className='albumsWrapper flex-column'>
         <img className='img' src={this.props.url} alt='galery_pic'/>
-        <div className='info'>
           <span className='itemName'>{this.props.name}</span>
           <div className='icons'>
-            <Download className='download' />
+            <Download className='downloadIcon' />
             <Forward/>
           </div>
           <div className='itemAutor'>{this.props.autor}</div>
           <div className='itemDate'>{this.props.date}</div>
           <div className='itemDescription'>Ipsum ex commodo ad ad ipsum non quis laborum adipisicing reprehenderit aliqua veniam excepteur. Sint dolor Lorem cupidatat et adipisicing anim adipisicing velit. Ullamco mollit occaecat nisi amet pariatur ad labore reprehenderit est aute.</div>
-        </div>
       </div>
     );
   }
