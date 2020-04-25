@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import AlbumsItem from './AlbumsItem.jsx';
 import './Albums.sass';
 import shortid from 'shortid';
-
+import { Link } from 'react-router-dom';
+import { ReactComponent as IconAddSection } from '../Header/svg/add_section.svg';
 const galleryData = [
   {url: 'https://picsum.photos/400/400', name: 'itemName', autor: 'itemAutor', date: 'itemDate'},
   {url: 'https://picsum.photos/400/400', name: 'itemName1', autor: 'itemAutor1', date: 'itemDate1'},
@@ -33,7 +34,10 @@ export default class Albums extends Component {
     return (
       <div className='galleryBlock'>
         <div className='sorting'>
-          <div className='sorting__title'>Сортировка</div>
+          <div className='sorting__title'>
+            Сортировка
+            <Link to='/albums/add'><IconAddSection /></Link>
+          </div>
           <div className='sorting__date'>По дате</div>
           <div className='sorting__human'>По человеку</div>   
           <div className='sorting__view' onClick={this.changeView.bind(this)}>
