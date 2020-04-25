@@ -16,7 +16,7 @@
   display: grid
   grid-template-areas: "title title title" "date human view"
   grid-template-rows: 1fr 1fr
-  grid-template-columns: 1fr 1fr 10fr
+  grid-template-columns: 1fr 2fr 9fr
   &__title
     grid-area: title
     text-align: left
@@ -35,69 +35,9 @@
   &__view
     grid-area: view
     text-align: right
+    float: right 
+    max-width: 200px
+    grid-row-end: 4
     & ul 
       display: none
  
-.img 
-  margin-bottom: 12px
-  width: 100%
-  grid-area: "img"
-
-.itemName 
-  font-size: 32px
-  line-height: 120%
-  text-align: left
-  float: left
-
-.icons
-  float: right
-
-.downloadIcon 
-  margin-right: 20px
-
-.itemAutor 
-  clear: both
-  font-size: 16px
-  line-height: 19px
-  color: #9C9C9C
-  text-align: left
-  margin: 6px 0
-
-.itemDate
-  font-size: 16px
-  line-height: 19px
-  color: #9C9C9C
-  text-align: left
-  margin-bottom: 12px
-
-.itemDescription 
-  text-align: left 
-
-
-.download
-  margin-left: auto
-  margin-right: auto
-  padding: 48px 178px
-  box-sizing: border-box
-  &__text
-   font-family: Roboto, sans-serif
-   font-size: 32px
-   text-align: center
-   color: #000000
-   &_light
-    color: #666565
-  &__button
-   background: #FFFFFF
-   border: 1px solid #000000
-   box-sizing: border-box
-   border-radius: 24px
-   font-family: Roboto
-   font-weight: 500
-   font-size: 16px
-   letter-spacing: 0.06em
-   color: #000000
-   padding: 12px 46px
-   box-sizing: border-box
-   margin: 24px 0 32px
-.area 
-  margin: 32px 0 24px 

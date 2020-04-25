@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Albums.sass';
+import './DownloadPhoto.sass';
 import { ReactComponent as Area } from './svg/area.svg';
 import { ReactComponent as Instagram } from './svg/instagram.svg';
 import { ReactComponent as Facebook } from './svg/facebook.svg';
