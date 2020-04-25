@@ -3,12 +3,13 @@ import Search from './Header/Search.jsx';
 import Notice from './Header/Notice.jsx';
 import SetingsMenu from './Header/Settings_menu.jsx';
 import AddSection from './Header/Add_section.jsx';
+import './Header.sass';
 
 import styled from 'styled-components';
 
 export default function Header() {
     return (
-            <HeaderhWrapper>
+            <HeaderWrapper className='headerDiv'>
                 <div className='header__top'>
                     <Notice />
                     <SetingsMenu/>
@@ -17,19 +18,16 @@ export default function Header() {
                     <Search/>
                     <AddSection/>
                 </div>
-            </HeaderhWrapper>
+            </HeaderWrapper>
     );
   }  
 
-const HeaderhWrapper = styled.div`
-
+const HeaderWrapper = styled.div`
 .header__top, 
 .header__bottom {
   display: flex;
   justify-content: flex-end;
   flex-direction: row;
-  mardin: 0;
-  margin-right: 150px;
 }
 
 .header__top div, 

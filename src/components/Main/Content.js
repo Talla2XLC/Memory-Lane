@@ -1,12 +1,15 @@
 import React from 'react';
 import './Content.sass';
-import Router from "../../Router";
-// import {Provider} from "react-redux";
+import Router from '../../Router';
+import PerfectScrollbar from 'react-perfect-scrollbar';
+
 
 export default function Content() {
   return (
-    <div className="Content">
-      <Router />
+    <div className='Content'>
+      <PerfectScrollbar component='div'>
+        <Router />
+      </PerfectScrollbar>
     </div>
   );
 }
