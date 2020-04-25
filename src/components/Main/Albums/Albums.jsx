@@ -4,6 +4,10 @@ import './Albums.sass';
 import shortid from 'shortid';
 import { Link } from 'react-router-dom';
 import { ReactComponent as IconAddSection } from '../Header/svg/add_section.svg';
+import Dropdown from './Dropdown.jsx';
+
+
+
 const galleryData = [
   {url: 'https://picsum.photos/400/400', name: 'itemName', autor: 'itemAutor', date: 'itemDate'},
   {url: 'https://picsum.photos/400/400', name: 'itemName1', autor: 'itemAutor1', date: 'itemDate1'},
@@ -24,11 +28,13 @@ export default class Albums extends Component {
       biggerView: false,
       rowItemView: false
     };
+
   }
 
   changeView() {
     this.setState({biggerView: !this.state.biggerView});
   }
+
   render() {
     const viewClass = this.state.biggerView ? 'bigView' : 'smallView';
     return (
@@ -40,14 +46,15 @@ export default class Albums extends Component {
           </div>
           <div className='sorting__date'>По дате</div>
           <div className='sorting__human'>По человеку</div>   
-          <div className='sorting__view' onClick={this.changeView.bind(this)}>
-           Вид
+          <div className='sorting__view'>
+            <Dropdown/>
+
           </div>
         </div>
         <div className={viewClass} > 
           {
             galleryData.map(card => {
-              return <AlbumsItem view={this.state.rowItemView ? 'flex-row' : 'flex-column'} url={card.url} name={card.name} autor={card.autor} date={card.date} key={ shortid.generate() }/>;
+              return <AlbumsItem className='flex-row' view={this.state.rowItemView ? 'flex-row' : 'flex-column'} url={card.url} name={card.name} autor={card.autor} date={card.date} key={ shortid.generate() }/>;
             })
           }
         </div>
