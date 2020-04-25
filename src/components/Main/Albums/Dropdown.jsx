@@ -10,11 +10,11 @@ const viewData = [
   { name: 'Без превью', id: 5}
 ];
 class Dropdown extends Component {
-  constructor() {
-    super();
-    
+  constructor(props) {
+    super(props);
     this.state = {
-      showMenu: false
+      showMenu: false,
+      currentView: 'Большая плитка'
     };
     
     this.showMenu = this.showMenu.bind(this);
@@ -35,20 +35,24 @@ class Dropdown extends Component {
     });
   }
 
+  handleClick(gridId, viewName){
+    this.props.gridId(gridId);
+    this.setState({currentView : viewName});
+  }
+
   render() {
     return (
       <div className='menu' >
         <button className='viewButton' onClick={this.showMenu}>
-          Вид 
-
+          {this.state.currentView}
         </button>
         {
           this.state.showMenu
             ? (
-              <div >
+              <div className={'dropdown-list'}>
                 {
                   viewData.map(view => {
-                    return <button className='viewButton' id={view.id}>{view.name}</button>;
+                    return <button className='viewButton' key={view.id} onClick={() => this.handleClick(view.id, view.name)}>{view.name}</button>;
                   })
 
                 }

@@ -1,13 +1,30 @@
-.bigView
+.bigColView
   display: grid
   grid-gap: 35px 45px
   grid-template-columns: repeat(3, 1fr)
   
-.smallView
+.smallColView
   display: grid
   grid-gap: 25px 30px
   grid-template-columns: repeat(5, 1fr)
-  justify-items: stretch
+
+.bigRowView
+  display: grid
+  grid-gap: 35px 45px
+  grid-template-columns: repeat(2, 1fr)
+  grid-auto-rows: 20vh
+
+.smallRowView
+  display: grid
+  grid-gap: 25px 10rem
+  grid-template-columns: repeat(3, 22vw)
+  grid-auto-rows: 8vh
+
+.noPreview
+  display: grid
+  grid-gap: 3rem 5rem
+  grid-template-columns: repeat(5, 13vw)
+  grid-auto-rows: 8vh
 
 .galleryBlock
   padding: 0 150px 0 0
@@ -26,6 +43,9 @@
     line-height: 120%
     color: #000000
     margin-bottom: 26px
+    >a
+      position: absolute
+      left: 47%
   &__date
     grid-area: date
     text-align: left

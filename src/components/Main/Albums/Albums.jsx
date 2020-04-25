@@ -22,21 +22,43 @@ const galleryData = [
 ];
 
 export default class Albums extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.setGridType = this.setGridType.bind(this);
     this.state = {
-      biggerView: false,
+      gridType: 'bigColView',
       rowItemView: false
     };
-
   }
 
-  changeView() {
-    this.setState({biggerView: !this.state.biggerView});
+  setGridType(gridId) {
+    switch (gridId) {
+      case 1:
+        this.setState({gridType: 'bigColView'});
+        this.setState({rowItemView: false});
+        break;
+      case 2:
+        this.setState({gridType: 'smallColView'});
+        this.setState({rowItemView: false});
+        break;
+      case 3:
+        this.setState({gridType: 'bigRowView'});
+        this.setState({rowItemView: true});
+        break;
+      case 4:
+        this.setState({gridType: 'smallRowView'});
+        this.setState({rowItemView: true});
+        break;
+      case 5:
+        this.setState({gridType: 'noPreview'});
+        this.setState({rowItemView: true});
+        break;
+      default:
+        return;
+    }
   }
 
   render() {
-    const viewClass = this.state.biggerView ? 'bigView' : 'smallView';
     return (
       <div className='galleryBlock'>
         <div className='sorting'>
@@ -47,14 +69,20 @@ export default class Albums extends Component {
           <div className='sorting__date'>По дате</div>
           <div className='sorting__human'>По человеку</div>   
           <div className='sorting__view'>
-            <Dropdown/>
-
+            <Dropdown gridId={this.setGridType}/>
           </div>
         </div>
-        <div className={viewClass} > 
+        <div className={this.state.gridType} >
           {
             galleryData.map(card => {
-              return <AlbumsItem className='flex-row' view={this.state.rowItemView ? 'flex-row' : 'flex-column'} url={card.url} name={card.name} autor={card.autor} date={card.date} key={ shortid.generate() }/>;
+              return <AlbumsItem
+                view={this.state.rowItemView ? 'flex-row' : 'flex-column'}
+                url={card.url} name={card.name}
+                autor={card.autor} date={card.date}
+                key={ shortid.generate() }
+                isDesc={(this.state.gridType === 'smallRowView' || this.state.gridType === 'noPreview') ? false : true}
+                isImg={(this.state.gridType === 'noPreview') ? false : true}
+              />;
             })
           }
         </div>
