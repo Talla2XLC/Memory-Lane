@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import AlbumsItem from './AlbumsItem.jsx';
 import './Albums.sass';
 import shortid from 'shortid';
-import { Link } from 'react-router-dom';
-import { ReactComponent as IconAddSection } from '../Header/svg/add_section.svg';
 import Dropdown from './Dropdown.jsx';
+import PerfectScrollbar from "react-perfect-scrollbar";
 
 
 
@@ -64,7 +63,6 @@ export default class Albums extends Component {
         <div className='sorting'>
           <div className='sorting__title'>
             Сортировка
-            <Link to='/albums/add'><IconAddSection /></Link>
           </div>
           <div className='sorting__date'>По дате</div>
           <div className='sorting__human'>По человеку</div>   
@@ -72,20 +70,23 @@ export default class Albums extends Component {
             <Dropdown gridId={this.setGridType}/>
           </div>
         </div>
-        <div className={this.state.gridType} >
-          {
-            galleryData.map(card => {
-              return <AlbumsItem
-                view={this.state.rowItemView ? 'flex-row' : 'flex-column'}
-                url={card.url} name={card.name}
-                autor={card.autor} date={card.date}
-                key={ shortid.generate() }
-                isDesc={(this.state.gridType === 'smallRowView' || this.state.gridType === 'noPreview') ? false : true}
-                isImg={(this.state.gridType === 'noPreview') ? false : true}
-              />;
-            })
-          }
-        </div>
+        <PerfectScrollbar component='div'>
+          <div className={'albumContent ' + this.state.gridType} >
+            {
+              galleryData.map(card => {
+                return <AlbumsItem
+                  view={this.state.rowItemView ? 'flex-row' : 'flex-column'}
+                  url={card.url} name={card.name}
+                  autor={card.autor} date={card.date}
+                  key={ shortid.generate() }
+                  gridType={this.state.gridType}
+                  isDesc={(this.state.gridType === 'smallRowView' || this.state.gridType === 'noPreview') ? false : true}
+                  isImg={(this.state.gridType === 'noPreview') ? false : true}
+                />;
+              })
+            }
+          </div>
+        </PerfectScrollbar>
       </div>
     );
   }
