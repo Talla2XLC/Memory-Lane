@@ -23,6 +23,8 @@ export default function Header() {
   }  
 
 const HeaderWrapper = styled.div`
+z-index: 5;
+
 .header__top, 
 .header__bottom {
   display: flex;

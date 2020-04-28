@@ -12,7 +12,7 @@ import LandingFormModal               from './LandingFormModal';
 
 function EmailErrorMessage(props) {
   if (props.emailError) {
-    return <div className="{position: relative}"><span className="emailError">{props.emailError}</span></div>;
+    return <div style={{position: 'relative'}}><span className="emailError">{props.emailError}</span></div>;
   } else {
     return null;
   }

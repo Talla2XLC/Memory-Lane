@@ -111,17 +111,19 @@
     width: 360px;
 }
 
-.checkbox-pol  {
+.checkbox-confidentiality  {
     margin-top: 36.67px;
+    padding-left: 33px;
+    padding-right: 33px;
 }
 
-.checkbox-pol input[type=checkbox] + label {
+.checkbox-confidentiality input[type=checkbox] + label {
     display: block;
     cursor: pointer;
     padding: 0.2em;
 }
 
-.checkbox-pol > label > span {
+.checkbox-confidentiality > label > span {
     width: 252px;
     height: 14px;
     font-family: Roboto;
@@ -132,11 +134,11 @@
     color: #000000;
 }
   
-.checkbox-pol input[type=checkbox] {
+.checkbox-confidentiality input[type=checkbox] {
     display: none;
 }
   
-.checkbox-pol input[type=checkbox] + label:before {
+.checkbox-confidentiality input[type=checkbox] + label:before {
     content: "\2714";
     border: 0.18em solid #666565;
     border-radius: 1.2em;
@@ -148,15 +150,27 @@
     color: transparent;
     transition: .3s;
 }
+
   
-.checkbox-pol input[type=checkbox] + label:active:before {
+.checkbox-confidentiality input[type=checkbox] + label:active:before {
     transform: scale(0);
 }
   
-.checkbox-pol input[type=checkbox]:checked + label:before {
+.checkbox-confidentiality input[type=checkbox]:checked + label:before {
     background-color: #fff;
     border-color: #666565;
     color: #666565;
 }
   
+/* .border-red {
+    border-color: red;
+    color: red;
+} 
+*/
 
+.checkbox-confidentiality2 input[type=checkbox], 
+.checkbox-confidentiality2 label:before {
+    background-color: #fff;
+    border-color: red;
+    color: red;
+}

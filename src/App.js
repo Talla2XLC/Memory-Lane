@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.sass';
 import Landing from './containers/Landing.js';
 import Main from './containers/Main.js';
+import RegistrationForm from './components/Main/RegistrationForm';
 
 class App extends Component {
   constructor(props) {
@@ -12,7 +13,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.state.showLanding ? <Landing/> : <Main/>}
+        {/* {this.state.showLanding ? <Landing/> : <Main/>} */}
+        <RegistrationForm />
       </div>
     );
   }
