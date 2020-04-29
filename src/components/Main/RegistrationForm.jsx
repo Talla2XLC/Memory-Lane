@@ -5,118 +5,148 @@ import { ReactComponent as FormVK }   from './svg/form_vk.svg';
 import { ReactComponent as FormFB }   from './svg/form_fb.svg';
 import { ReactComponent as FormG }    from './svg/form_g.svg';
 import { ReactComponent as FormIns }   from './svg/form_ins.svg';
+import { FormErrors } from './FormErrors';
 import { useDispatch } from 'react-redux';
 import Axios from 'axios';
 
-function EmailErrorMessage(props) {
-    if (props.emailError) {
-      return <div className="{position: relative}"><span className="emailError">{props.emailError}</span></div>;
-    } else {
-      return null;
-    }
-  }
-  
-function PasswordErrorMessage(props) {
-    if (props.passwordError) {
-      return <div className="{position: relative}"><span>{props.passwordError}</span></div>;
-    } else {
-      return null;
-    }
-  }
-
 export default class RegistrationForm extends Component {
 
-state = {
-    email: '',
-    password: '',
-    confidentiality: '',
-    emailError: false,
-    passwordError: false, 
-    isOpen: false
-}
-
-emailChange = (event) => {
-    this.setState({email: event.target.value});
-}
-
-passwordChange = (event) => {
-    this.setState({password: event.target.value});    
-}
-
-confidentialityChange = (event) => {
-    this.setState({confidentiality: event.target.checked});
-}
-
-isEmailValid = (email) => {
-    const email_regexp = /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    let isEmailValid = email_regexp.test(email);
-    if(isEmailValid){
-        this.setState({emailError: true});
-        return true;
-    } else if(email && !isEmailValid) {
-        this.setState({emailError: 'Неверно введён email'});
-        return false;
-    } else if(!email) {
-        this.setState({emailError: 'Введите свой email'});
-      return false;
+    state = {
+        email: '',
+        password: '',
+        confidentiality: '',
+        formErrors: {email: '', password: ''},
+        emailValid: false,
+        passwordValid: false, 
+        formValid: false
     }
-}
 
-isPasswordValid = (password) => {
-    const password_regexp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
-    let isPasswordValid = password_regexp.test(password);
-    if(isPasswordValid){
-        this.setState({passwordError: true});
-        return true;
-    } else if (password && !isPasswordValid) {
-        this.setState({passwordError: 'Ваш пароль должен быть от 8 до 30 символов длиной, и содержать одну заглавную букву, один символ, и число'});
-        return false;
-    } else if (!password) {
-        this.setState({passwordError: 'Придумайте пароль'});
-        return false; 
+    handleUserInput = (e) => {                                               
+        const name = e.target.name;                                           
+        const value = e.target.value;                                     
+        this.setState({[name]: value},                                          
+            () => { this.validateField(name, value) });             
     }
-}
 
-// isConfidentialityValid = () => {
+    confidentialityChange = (e) => {
+        this.setState({confidentiality: e.target.checked});
+    }
 
-// }
+    // isEmailValid = (email) => {
+    //     const email_regexp = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i;
+    //     let isEmailValid = email_regexp.test(email);
+    //     if(isEmailValid){
+    //         this.setState({emailError: true});
+    //         return true;
+    //     } else if(email && !isEmailValid) {
+    //         this.setState({emailError: 'Неверно введён email'});
+    //         return false;
+    //     } else if(!email) {
+    //         this.setState({emailError: 'Введите свой email'});
+    //     return false;
+    //     }
+    // }
 
-openEntrance = (event) => {
-    let isEmailValid = this.isEmailValid(this.state.email);
-    let isPasswordValid = this.isPasswordValid(this.state.password);
-    let confident = this.state.confidentiality;
-    if (isEmailValid && isPasswordValid && confident) this.setState({ isOpen: true }); 
-    event.preventDefault();
-}
+    // isPasswordValid = (password) => {
+    //     const password_regexp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+    //     let isPasswordValid = password_regexp.test(password);
+    //     if(isPasswordValid){
+    //         this.setState({passwordError: true});
+    //         return true;
+    //     } else if (password && !isPasswordValid) {
+    //         this.setState({passwordError: 'Ваш пароль должен быть от 8 до 30 символов длиной, и содержать одну заглавную букву, один символ, и число'});
+    //         return false;
+    //     } else if (!password) {
+    //         this.setState({passwordError: 'Придумайте пароль'});
+    //         return false; 
+    //     }
+    // }
 
-// registerUser = (email, pass) => {
-//     return (email, pass) => {
-//         axios
-//         .post(
-//             'http://api.memory-lane.ru/db/registerApi',
-//             {
-//                 email: email,
-//                 password: pass
-//             },
-//             {
-//                 headers: {
-//                     'Content-Type': 'aplication/json'
-//                 }
-//             }
-//         )
-//         .then(res => {
-//             dispatch(userRegisterSuccess(res.data));
-//         })
-//         .catch(err => {
-//             dispatch(userRegisterFailed(err.message));            
-//         }
+    
 
-//     ) 
-// }
-// }
+    // isConfidentialityValid = () => {
 
-render() {
-        const checkBox = (this.state.isOpen && !this.state.confidentiality) ? 'checkbox-confidentiality2' : 'checkbox-confidentiality';
+    // }
+
+    validateField(fieldName, value) {
+        let fieldValidationErrors = this.state.formErrors;
+        let emailValid = this.state.emailValid;
+        let passwordValid = this.state.passwordValid;
+    
+        switch(fieldName) {
+          case 'email':
+            emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+            fieldValidationErrors.email = emailValid ? '' : 'Неверно введён email';
+            break;
+          case 'password':
+            let isMax = value.length >= 8;
+            let isCapital = value.match(/(?=.*?[A-Z])/);
+            let oneDigit = value.match(/(?=.*?[0-9])/);
+            let specialCharacter = value.match(/(?=.*?[#?!@$%^&*-])/);
+
+            if (!isMax) {
+                fieldValidationErrors.password = 'Ваш пароль должен быть от 8 до 30 символов длиной';
+            } else if (!isCapital) {
+                fieldValidationErrors.password = 'Пароль должен содержать минимум одну заглавную букву';
+            } else if (!oneDigit) {
+                fieldValidationErrors.password = 'Пароль должен содержать минимум одну цифру';
+            } else if (!specialCharacter) {
+                fieldValidationErrors.password = 'Пароль должен содержать минимум один специальный символ';
+            } else {
+                fieldValidationErrors.password = '';
+                passwordValid = true;
+            }
+            break;
+          default:
+            break;
+        }
+        this.setState({formErrors: fieldValidationErrors,
+                        emailValid: emailValid,
+                        passwordValid: passwordValid
+                      }, this.validateForm);
+      }
+    
+    validateForm = () => {
+        this.setState({formValid: this.state.emailValid && this.state.passwordValid});
+    }
+
+    // validateForm = (e) => {
+    //     let isEmailValid = this.isEmailValid(this.state.email);
+    //     let isPasswordValid = this.isPasswordValid(this.state.password);
+    //     let confident = this.state.confidentiality;
+    //     this.setState({formValid: isEmailValid && isPasswordValid && confident}); 
+    //     // e.preventDefault();
+    // }
+
+    // registerUser = (email, pass) => {
+    //     return (email, pass) => {
+    //         axios
+    //         .post(
+    //             'http://api.memory-lane.ru/db/registerApi',
+    //             {
+    //                 email: email,
+    //                 password: pass
+    //             },
+    //             {
+    //                 headers: {
+    //                     'Content-Type': 'aplication/json'
+    //                 }
+    //             }
+    //         )
+    //         .then(res => {
+    //             dispatch(userRegisterSuccess(res.data));
+    //         })
+    //         .catch(err => {
+    //             dispatch(userRegisterFailed(err.message));            
+    //         }
+
+    //     ) 
+    // }
+    // }
+
+    render() {
+        const { formValid, confidentiality } = this.state;
+        const checkBox = (formValid && !confidentiality) ? 'checkbox-confidentiality checkbox-red' : 'checkbox-confidentiality';
         return (
                 <div className='formWrapper'>
                     <div className='formWrapperItem__titleContainer'>
@@ -125,24 +155,25 @@ render() {
                     <form className='formContainerItem__form' action='/' method='POST'>                
                         <input
                             className='textInput'
+                            name='email'
                             type='email'
                             size='0'
                             placeholder='Введите электронную почту'
                             value={this.state.email} 
-                            onChange={this.emailChange}
+                            onChange={this.handleUserInput}
                             required
                         />
-                        <EmailErrorMessage emailError={this.state.emailError}/>
+                        <FormErrors formErrors={this.state.formErrors.email} />
 
                         <input
                             className='textInput'
+                            name='password'
                             type='password'
                             placeholder='Придумайте пароль'
-                            onChange={this.passwordChange}
+                            onChange={this.handleUserInput}
                             value={this.state.password}
                         />
-
-                        <PasswordErrorMessage passwordError={this.state.passwordError} />
+                        <FormErrors formErrors={this.state.formErrors.password} />
 
                         <div className='formContainerItem__icons'>
                             <a href='https://vk.com/' alt='vk'><FormVK /></a>
@@ -160,7 +191,7 @@ render() {
                             className='textInput formItem__button formItem__button-360'
                             type='submit'
                             value='Зарегистрироваться'
-                            onClick={this.openEntrance}
+                            onClick={this.validateForm}
                         />
                     </form>
                 </div>

@@ -10,22 +10,6 @@ import { ReactComponent as FormOK }   from './svg/form_ok.svg';
 
 import LandingFormModal               from './LandingFormModal';
 
-function EmailErrorMessage(props) {
-  if (props.emailError) {
-    return <div style={{position: 'relative'}}><span className="emailError">{props.emailError}</span></div>;
-  } else {
-    return null;
-  }
-}
-
-function NameErrorMessage(props) {
-  if (props.nameError) {
-    return <div className="{position: relative}"><span className="nameError">{props.nameError}</span></div>;
-  } else {
-    return null;
-  }
-}
-
 export default class LandingForm extends Component {
   constructor(props) {
     super(props)
@@ -206,6 +190,23 @@ export default class LandingForm extends Component {
     );
   }
 }
+
+function EmailErrorMessage(props) {
+  if (props.emailError) {
+    return <div style={{position: 'relative'}}><span className="emailError">{props.emailError}</span></div>;
+  } else {
+    return null;
+  }
+}
+
+function NameErrorMessage(props) {
+  if (props.nameError) {
+    return <div className="{position: relative}"><span className="nameError">{props.nameError}</span></div>;
+  } else {
+    return null;
+  }
+}
+
 
 const FormWrapper = styled.div`
 background: #FFFFFF;

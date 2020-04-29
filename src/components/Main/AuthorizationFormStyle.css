@@ -48,7 +48,7 @@
     outline: 1px solid #ccc;
   }
 
-.formContainerItem__form input:nth-child(2){
+.formContainerItem__form input[type='password'] {
     margin-top: 12px;    
 }
 
@@ -148,7 +148,6 @@
     padding-bottom: 0.1em;
     margin-right: 9px;
     color: transparent;
-    transition: .3s;
 }
 
   
@@ -161,16 +160,13 @@
     border-color: #666565;
     color: #666565;
 }
-  
-/* .border-red {
-    border-color: red;
-    color: red;
-} 
-*/
 
-.checkbox-confidentiality2 input[type=checkbox], 
-.checkbox-confidentiality2 label:before {
-    background-color: #fff;
-    border-color: red;
+.checkbox-red input[type=checkbox] + label:before {
+    border: 0.18em solid red;
+}
+
+.checkbox-red > label > span
+{
+    content: "";
     color: red;
 }

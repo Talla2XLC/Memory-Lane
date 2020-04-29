@@ -17,12 +17,10 @@ state = {
     isOpen: false
 }
 
-emailChange = (event) => {
-    this.setState({email: event.target.value});
-}
-
-passwordChange = (event) => {
-    this.setState({password: event.target.value});    
+handleUserInput = (e) => {                                               
+    const name = e.target.name;                                           
+    const value = e.target.value;                                     
+    this.setState({[name]: value});             
 }
 
 openEntrance = () => {
@@ -38,20 +36,22 @@ render() {
                     <form className='formContainerItem__form' action='/' method='POST'>                
                         <input
                             className='textInput'
+                            name='email'
                             type='email'
                             size='0'
                             placeholder='Введите электронную почту'
                             value={this.state.email} 
-                            onChange={this.emailChange}
+                            onChange={this.handleUserInput}
                             required
                         />
                         {/* <EmailErrorMessage emailError={this.state.emailError}/> */}
 
                         <input
                             className='textInput'
+                            name='password'
                             type='password'
                             placeholder='Введите пароль'
-                            onChange={this.passwordChange}
+                            onChange={this.handleUserInput}
                             value={this.state.password}
                         />
 
