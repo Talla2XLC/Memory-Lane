@@ -71,7 +71,7 @@ export default class RegistrationFormName extends Component {
 
         render() {
                 const { firstName, firstNameValid, lastName, lastNameValid } = this.state;
-                const displayfirstName = (firstName.length == 0 || firstName === null || firstNameValid) ? 'displayNone' : '';
+                const displayfirstName = (firstName.length === 0 || firstName === null || firstNameValid) ? 'displayNone' : '';
                 const displaylastName = (lastName.length === 0 || lastName === null || lastNameValid) ? 'displayNone' : '';
                 return (
                         <div className='formWrapper'>
