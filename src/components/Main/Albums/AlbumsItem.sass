@@ -1,23 +1,61 @@
 .albumItem
   justify-content: stretch
 
-.img
+  position: relative
+
+.img-div
+  position: relative
+
+.select-button
+  position: absolute
+  background: white
+  width: 1rem
+  height: 1rem
+  top: 2rem
+  right: 2rem
+  border-radius: 50%
+  border: 1px solid black
+  font-size: 0.6rem
+
+.bigRowView_img-div, .smallRowView_img-div
+  margin-right: 2rem
+
+.noPreview_img-div
+  margin-right: 0
+  height: 100%
+  width: 100%
+
+  position: absolute
 
 .bigColView_img, .smallColView_img
   width: 100%
   margin-bottom: 12px
 
+.bigColView_select-button, .smallColView_select-button
+  width: 2rem
+  height: 2rem
+  font-size: 1rem
+
+.smallRowView_select-button
+  top: 1rem
+  right: 1rem
+
 .bigRowView_img
   height: 14rem
-  padding-right: 2rem
 
 .smallRowView_img
   height: 6rem
-  padding-right: 2rem
+
+.noPreview_img-div
+  right: 0
 
 .noPreview_img
   height: 3rem
-  padding-right: 2rem
+
+.noPreview_select-button
+  bottom: 1rem
+  top: auto
+  right: 4%
 
 .contentZone
   position: relative
@@ -64,4 +102,4 @@
   margin-bottom: 12px
 
 .itemDescription 
-  text-align: left 
+  text-align: left
