@@ -1,7 +1,8 @@
 import React from 'react';
+import './AuthorizationFormStyle.css';
 
-export const FormErrors = (formErrors) =>
-  <div style={{position: 'absolute'}}>
+export const FormErrors = (formErrors) => 
+  <div className='formErrors'>
     {Object.keys(formErrors).map((fieldName, i) => {
       if(formErrors[fieldName].length > 0){
         return (
@@ -11,4 +12,5 @@ export const FormErrors = (formErrors) =>
         return '';
       }
     })}
-  </div>
+  </div> 
+

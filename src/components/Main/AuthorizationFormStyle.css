@@ -22,12 +22,22 @@
     color: #000000;
 }
 
+.container__input {
+    margin-top: 12px;
+}
+
+.title__item {
+    width: 559px;
+    margin-bottom: 48px;    
+}
+
 .formContainerItem__form {
     width: 360px;
     margin-top: 48px;
 }
 
 .formContainerItem__form input[type='email'],
+.formContainerItem__form input[type='text'],
 .formContainerItem__form input[type='password'] {
     width: 360px;
     height: 46.83px;
@@ -42,14 +52,22 @@
     line-height: 24px;
 }
 
-.formContainerItem__form input[type='email']:focus,
+/* .formContainerItem__form input[type='email']:focus,
 .formContainerItem__form input[type='password']:focus {
     color: #000000;
     outline: 1px solid #ccc;
-  }
+  } */
 
 .formContainerItem__form input[type='password'] {
     margin-top: 12px;    
+}
+
+.inputUser-red {
+    outline: 1px solid red;
+}
+
+.inputUser-red:focus {
+    outline: 1px solid red;    
 }
 
 .formContainerItem__icons {
@@ -70,10 +88,13 @@
     margin-top: 69.96px;
 }
 
+.formItem__button-64 {
+    margin-top: 64px;
+}
+
 .formItem__button:hover {
     box-shadow: 0 0 2px rgba(0,0,0,0.5); 
 }
-
 
 .textinput {
     font-family: Roboto;
@@ -139,13 +160,14 @@
 }
   
 .checkbox-confidentiality input[type=checkbox] + label:before {
-    content: "\2714";
+    /* content: url("./svg/check.svg"); */
+    content: '\2714';
     border: 0.18em solid #666565;
-    border-radius: 1.2em;
-    padding-left: 0.28em;
-    padding-right: 0.28em;
-    padding-top: 0.1em;
-    padding-bottom: 0.1em;
+    border-radius: 1.2em; 
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+    padding-top: 0.03em;
+    padding-bottom: 0.03em;
     margin-right: 9px;
     color: transparent;
 }
@@ -165,8 +187,26 @@
     border: 0.18em solid red;
 }
 
-.checkbox-red > label > span
-{
+.checkbox-red > label > span {
     content: "";
     color: red;
+}
+
+.formErrors {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    background: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+    height: 46.83px;
+    width: 280px;
+    margin-left: 330px;
+    border-radius: 5px;
+    padding: 4px 4px;
+}
+
+.displayNone {
+    display: none;
 }

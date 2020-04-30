@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import './AuthorizationFormStyle.css';
 
 import { ReactComponent as FormVK }   from './svg/form_vk.svg';
@@ -6,8 +6,8 @@ import { ReactComponent as FormFB }   from './svg/form_fb.svg';
 import { ReactComponent as FormG }    from './svg/form_g.svg';
 import { ReactComponent as FormIns }   from './svg/form_ins.svg';
 import { FormErrors } from './FormErrors';
-import { useDispatch } from 'react-redux';
-import Axios from 'axios';
+// import { useDispatch } from 'react-redux';
+// import Axios from 'axios';
 
 export default class RegistrationForm extends Component {
 
@@ -18,7 +18,8 @@ export default class RegistrationForm extends Component {
         formErrors: {email: '', password: ''},
         emailValid: false,
         passwordValid: false, 
-        formValid: false
+        formValid: false,
+        isOpen: false
     }
 
     handleUserInput = (e) => {                                               
@@ -32,46 +33,14 @@ export default class RegistrationForm extends Component {
         this.setState({confidentiality: e.target.checked});
     }
 
-    // isEmailValid = (email) => {
-    //     const email_regexp = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i;
-    //     let isEmailValid = email_regexp.test(email);
-    //     if(isEmailValid){
-    //         this.setState({emailError: true});
-    //         return true;
-    //     } else if(email && !isEmailValid) {
-    //         this.setState({emailError: 'Неверно введён email'});
-    //         return false;
-    //     } else if(!email) {
-    //         this.setState({emailError: 'Введите свой email'});
-    //     return false;
-    //     }
-    // }
-
-    // isPasswordValid = (password) => {
-    //     const password_regexp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
-    //     let isPasswordValid = password_regexp.test(password);
-    //     if(isPasswordValid){
-    //         this.setState({passwordError: true});
-    //         return true;
-    //     } else if (password && !isPasswordValid) {
-    //         this.setState({passwordError: 'Ваш пароль должен быть от 8 до 30 символов длиной, и содержать одну заглавную букву, один символ, и число'});
-    //         return false;
-    //     } else if (!password) {
-    //         this.setState({passwordError: 'Придумайте пароль'});
-    //         return false; 
-    //     }
-    // }
-
-    
-
-    // isConfidentialityValid = () => {
-
-    // }
-
     validateField(fieldName, value) {
         let fieldValidationErrors = this.state.formErrors;
         let emailValid = this.state.emailValid;
         let passwordValid = this.state.passwordValid;
+        let isMax = value.length >= 8;
+        let isCapital = value.match(/(?=.*?[A-Z])/);
+        let oneDigit = value.match(/(?=.*?[0-9])/);
+        let specialCharacter = value.match(/(?=.*?[#?!@$%^&*-])/);
     
         switch(fieldName) {
           case 'email':
@@ -79,11 +48,6 @@ export default class RegistrationForm extends Component {
             fieldValidationErrors.email = emailValid ? '' : 'Неверно введён email';
             break;
           case 'password':
-            let isMax = value.length >= 8;
-            let isCapital = value.match(/(?=.*?[A-Z])/);
-            let oneDigit = value.match(/(?=.*?[0-9])/);
-            let specialCharacter = value.match(/(?=.*?[#?!@$%^&*-])/);
-
             if (!isMax) {
                 fieldValidationErrors.password = 'Ваш пароль должен быть от 8 до 30 символов длиной';
             } else if (!isCapital) {
@@ -104,19 +68,16 @@ export default class RegistrationForm extends Component {
                         emailValid: emailValid,
                         passwordValid: passwordValid
                       }, this.validateForm);
-      }
+    }
     
     validateForm = () => {
         this.setState({formValid: this.state.emailValid && this.state.passwordValid});
     }
 
-    // validateForm = (e) => {
-    //     let isEmailValid = this.isEmailValid(this.state.email);
-    //     let isPasswordValid = this.isPasswordValid(this.state.password);
-    //     let confident = this.state.confidentiality;
-    //     this.setState({formValid: isEmailValid && isPasswordValid && confident}); 
-    //     // e.preventDefault();
-    // }
+    isOpen = (e) => {
+        this.setState({isOpen: true});
+        e.preventDefault();
+    }
 
     // registerUser = (email, pass) => {
     //     return (email, pass) => {
@@ -145,16 +106,19 @@ export default class RegistrationForm extends Component {
     // }
 
     render() {
-        const { formValid, confidentiality } = this.state;
-        const checkBox = (formValid && !confidentiality) ? 'checkbox-confidentiality checkbox-red' : 'checkbox-confidentiality';
+        const { email, emailValid, password, passwordValid, confidentiality } = this.state;
+        const displayEmail = (email.length === 0 || email === null || emailValid) ? 'displayNone' : '';
+        const displayPassword = (password.length === 0 || password === null || passwordValid) ? 'displayNone' : '';
+        const inputEmail = (email.length > 0 && !emailValid) ? 'textInput inputUser-red' : 'textInput';
+        const checkBox = (emailValid && passwordValid && !confidentiality) ? 'checkbox-confidentiality checkbox-red' : 'checkbox-confidentiality';
         return (
                 <div className='formWrapper'>
                     <div className='formWrapperItem__titleContainer'>
                         <h2 className='textBasic titleContainerItem__title'>Регистрация</h2>
                     </div>
-                    <form className='formContainerItem__form' action='/' method='POST'>                
+                    <form className='formContainerItem__form' action='/'>                
                         <input
-                            className='textInput'
+                            className={inputEmail}
                             name='email'
                             type='email'
                             size='0'
@@ -163,7 +127,9 @@ export default class RegistrationForm extends Component {
                             onChange={this.handleUserInput}
                             required
                         />
-                        <FormErrors formErrors={this.state.formErrors.email} />
+                        <div className={displayEmail}>
+                            <FormErrors formErrors={this.state.formErrors.email} />
+                        </div>
 
                         <input
                             className='textInput'
@@ -172,8 +138,12 @@ export default class RegistrationForm extends Component {
                             placeholder='Придумайте пароль'
                             onChange={this.handleUserInput}
                             value={this.state.password}
+                            autocomplete="current-password"
                         />
-                        <FormErrors formErrors={this.state.formErrors.password} />
+
+                        <div className={displayPassword}>
+                            <FormErrors formErrors={this.state.formErrors.password} />
+                        </div>
 
                         <div className='formContainerItem__icons'>
                             <a href='https://vk.com/' alt='vk'><FormVK /></a>
@@ -191,7 +161,8 @@ export default class RegistrationForm extends Component {
                             className='textInput formItem__button formItem__button-360'
                             type='submit'
                             value='Зарегистрироваться'
-                            onClick={this.validateForm}
+                            onClick={this.isOpen}
+                            disabled={!this.state.formValid || !this.state.confidentiality}
                         />
                     </form>
                 </div>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import './AuthorizationFormStyle.css';
 
 
@@ -23,8 +23,9 @@ handleUserInput = (e) => {
     this.setState({[name]: value});             
 }
 
-openEntrance = () => {
-
+isOpen = (e) => {
+    this.setState({isOpen: true});
+    e.preventDefault();
 }
 
 render() {
@@ -65,10 +66,10 @@ render() {
                         </div>
 
                         <input
-                            className='textInput formItem__button'
+                            className='textInput formItem__button formItem__button-360'
                             type='submit'
                             value='Войти'
-                            onClick={this.openEntrance}
+                            onClick={this.isOpen}
                         />
 
                     </form>
