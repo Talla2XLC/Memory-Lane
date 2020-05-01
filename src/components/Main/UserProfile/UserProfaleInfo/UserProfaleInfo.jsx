@@ -47,7 +47,10 @@ const UserProfaleInfo = () => {
                 </li>
                 <li className="UserProfaleInfo__item">
                     <h3>Ваш тариф:</h3>
-                    <div><span>Стандарт</span> <span>Сменить тариф</span></div>
+                    <div className= 'UserProfaleInfo__item-rate'>
+                    <span>Стандарт</span>
+                    <span className= 'UserProfaleInfo__item-change'>Сменить тариф</span>
+                    </div>
 
 
                 </li>

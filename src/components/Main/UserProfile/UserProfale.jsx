@@ -3,7 +3,8 @@ import '../../../stylesGlobal/styles.sass';
 import './UserProfale.sass';
 import UserProfaleNav from './UserProfaleNav/UserProfaleNav'
 import UserProfaleInfo from "./UserProfaleInfo/UserProfaleInfo";
-import UserProfaleInfoReName from './UserProfaleInfoReName/UserProfaleInfoReName'
+import UserProfaleInfoReName from  './UserProfaleInfoReName/UserProfaleInfoReName'
+
 
 
 
@@ -27,7 +28,7 @@ const UserProfale= () => {
                         </div>
                         <div className="UserProfale__inner-info">
 
-                            {/*<UserProfaleInfo />*/}
+                            <UserProfaleInfo />
                             <UserProfaleInfoReName />
 
                         </div>
