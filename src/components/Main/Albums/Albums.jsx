@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import AlbumsItem from './AlbumsItem.jsx';
 import './Albums.sass';
 import shortid from 'shortid';
-import { Link } from 'react-router-dom';
-import { ReactComponent as IconAddSection } from '../Header/svg/add_section.svg';
 import Dropdown from './Dropdown.jsx';
-
-
+import PerfectScrollbar from 'react-perfect-scrollbar';
 
 const galleryData = [
   {url: 'https://picsum.photos/400/400', name: 'itemName', autor: 'itemAutor', date: 'itemDate'},
@@ -25,9 +22,11 @@ export default class Albums extends Component {
   constructor(props) {
     super(props);
     this.setGridType = this.setGridType.bind(this);
+    this.selectImage = this.selectImage.bind(this);
     this.state = {
       gridType: 'bigColView',
-      rowItemView: false
+      rowItemView: false,
+      itemSelected: []
     };
   }
 
@@ -51,11 +50,26 @@ export default class Albums extends Component {
         break;
       case 5:
         this.setState({gridType: 'noPreview'});
-        this.setState({rowItemView: true});
+        this.setState({rowItemView: false});
         break;
       default:
         return;
     }
+  }
+
+  selectImage(id, action) {
+    const newItemArr = this.state.itemSelected;
+    switch (action) {
+      case 'add':
+        newItemArr.push(id);
+        break;
+      case 'del':
+        newItemArr.splice(newItemArr.indexOf(id), 1);
+        break;
+      default:
+        return;
+    }
+    this.setState({itemSelected: newItemArr});
   }
 
   render() {
@@ -64,7 +78,6 @@ export default class Albums extends Component {
         <div className='sorting'>
           <div className='sorting__title'>
             Сортировка
-            <Link to='/albums/add'><IconAddSection /></Link>
           </div>
           <div className='sorting__date'>По дате</div>
           <div className='sorting__human'>По человеку</div>   
@@ -72,20 +85,26 @@ export default class Albums extends Component {
             <Dropdown gridId={this.setGridType}/>
           </div>
         </div>
-        <div className={this.state.gridType} >
-          {
-            galleryData.map(card => {
-              return <AlbumsItem
-                view={this.state.rowItemView ? 'flex-row' : 'flex-column'}
-                url={card.url} name={card.name}
-                autor={card.autor} date={card.date}
-                key={ shortid.generate() }
-                isDesc={(this.state.gridType === 'smallRowView' || this.state.gridType === 'noPreview') ? false : true}
-                isImg={(this.state.gridType === 'noPreview') ? false : true}
-              />;
-            })
-          }
-        </div>
+        <PerfectScrollbar component='div'>
+          <div className={'albumContent ' + this.state.gridType} >
+            {
+              galleryData.map((card,index) => {
+                return <AlbumsItem
+                  id = {index}
+                  view={this.state.rowItemView ? 'flex-row' : 'flex-column'}
+                  url={card.url} name={card.name}
+                  autor={card.autor} date={card.date}
+                  key={ shortid.generate() }
+                  gridType={this.state.gridType}
+                  isDesc={!(this.state.gridType === 'smallRowView' || this.state.gridType === 'noPreview')}
+                  isImg={this.state.gridType !== 'noPreview'}
+                  selectId={this.selectImage}
+                  isSelected={this.state.itemSelected.includes(index)}
+                />;
+              })
+            }
+          </div>
+        </PerfectScrollbar>
       </div>
     );
   }

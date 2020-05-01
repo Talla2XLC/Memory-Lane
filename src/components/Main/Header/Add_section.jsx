@@ -1,23 +1,25 @@
 import React, { Component } from 'react';
 import { ReactComponent as IconAddSection } from './svg/add_section.svg';
 import styled from 'styled-components';
+import {Link} from "react-router-dom";
 
 export default class addSection extends Component {
     state = {
-            interview: '',
-            photo: '',
-            album: '',
-            history: ''
+      interview: '',
+      photo: '',
+      album: '',
+      history: ''
     }
 
-    render () {
-        return (
-                <AddSectionWrapper>
-                    <button className='button__notice'>
-                        <IconAddSection />
-                    </button>
-                </AddSectionWrapper>
-        )
+    render() {
+      return (
+        <AddSectionWrapper>
+          {/*<button className='button__notice'>
+            <IconAddSection />
+          </button>*/}
+          <Link to='/albums/add'><IconAddSection /></Link>
+        </AddSectionWrapper>
+      );
     }
 }
 

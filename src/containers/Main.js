@@ -1,21 +1,30 @@
 import React, { Component } from 'react';
-import './Main.sass';
 import Header from '../components/Main/Header';
 import MainNav from '../components/Main/MainNav';
 import Content from '../components/Main/Content';
 import {BrowserRouter} from 'react-router-dom';
 import { getUsers } from '../actions/actionUser';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
 class Main extends Component {
-  state = {
-    navItems: [
-      { endpoint: 'persons', title: 'Персоны' },
-      { endpoint: 'albums', title: 'Альбомы' },
-      { endpoint: 'stories', title: 'Истории' },
-      { endpoint: 'services', title: 'Сервисы' },
-      { endpoint: 'learn', title: 'Обучение' }
-    ]
+  constructor(props) {
+    super(props);
+    this.setHeaderHeight = this.setHeaderHeight.bind(this);
+    this.state = {
+      navItems: [
+        { endpoint: 'persons', title: 'Персоны' },
+        { endpoint: 'albums', title: 'Альбомы' },
+        { endpoint: 'stories', title: 'Истории' },
+        { endpoint: 'services', title: 'Сервисы' },
+        { endpoint: 'learn', title: 'Обучение' }
+      ],
+      headerHeight: 0
+    };
+  }
+
+  setHeaderHeight(height) {
+    this.setState({headerHeight: height});
   }
 
   render() {
@@ -24,18 +33,32 @@ class Main extends Component {
 
     return (
       isLoading ? <h1>Загрузка данных</h1> :
-        <div className='Main'>
-          <BrowserRouter>
-            <Header/>
+        <MainWrapper className='Main' headerHeight={this.state.headerHeight}>
+          <BrowserRouter className='Main'>
+            <Header headerHeight={this.setHeaderHeight}/>
             <div className='central-content'>
               <MainNav navItems={navItems}/>
               <Content/>
             </div>
           </BrowserRouter>
-        </div>
+        </MainWrapper>
     );
   }
 }
+const MainWrapper = styled.div`
+display: flex;
+flex-flow: column nowrap;
+height: 100vh;
+overflow: hidden;
+justify-content: stretch;
+
+.central-content {
+  display: flex;
+  flex-flow: row nowrap;
+  flex-grow: 1;
+  height: calc(100vh - ${props => props.headerHeight}px);
+}
+`;
 
 const mapStateToProps = state => {
   return {

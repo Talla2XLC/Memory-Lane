@@ -1,3 +1,11 @@
+.galleryBlock
+  height: 100%
+  display: flex
+  flex-flow: column nowrap
+
+.albumContent
+  padding: 0 150px 0 0
+
 .bigColView
   display: grid
   grid-gap: 35px 45px
@@ -12,22 +20,16 @@
   display: grid
   grid-gap: 35px 45px
   grid-template-columns: repeat(2, 1fr)
-  grid-auto-rows: 20vh
 
 .smallRowView
   display: grid
-  grid-gap: 25px 10rem
-  grid-template-columns: repeat(3, 22vw)
-  grid-auto-rows: 8vh
+  grid-gap: 25px
+  grid-template-columns: repeat(3, 1fr)
 
 .noPreview
   display: grid
-  grid-gap: 3rem 5rem
-  grid-template-columns: repeat(5, 13vw)
-  grid-auto-rows: 8vh
-
-.galleryBlock
-  padding: 0 150px 0 0
+  grid-gap: 3rem
+  grid-template-columns: repeat(5, 1fr)
 
 .sorting 
   display: grid

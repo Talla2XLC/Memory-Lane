@@ -12,7 +12,7 @@ import LandingFormModal               from './LandingFormModal';
 
 export default class LandingForm extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       name: '', 
@@ -25,7 +25,7 @@ export default class LandingForm extends Component {
 
   nameChange = (event) => {
     this.setState({name: event.target.value});        
-}
+  }
 
   emailChange = (event) => {
     this.setState({email: event.target.value});
@@ -33,37 +33,37 @@ export default class LandingForm extends Component {
 
   isEmailValid = (email) => {
     const email_regexp = /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    let isEmailValid = email_regexp.test(email);
-    if(isEmailValid){
+    const isEmailValid = email_regexp.test(email);
+    if (isEmailValid) {
         this.setState({emailError: true});
         return true;
-    } else if(email && !isEmailValid) {
+    } else if (email && !isEmailValid) {
         this.setState({emailError: 'Неверно введён email'});
         return false;
-    } else if(!email) {
+    } else if (!email) {
         this.setState({emailError: 'Введите свой email'});
-      return false;
+        return false;
     }
   }
 
   isNameValid = (name) => {
-      const name_regexp = /^\D+$/;
-      let isNameValid = name_regexp.test(name);
-      if(isNameValid){
-          this.setState({nameError: true});
-          return true;
-      } else if (name && !isNameValid) {
-          this.setState({nameError: 'Имя не должно содержать цифры'});
-          return false;
-      } else if (!name) {
-          this.setState({nameError: 'Введите свое имя'});
-          return false; 
-      }
+    const name_regexp = /^\D+$/;
+    const isNameValid = name_regexp.test(name);
+    if (isNameValid) {
+      this.setState({nameError: true});
+      return true;
+    } else if (name && !isNameValid) {
+      this.setState({nameError: 'Имя не должно содержать цифры'});
+      return false;
+    } else if (!name) {
+      this.setState({nameError: 'Введите свое имя'});
+      return false; 
     }
+  }
 
   openModal = (event) => {
-    let isEmailValid = this.isEmailValid(this.state.email);
-    let isNamelValid = this.isNameValid(this.state.name);
+    const isEmailValid = this.isEmailValid(this.state.email);
+    const isNamelValid = this.isNameValid(this.state.name);
     if (isEmailValid && isNamelValid) this.setState({ isOpen: true }); 
     event.preventDefault();
   }
@@ -148,7 +148,7 @@ export default class LandingForm extends Component {
               </form>
 
               <LandingFormModal
-                title="Test Dialog window"
+                title='Test Dialog window'
                 isOpen={this.state.isOpen}
                 onCancel={this.handleCancel}
                 onSubmit={this.handleSubmit}

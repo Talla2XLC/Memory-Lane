@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Search from './Header/Search.jsx';
 import Notice from './Header/Notice.jsx';
 import SetingsMenu from './Header/Settings_menu.jsx';
@@ -7,20 +7,26 @@ import './Header.sass';
 
 import styled from 'styled-components';
 
-export default function Header() {
+export default class Header extends Component {
+  componentDidMount(){
+    this.props.headerHeight(document.querySelector('.headerDiv').offsetHeight);
+  }
+
+  render() {
     return (
-            <HeaderWrapper className='headerDiv'>
-                <div className='header__top'>
-                    <Notice />
-                    <SetingsMenu/>
-                </div>
-                <div className='header__bottom'>
-                    <Search/>
-                    <AddSection/>
-                </div>
-            </HeaderWrapper>
+      <HeaderWrapper className='headerDiv'>
+        <div className='header__top'>
+          <Notice />
+          <SetingsMenu/>
+        </div>
+        <div className='header__bottom'>
+          <Search/>
+          <AddSection/>
+        </div>
+      </HeaderWrapper>
     );
-  }  
+  }
+}  
 
 const HeaderWrapper = styled.div`
 z-index: 5;
