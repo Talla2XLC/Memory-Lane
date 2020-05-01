@@ -29,6 +29,8 @@ export default class Header extends Component {
 }  
 
 const HeaderWrapper = styled.div`
+z-index: 5;
+
 .header__top, 
 .header__bottom {
   display: flex;
