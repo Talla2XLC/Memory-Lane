@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FormErrors } from './FormErrors';
+import { Tooltip } from './Tooltip';
 import FormModal  from './FormModal';
 import './AuthorizationFormStyle.css';
 
@@ -30,8 +30,8 @@ export default class RegistrationFormName extends Component {
 
             switch(fieldName) {
             case 'firstName':
-                firstNameValid = oneDigit;
-                if (firstNameValid) {
+                firstNameValid = false;
+                if (oneDigit) {
                     fieldValidationErrors.firstName = 'Имя не должно содержать цифры';
                 } else {
                     fieldValidationErrors.firstName = ''; 
@@ -39,8 +39,8 @@ export default class RegistrationFormName extends Component {
                 }   
                 break;
             case 'lastName':
-                lastNameValid = oneDigit;
-                if (lastNameValid) {
+                lastNameValid = false;
+                if (oneDigit) {
                     fieldValidationErrors.lastName = 'Фамилия не должна содержать цифры';
                 } else {
                     fieldValidationErrors.lastName = ''; 
@@ -71,8 +71,10 @@ export default class RegistrationFormName extends Component {
 
         render() {
                 const { firstName, firstNameValid, lastName, lastNameValid } = this.state;
-                const displayfirstName = (firstName.length === 0 || firstName === null || firstNameValid) ? 'displayNone' : '';
-                const displaylastName = (lastName.length === 0 || lastName === null || lastNameValid) ? 'displayNone' : '';
+                const inputFirstName = (firstName.length > 0 && !firstNameValid) ? 'textInput inputUser-red' : 'textInput';
+                const inputLastName = (lastName.length > 0 && !lastNameValid) ? 'textInput container__input inputUser-red' : 'textInput container__input';
+                const displayfirstName = (firstName.length === 0 || firstName === null || firstNameValid) ? 'formErrors displayNone' : 'formErrors';
+                const displaylastName = (lastName.length === 0 || lastName === null || lastNameValid) ? 'formErrors displayNone' : 'formErrors';
                 return (
                         <div className='formWrapper'>
                             <div className='formWrapperItem__titleContainer title__item'>
@@ -80,7 +82,7 @@ export default class RegistrationFormName extends Component {
                             </div>
                             <form className='formContainerItem__form' action='/' method='POST'>                
                                 <input
-                                    className='textInput'
+                                    className={inputFirstName}
                                     name='firstName'
                                     type='text'
                                     size='0'
@@ -90,10 +92,10 @@ export default class RegistrationFormName extends Component {
                                     required
                                 />
                                 <div className={displayfirstName}>
-                                    <FormErrors formErrors={this.state.formErrors.firstName}/>
+                                    <Tooltip tooltip={this.state.formErrors.firstName}/>
                                 </div>
                                 <input
-                                    className='textInput container__input'
+                                    className={inputLastName}
                                     name='lastName'
                                     type='text'
                                     placeholder='Введите свою фамилию'
@@ -102,7 +104,7 @@ export default class RegistrationFormName extends Component {
                                 />
 
                                 <div className={displaylastName}>
-                                    <FormErrors formErrors={this.state.formErrors.lastName}/>
+                                    <Tooltip tooltip={this.state.formErrors.lastName}/>
                                 </div>
 
                                 <input
@@ -110,7 +112,7 @@ export default class RegistrationFormName extends Component {
                                     type='submit'
                                     value='Представиться'
                                     onClick={this.isOpen}
-                                    // disabled={!this.state.formValid}
+                                    disabled={!this.state.formValid}
                                 />
 
                             </form>

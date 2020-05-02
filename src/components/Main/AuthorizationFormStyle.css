@@ -52,22 +52,18 @@
     line-height: 24px;
 }
 
-/* .formContainerItem__form input[type='email']:focus,
-.formContainerItem__form input[type='password']:focus {
-    color: #000000;
-    outline: 1px solid #ccc;
-  } */
-
 .formContainerItem__form input[type='password'] {
     margin-top: 12px;    
 }
 
 .inputUser-red {
-    outline: 1px solid red;
+    border: 1px solid #a94442!important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
 .inputUser-red:focus {
-    outline: 1px solid red;    
+    border: 1px solid #a94442!important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #a94442;    
 }
 
 .formContainerItem__icons {

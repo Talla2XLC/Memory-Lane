@@ -5,7 +5,7 @@ import { ReactComponent as FormVK }   from './svg/form_vk.svg';
 import { ReactComponent as FormFB }   from './svg/form_fb.svg';
 import { ReactComponent as FormG }    from './svg/form_g.svg';
 import { ReactComponent as FormIns }   from './svg/form_ins.svg';
-import { FormErrors } from './FormErrors';
+import { Tooltip } from './Tooltip';
 // import { useDispatch } from 'react-redux';
 // import Axios from 'axios';
 
@@ -48,6 +48,7 @@ export default class RegistrationForm extends Component {
             fieldValidationErrors.email = emailValid ? '' : 'Неверно введён email';
             break;
           case 'password':
+            passwordValid = false;
             if (!isMax) {
                 fieldValidationErrors.password = 'Ваш пароль должен быть от 8 до 30 символов длиной';
             } else if (!isCapital) {
@@ -107,9 +108,10 @@ export default class RegistrationForm extends Component {
 
     render() {
         const { email, emailValid, password, passwordValid, confidentiality } = this.state;
-        const displayEmail = (email.length === 0 || email === null || emailValid) ? 'displayNone' : '';
-        const displayPassword = (password.length === 0 || password === null || passwordValid) ? 'displayNone' : '';
+        const displayEmail = (email.length === 0 || email === null || emailValid) ? 'formErrors displayNone' : 'formErrors';
+        const displayPassword = (password.length === 0 || password === null || passwordValid) ? 'formErrors displayNone' : 'formErrors';
         const inputEmail = (email.length > 0 && !emailValid) ? 'textInput inputUser-red' : 'textInput';
+        const inputPassword = (password.length > 0 && !passwordValid) ? 'textInput inputUser-red' : 'textInput';
         const checkBox = (emailValid && passwordValid && !confidentiality) ? 'checkbox-confidentiality checkbox-red' : 'checkbox-confidentiality';
         return (
                 <div className='formWrapper'>
@@ -128,11 +130,11 @@ export default class RegistrationForm extends Component {
                             required
                         />
                         <div className={displayEmail}>
-                            <FormErrors formErrors={this.state.formErrors.email} />
+                            <Tooltip tooltip={this.state.formErrors.email} />
                         </div>
 
                         <input
-                            className='textInput'
+                            className={inputPassword}
                             name='password'
                             type='password'
                             placeholder='Придумайте пароль'
@@ -142,7 +144,7 @@ export default class RegistrationForm extends Component {
                         />
 
                         <div className={displayPassword}>
-                            <FormErrors formErrors={this.state.formErrors.password} />
+                            <Tooltip tooltip={this.state.formErrors.password} />
                         </div>
 
                         <div className='formContainerItem__icons'>

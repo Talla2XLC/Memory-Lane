@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './AuthorizationFormStyle.css';
-
-
 import { ReactComponent as FormVK }   from './svg/form_vk.svg';
 import { ReactComponent as FormFB }   from './svg/form_fb.svg';
 import { ReactComponent as FormG }    from './svg/form_g.svg';
