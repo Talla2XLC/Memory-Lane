@@ -162,7 +162,7 @@ export default class RegistrationForm extends Component {
                         <input
                             className='textInput formItem__button formItem__button-360'
                             type='submit'
-                            value='Зарегистрироваться'
+                            value='Продолжить регистрацию'
                             onClick={this.isOpen}
                             disabled={!this.state.formValid || !this.state.confidentiality}
                         />
