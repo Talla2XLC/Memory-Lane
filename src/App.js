@@ -3,6 +3,10 @@ import './App.sass';
 import Landing from './containers/Landing.js';
 import Main from './containers/Main.js';
 
+import RegistrationForm from './components/Main/RegistrationForm';
+import RegistrationFormName from './components/Main/RegistrationFormName';
+import AuthorizationForm from './components/Main/AuthorizationForm';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +16,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.state.showLanding ? <Landing/> : <Main/>}
+        {/* {this.state.showLanding ? <Landing/> : <Main/>} */}
+        {/* <Landing /> */}
+        <RegistrationForm />
+        <RegistrationFormName />
+        <AuthorizationForm />
       </div>
     );
   }
