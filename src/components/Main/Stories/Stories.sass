@@ -1,0 +1,69 @@
+.story
+  display: flex
+  flex-flow: row nowrap
+  text-align: left
+  padding: 34px 152px 0 0 
+  box-sizing: border-box
+  &__photo
+    width: 163px
+    height: 189px
+    margin-bottom: 30px
+  &__action
+    position: absolute
+    right: 0
+  &__info
+    max-height: 200px
+    margin-bottom: 30px
+
+.details
+  display: grid 
+  grid-template-columns: 4fr 8fr
+  grid-template-rows: 8fr 4fr
+  grid-template-areas: "detailsImg right" "left left"
+  text-align: left
+  padding: 30px 150px 0 0
+  box-sizing: border-box
+  grid-gap: 30px
+  &__photo
+    grid-area: detailsImg
+  &__right
+    grid-area: right
+  &__left
+    grid-area: left
+  &__title
+    width: 100%
+    margin-bottom: 10px
+
+.addStory
+  padding: 30px 150px 0 30px
+  box-sizing: border-box
+  &__desk
+    text-align: left
+    display: flex
+    flex-direction: column
+  &__textArea
+    width: 100%
+    height: 299px
+    text-align: center
+    background-color: #333333
+  &__photo
+    box-sizing: border-box
+    display: flex
+    justify-content: space-between 
+    flex-flow: row nowrap
+    margin: 32px 0
+  >button 
+   background: #FFFFFF
+   border: 1px solid #000000
+   box-sizing: border-box
+   border-radius: 24px
+   padding: 15px 45px
+   margin: 30px 0 30px
+   width: 300px
+
+.addPhotoItem
+ margin: 0 5px
+
+
+.storyLink
+  color: black

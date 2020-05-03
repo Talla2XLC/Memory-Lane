@@ -1,30 +1,29 @@
 import React, { Component } from 'react';
-import { ReactComponent as IconAddSection } from './svg/add_section.svg';
 import styled from 'styled-components';
-import {Link} from "react-router-dom";
+import AddDropdown from './AddDropdown';
 
 export default class addSection extends Component {
-    state = {
-      interview: '',
-      photo: '',
-      album: '',
-      history: ''
-    }
+  state = {
+    interview: '',
+    photo: '',
+    album: '',
+    history: ''
+  }
 
-    render() {
-      return (
-        <AddSectionWrapper>
-          {/*<button className='button__notice'>
+  render() {
+    return (
+      <AddSectionWrapper>
+        {/* <button className='button__notice'>
             <IconAddSection />
           </button>*/}
-          <Link to='/albums/add'><IconAddSection /></Link>
-        </AddSectionWrapper>
-      );
-    }
+        {/* <Link  to={this.state.link}> */}
+       <AddDropdown/>  
+      </AddSectionWrapper>
+    );
+  }
 }
 
 const AddSectionWrapper = styled.div`
-
 .button__notice {
     border: none;
     outline: none;
@@ -35,5 +34,4 @@ const AddSectionWrapper = styled.div`
     height: 40px;
     padding: 0;
 }
-
 `;
