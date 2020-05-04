@@ -4,6 +4,7 @@ import './Albums.sass';
 import shortid from 'shortid';
 import Dropdown from './Dropdown.jsx';
 import PerfectScrollbar from 'react-perfect-scrollbar';
+import Sorting from '../Sorting';
 
 const galleryData = [
   {url: 'https://picsum.photos/400/400', name: 'itemName', autor: 'itemAutor', date: 'itemDate'},
@@ -11,11 +12,11 @@ const galleryData = [
   {url: 'https://picsum.photos/400/400', name: 'itemName2', autor: 'itemAutor2', date: 'itemDate2'},
   {url: 'https://picsum.photos/400/400', name: 'itemName3', autor: 'itemAutor3', date: 'itemDate3'},
   {url: 'https://picsum.photos/400/400', name: 'itemName4', autor: 'itemAutor4', date: 'itemDate4'},
-  {url: 'https://picsum.photos/400/400', name: 'itemName4', autor: 'itemAutor4', date: 'itemDate5'},
-  {url: 'https://picsum.photos/400/400', name: 'itemName4', autor: 'itemAutor4', date: 'itemDate6'},
-  {url: 'https://picsum.photos/400/400', name: 'itemName4', autor: 'itemAutor4', date: 'itemDate5'},
-  {url: 'https://picsum.photos/400/400', name: 'itemName4', autor: 'itemAutor4', date: 'itemDate5'},
-  {url: 'https://picsum.photos/400/400', name: 'itemName4', autor: 'itemAutor4', date: 'itemDate5'}
+  {url: 'https://picsum.photos/400/400', name: 'itemName5', autor: 'itemAutor5', date: 'itemDate5'},
+  {url: 'https://picsum.photos/400/400', name: 'itemName6', autor: 'itemAutor6', date: 'itemDate6'},
+  {url: 'https://picsum.photos/400/400', name: 'itemName7', autor: 'itemAutor7', date: 'itemDate7'},
+  {url: 'https://picsum.photos/400/400', name: 'itemName8', autor: 'itemAutor8', date: 'itemDate8'},
+  {url: 'https://picsum.photos/400/400', name: 'itemName9', autor: 'itemAutor9', date: 'itemDate9'}
 ];
 
 export default class Albums extends Component {
@@ -75,16 +76,12 @@ export default class Albums extends Component {
   render() {
     return (
       <div className='galleryBlock'>
-        <div className='sorting'>
-          <div className='sorting__title'>
-            Сортировка
-          </div>
-          <div className='sorting__date'>По дате</div>
-          <div className='sorting__human'>По человеку</div>   
-          <div className='sorting__view'>
-            <Dropdown gridId={this.setGridType}/>
-          </div>
-        </div>
+        <Sorting/>
+
+
+          <Dropdown gridId={this.setGridType}/>
+
+
         <PerfectScrollbar component='div'>
           <div className={'albumContent ' + this.state.gridType} >
             {
