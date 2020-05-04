@@ -10,20 +10,6 @@ import { ReactComponent as FormOK }   from './svg/form_ok.svg';
 
 import LandingFormModal               from './LandingFormModal';
 
-function EmailErrorMessage(props) {
-  if (props.emailError) {
-    return <div className='{position: relative}'><span className='emailError'>{props.emailError}</span></div>;
-  } 
-  return null;
-}
-
-function NameErrorMessage(props) {
-  if (props.nameError) {
-    return <div className='{position: relative}'><span className='nameError'>{props.nameError}</span></div>;
-  } 
-  return null;
-}
-
 export default class LandingForm extends Component {
   constructor(props) {
     super(props);
@@ -49,14 +35,14 @@ export default class LandingForm extends Component {
     const email_regexp = /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const isEmailValid = email_regexp.test(email);
     if (isEmailValid) {
-      this.setState({emailError: true});
-      return true;
+        this.setState({emailError: true});
+        return true;
     } else if (email && !isEmailValid) {
-      this.setState({emailError: 'Неверно введён email'});
-      return false;
+        this.setState({emailError: 'Неверно введён email'});
+        return false;
     } else if (!email) {
-      this.setState({emailError: 'Введите свой email'});
-      return false;
+        this.setState({emailError: 'Введите свой email'});
+        return false;
     }
   }
 
@@ -204,6 +190,23 @@ export default class LandingForm extends Component {
     );
   }
 }
+
+function EmailErrorMessage(props) {
+  if (props.emailError) {
+    return <div style={{position: 'relative'}}><span className="emailError">{props.emailError}</span></div>;
+  } else {
+    return null;
+  }
+}
+
+function NameErrorMessage(props) {
+  if (props.nameError) {
+    return <div className="{position: relative}"><span className="nameError">{props.nameError}</span></div>;
+  } else {
+    return null;
+  }
+}
+
 
 const FormWrapper = styled.div`
 background: #FFFFFF;

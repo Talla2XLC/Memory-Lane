@@ -1,5 +1,6 @@
-import React from 'react'
+import React from 'react';
 import './MainContent.sass';
+
 
 
 export default function MainContent() {
@@ -53,7 +54,11 @@ export default function MainContent() {
 
       <div className='MainContent__main'/>
 
+
     </div>
+
+
+
   </div>;
 }
 

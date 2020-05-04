@@ -1,7 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import './AuthorizationFormStyle.css';
-
-
 import { ReactComponent as FormVK }   from './svg/form_vk.svg';
 import { ReactComponent as FormFB }   from './svg/form_fb.svg';
 import { ReactComponent as FormG }    from './svg/form_g.svg';
@@ -17,16 +15,15 @@ state = {
     isOpen: false
 }
 
-emailChange = (event) => {
-    this.setState({email: event.target.value});
+handleUserInput = (e) => {                                               
+    const name = e.target.name;                                           
+    const value = e.target.value;                                     
+    this.setState({[name]: value});             
 }
 
-passwordChange = (event) => {
-    this.setState({password: event.target.value});    
-}
-
-openEntrance = () => {
-
+isOpen = (e) => {
+    this.setState({isOpen: true});
+    e.preventDefault();
 }
 
 render() {
@@ -38,20 +35,22 @@ render() {
                     <form className='formContainerItem__form' action='/' method='POST'>                
                         <input
                             className='textInput'
+                            name='email'
                             type='email'
                             size='0'
                             placeholder='Введите электронную почту'
                             value={this.state.email} 
-                            onChange={this.emailChange}
+                            onChange={this.handleUserInput}
                             required
                         />
                         {/* <EmailErrorMessage emailError={this.state.emailError}/> */}
 
                         <input
                             className='textInput'
+                            name='password'
                             type='password'
                             placeholder='Введите пароль'
-                            onChange={this.passwordChange}
+                            onChange={this.handleUserInput}
                             value={this.state.password}
                         />
 
@@ -65,10 +64,10 @@ render() {
                         </div>
 
                         <input
-                            className='textInput formItem__button'
+                            className='textInput formItem__button formItem__button-360'
                             type='submit'
                             value='Войти'
-                            onClick={this.openEntrance}
+                            onClick={this.isOpen}
                         />
 
                     </form>
