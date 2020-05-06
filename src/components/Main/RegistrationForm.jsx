@@ -113,7 +113,7 @@ export default class RegistrationForm extends Component {
         const inputEmail = (email.length > 0 && !emailValid) ? 'textInput input_color_red' : 'textInput';
         const inputPassword = (password.length > 0 && !passwordValid) ? 'textInput input_color_red' : 'textInput';
         const checkBox = (emailValid && passwordValid && !confidentiality) ? 'checkbox-confidentiality checkbox-red' : 'checkbox-confidentiality';
-        // const per = '*'.repeat(inputValue.length);
+        // const star = '*'.repeat(password.length);
         return (
                 <div className='formWrapper'>
                     <div className='formWrapperItem__titleContainer'>
@@ -133,7 +133,11 @@ export default class RegistrationForm extends Component {
                         <div className={displayEmail}>
                             <Tooltip tooltip={this.state.formErrors.email} />
                         </div>
-
+                        {/* <input 
+                            type="text"
+                            className='input-text_theme_star'
+                            value={star}
+                        /> */}
                         <input
                             className={inputPassword}
                             name='password'
