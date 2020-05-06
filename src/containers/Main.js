@@ -6,6 +6,9 @@ import {BrowserRouter} from 'react-router-dom';
 import { getUsers } from '../actions/actionUser';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { ReactComponent as Icon } from './svg/personsIcon.svg';
+import PerfectScrollbar from 'react-perfect-scrollbar';
+
 
 class Main extends Component {
   constructor(props) {
@@ -13,11 +16,11 @@ class Main extends Component {
     this.setHeaderHeight = this.setHeaderHeight.bind(this);
     this.state = {
       navItems: [
-        { endpoint: 'persons', title: 'Персоны' },
-        { endpoint: 'albums', title: 'Альбомы' },
-        { endpoint: 'stories', title: 'Истории' },
-        { endpoint: 'services', title: 'Сервисы' },
-        { endpoint: 'learn', title: 'Обучение' }
+        { endpoint: 'persons', title: 'Персоны', icon: <Icon/>  },
+        { endpoint: 'albums', title: 'Альбомы', icon: <Icon/>  },
+        { endpoint: 'stories', title: 'Истории', icon: <Icon/>   },
+        { endpoint: 'services', title: 'Сервисы', icon: <Icon/>   },
+        { endpoint: 'learn', title: 'Обучение', icon: <Icon/>   }  
       ],
       headerHeight: 0
     };
@@ -33,24 +36,30 @@ class Main extends Component {
 
     return (
       isLoading ? <h1>Загрузка данных</h1> :
+
         <MainWrapper className='Main' headerHeight={this.state.headerHeight}>
           <BrowserRouter className='Main'>
             <Header headerHeight={this.setHeaderHeight}/>
+            <PerfectScrollbar component='div'>
             <div className='central-content'>
               <MainNav navItems={navItems}/>
               <Content/>
             </div>
+            </PerfectScrollbar>
           </BrowserRouter>
         </MainWrapper>
+
     );
   }
 }
 const MainWrapper = styled.div`
+background-color: #DAE2E5;
 display: flex;
 flex-flow: column nowrap;
 height: 100vh;
 overflow: hidden;
 justify-content: stretch;
+
 
 .central-content {
   display: flex;
