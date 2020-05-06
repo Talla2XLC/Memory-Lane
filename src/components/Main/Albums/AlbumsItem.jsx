@@ -41,8 +41,8 @@ export default class AlbumsItem extends Component {
             <Forward className={this.props.gridType === 'bigColView' ? 'iconBig' : 'iconSmall'} />
           </div>
           <div className="AutorDate">
-            <div className='itemAutor'>{this.props.autor}</div>
-            <div className='itemDate'>{this.props.date}</div>
+            <div className='font1Light'>{this.props.autor}</div>
+            <div className='font1Light'>{this.props.date}</div>
           </div>
           {desc}
         </div>

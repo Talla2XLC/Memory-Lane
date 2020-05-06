@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ReactComponent as IconBell } from './svg/bell_icon.svg';
+import { ReactComponent as IconBell } from './svg/notificationLogo.svg';
 import styled from 'styled-components';
 
 export default class Notice extends Component {

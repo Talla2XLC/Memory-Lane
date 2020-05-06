@@ -57,7 +57,11 @@ const SearchWrapper = styled.div`
 		** поэтому необходимо это свойство */
 		position: relative;
 	}
+  .input {
+		box-shadow: 7px 8px 0px 0px #524E4B;
+		height: 40px;
 
+	}
 	.search input,
 	.search .search-submit {
 		/* отключаем бордюры у инпутов */

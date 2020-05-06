@@ -8,16 +8,22 @@ import './Header.sass';
 import styled from 'styled-components';
 
 export default class Header extends Component {
-  componentDidMount(){
-    this.props.headerHeight(document.querySelector('.headerDiv').offsetHeight);
-  }
+  // componentDidMount(){
+  //   this.props.headerHeight(document.querySelector('.headerDiv').offsetHeight);
+  // }
 
   render() {
     return (
       <HeaderWrapper className='headerDiv'>
         <div className='header__top'>
+          <a href='/'><div className='logo'>Memory Lane</div></a>
+
+
           <Notice />
+          <div>Иван Иванов</div>
           <SetingsMenu/>
+
+
         </div>
         <div className='header__bottom'>
           <Search/>
@@ -31,7 +37,7 @@ export default class Header extends Component {
 const HeaderWrapper = styled.div`
 z-index: 5;
 
-.header__top, 
+
 .header__bottom {
   display: flex;
   justify-content: flex-end;
@@ -44,12 +50,10 @@ header__bottom div {
   justify-content: space-evenly;
 }
 
-.header__top div:nth-child(1) {
-  margin: 28px 30px 26px 0px;
-}
+
 
 .header__top div:nth-child(2) {
-  margin: 28px 0px 26px 0px;
+  margin-left: auto
 }
 
 .header__bottom div:nth-child(2) {

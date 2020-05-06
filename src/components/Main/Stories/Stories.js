@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import StoriesItem from './StoriesItem.jsx';
 import './Stories.sass';
-import PerfectScrollbar from 'react-perfect-scrollbar';
 import Sorting from '../Sorting';
 import {storyData} from './storiesData';
 import { Link } from 'react-router-dom';
@@ -10,7 +9,6 @@ export default class Stories extends Component {
     return (
       <>
         <Sorting/>
-        <PerfectScrollbar component='div'>
           <div className='storiesContainer'>
             {
               storyData.map( story => {
@@ -26,7 +24,6 @@ export default class Stories extends Component {
               })
             }
           </div>
-        </PerfectScrollbar> 
       </>
     );
   }
