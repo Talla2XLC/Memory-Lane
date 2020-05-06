@@ -110,9 +110,10 @@ export default class RegistrationForm extends Component {
         const { email, emailValid, password, passwordValid, confidentiality } = this.state;
         const displayEmail = (email.length === 0 || email === null || emailValid) ? 'formErrors displayNone' : 'formErrors';
         const displayPassword = (password.length === 0 || password === null || passwordValid) ? 'formErrors displayNone' : 'formErrors';
-        const inputEmail = (email.length > 0 && !emailValid) ? 'textInput inputUser-red' : 'textInput';
-        const inputPassword = (password.length > 0 && !passwordValid) ? 'textInput inputUser-red' : 'textInput';
+        const inputEmail = (email.length > 0 && !emailValid) ? 'textInput input_color_red' : 'textInput';
+        const inputPassword = (password.length > 0 && !passwordValid) ? 'textInput input_color_red' : 'textInput';
         const checkBox = (emailValid && passwordValid && !confidentiality) ? 'checkbox-confidentiality checkbox-red' : 'checkbox-confidentiality';
+        // const per = '*'.repeat(inputValue.length);
         return (
                 <div className='formWrapper'>
                     <div className='formWrapperItem__titleContainer'>
@@ -156,11 +157,11 @@ export default class RegistrationForm extends Component {
                         
                         <div className={checkBox}>
                             <input type="checkbox" id="fruit4" name="fruit-4" checked={this.state.confidentiality} onClick={this.confidentialityChange}/>
-                            <label for="fruit4"><span>Согласен с политикой конфиденциальности</span></label>
+                            <label for="fruit4"><span>Согласен с политикой конфиденциальности</span></label>                              
                         </div>
 
                         <input
-                            className='textInput formItem__button formItem__button-360'
+                            className='textInput formItem__button c-button--width360'
                             type='submit'
                             value='Продолжить регистрацию'
                             onClick={this.isOpen}
