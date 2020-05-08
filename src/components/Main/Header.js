@@ -20,7 +20,10 @@ export default class Header extends Component {
 
 
           <Notice />
-          <div>Иван Иванов</div>
+          <div className='userName'>Иван Иванов</div>
+          <div className='userAvatar'/>
+
+
           <SetingsMenu/>
 
 
@@ -42,6 +45,7 @@ z-index: 5;
   display: flex;
   justify-content: flex-end;
   flex-direction: row;
+  height: 70px;
 }
 
 .header__top div, 
@@ -59,6 +63,7 @@ header__bottom div {
 .header__bottom div:nth-child(2) {
   margin: 0px 0px 0px 30px;
   padding: 0 4px;
+  position: fixed;
 }
 
 `;

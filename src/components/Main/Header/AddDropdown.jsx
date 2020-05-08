@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ReactComponent as IconAddSection } from './svg/add_section.svg';
+import { ReactComponent as IconAddSection } from './svg/addIcon.svg';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 export default class AddDropdown extends Component {

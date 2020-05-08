@@ -1,106 +1,35 @@
+.mainContainer__item
+  width: 100%
+  background-color: #fff
+  height: 242px
 
-.mainContainer 
-  margin-left: auto
-  margin-right: auto
-.MainContent
-  max-width: 950px
-  margin: 0 auto
-  padding: 100px 0 
-  box-sizing: border-box
-  // max-width: 950px
-    margin-left: auto
-  margin-right: auto
-  display: grid
-  &__inner
-
-    display: flex
-    justify-content: space-around
-
-
-    // width: 945px
-    height: 242px 
-
-    &-item
-      max-width: 390px
-      text-align: left
-
-
-    &-titel
-
-      font-size: 28px
-      line-height: 1.1
-      font-weight: 400
-      margin-bottom: 50px
-    &-eliipse
-      font-size: 12px
-      position: relative
-      &:before
-        content: ''
-        position: absolute
-        top: -45px
-        left: -33px
-        width: 133px
-        height: 133px
-        background-image: url('../Landing/svg/ilepse.svg')
-        background-repeat: no-repeat
-
-  &__wrap
-    display: flex
-    justify-content: space-between
-
-
-    &-item
-      font-size: 24px
-      text-align: left
-      margin: 30px 0 30px
-
-      &:last-child
-        margin-left: 30px
-      span
-        display: block
-        margin-bottom: 50px
-    &-text
-      margin-bottom: 24px
-
-
-      &:hover
-        background-color: #000
-        color: #fff
-
-
-.mainButton
-  background: #78AB8B
-  border-radius: 24px
-  font-family: IBM Plex Serif
-  font-weight: bold
-  font-size: 18px  
-  color: #F2F2F2
-  padding: 7px 54px
-  box-sizing: border-box
-
-
-
-.basicItem
-  background: #F2F2F2
-  box-shadow: 3px 3px 0px #99A3A7
-  border-radius: 24px
+.mainContainer
+ display: grid
+ grid-template-columns: repeat(2, 1fr)
+ grid-template-rows: repeat(3, 1fr)
+ grid-column-gap: 30px
+ grid-row-gap: 30px
+ margin: 30px 0 120px
+ &__item
+  background: #FFFFFF
+  border-radius: 10px
   padding: 30px
   box-sizing: border-box
-
-.article
   text-align: left
-  padding: 45px 90px
-  box-sizing: border-box
-  background: #F2F2F2
-  box-shadow: 3px 3px 0px #99A3A7
-  border-radius: 24px
-  margin: 50px 0
+  &_left
+    float: left 
+  &_right
+    float: right
 
-.NewsBlock
-  desplay: grid
-  grid-gap-row: 30px
-  text-align: left
-  &__title
-    padding: 100px 0 60px 
-    box-sizing: border-box
+.div1  
+  grid-area: 1 / 1 / 2 / 3
+.div2 
+   grid-area: 2 / 1 / 3 / 2
+.div3 
+   grid-area:  2 / 2 / 3 / 3
+.div4 
+   grid-area: 3 / 1 / 4 / 3
 
+.textPosition
+  margin-bottom: 35px
+  
