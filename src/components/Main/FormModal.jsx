@@ -3,12 +3,12 @@ import FormPortal  from './FormPortal';
 import styled             from 'styled-components';
 
 const FormModal = ({
-  isOpen, onCancel, children                                // accept these arguments by restructuring instead of props 
+  modalOpened, onCancel, children                                // accept these arguments by restructuring instead of props 
 }) => {
 
   return (
     <>                                                                      
-      { isOpen &&
+      { modalOpened &&
         <FormPortal>
           <FormModalWrapper>
             <div className="modalOverlay">

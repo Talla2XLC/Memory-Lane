@@ -1,135 +1,172 @@
-import React, { Component } from 'react';
-import { Tooltip } from './Tooltip';
-import FormModal  from './FormModal';
-import './AuthorizationFormStyle.css';
+import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
+
+import './AuthorizationFormStyle.css'
+
+import { Tooltip } from './Tooltip'
+
+import axios from 'axios'
 
 export default class RegistrationFormName extends Component {
 
-        state = {
-            firstName: '',
-            lastName: '',
-            formErrors: {firstName: '', lastName: ''},
-            firstNameValid: false,
-            lastNameValid: false, 
-            formValid: false,
-            isOpen: false
-        }
+	state = {
+		firstName: '',
+		lastName: '',
+		formErrors: {
+			firstName: '',
+			lastName: ''
+		},
+		firstNameValid: false,
+		lastNameValid: false, 
+		formValid: false,
+		hasIntroduced: false
+	}
 
-        handleUserInput = (e) => {                                               
-            const name = e.target.name;                                           
-            const value = e.target.value;                                     
-            this.setState({[name]: value}, 
-            () => { this.validateField(name, value) });             
-        }
+	handleInput = e => {
+		const { name, value } = e.target
 
-        validateField(fieldName, value) {
-            let fieldValidationErrors = this.state.formErrors;
-            let firstNameValid = this.state.firstNameValid;
-            let lastNameValid = this.state.lastNameValid;
-            let oneDigit = value.match(/(?=.*?[0-9])/);
+		this.setState({ [name]: value },
+		() => { this.validateField(name, value) })
+	}
 
-            switch(fieldName) {
-            case 'firstName':
-                firstNameValid = false;
-                if (oneDigit) {
-                    fieldValidationErrors.firstName = 'Имя не должно содержать цифры';
-                } else {
-                    fieldValidationErrors.firstName = ''; 
-                    firstNameValid = true;                    
-                }   
-                break;
-            case 'lastName':
-                lastNameValid = false;
-                if (oneDigit) {
-                    fieldValidationErrors.lastName = 'Фамилия не должна содержать цифры';
-                } else {
-                    fieldValidationErrors.lastName = ''; 
-                    lastNameValid = true;                    
-                }     
-                break;
-            default:
-                break;
-            }
-            this.setState({formErrors: fieldValidationErrors,
-                            firstNameValid: firstNameValid,
-                            lastNameValid: lastNameValid
-                        }, this.validateForm);
-        }
+	validateField(fieldName, value) {
+		let fieldValidationErrors = this.state.formErrors;
+		let firstNameValid = this.state.firstNameValid;
+		let lastNameValid = this.state.lastNameValid;
+		let oneDigit = value.match(/(?=.*?[0-9])/);
 
-        validateForm = () => {
-            this.setState({formValid: this.state.firstNameValid && this.state.lastNameValid});
-        }
+		switch(fieldName) {
+			case 'firstName':
+				firstNameValid = false
 
-        isOpen = (e) => {
-            this.setState({isOpen: true});
-            e.preventDefault();
-        }
+				if (oneDigit) {
+					fieldValidationErrors.firstName = 'Имя не должно содержать цифры'
 
-        handleCancel = () => {
-            this.setState({ isOpen: false });
-        }
+				} else {
+					fieldValidationErrors.firstName = ''
+					firstNameValid = true
+				}
+				break
 
-        render() {
-                const { firstName, firstNameValid, lastName, lastNameValid } = this.state;
-                const inputFirstName = (firstName.length > 0 && !firstNameValid) ? 'textInput inputUser-red' : 'textInput';
-                const inputLastName = (lastName.length > 0 && !lastNameValid) ? 'textInput container__input inputUser-red' : 'textInput container__input';
-                const displayfirstName = (firstName.length === 0 || firstName === null || firstNameValid) ? 'formErrors displayNone' : 'formErrors';
-                const displaylastName = (lastName.length === 0 || lastName === null || lastNameValid) ? 'formErrors displayNone' : 'formErrors';
-                return (
-                        <div className='formWrapper'>
-                            <div className='formWrapperItem__titleContainer title__item'>
-                                <h2 className='textBasic titleContainerItem__title'>Мы&nbsp;незнаем, как к&nbsp;вам обращаться, представьтесь, пожалуйста</h2>
-                            </div>
-                            <form className='formContainerItem__form' action='/' method='POST'>                
-                                <input
-                                    className={inputFirstName}
-                                    name='firstName'
-                                    type='text'
-                                    size='0'
-                                    placeholder='Введите свое имя'
-                                    value={this.state.firstName} 
-                                    onChange={this.handleUserInput}
-                                    required
-                                />
-                                <div className={displayfirstName}>
-                                    <Tooltip tooltip={this.state.formErrors.firstName}/>
-                                </div>
-                                <input
-                                    className={inputLastName}
-                                    name='lastName'
-                                    type='text'
-                                    placeholder='Введите свою фамилию'
-                                    onChange={this.handleUserInput}
-                                    value={this.state.lastName}
-                                />
+			case 'lastName':
+				lastNameValid = false
 
-                                <div className={displaylastName}>
-                                    <Tooltip tooltip={this.state.formErrors.lastName}/>
-                                </div>
+				if (oneDigit) {
+					fieldValidationErrors.lastName = 'Фамилия не должна содержать цифры'
 
-                                <input
-                                    className='textInput formItem__button formItem__button-360 formItem__button-64'
-                                    type='submit'
-                                    value='Представиться'
-                                    onClick={this.isOpen}
-                                    disabled={!this.state.formValid}
-                                />
+				} else {
+					fieldValidationErrors.lastName = ''
+					lastNameValid = true
+				}
+				break
 
-                            </form>
+			default:
+				break
+		}
 
-                            <FormModal
-                                title="Test Dialog window"
-                                isOpen={this.state.isOpen}
-                                onCancel={this.handleCancel}
-                                onSubmit={this.handleSubmit}
-                                >
-                                <h1>Поздравляем!</h1>
-                                <p>Вы&nbsp;зарегистрированы в&nbsp;memory-lane!<br/>
-                                    На почту отправлено письмо для подтверждения e-mail</p>
-                            </FormModal>
+		this.setState(
+			{
+				formErrors: fieldValidationErrors,
+				firstNameValid: firstNameValid,
+				lastNameValid: lastNameValid
+			},
+			this.validateForm
+		)
+	}
 
-                        </div>
-                )
-        }    
+	validateForm = () => {
+		const { firstNameValid, lastNameValid } = this.state
+
+		this.setState({ formValid: firstNameValid && lastNameValid })
+	}
+
+	introduceUser = () => {
+		const { firstName, lastName } = this.state
+
+		const token = localStorage.getItem('token')
+
+		axios
+			.post(
+				'http://api.memory-lane.ru/db/setAccount',
+				{ 
+					'first_name': firstName,
+					'last_name': lastName
+				},
+				{
+					headers: {
+						'Content-Type': 'application/json',
+						'Authorization': `${token}`
+					}
+				})
+				.then(res => {
+					if (res.data.result) {	// res.status === 200
+						this.setState({ hasIntroduced: true })
+
+					} else {	// res.status !== 200
+						localStorage.removeItem('token')
+						console.error(res.data.error)
+						alert(`${res.data.error}`)
+					}
+				})
+				.catch(error => console.error(error))
+	}
+
+	render() {
+		const { firstName, lastName, formErrors, firstNameValid, lastNameValid, formValid, hasIntroduced } = this.state
+
+		const token = localStorage.getItem('token')
+
+		const inputFirstName = (firstName.length > 0 && !firstNameValid) ? 'textInput inputUser-red' : 'textInput'
+		const inputLastName = (lastName.length > 0 && !lastNameValid) ? 'textInput container__input inputUser-red' : 'textInput container__input'
+		const displayfirstName = (firstName.length === 0 || firstName === null || firstNameValid) ? 'formErrors displayNone' : 'formErrors'
+		const displaylastName = (lastName.length === 0 || lastName === null || lastNameValid) ? 'formErrors displayNone' : 'formErrors'
+
+		//!!! if ( first_name_last_name_in_db || hasIntroduced) return <Redirect to='/main'/>
+		if (hasIntroduced) return <Redirect to='/main'/>
+
+		return (
+			<div className='formWrapper'>
+				<div className='formWrapperItem__titleContainer title__item'>
+					<h2 className='textBasic titleContainerItem__title'>Мы не знаем, как к вам обращаться, представьтесь, пожалуйста</h2>
+				</div>
+
+				<div className='formContainerItem__form'>
+					<input
+						className={inputFirstName}
+						name='firstName'
+						type='text'
+						size='0'
+						placeholder='Введите свое имя'
+						value={firstName} 
+						onChange={this.handleInput}
+						required
+					/>
+					<div className={displayfirstName}>
+						<Tooltip tooltip={formErrors.firstName}/>
+					</div>
+
+					<input
+						className={inputLastName}
+						name='lastName'
+						type='text'
+						placeholder='Введите свою фамилию'
+						onChange={this.handleInput}
+						value={lastName}
+					/>
+					<div className={displaylastName}>
+						<Tooltip tooltip={formErrors.lastName}/>
+					</div>
+
+					<input
+						className='textInput formItem__button formItem__button-360 formItem__button-64'
+						type='submit'
+						value='Представиться'
+						onClick={this.introduceUser}
+						disabled={!formValid}
+					/>
+				</div>
+				{/* Modal window here */}
+			</div>
+		)	
+	}
 }
-

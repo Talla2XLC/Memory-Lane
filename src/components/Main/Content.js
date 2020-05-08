@@ -1,11 +1,16 @@
-import React from 'react';
-import './Content.sass';
-import Router from '../../Router';
+import React, { Component } from 'react'
+import './Content.sass'
 
-export default function Content() {
-  return (
-    <div className='Content'>
-      <Router />
-    </div>
-  );
+// import { Router } from '../../Router'
+
+export default class Content extends Component {
+  
+  render() {
+
+    return (
+      <div className='Content'>
+        {/* <Router /> */}
+      </div>
+    )
+  }
 }
