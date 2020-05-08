@@ -6,7 +6,12 @@ import {BrowserRouter} from 'react-router-dom';
 import { getUsers } from '../actions/actionUser';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { ReactComponent as Icon } from './svg/personsIcon.svg';
+import { ReactComponent as PersonsIcon } from './svg/personsIcon.svg';
+import { ReactComponent as AlbumsIcon } from './svg/albumsIcon.svg';
+import { ReactComponent as StoryIcon } from './svg/storyIcon.svg';
+import { ReactComponent as ServiceIcon } from './svg/serviceIcon.svg';
+import { ReactComponent as EducationIcon } from './svg/educationIcon.svg';
+
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
 
@@ -16,11 +21,11 @@ class Main extends Component {
     this.setHeaderHeight = this.setHeaderHeight.bind(this);
     this.state = {
       navItems: [
-        { endpoint: 'persons', title: 'Персоны', icon: <Icon/>  },
-        { endpoint: 'albums', title: 'Альбомы', icon: <Icon/>  },
-        { endpoint: 'stories', title: 'Истории', icon: <Icon/>   },
-        { endpoint: 'services', title: 'Сервисы', icon: <Icon/>   },
-        { endpoint: 'learn', title: 'Обучение', icon: <Icon/>   }  
+        { endpoint: 'persons', title: 'Персоны', icon: <PersonsIcon/>  },
+        { endpoint: 'albums', title: 'Альбомы', icon: <AlbumsIcon />  },
+        { endpoint: 'stories', title: 'Истории', icon: <StoryIcon/>   },
+        { endpoint: 'services', title: 'Сервисы', icon: <ServiceIcon/>   },
+        { endpoint: 'learn', title: 'Обучение', icon: <EducationIcon/>   }  
       ],
       headerHeight: 0
     };
@@ -41,10 +46,10 @@ class Main extends Component {
           <BrowserRouter className='Main'>
             <Header headerHeight={this.setHeaderHeight}/>
             <PerfectScrollbar component='div'>
-            <div className='central-content'>
-              <MainNav navItems={navItems}/>
-              <Content/>
-            </div>
+              <div className='central-content'>
+                <MainNav navItems={navItems}/>
+                <Content/>
+              </div>
             </PerfectScrollbar>
           </BrowserRouter>
         </MainWrapper>
@@ -53,18 +58,20 @@ class Main extends Component {
   }
 }
 const MainWrapper = styled.div`
-background-color: #DAE2E5;
+background-color: #F6F6F6;
 display: flex;
 flex-flow: column nowrap;
 height: 100vh;
 overflow: hidden;
 justify-content: stretch;
 
+box-sizing: border-box;
+
 
 .central-content {
-  display: flex;
-  flex-flow: row nowrap;
-  flex-grow: 1;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1140px;
   height: calc(100vh - ${props => props.headerHeight}px);
 }
 `;

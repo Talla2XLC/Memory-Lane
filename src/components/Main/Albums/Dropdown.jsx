@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Dropdown.sass';
 
-
 const viewData = [
   { name: 'Большая плитка', id: 1},
   { name: 'Средняя плитка', id: 2},
@@ -9,6 +8,7 @@ const viewData = [
   { name: 'Маленький список', id: 4},
   { name: 'Без превью', id: 5}
 ];
+
 class Dropdown extends Component {
   constructor(props) {
     super(props);
@@ -16,7 +16,6 @@ class Dropdown extends Component {
       showMenu: false,
       currentView: 'Большая плитка'
     };
-    
     this.showMenu = this.showMenu.bind(this);
     this.closeMenu = this.closeMenu.bind(this);
   }
@@ -35,17 +34,17 @@ class Dropdown extends Component {
     });
   }
 
-  handleClick(gridId, viewName){
+  handleClick(gridId, viewName) {
     this.props.gridId(gridId);
-    this.setState({currentView : viewName});
+    this.setState({currentView: viewName});
   }
 
   render() {
     return (
       <div className='menu' >
-        <button className='viewButton' onClick={this.showMenu}>
-          {this.state.currentView}
-        </button>
+        <div className='viewButton' onClick={this.showMenu}>
+          Вид
+        </div>
         {
           this.state.showMenu
             ? (
@@ -54,7 +53,6 @@ class Dropdown extends Component {
                   viewData.map(view => {
                     return <button className='viewButton' key={view.id} onClick={() => this.handleClick(view.id, view.name)}>{view.name}</button>;
                   })
-
                 }
               </div>
             )

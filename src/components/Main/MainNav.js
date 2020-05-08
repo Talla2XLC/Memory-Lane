@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import shortid from 'shortid';
 import './MainNav.sass';
-import PerfectScrollbar from 'react-perfect-scrollbar';
 
 export default class MainNav extends Component {
   static propTypes = {
@@ -11,31 +10,24 @@ export default class MainNav extends Component {
   }
 
   render() {
-    const { navItems } = this.props
+    const { navItems } = this.props;
       
     const navigationItems = navItems.map(navItem =>
       (
-
-        <Link className="navigation-item-link" key={ shortid.generate() } to={ `/${navItem.endpoint}/` }>
-          <div className="navigation-item">
-
+        <Link className='navigation-item-link' key={ shortid.generate() } to={ `/${navItem.endpoint}/` }>
+          <div className='navigation-item'>
             <div className='navItemSVG'>{navItem.icon}</div>
-
-
-          {navItem.title}
+            {navItem.title}
           </div>
         </Link>
-
       ) 
-    )
+    );
 
     return (
-
-      <div className="MainNav">
+      <div className='MainNav'>
         { navigationItems }
       </div>
-
-    )
+    );
   }
 }
 
