@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import Header from '../components/Main/Header';
 import MainNav from '../components/Main/MainNav';
 import Content from '../components/Main/Content';
-import { BrowserRouter, Redirect } from 'react-router-dom';
-import { getUsers } from '../actions/actionUser';
+import { BrowserRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
+import Router from '../Router';
 
-import axios from 'axios'
+import styled from 'styled-components';
 
 class Main extends Component {
   constructor(props) {
@@ -26,53 +25,29 @@ class Main extends Component {
     };
   }
 
-  componentDidMount() {
-    const token = localStorage.getItem('token')
-
-    axios
-      .post(
-        'http://api.memory-lane.ru/checkToken',
-        {
-
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `${token}`
-          }
-        })
-        .then(res => {
-          if (res.data.result) {	// res.status === 200
-            this.setState({ isAuthenticated: true })
-
-          } else {	// res.status !== 200
-            localStorage.removeItem('token')
-            this.setState({ isAuthenticated: false })
-          }
-        })
-        .catch(error => console.error(error))
-  }
-
   setHeaderHeight(height) {
     this.setState({ headerHeight: height });
   }
 
   render() {
-    const { isAuthenticated, navItems } = this.state
-    const { loading } = this.props
+    const { navItems } = this.state;
+    const { loading, isAuthorized } = this.props;
 
     return (
-      // !isAuthenticated ? Router :
-        loading ? <h1>Загрузка данных</h1> :
+      <BrowserRouter isAuthorized={isAuthorized}>
+        {isAuthorized ?
+        (loading ? <h1>Загрузка данных</h1> :
           <MainWrapper className='Main' headerHeight={this.state.headerHeight}>
-            <BrowserRouter className='Main'>
               <Header headerHeight={this.setHeaderHeight}/>
               <div className='central-content'>
                 <MainNav navItems={navItems}/>
                 <Content/>
               </div>
-            </BrowserRouter>
           </MainWrapper>
+        ) :
+        <Router />
+        }
+      </BrowserRouter>
     );
   }
 }
@@ -95,15 +70,13 @@ const mapStateToProps = state => {
   return {
     loading: state.userInfo.loading,
     users: state.userInfo.users,
-    error: state.userInfo.error
+    error: state.userInfo.error,
+    isAuthorized: state.session.isAuthorized
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    startGetUsers: users => {
-      dispatch(getUsers(users));
-    }
   };
 };
 

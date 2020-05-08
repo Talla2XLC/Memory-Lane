@@ -135,8 +135,6 @@ export default class RegistrationForm extends Component {
 		const inputPassword = (password.length > 0 && !passwordValid) ? 'textInput inputUser-red' : 'textInput'
 		const checkBox = (emailValid && passwordValid && !confidentiality) ? 'checkbox-confidentiality checkbox-red' : 'checkbox-confidentiality'
 
-		if (hasRegistred) return <Redirect to='/auth'/>
-
 		return (
 			<div className='formWrapper'>
 				<div className='formWrapperItem__titleContainer'>

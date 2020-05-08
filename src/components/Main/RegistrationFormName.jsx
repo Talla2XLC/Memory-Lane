@@ -122,7 +122,6 @@ export default class RegistrationFormName extends Component {
 		const displaylastName = (lastName.length === 0 || lastName === null || lastNameValid) ? 'formErrors displayNone' : 'formErrors'
 
 		//!!! if ( first_name_last_name_in_db || hasIntroduced) return <Redirect to='/main'/>
-		if (hasIntroduced) return <Redirect to='/main'/>
 
 		return (
 			<div className='formWrapper'>
