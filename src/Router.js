@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import RegistrationForm from './components/Main/RegistrationForm';
-import RegistrationCompleting from './components/Main/RegistrationCompleting';
-import RegistrationFormName from './components/Main/RegistrationFormName';
-import AuthorizationForm from './components/Main/AuthorizationForm';
+import UserRegistration from './components/Main/UserRegistration';
+import UserRegistrationCompleting from './components/Main/UserRegistrationCompleting';
+import UserFullName from './components/Main/UserFullName';
+import UserAuthorization from './components/Main/UserAuthorization';
 
-import Main from './containers/Main';
 import MainContent from './components/Main/MainContent';
 
 import Persons from './components/Main/Persons';
@@ -29,21 +28,28 @@ export default class Router extends Component {
           <Route exact path='/' component={ MainContent } />
           <Route exact path='/persons/' component={ Persons } />
           <Route exact path='/albums/' component={ Albums } />
-          <Route exact path='/albums/add' component={ DownloadPhoto } />
+          <Route exact path='/albums/add/' component={ DownloadPhoto } />
           <Route exact path='/stories/' component={ Stories } />
-          <Route exact path='/stories/1' component={ Detail} />
-          <Route exact path='/stories/add' component={ AddStory } />
+          {/* <Route exact path='/stories/1/' component={ Detail } /> */}
+          <Route path='/stories/:id' component={ Detail } />
+          <Route exact path='/stories/add/' component={ AddStory } />
           <Route exact path='/services/' component={ Services } />
+          {/* <Route exact path='/userfullname/' component={ UserFullName } /> */}
           <Route exact path='/learn/' component={ Learn } />
-          <Route exact path='/register/' component={ RegistrationForm } />
-          <Redirect to='/' />
+          <Route exact path='/register/' component={ UserRegistration } />
+
+          <Redirect to='/'/>
         </Switch>) : (
           <Switch>
-            <Route exact path='/auth/' component={ AuthorizationForm } />
-            <Route exact path='/register/' component={ RegistrationForm } />
+            <Route exact path='/auth/' component={ UserAuthorization } />
+            <Route exact path='/register/' component={ UserRegistration } />
+            <Route exact path='/check/auth-email/' component={ UserRegistrationCompleting } />
+
             <Redirect to='/auth' />
           </Switch>
         )
     );
   }
 }
+
+

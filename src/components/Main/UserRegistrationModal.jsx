@@ -1,11 +1,8 @@
-import React              from 'react';
-import FormPortal  from './FormPortal';
-import styled             from 'styled-components';
+import React  from 'react';
+import FormPortal from './UserRegistrationPortal';
+import styled from 'styled-components';
 
-const FormModal = ({
-  modalOpened, onCancel, children                                // accept these arguments by restructuring instead of props 
-}) => {
-
+const FormModal = ({ modalOpened, onCancel, children }) => {
   return (
     <>                                                                      
       { modalOpened &&

@@ -1,20 +1,20 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 
-import './AuthorizationFormStyle.css'
+import './UserAuthorizationStyle.css'
 
-import FormModal  from './FormModal'
+import FormModal  from './UserRegistrationModal'
 
 import { ReactComponent as FormVK }	from './svg/form_vk.svg'
 import { ReactComponent as FormFB }	from './svg/form_fb.svg'
 import { ReactComponent as FormG }	from './svg/form_g.svg'
 import { ReactComponent as FormIns }	from './svg/form_ins.svg'
 
-import { Tooltip } from './Tooltip'
+import { Tooltip } from './UserRegistrationTooltip'
 
 import axios from 'axios'
 
-export default class RegistrationForm extends Component {
+export default class UserRegistration extends Component {
 	
 	state = {
 		email: '',
@@ -134,6 +134,8 @@ export default class RegistrationForm extends Component {
 		const inputEmail = (email.length > 0 && !emailValid) ? 'textInput inputUser-red' : 'textInput'
 		const inputPassword = (password.length > 0 && !passwordValid) ? 'textInput inputUser-red' : 'textInput'
 		const checkBox = (emailValid && passwordValid && !confidentiality) ? 'checkbox-confidentiality checkbox-red' : 'checkbox-confidentiality'
+
+		if (hasRegistred) return <Redirect to='/auth'/>
 
 		return (
 			<div className='formWrapper'>

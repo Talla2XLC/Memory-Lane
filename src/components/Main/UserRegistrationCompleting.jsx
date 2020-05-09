@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 
 import axios from 'axios'
 
-export default class Services extends Component {
+export default class UserRegistrationCompleting extends Component {
 
   state = {
     emailVerified: false

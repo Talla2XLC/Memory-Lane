@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import Header from '../components/Main/Header';
 import MainNav from '../components/Main/MainNav';
 import Content from '../components/Main/Content';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Router from '../Router';
+
+import UserFullName from '../components/Main/UserFullName';
 
 import styled from 'styled-components';
 
@@ -21,7 +23,6 @@ class Main extends Component {
         { endpoint: 'learn', title: 'Обучение' }
       ],
       headerHeight: 0,
-      isAuthenticated: false
     };
   }
 
@@ -31,21 +32,34 @@ class Main extends Component {
 
   render() {
     const { navItems } = this.state;
-    const { loading, isAuthorized } = this.props;
+    const { loading, isAuthorized, headerHeight, hasFullName } = this.props;
+
+    console.log(this.props)
+
+    // if (!isAuthorized) {
+    //   return (
+    //     <BrowserRouter>
+    //       <Router isAuthorized={isAuthorized}/>
+    //     </BrowserRouter>
+    //   )
+    // }
 
     return (
-      <BrowserRouter isAuthorized={isAuthorized}>
-        {isAuthorized ?
-        (loading ? <h1>Загрузка данных</h1> :
-          <MainWrapper className='Main' headerHeight={this.state.headerHeight}>
-              <Header headerHeight={this.setHeaderHeight}/>
-              <div className='central-content'>
-                <MainNav navItems={navItems}/>
-                <Content/>
-              </div>
-          </MainWrapper>
-        ) :
-        <Router />
+      <BrowserRouter>
+        { 
+          isAuthorized ?
+            (loading ? <h1>Загрузка данных</h1> : 
+              hasFullName ?
+                (<MainWrapper className='Main' headerHeight={headerHeight}>
+                  <Header headerHeight={this.setHeaderHeight}/>
+                  <div className='central-content'>
+                    <MainNav navItems={navItems}/>
+                    <Content isAuthorized={isAuthorized}/>
+                  </div>
+                </MainWrapper>)
+              // : <Redirect to='/userfullname'/>
+              : <UserFullName />)
+          : <Router isAuthorized={isAuthorized}/>
         }
       </BrowserRouter>
     );
@@ -71,7 +85,8 @@ const mapStateToProps = state => {
     loading: state.userInfo.loading,
     users: state.userInfo.users,
     error: state.userInfo.error,
-    isAuthorized: state.session.isAuthorized
+    isAuthorized: state.session.isAuthorized,
+    hasFullName: state.userFullName.hasFullName
   };
 };
 

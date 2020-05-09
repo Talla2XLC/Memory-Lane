@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 
-import './AuthorizationFormStyle.css';
+import './UserAuthorizationStyle.css';
 
 import { ReactComponent as FormVK }	from './svg/form_vk.svg';
 import { ReactComponent as FormFB }	from './svg/form_fb.svg';
@@ -9,10 +9,10 @@ import { ReactComponent as FormG }	from './svg/form_g.svg';
 import { ReactComponent as FormIns }	from './svg/form_ins.svg';
 
 import axios from 'axios';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { setSession } from '../../actions/sessionSet';
 
-class AuthorizationForm extends Component {
+class UserAuthorization extends Component {
 	state = {
 	  email: '',
 	  password: '',
@@ -28,7 +28,8 @@ class AuthorizationForm extends Component {
 	}
 
 	LogInUser = () => {
-	  const { email, password } = this.state;
+		const { email, password } = this.state;
+		const { setSessionID } = this.props;
 
 	  axios
 	    .post(
@@ -45,8 +46,9 @@ class AuthorizationForm extends Component {
 	    .then(res => {
 	      if (res.data.result) {	// res.status === 200
 	        localStorage.setItem('token', res.data.token);
-	        this.props.setSessionID(res.data.token);
-	        // this.forceUpdate()
+					setSessionID(res.data.token);
+					this.setState({ hasLoggedIn: true });
+					
 	      } else {	// res.status !== 200
 	        console.error(res.data.error);
 	        alert(`${res.data.error}`);
@@ -56,9 +58,12 @@ class AuthorizationForm extends Component {
 	}
 
 	render() {
-	  const { email, password } = this.state;
-
-	  // this.context.router.transitionTo('/main')
+		const { email, password, hasLoggedIn } = this.state;
+		
+		if (hasLoggedIn) {
+			this.forceUpdate();
+			return <Redirect to='/'/>
+		}
 
 	  return (
 	    <div className='formWrapper'>
@@ -133,4 +138,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthorizationForm);
+export default connect(mapStateToProps, mapDispatchToProps)(UserAuthorization);

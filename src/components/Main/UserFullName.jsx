@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
-import './AuthorizationFormStyle.css'
+import './UserAuthorizationStyle.css';
 
-import { Tooltip } from './Tooltip'
+import { Tooltip } from './UserRegistrationTooltip';
 
-import axios from 'axios'
+import axios from 'axios';
 
-export default class RegistrationFormName extends Component {
+export default class UserFullName extends Component {
 
 	state = {
 		firstName: '',
@@ -23,10 +23,10 @@ export default class RegistrationFormName extends Component {
 	}
 
 	handleInput = e => {
-		const { name, value } = e.target
+		const { name, value } = e.target;
 
 		this.setState({ [name]: value },
-		() => { this.validateField(name, value) })
+		() => { this.validateField(name, value) });
 	}
 
 	validateField(fieldName, value) {
@@ -37,31 +37,31 @@ export default class RegistrationFormName extends Component {
 
 		switch(fieldName) {
 			case 'firstName':
-				firstNameValid = false
+				firstNameValid = false;
 
 				if (oneDigit) {
-					fieldValidationErrors.firstName = 'Имя не должно содержать цифры'
+					fieldValidationErrors.firstName = 'Имя не должно содержать цифры';
 
 				} else {
-					fieldValidationErrors.firstName = ''
-					firstNameValid = true
+					fieldValidationErrors.firstName = '';
+					firstNameValid = true;
 				}
-				break
+				break;
 
 			case 'lastName':
-				lastNameValid = false
+				lastNameValid = false;
 
 				if (oneDigit) {
-					fieldValidationErrors.lastName = 'Фамилия не должна содержать цифры'
+					fieldValidationErrors.lastName = 'Фамилия не должна содержать цифры';
 
 				} else {
-					fieldValidationErrors.lastName = ''
-					lastNameValid = true
+					fieldValidationErrors.lastName = '';
+					lastNameValid = true;
 				}
-				break
+				break;
 
 			default:
-				break
+				break;
 		}
 
 		this.setState(
@@ -75,15 +75,15 @@ export default class RegistrationFormName extends Component {
 	}
 
 	validateForm = () => {
-		const { firstNameValid, lastNameValid } = this.state
+		const { firstNameValid, lastNameValid } = this.state;
 
-		this.setState({ formValid: firstNameValid && lastNameValid })
+		this.setState({ formValid: firstNameValid && lastNameValid });
 	}
 
 	introduceUser = () => {
-		const { firstName, lastName } = this.state
+		const { firstName, lastName } = this.state;
 
-		const token = localStorage.getItem('token')
+		const token = localStorage.getItem('token');
 
 		axios
 			.post(
@@ -99,11 +99,12 @@ export default class RegistrationFormName extends Component {
 					}
 				})
 				.then(res => {
+					console.log(res)
 					if (res.data.result) {	// res.status === 200
-						this.setState({ hasIntroduced: true })
+						// this.setState({ hasIntroduced: true })
+						console.log(res)
 
 					} else {	// res.status !== 200
-						localStorage.removeItem('token')
 						console.error(res.data.error)
 						alert(`${res.data.error}`)
 					}
@@ -114,14 +115,12 @@ export default class RegistrationFormName extends Component {
 	render() {
 		const { firstName, lastName, formErrors, firstNameValid, lastNameValid, formValid, hasIntroduced } = this.state
 
-		const token = localStorage.getItem('token')
-
 		const inputFirstName = (firstName.length > 0 && !firstNameValid) ? 'textInput inputUser-red' : 'textInput'
 		const inputLastName = (lastName.length > 0 && !lastNameValid) ? 'textInput container__input inputUser-red' : 'textInput container__input'
 		const displayfirstName = (firstName.length === 0 || firstName === null || firstNameValid) ? 'formErrors displayNone' : 'formErrors'
 		const displaylastName = (lastName.length === 0 || lastName === null || lastNameValid) ? 'formErrors displayNone' : 'formErrors'
 
-		//!!! if ( first_name_last_name_in_db || hasIntroduced) return <Redirect to='/main'/>
+		if (hasIntroduced) return <Redirect to='/'/>
 
 		return (
 			<div className='formWrapper'>
