@@ -34,6 +34,7 @@ class Main extends Component {
     const { navItems } = this.state;
     const { loading, isAuthorized, headerHeight, hasFullName } = this.props;
 
+
     // if (!isAuthorized) {
     //   return (
     //     <BrowserRouter>
@@ -44,19 +45,23 @@ class Main extends Component {
 
     return (
       <BrowserRouter>
-        { 
+        {
           isAuthorized ?
-            (loading ? <h1>Загрузка данных</h1> : 
-              hasFullName ?
-                (<MainWrapper className='Main' headerHeight={headerHeight}>
-                  <Header headerHeight={this.setHeaderHeight}/>
-                  <div className='central-content'>
-                    <MainNav navItems={navItems}/>
-                    <Content isAuthorized={isAuthorized}/>
-                  </div>
-                </MainWrapper>)
-              // : <Redirect to='/userfullname'/>
-              : <UserFullName />)
+
+            (loading ?
+              <h1>Загрузка данных</h1> : 
+                hasFullName ?
+                  (<MainWrapper className='Main' headerHeight={headerHeight}>
+                    <Header headerHeight={this.setHeaderHeight}/>
+                    <div className='central-content'>
+                      <MainNav navItems={navItems}/>
+                      <Content isAuthorized={isAuthorized}/>
+                    </div>
+                  </MainWrapper>)
+                // : <Redirect to='/userfullname'/>
+                : <UserFullName />
+            )
+
           : <Router isAuthorized={isAuthorized}/>
         }
       </BrowserRouter>

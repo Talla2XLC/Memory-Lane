@@ -2,7 +2,7 @@ const initialState = {
   hasFullName: false
 };
 
-export default function userInfo(state = initialState, action) {
+export default function userFullName(state = initialState, action) {
   switch (action.type) {
     case 'FETCH_USER_FULL_NAME_STARTED':
       return {

@@ -100,14 +100,14 @@ export default class UserFullName extends Component {
 				})
 				.then(res => {
 					if (res.data.result) {	// res.status === 200
-						this.setState({ hasIntroduced: true })
+						this.setState({ hasIntroduced: true });
 
 					} else {	// res.status !== 200
-						console.error(res.data.error)
-						alert(`${res.data.error}`)
+						console.error(res.data.error);
+						alert(`${res.data.error}`);
 					}
 				})
-				.catch(error => console.error(error))
+				.catch(error => console.error(error));
 	}
 
 	render() {
@@ -118,7 +118,7 @@ export default class UserFullName extends Component {
 		const displayfirstName = (firstName.length === 0 || firstName === null || firstNameValid) ? 'formErrors displayNone' : 'formErrors'
 		const displaylastName = (lastName.length === 0 || lastName === null || lastNameValid) ? 'formErrors displayNone' : 'formErrors'
 
-		if (hasIntroduced) return <Redirect to='/'/>
+		if (hasIntroduced) return window.location.reload();
 
 		return (
 			<div className='formWrapper'>

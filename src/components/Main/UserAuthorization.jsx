@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect, Link, useHistory } from 'react-router-dom';
 
 import './UserAuthorizationStyle.css';
 
@@ -48,6 +48,8 @@ class UserAuthorization extends Component {
 	        localStorage.setItem('token', res.data.token);
 					setSessionID(res.data.token);
 					this.setState({ hasLoggedIn: true });
+					// setTimeout(() => this.setState({ hasLoggedIn: true }), 0)
+					// this.forceUpdate();
 					
 	      } else {	// res.status !== 200
 	        console.error(res.data.error);
@@ -60,10 +62,7 @@ class UserAuthorization extends Component {
 	render() {
 		const { email, password, hasLoggedIn } = this.state;
 		
-		if (hasLoggedIn) {
-			this.forceUpdate();
-			return <Redirect to='/'/>
-		}
+		if (hasLoggedIn) window.location.reload();
 
 	  return (
 	    <div className='formWrapper'>
