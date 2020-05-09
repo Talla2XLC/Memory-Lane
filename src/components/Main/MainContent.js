@@ -43,5 +43,5 @@ export default function MainContent() {
       <div className='mainContainer__item div4 basicItem' />
     </div>
     <NewsFeed/>
-  // </div>;
+   </div>;
 }

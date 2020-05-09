@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Dropdown from './Albums/Dropdown';
+
 export default class Sorting extends Component {
   render() {
     return (

@@ -15,11 +15,11 @@ export default class AddStory extends Component {
             <div>country</div>
           </div>
           <div className='addStory__photo'>
-            <img className='addPhotoItem' src='https://picsum.photos/168/168' />
-            <img className='addPhotoItem' src='https://picsum.photos/168/168' />
-            <img className='addPhotoItem' src='https://picsum.photos/168/168' />
-            <img className='addPhotoItem' src='https://picsum.photos/168/168' />
-            <img className='addPhotoItem' src='https://picsum.photos/168/168' />
+            <img className='addPhotoItem' src='https://picsum.photos/168/168' alt='addPhoto'/>
+            <img className='addPhotoItem' src='https://picsum.photos/168/168' alt='addPhoto'/>
+            <img className='addPhotoItem' src='https://picsum.photos/168/168' alt='addPhoto'/>
+            <img className='addPhotoItem' src='https://picsum.photos/168/168' alt='addPhoto'/>
+            <img className='addPhotoItem' src='https://picsum.photos/168/168' alt='addPhoto'/>
           </div>
           <textarea className='addStory__textArea' />
           <button>Опубликовать</button>
