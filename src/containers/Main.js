@@ -34,8 +34,6 @@ class Main extends Component {
     const { navItems } = this.state;
     const { loading, isAuthorized, headerHeight, hasFullName } = this.props;
 
-    console.log(this.props)
-
     // if (!isAuthorized) {
     //   return (
     //     <BrowserRouter>

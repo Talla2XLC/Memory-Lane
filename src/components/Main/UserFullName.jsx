@@ -99,10 +99,8 @@ export default class UserFullName extends Component {
 					}
 				})
 				.then(res => {
-					console.log(res)
 					if (res.data.result) {	// res.status === 200
-						// this.setState({ hasIntroduced: true })
-						console.log(res)
+						this.setState({ hasIntroduced: true })
 
 					} else {	// res.status !== 200
 						console.error(res.data.error)
