@@ -17,7 +17,7 @@ export default class AlbumsItem extends Component {
   render() {
     const checkMark = '\u2713';
 
-    const desc = this.props.isDesc ? <div className='itemDescription font1'>Ipsum ex commodo ad ad ipsum non quis laborum adipisicing reprehenderit aliqua veniam excepteur.</div> : '';
+    const desc = this.props.isDesc ? <div className='itemDescription text1'>Ipsum ex commodo ad ad ipsum non quis laborum adipisicing reprehenderit aliqua veniam excepteur.</div> : '';
 
     const img = this.props.isImg ? <img className={'img ' + this.props.gridType + '_img'} src={this.props.url} alt='gallery_pic'/> : '';
 
@@ -35,12 +35,12 @@ export default class AlbumsItem extends Component {
       <div className={'albumItem ' + this.props.view}>
         {imgDiv}
         <div className='contentZone flex-column'>
-          <span className={this.props.gridType === 'bigColView' ? 'main1 font3' : 'main1 font2'}>
+          <span className={this.props.gridType === 'bigColView' ? 'head3 font3' : 'head3 font2'}>
             {this.props.name}
           </span>
           <div className='AutorDate'>
-            <div className='font1Light'>{this.props.autor}</div>
-            <div className='font1Light'>{this.props.date}</div>
+            <div className='text3'>{this.props.autor}</div>
+            <div className='text3'>{this.props.date}</div>
           </div>
           {desc}
           <div className='almunIcons'>

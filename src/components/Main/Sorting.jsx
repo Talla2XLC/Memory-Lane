@@ -5,7 +5,7 @@ export default class Sorting extends Component {
   render() {
     return (
       <SortingContainer>
-        <div className='main2 sortingTitle '>
+        <div className='head1 sortingTitle '>
         Сортировка
         </div>
         <div className='sortingDate'>По дате</div>
