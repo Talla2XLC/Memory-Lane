@@ -11,6 +11,7 @@ import { ReactComponent as FormIns }	from './svg/form_ins.svg';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { setSession } from '../../actions/sessionSet';
+import { sessionCheck } from '../../actions/sessionCheck';
 
 class UserAuthorization extends Component {
 	state = {
@@ -28,8 +29,8 @@ class UserAuthorization extends Component {
 	}
 
 	LogInUser = () => {
-		const { email, password } = this.state;
-		const { setSessionID } = this.props;
+	  const { email, password } = this.state;
+	  const { setSessionID, checkSessionID } = this.props;
 
 	  axios
 	    .post(
@@ -46,11 +47,12 @@ class UserAuthorization extends Component {
 	    .then(res => {
 	      if (res.data.result) {	// res.status === 200
 	        localStorage.setItem('token', res.data.token);
-					setSessionID(res.data.token);
-					this.setState({ hasLoggedIn: true });
-					// setTimeout(() => this.setState({ hasLoggedIn: true }), 0)
-					// this.forceUpdate();
-					
+	        setSessionID(res.data.token).then(() => {
+	          checkSessionID();
+	        });
+	        this.setState({ hasLoggedIn: true });
+	        // setTimeout(() => this.setState({ hasLoggedIn: true }), 0)
+	        // this.forceUpdate();
 	      } else {	// res.status !== 200
 	        console.error(res.data.error);
 	        alert(`${res.data.error}`);
@@ -60,9 +62,9 @@ class UserAuthorization extends Component {
 	}
 
 	render() {
-		const { email, password, hasLoggedIn } = this.state;
+	  const { email, password, hasLoggedIn } = this.state;
 		
-		if (hasLoggedIn) window.location.reload();
+	  // if (hasLoggedIn) window.location.reload();
 
 	  return (
 	    <div className='formWrapper'>
@@ -133,6 +135,9 @@ const mapDispatchToProps = dispatch => {
   return {
     setSessionID: sessionID => {
       dispatch(setSession(sessionID));
+    },
+    checkSessionID: () => {
+      dispatch(sessionCheck());
     }
   };
 };

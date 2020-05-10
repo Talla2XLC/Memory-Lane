@@ -20,12 +20,14 @@ import AddStory from './components/Main/Stories/AddStory';
 export default class Router extends Component {
 
   render() {
-    const { isAuthorized } = this.props;
+    const { isAuthorized, hasFullName } = this.props;
 
     return (
       isAuthorized ?
         (<Switch>
-          <Route exact path='/' component={ MainContent } />
+          <Route exact path='/'>
+            { hasFullName === false ? <Redirect to='/userfullname/' /> : <MainContent />}
+          </Route>
           <Route exact path='/persons/' component={ Persons } />
           <Route exact path='/albums/' component={ Albums } />
           <Route exact path='/albums/add/' component={ DownloadPhoto } />
@@ -34,7 +36,9 @@ export default class Router extends Component {
           <Route path='/stories/:id' component={ Detail } />
           <Route exact path='/stories/add/' component={ AddStory } />
           <Route exact path='/services/' component={ Services } />
-          {/* <Route exact path='/userfullname/' component={ UserFullName } /> */}
+          <Route exact path='/userfullname/' >
+            { hasFullName === false ? <UserFullName /> : <Redirect to='/' />}
+          </Route>
           <Route exact path='/learn/' component={ Learn } />
           <Route exact path='/register/' component={ UserRegistration } />
 

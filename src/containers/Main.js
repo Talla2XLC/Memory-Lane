@@ -47,9 +47,8 @@ class Main extends Component {
       <BrowserRouter>
         {
           isAuthorized ?
-
             (loading ?
-              <h1>Загрузка данных</h1> : 
+              <h1>Загрузка данных</h1> :
                 hasFullName ?
                   (<MainWrapper className='Main' headerHeight={headerHeight}>
                     <Header headerHeight={this.setHeaderHeight}/>
@@ -57,9 +56,10 @@ class Main extends Component {
                       <MainNav navItems={navItems}/>
                       <Content isAuthorized={isAuthorized}/>
                     </div>
-                  </MainWrapper>)
-                // : <Redirect to='/userfullname'/>
-                : <UserFullName />
+                  </MainWrapper>) :
+                // :
+
+                  <Router isAuthorized={isAuthorized} hasFullName={hasFullName}/>
             )
 
           : <Router isAuthorized={isAuthorized}/>

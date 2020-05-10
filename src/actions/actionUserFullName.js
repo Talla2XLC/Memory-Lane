@@ -30,6 +30,9 @@ export const fetchUserFullName = () => dispatch => {
         }
       }
     )
-    .then(res => dispatch(fetchUserFullNameSuccessed(res.data.info)))
+    .then(res => {
+      console.log(res);
+      dispatch(fetchUserFullNameSuccessed(res.data.info));
+    })
     .catch(error => dispatch(fetchUserFullNameFailed(error.message)));
 };
