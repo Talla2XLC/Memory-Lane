@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 
 export const ButtonContainer = styled.button`
-background: #5DB07B;
+background: ${props => 
+    props.white ? '#FFFFFF' : '#5DB07B'};
 box-shadow: 0px 1px 3px #B7B7B7;
 border-radius: 24px;
 padding: 10px 24px;
-color: #FFFFFF;
+color: ${props => 
+    props.white ? '#278147' : '#FFFFFF'};
 font-style: normal;
 font-weight: bold;
 font-size: 18px;
@@ -13,7 +15,8 @@ line-height: 20px;
 letter-spacing: 0.02em;
 outline: none;
 &:hover{
-  background: #278147;
+  background: ${ props => 
+    props.white ? '#BDE1CA' : '#278147'};
   box-shadow: 0px 1px 3px #B7B7B7;
   outline: none;
 }
