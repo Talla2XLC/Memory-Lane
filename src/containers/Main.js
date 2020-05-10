@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Router from '../Router';
 
+import PerfectScrollbar from 'react-perfect-scrollbar';
 import styled from 'styled-components';
 import { ReactComponent as PersonsIcon } from './svg/personsIcon.svg';
 import { ReactComponent as AlbumsIcon } from './svg/albumsIcon.svg';
@@ -23,7 +24,7 @@ class Main extends Component {
         { endpoint: 'albums', title: 'Альбомы', icon: <AlbumsIcon />  },
         { endpoint: 'stories', title: 'Истории', icon: <StoryIcon/>   },
         { endpoint: 'services', title: 'Сервисы', icon: <ServiceIcon/>   },
-        { endpoint: 'learn', title: 'Обучение', icon: <EducationIcon/>   }  
+        { endpoint: 'learn', title: 'Обучение', icon: <EducationIcon/>   }
       ],
       headerHeight: 0
     };
@@ -46,10 +47,12 @@ class Main extends Component {
               hasFullName ?
                 (<MainWrapper className='Main' headerHeight={headerHeight}>
                   <Header headerHeight={this.setHeaderHeight}/>
-                  <div className='central-content'>
-                    <MainNav navItems={navItems}/>
-                    <Content isAuthorized={isAuthorized}/>
-                  </div>
+                  <PerfectScrollbar component='div'>
+                    <div className='central-content'>
+                      <MainNav navItems={navItems}/>
+                      <Content isAuthorized={isAuthorized}/>
+                    </div>
+                  </PerfectScrollbar>
                 </MainWrapper>) :
 
                 <Router isAuthorized={isAuthorized} hasFullName={hasFullName}/>

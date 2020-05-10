@@ -1,5 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore, applyMiddleware } from 'redux';
+import rootReducer from './reducers/index';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import 'normalize.css';
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import './stylesGlobal/fonts.sass';
@@ -12,18 +15,16 @@ import * as serviceWorker from './serviceWorker';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
-import rootReducer from './reducers/index';
 import thunk from 'redux-thunk';
 import { getUsers } from './actions/actionUser';
 import { sessionCheck } from './actions/sessionCheck';
 import { fetchUserFullName } from './actions/actionUserFullName';
 
+
 const store = createStore(
   rootReducer,
-  compose(
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeWithDevTools(
+    applyMiddleware(thunk)
   )
 );
 
