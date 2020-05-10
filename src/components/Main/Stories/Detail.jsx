@@ -7,7 +7,7 @@ function Detail() {
   return (
     <PerfectScrollbar component='div'>
       <div className='contentContainer details' >
-        <img className='details__photo' src={detailStory.url} />
+        <img className='details__photo' src={detailStory.url} alt='detailsPhoto'/>
         <div className='details__right'>
           <div className='main1'>Заголовок</div>
           <div>тег</div>

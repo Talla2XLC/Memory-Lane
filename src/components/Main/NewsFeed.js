@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './MainContent.sass';
 import StoriesItem from './Stories/StoriesItem';
-import AlbumsItem from './Albums/AlbumsItem';
 import Article from './Article';
 
 export default class NewsFeed extends Component {
