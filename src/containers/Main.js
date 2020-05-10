@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from '../components/Main/Header';
 import MainNav from '../components/Main/MainNav';
 import Content from '../components/Main/Content';
-import { BrowserRouter, Redirect } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Router from '../Router';
 
@@ -12,9 +12,6 @@ import { ReactComponent as AlbumsIcon } from './svg/albumsIcon.svg';
 import { ReactComponent as StoryIcon } from './svg/storyIcon.svg';
 import { ReactComponent as ServiceIcon } from './svg/serviceIcon.svg';
 import { ReactComponent as EducationIcon } from './svg/educationIcon.svg';
-
-import PerfectScrollbar from 'react-perfect-scrollbar';
-
 
 class Main extends Component {
   constructor(props) {
@@ -54,7 +51,6 @@ class Main extends Component {
                     <Content isAuthorized={isAuthorized}/>
                   </div>
                 </MainWrapper>) :
-                // :
 
                 <Router isAuthorized={isAuthorized} hasFullName={hasFullName}/>
             )

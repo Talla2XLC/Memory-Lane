@@ -31,7 +31,6 @@ export const fetchUserFullName = () => dispatch => {
       }
     )
     .then(res => {
-      console.log(res.data);
       dispatch(fetchUserSuccess(res.data));
     })
     .catch(error => dispatch(fetchUserFailed(error.message)));
