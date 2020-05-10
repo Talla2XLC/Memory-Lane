@@ -6,6 +6,5 @@ const setSessionID = sessionID => ({
 export const setSession = (id) => {
   return (dispatch) => {
     dispatch(setSessionID(id));
-    return Promise.resolve();
   };
 };

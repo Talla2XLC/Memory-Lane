@@ -47,10 +47,9 @@ class UserAuthorization extends Component {
 	    .then(res => {
 	      if (res.data.result) {	// res.status === 200
 	        localStorage.setItem('token', res.data.token);
-	        setSessionID(res.data.token).then(() => {
-	          checkSessionID();
-	        });
-	        this.setState({ hasLoggedIn: true });
+	        setSessionID(res.data.token);
+	       	checkSessionID(res.data.token);
+	        // this.setState({ hasLoggedIn: true });
 	        // setTimeout(() => this.setState({ hasLoggedIn: true }), 0)
 	        // this.forceUpdate();
 	      } else {	// res.status !== 200
@@ -64,6 +63,7 @@ class UserAuthorization extends Component {
 	render() {
 	  const { email, password, hasLoggedIn } = this.state;
 		
+		// console.log(this.props)
 	  // if (hasLoggedIn) window.location.reload();
 
 	  return (
@@ -136,8 +136,8 @@ const mapDispatchToProps = dispatch => {
     setSessionID: sessionID => {
       dispatch(setSession(sessionID));
     },
-    checkSessionID: () => {
-      dispatch(sessionCheck());
+    checkSessionID: sessionID => {
+      dispatch(sessionCheck(sessionID));
     }
   };
 };
