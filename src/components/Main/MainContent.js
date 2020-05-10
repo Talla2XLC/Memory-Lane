@@ -20,7 +20,7 @@ export default function MainContent() {
           <p className='mainText textPosition'>
             Чтобы увеличить<br/> лимит фотографий,<br/> измените тариф
           </p>
-          <ButtonContainer>Перейти</ButtonContainer>
+          <ButtonContainer white={true}>Перейти</ButtonContainer>
         </div>
       </div>
 

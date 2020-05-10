@@ -5,6 +5,7 @@ background: ${props =>
     props.white ? '#FFFFFF' : '#5DB07B'};
 box-shadow: 0px 1px 3px #B7B7B7;
 border-radius: 24px;
+border-style: none;
 padding: 10px 24px;
 color: ${props => 
     props.white ? '#278147' : '#FFFFFF'};
