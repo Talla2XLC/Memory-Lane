@@ -12,13 +12,24 @@ import * as serviceWorker from './serviceWorker';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from './reducers/index';
 import thunk from 'redux-thunk';
-import {getUsers} from './actions/actionUser';
+import { getUsers } from './actions/actionUser';
+import { sessionCheck } from './actions/sessionCheck';
+import { fetchUserFullName } from './actions/actionUserFullName';
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(
+  rootReducer,
+  compose(
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
+);
+
 store.dispatch(getUsers());
+store.dispatch(sessionCheck(store.getState().session.sessionID));
+store.dispatch(fetchUserFullName());
 
 ReactDOM.render(
   <React.StrictMode>

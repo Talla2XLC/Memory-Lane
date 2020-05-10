@@ -5,13 +5,13 @@ import SetingsMenu from './Header/Settings_menu.jsx';
 import AddSection from './Header/Add_section.jsx';
 
 import styled from 'styled-components';
+import {connect} from "react-redux";
 
-export default class Header extends Component {
-  // componentDidMount(){
-  //   this.props.headerHeight(document.querySelector('.headerDiv').offsetHeight);
-  // }
+class Header extends Component {
 
   render() {
+    const { currentUser } = this.props;
+
     return (
       <HeaderWrapper className='headerDiv'>
         <div className='header__top'>
@@ -20,7 +20,7 @@ export default class Header extends Component {
             <div className='logoDot'/>
           </a>
           <Notice />
-          <div className='userName'>Иван Иванов</div>
+          <div className='userName'>{currentUser.first_name + ' ' + currentUser.last_name}</div>
           <div className='userAvatar'/>
           <SetingsMenu/>
         </div>
@@ -31,7 +31,20 @@ export default class Header extends Component {
       </HeaderWrapper>
     );
   }
-}  
+}
+
+const mapStateToProps = state => {
+  return {
+    currentUser: state.userInfo.currentUser
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
 
 const HeaderWrapper = styled.div`
 z-index: 5;

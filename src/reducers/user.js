@@ -1,7 +1,8 @@
 const initialState = {
   loading: true,
   users: '',
-  error: null
+  error: null,
+  currentUser: false
 };
 
 export default function userInfo(state = initialState, action) {
@@ -23,6 +24,23 @@ export default function userInfo(state = initialState, action) {
         ...state,
         loading: false,
         error: action.payload.err
+      };
+    case 'GET_USER_DATA_START':
+      return {
+        ...state,
+        loading: true
+      };
+    case 'GET_USER_DATA_SUCCESS':
+      return {
+        ...state,
+        error: null,
+        loading: false,
+        currentUser: action.payload
+      };
+    case 'GET_USER_DATA_FAILED':
+      return {
+        ...state,
+        error: action.payload.error
       };
     default:
       return state;

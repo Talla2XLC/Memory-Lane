@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
+
 import Router from '../../Router';
 import styled from 'styled-components';
 
-export default function Content() {
-  return (
-    <ContentWrap>
-      <Router />
-    </ContentWrap>
-  );
+export default class Content extends Component {
+
+  render() {
+    const { isAuthorized } = this.props;
+
+    return (
+      <div className='Content'>
+        <Router isAuthorized={isAuthorized}/>  
+      </div>
+    )
+  }
 }
 
 
