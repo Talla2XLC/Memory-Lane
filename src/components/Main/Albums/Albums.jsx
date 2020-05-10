@@ -3,7 +3,7 @@ import AlbumsItem from './AlbumsItem.jsx';
 import './Albums.sass';
 import shortid from 'shortid';
 import Dropdown from './Dropdown.jsx';
-import PerfectScrollbar from 'react-perfect-scrollbar';
+
 import Sorting from '../Sorting';
 
 const galleryData = [
@@ -75,17 +75,14 @@ export default class Albums extends Component {
 
   render() {
     return (
-      <div className='galleryBlock'>
-        <Sorting/>
-
-
+      <>
+        {/* <Sorting /> */}
+        <div className='contentContainer '>
+          <Sorting />
           <Dropdown gridId={this.setGridType}/>
-
-
-        <PerfectScrollbar component='div'>
           <div className={'albumContent ' + this.state.gridType} >
             {
-              galleryData.map((card,index) => {
+              galleryData.map((card, index) => {
                 return <AlbumsItem
                   id = {index}
                   view={this.state.rowItemView ? 'flex-row' : 'flex-column'}
@@ -101,8 +98,8 @@ export default class Albums extends Component {
               })
             }
           </div>
-        </PerfectScrollbar>
-      </div>
+        </div>
+      </>
     );
   }
 }

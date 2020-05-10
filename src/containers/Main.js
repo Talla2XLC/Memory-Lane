@@ -7,6 +7,14 @@ import { connect } from 'react-redux';
 import Router from '../Router';
 
 import styled from 'styled-components';
+import { ReactComponent as PersonsIcon } from './svg/personsIcon.svg';
+import { ReactComponent as AlbumsIcon } from './svg/albumsIcon.svg';
+import { ReactComponent as StoryIcon } from './svg/storyIcon.svg';
+import { ReactComponent as ServiceIcon } from './svg/serviceIcon.svg';
+import { ReactComponent as EducationIcon } from './svg/educationIcon.svg';
+
+import PerfectScrollbar from 'react-perfect-scrollbar';
+
 
 class Main extends Component {
   constructor(props) {
@@ -14,11 +22,11 @@ class Main extends Component {
     this.setHeaderHeight = this.setHeaderHeight.bind(this);
     this.state = {
       navItems: [
-        { endpoint: 'persons', title: 'Персоны' },
-        { endpoint: 'albums', title: 'Альбомы' },
-        { endpoint: 'stories', title: 'Истории' },
-        { endpoint: 'services', title: 'Сервисы' },
-        { endpoint: 'learn', title: 'Обучение' }
+        { endpoint: 'persons', title: 'Персоны', icon: <PersonsIcon/>  },
+        { endpoint: 'albums', title: 'Альбомы', icon: <AlbumsIcon />  },
+        { endpoint: 'stories', title: 'Истории', icon: <StoryIcon/>   },
+        { endpoint: 'services', title: 'Сервисы', icon: <ServiceIcon/>   },
+        { endpoint: 'learn', title: 'Обучение', icon: <EducationIcon/>   }  
       ],
       headerHeight: 0
     };
@@ -58,16 +66,20 @@ class Main extends Component {
   }
 }
 const MainWrapper = styled.div`
+background-color: #F6F6F6;
 display: flex;
 flex-flow: column nowrap;
 height: 100vh;
 overflow: hidden;
 justify-content: stretch;
 
+box-sizing: border-box;
+
+
 .central-content {
-  display: flex;
-  flex-flow: row nowrap;
-  flex-grow: 1;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1140px;
   height: calc(100vh - ${props => props.headerHeight}px);
 }
 `;

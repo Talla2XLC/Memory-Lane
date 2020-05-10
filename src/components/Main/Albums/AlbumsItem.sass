@@ -1,6 +1,6 @@
 .albumItem
   justify-content: stretch
-
+  text-align: left
   position: relative
 
 .img-div
@@ -8,13 +8,14 @@
 
 .select-button
   position: absolute
-  background: white
+  background: #FFFFFF
+  opacity: 0.5
   width: 1rem
   height: 1rem
   top: 2rem
-  right: 2rem
+  left: 2rem
   border-radius: 50%
-  border: 1px solid black
+  border: 2px solid #FFFFFF
   font-size: 0.6rem
   &:focus
     outline: none
@@ -32,7 +33,10 @@
 .bigColView_img, .smallColView_img
   width: 100%
   margin-bottom: 12px
-
+.bigColView_img 
+  border-radius: 10px
+.smallColView_img, .bigRowView_img, .smallRowView_img
+  border-radius: 5px
 .bigColView_select-button, .smallColView_select-button
   width: 2rem
   height: 2rem
@@ -88,20 +92,13 @@
   height: 1rem
   margin-right: 10px
 
-.itemAutor 
-  clear: both
-  font-size: 16px
-  line-height: 19px
-  color: #9C9C9C
-  text-align: left
-  margin: 6px 0
-
-.itemDate
-  font-size: 16px
-  line-height: 19px
-  color: #9C9C9C
-  text-align: left
-  margin-bottom: 12px
-
 .itemDescription 
   text-align: left
+
+
+.almunIcons
+  margin-top: 15px
+
+.iconsMargin
+  margin: 0 25px 0 25px
+

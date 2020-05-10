@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Content.sass';
 
 import Router from '../../Router';
+import styled from 'styled-components';
 
 export default class Content extends Component {
 
@@ -15,3 +16,8 @@ export default class Content extends Component {
     )
   }
 }
+
+
+export const ContentWrap = styled.div`
+width: 1140px;
+`;

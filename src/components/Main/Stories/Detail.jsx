@@ -1,38 +1,34 @@
-import React from 'react'
+import React from 'react';
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import { ReactComponent as Download } from '../Albums/svg/download.svg';
-import { ReactComponent as Forward } from '../Albums/svg/forward.svg';
 import './Stories.sass';
-import { storyData, detailStory } from './storiesData'
+import { detailStory } from './storiesData';
+
 function Detail() {
   return (
-<PerfectScrollbar component='div'>
-        <div className='details' >
-          <img className='details__photo' src={detailStory.url} />
-          <div className='details__right'>
-            <div className='font3'>Заголовок</div>
-            <div>тег</div>
-            <div className='font1Light'>{detailStory.autor}</div>
-            <div className='font1Light'>{detailStory.date}</div>
-            <div>country</div>
-            <div className='font1'> Eiusmod consectetur ullamco nostrud nisi laborum ullamco nulla non est velit. </div>
-            <div className='action'>
-              <div>Редактировать</div>
-              <Download />
-              <Forward />
-            </div>
-          </div>
-          <div className='details__left'>
-            <div className='details__title font3'>Заголовок</div>
-            <div />
-            <div className='desk font1'> Eiusmod consectetur ullamco nostrud nisi laborum ullamco nulla non est velit.Eiusmod consectetur ullamco nostrud nisi laborum ullamco nulla non est velit.Eiusmod consectetur ullamco nostrud nisi laborum ullamco nulla non est velit.</div>
+    <PerfectScrollbar component='div'>
+      <div className='contentContainer details' >
+        <img className='details__photo' src={detailStory.url} alt='detailsPhoto'/>
+        <div className='details__right'>
+          <div className='main1'>Заголовок</div>
+          <div>тег</div>
+          <div className='text3'>{detailStory.autor}</div>
+          <div className='text3'>{detailStory.date}</div>
+          <div>country</div>
+          <div className='text1'> Eiusmod consectetur ullamco nostrud nisi laborum ullamco nulla non est velit. </div>
+          <div className='action'>
+            <div>Редактировать</div>
           </div>
         </div>
-      </PerfectScrollbar>
-  )
+        <div className='details__left'>
+          <div className='details__title main1'>Заголовок</div>
+          <div />
+          <div className='desk text1'> Eiusmod consectetur ullamco nostrud nisi laborum ullamco nulla non est velit.Eiusmod consectetur ullamco nostrud nisi laborum ullamco nulla non est velit.Eiusmod consectetur ullamco nostrud nisi laborum ullamco nulla non est velit.</div>
+        </div>
+      </div>
+    </PerfectScrollbar>
+  );
 }
 
-export default Detail
-
+export default Detail;
 
 

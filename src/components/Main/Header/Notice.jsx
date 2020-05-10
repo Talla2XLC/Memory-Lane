@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
-import { ReactComponent as IconBell } from './svg/bell_icon.svg';
+import { ReactComponent as IconBell } from './svg/bellIcon.svg';
 import styled from 'styled-components';
 
 export default class Notice extends Component {
     state = {
-            interviewNotice: '',
-            photoNotice: '',
-            systemNotice: ''
+      interviewNotice: '',
+      photoNotice: '',
+      systemNotice: ''
     }
 
-    render () {
-        return (
-                <BellWrapper>
-                    <button className='button__notice'>
-                        <IconBell />
-                    </button>
-                </BellWrapper>
-        )
+    render() {
+      return (
+        <BellWrapper>
+          <button className='button__notice'>
+            <IconBell />
+          </button>
+        </BellWrapper>
+      );
     }
 }
 

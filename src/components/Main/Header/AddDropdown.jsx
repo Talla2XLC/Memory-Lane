@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { ReactComponent as IconAddSection } from './svg/add_section.svg';
+import { ReactComponent as IconAddSection } from './svg/addIcon.svg';
 import {Link} from 'react-router-dom';
-
+import styled from 'styled-components';
 export default class AddDropdown extends Component {
   constructor(props) {
     super(props);
@@ -36,13 +36,13 @@ export default class AddDropdown extends Component {
         this.state.showMenu
           ? (
 
-            <div className={'dropdown-list'}>
-              <Link to='/albums/add'> <button>Загрузить фото</button> </Link>
-              <Link to='/2/2'> <button>Создать альбом</button> </Link>
-              <Link to='/stories/add'> <button>Добавить историю</button> </Link>
-              <Link to='/4/4'> <button>Добавить интервью</button> </Link>
-              <Link to='/persons/add'> <button>Добавить персону</button> </Link>
-            </div>
+            <DropdownList>
+              <Link to='/albums/add'> <button className='dropdownButton'>Загрузить фото</button> </Link>
+              <Link to='/2/2'> <button className='dropdownButton'>Создать альбом</button> </Link>
+              <Link to='/stories/add'> <button className='dropdownButton'>Добавить историю</button> </Link>
+              <Link to='/4/4'> <button className='dropdownButton'>Добавить интервью</button> </Link>
+              <Link to='/persons/add'> <button className='dropdownButton'>Добавить персону</button> </Link>
+            </DropdownList>
           )
           : (
             null
@@ -52,3 +52,14 @@ export default class AddDropdown extends Component {
     );
   }
 }
+const DropdownList = styled.div`
+max-width: 200px;
+.dropdownButton {
+  background: #FFFFFF;
+  padding: 5px;
+  box-sizing: border-box;
+  text-align: left;
+  min-width: 200px;
+}
+
+`;

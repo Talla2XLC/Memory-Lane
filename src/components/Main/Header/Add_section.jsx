@@ -13,11 +13,7 @@ export default class addSection extends Component {
   render() {
     return (
       <AddSectionWrapper>
-        {/* <button className='button__notice'>
-            <IconAddSection />
-          </button>*/}
-        {/* <Link  to={this.state.link}> */}
-       <AddDropdown/>  
+        <AddDropdown/>  
       </AddSectionWrapper>
     );
   }
