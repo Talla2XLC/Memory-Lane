@@ -15,7 +15,10 @@ export default class Header extends Component {
     return (
       <HeaderWrapper className='headerDiv'>
         <div className='header__top'>
-          <a href='/'><div className='logo logoFont'>Memory Lane</div></a>
+          <a href='/'>
+            <div className='logo logoFont'>Memory Lane</div>
+            <div className='logoDot'/>
+          </a>
           <Notice />
           <div className='userName'>Иван Иванов</div>
           <div className='userAvatar'/>
@@ -35,6 +38,18 @@ z-index: 5;
 margin-left: auto;
 margin-right: auto;
 width: 1140px;
+.logo {
+  float: left;
+  margin-right: 6px;
+}
+.logoDot {
+  width: 7px;
+  height: 7px;
+  background: #5DB07B;
+  border-radius: 10px;
+  float: left;
+  margin-top: 24px;
+}
 
 .header__top {
   border-bottom: 1px solid rgba(130, 132, 130, 0.3);
@@ -44,9 +59,7 @@ width: 1140px;
   box-sizing: border-box;
 }
 
-.logo {
-  float: left;
-}
+
 .userAvatar {
   width: 40px;
   height: 40px;
