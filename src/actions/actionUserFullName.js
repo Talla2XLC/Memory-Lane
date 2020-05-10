@@ -1,21 +1,21 @@
 import axios from 'axios';
 
-const fetchUserFullNameStarted = () => ({
-  type: 'FETCH_USER_FULL_NAME_STARTED'
+const fetchUserStarted = () => ({
+  type: 'GET_USER_DATA_START'
 });
 
-const fetchUserFullNameSuccessed = user => ({
-  type: 'FETCH_USER_FULL_NAME_SUCCESSED',
+const fetchUserSuccess = user => ({
+  type: 'GET_USER_DATA_SUCCESS',
   payload: user
 });
 
-const fetchUserFullNameFailed = error => ({
-  type: 'FETCH_USER_FULL_NAME_FAILED',
+const fetchUserFailed = error => ({
+  type: 'GET_USER_DATA_FAILED',
   payload: error
 });
 
 export const fetchUserFullName = () => dispatch => {
-  dispatch(fetchUserFullNameStarted());
+  dispatch(fetchUserStarted());
 
   const token = localStorage.getItem('token')
 
@@ -31,7 +31,8 @@ export const fetchUserFullName = () => dispatch => {
       }
     )
     .then(res => {
-      dispatch(fetchUserFullNameSuccessed(res.data.info));
+      console.log(res.data);
+      dispatch(fetchUserSuccess(res.data));
     })
-    .catch(error => dispatch(fetchUserFullNameFailed(error.message)));
+    .catch(error => dispatch(fetchUserFailed(error.message)));
 };

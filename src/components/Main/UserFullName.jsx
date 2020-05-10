@@ -99,7 +99,7 @@ class UserFullName extends Component {
 	      })
 	    .then(res => {
 	      if (res.data.result) {	// res.status === 200
-					checkUserName();
+	        checkUserName();
 	      } else {	// res.status !== 200
 	        console.error(res.data.error);
 	        alert(`${res.data.error}`);
@@ -163,6 +163,11 @@ class UserFullName extends Component {
 	}
 }
 
+const mapStateToProps = state => {
+  return {
+  };
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     checkUserName: () => {
@@ -171,4 +176,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapDispatchToProps)(UserFullName);
+export default connect(mapStateToProps, mapDispatchToProps)(UserFullName);

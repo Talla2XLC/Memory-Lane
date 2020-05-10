@@ -6,8 +6,6 @@ import { BrowserRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Router from '../Router';
 
-import UserFullName from '../components/Main/UserFullName';
-
 import styled from 'styled-components';
 
 class Main extends Component {
@@ -33,15 +31,6 @@ class Main extends Component {
   render() {
     const { navItems } = this.state;
     const { loading, isAuthorized, headerHeight, hasFullName } = this.props;
-
-
-    // if (!isAuthorized) {
-    //   return (
-    //     <BrowserRouter>
-    //       <Router isAuthorized={isAuthorized}/>
-    //     </BrowserRouter>
-    //   )
-    // }
 
     return (
       <BrowserRouter>
@@ -89,7 +78,8 @@ const mapStateToProps = state => {
     users: state.userInfo.users,
     error: state.userInfo.error,
     isAuthorized: state.session.isAuthorized,
-    hasFullName: state.userFullName.hasFullName
+    currentUser: state.userInfo.currentUser,
+    hasFullName: !!(state.userInfo.currentUser.first_name || state.userInfo.currentUser.last_name)
   };
 };
 
