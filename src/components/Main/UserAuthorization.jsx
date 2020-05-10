@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect, Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import './UserAuthorizationStyle.css';
 
@@ -50,7 +50,7 @@ class UserAuthorization extends Component {
 	        localStorage.setItem('token', res.data.token);
 	        setSessionID(res.data.token);
 	       	checkSessionID(res.data.token);
-					checkUserName();
+	        checkUserName();
 	      } else {	// res.status !== 200
 	        console.error(res.data.error);
 	        alert(`${res.data.error}`);
@@ -60,10 +60,7 @@ class UserAuthorization extends Component {
 	}
 
 	render() {
-	  const { email, password, hasLoggedIn } = this.state;
-		
-	  // console.log(this.props)
-	  // if (hasLoggedIn) window.location.reload();
+	  const { email, password } = this.state;
 
 	  return (
 	    <div className='formWrapper'>
