@@ -9,7 +9,6 @@ const sessionNotValid = () => ({
 });
 
 export const sessionCheck = (sessionID) => {
-  console.log(sessionID);
   return (dispatch) => {
     axios
       .post(

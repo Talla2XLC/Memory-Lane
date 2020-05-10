@@ -22,7 +22,7 @@ class Main extends Component {
         { endpoint: 'services', title: 'Сервисы' },
         { endpoint: 'learn', title: 'Обучение' }
       ],
-      headerHeight: 0,
+      headerHeight: 0
     };
   }
 
@@ -49,20 +49,20 @@ class Main extends Component {
           isAuthorized ?
             (loading ?
               <h1>Загрузка данных</h1> :
-                hasFullName ?
-                  (<MainWrapper className='Main' headerHeight={headerHeight}>
-                    <Header headerHeight={this.setHeaderHeight}/>
-                    <div className='central-content'>
-                      <MainNav navItems={navItems}/>
-                      <Content isAuthorized={isAuthorized}/>
-                    </div>
-                  </MainWrapper>) :
+              hasFullName ?
+                (<MainWrapper className='Main' headerHeight={headerHeight}>
+                  <Header headerHeight={this.setHeaderHeight}/>
+                  <div className='central-content'>
+                    <MainNav navItems={navItems}/>
+                    <Content isAuthorized={isAuthorized}/>
+                  </div>
+                </MainWrapper>) :
                 // :
 
-                  <Router isAuthorized={isAuthorized} hasFullName={hasFullName}/>
+                <Router isAuthorized={isAuthorized} hasFullName={hasFullName}/>
             )
 
-          : <Router isAuthorized={isAuthorized}/>
+            : <Router isAuthorized={isAuthorized}/>
         }
       </BrowserRouter>
     );

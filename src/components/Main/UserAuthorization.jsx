@@ -12,6 +12,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { setSession } from '../../actions/sessionSet';
 import { sessionCheck } from '../../actions/sessionCheck';
+import { fetchUserFullName } from '../../actions/actionUserFullName';
 
 class UserAuthorization extends Component {
 	state = {
@@ -30,7 +31,7 @@ class UserAuthorization extends Component {
 
 	LogInUser = () => {
 	  const { email, password } = this.state;
-	  const { setSessionID, checkSessionID } = this.props;
+	  const { setSessionID, checkSessionID, checkUserName } = this.props;
 
 	  axios
 	    .post(
@@ -49,9 +50,7 @@ class UserAuthorization extends Component {
 	        localStorage.setItem('token', res.data.token);
 	        setSessionID(res.data.token);
 	       	checkSessionID(res.data.token);
-	        // this.setState({ hasLoggedIn: true });
-	        // setTimeout(() => this.setState({ hasLoggedIn: true }), 0)
-	        // this.forceUpdate();
+					checkUserName();
 	      } else {	// res.status !== 200
 	        console.error(res.data.error);
 	        alert(`${res.data.error}`);
@@ -63,7 +62,7 @@ class UserAuthorization extends Component {
 	render() {
 	  const { email, password, hasLoggedIn } = this.state;
 		
-		// console.log(this.props)
+	  // console.log(this.props)
 	  // if (hasLoggedIn) window.location.reload();
 
 	  return (
@@ -138,7 +137,10 @@ const mapDispatchToProps = dispatch => {
     },
     checkSessionID: sessionID => {
       dispatch(sessionCheck(sessionID));
-    }
+    },
+    checkUserName: () => {
+      dispatch(fetchUserFullName());
+    }		
   };
 };
 
