@@ -40,7 +40,7 @@ export default class RegistrationForm extends Component {
         let isMax = value.length >= 8;
         let isCapital = value.match(/(?=.*?[A-Z])/);
         let oneDigit = value.match(/(?=.*?[0-9])/);
-        let specialCharacter = value.match(/(?=.*?[#?!@$%^&*-])/);
+        // let specialCharacter = value.match(/(?=.*?[#?!@$%^&*-])/);
     
         switch(fieldName) {
           case 'email':
@@ -50,13 +50,13 @@ export default class RegistrationForm extends Component {
           case 'password':
             passwordValid = false;
             if (!isMax) {
-                fieldValidationErrors.password = 'Ваш пароль должен быть от 8 до 30 символов длиной';
+                fieldValidationErrors.password = 'Ваш пароль не может быть короче 8 символов длиной';
             } else if (!isCapital) {
                 fieldValidationErrors.password = 'Пароль должен содержать минимум одну заглавную букву';
             } else if (!oneDigit) {
                 fieldValidationErrors.password = 'Пароль должен содержать минимум одну цифру';
-            } else if (!specialCharacter) {
-                fieldValidationErrors.password = 'Пароль должен содержать минимум один специальный символ';
+            // } else if (!specialCharacter) {
+            //     fieldValidationErrors.password = 'Пароль должен содержать минимум один специальный символ';
             } else {
                 fieldValidationErrors.password = '';
                 passwordValid = true;
