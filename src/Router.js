@@ -5,6 +5,7 @@ import UserRegistration from './components/Main/UserRegistration';
 import UserRegistrationCompleting from './components/Main/UserRegistrationCompleting';
 import UserFullName from './components/Main/UserFullName';
 import UserAuthorization from './components/Main/UserAuthorization';
+import Funnel from './components/Main/Funnel';
 
 import MainContent from './components/Main/MainContent';
 
@@ -48,6 +49,7 @@ export default class Router extends Component {
             <Route exact path='/auth/' component={ UserAuthorization } />
             <Route exact path='/register/' component={ UserRegistration } />
             <Route exact path='/check/auth-email/' component={ UserRegistrationCompleting } />
+            <Route exact path='/funnel/' component={ Funnel } />
 
             <Redirect to='/auth' />
           </Switch>
