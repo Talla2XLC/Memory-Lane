@@ -60,7 +60,7 @@ export default class UserRegistration extends Component {
 				passwordValid = false
 
 				if (!isMax) {
-					fieldValidationErrors.password = 'Ваш пароль должен быть от 8 до 30 символов длиной'
+					fieldValidationErrors.password = 'Ваш пароль должен быть от 8 символов длиной'
 
 				} else if (!isCapital) {
 					fieldValidationErrors.password = 'Пароль должен содержать минимум одну заглавную букву'
