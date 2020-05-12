@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 import './App.sass';
+
 import Landing from './containers/Landing.js';
+
 import Main from './containers/Main.js';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {showLanding: false};
+export default class App extends Component {
+  state = {
+    showLanding: false
   }
 
   render() {
+    const { showLanding } = this.state;
+
     return (
-      <div className="App">
-        {this.state.showLanding ? <Landing/> : <Main/>}
+      <div className='App'>
+        { showLanding ? <Landing/> : <Main/> }
       </div>
     );
   }
 }
-
-export default App;

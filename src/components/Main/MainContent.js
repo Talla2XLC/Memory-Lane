@@ -1,59 +1,47 @@
-import React from 'react'
+import React from 'react';
 import './MainContent.sass';
-
+import NewsFeed from './NewsFeed';
+import {ButtonContainer} from './Button.jsx';
 
 export default function MainContent() {
-  return <div className='MainContent'>
+  return  <div className='contentContainer'>
+    <div className='mainContainer'>
 
-    <div className='container'>
-
-      <div className='MainContent__inner'>
-        <div className='MainContent__inner-item'>
-          <h3 className='MainContent__inner-titel'>
-            Здравствуйте!
-          </h3>
-          <p className='MainContent__inner-text'>
-            Давайте вместе создадим
-            вашу историю, чтобы остаться
+      <div className='mainContainer__item div1 white basicItem'>
+        <div className='mainContainer__item_left'>
+          <p className='head1 white' >Здравствуйте!</p>
+          <p className='mainText textPosition'>
+            Давайте вместе создадим<br/>
+            вашу историю, чтобы остаться<br/>
             в памяти у потомков!
           </p>
-
         </div>
-
-        <div className='MainContent__inner-item'>
-          <h3 className='MainContent__inner-titel'>
-            Инфографика лимита
-            фотографий
-          </h3>
-          <div className='MainContent__inner-eliipse'>
-            <span>50</span> из <span>200 </span> <br/>
-            фотографий
-          </div>
-
-        </div>
-
-      </div>
-
-      <div className='MainContent__wrap'>
-        <div className='MainContent__wrap-item'>
-          <span>Не знаете с чего начать?</span>
-          <p className='MainContent__wrap-text'>
-            Наши ежедневные задания помогут вам наполнить свою историю воспоминаниями
+        <div className='mainContainer__item_right'>
+          <p className='mainText textPosition'>
+            Чтобы увеличить<br/> лимит фотографий,<br/> измените тариф
           </p>
-          <button className='MainContent__wrap-button'> Перейти</button>
-        </div>
-
-        <div className='MainContent__wrap-item'>
-          <p className='MainContent__wrap-text'>
-            Пригласите своего близкого человека, чтобы он стал частью вашей истории
-          </p>
-          <button className='MainContent__wrap-button'> Пригласить</button>
+          <ButtonContainer white={true}>Перейти</ButtonContainer>
         </div>
       </div>
 
-      <div className='MainContent__main'/>
+      <div className='mainContainer__item div2 basicItem' >
+        <p className='head2'>Не знаете с чего начать?</p>
+        <p className='mainText textPosition'>
+            Наши задания помогут вам наполнить историю воспоминаниями
+        </p>
+        <ButtonContainer>Перейти</ButtonContainer>
+      </div>
+      
+      <div className='mainContainer__item div3 basicItem'>
+        <p className='head2'>Пригласить друга</p>
+        <p className='mainText textPosition'>
+            Пригласите своего близкого человека,<br/> чтобы он стал частью вашей истории.
+        </p>
+        <ButtonContainer> Пригласить</ButtonContainer>
+      </div>
 
+      <div className='mainContainer__item div4 basicItem' />
     </div>
+    <NewsFeed/>
   </div>;
 }
-

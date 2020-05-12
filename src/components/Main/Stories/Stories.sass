@@ -1,0 +1,59 @@
+.stories
+  padding-top: 100px
+  box-sizing: border-box
+.story
+  width: 100%
+  max-height: 300px
+  display: flex
+  flex-flow: row nowrap
+  text-align: left
+  margin: 0 0 34px 0
+  box-sizing: border-box
+  &__photo
+    width: 260px
+    height: 260px
+    border-radius: 10px
+    margin-right: 35px
+  &__action
+    position: absolute
+    right: 0
+  &__info
+    margin-bottom: 30px
+  &__desk
+    max-width: 800px
+    overflow: hidden
+    text-overflow: ellipsis
+    word-wrap: break-word
+    max-height: 10.8em
+    line-height: 1.8em
+  &__autor
+    margin: 6px 24px 0 0
+  &__icons
+    margin-top: 15px
+
+
+.iconsMargin
+  margin: 0 25px 0 25px
+
+.details
+  display: grid 
+  grid-template-columns: 4fr 8fr
+  grid-template-rows: 8fr 4fr
+  grid-template-areas: "detailsImg right" "left left"
+  text-align: left
+  padding: 30px 150px 0 0
+  box-sizing: border-box
+  grid-gap: 30px
+  &__photo
+    grid-area: detailsImg
+  &__right
+    grid-area: right
+  &__left
+    grid-area: left
+  &__title
+    width: 100%
+    margin-bottom: 10px
+
+
+.storyLink
+  color: black

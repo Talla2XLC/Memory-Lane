@@ -1,5 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore, applyMiddleware } from 'redux';
+import rootReducer from './reducers/index';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import 'normalize.css';
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import './stylesGlobal/fonts.sass';
@@ -12,13 +15,22 @@ import * as serviceWorker from './serviceWorker';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import rootReducer from './reducers/index';
 import thunk from 'redux-thunk';
-import {getUsers} from './actions/actionUser';
+import { getUsers } from './actions/actionUser';
+import { sessionCheck } from './actions/sessionCheck';
+import { fetchUserFullName } from './actions/actionUserFullName';
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(
+    applyMiddleware(thunk)
+  )
+);
+
 store.dispatch(getUsers());
+store.dispatch(sessionCheck(store.getState().session.sessionID));
+store.dispatch(fetchUserFullName());
 
 ReactDOM.render(
   <React.StrictMode>

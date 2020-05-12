@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 // import people from './people.json';
-import { ReactComponent as IconSearch } from './svg/search_icon.svg';
+import { ReactComponent as IconSearch } from './svg/searchIcon.svg';
 import styled from 'styled-components';
 
 
 export default class Search extends Component {
     state = {
-        // filtered: people
+      // filtered: people
     }
 
-	// handleClick () => {
+    // handleClick () => {
 
-	// }
+    // }
 
     // handleChange = (event) => {												 
     //     const {value} = event.target;                                       													 // destructuring applied instead const value = event.target.value;
@@ -24,25 +24,25 @@ export default class Search extends Component {
     // }
 
     mapPerson = (person, i) => {
-        return <li className='mini-suggest__item' key={i}>{person.name}<b>{i}</b></li>
+      return <li className='mini-suggest__item' key={i}>{person.name}<b>{i}</b></li>;
     }
 
     render = () => {
-        return (
-				<SearchWrapper>
-					<div className='search'>
-						<input className='input' placeholder="Поиск" type="search"/>
-						<button className='search-submit'>
-							<IconSearch/>
-						</button>
-					</div>
-					<div className='search__list'>
-						<ul>
-							{/* {this.state.filtered.map(this.mapPerson)} */}
-						</ul>
-					</div>
-				</SearchWrapper>
-        )
+      return (
+        <SearchWrapper>
+          <div className='search'>
+            <input className='input' placeholder='Поиск' type='search'/>
+            <button className='search-submit'>
+              <IconSearch className='inputIcon'/>
+            </button>
+          </div>
+          <div className='search__list'>
+            <ul>
+              {/* {this.state.filtered.map(this.mapPerson)} */}
+            </ul>
+          </div>
+        </SearchWrapper>
+      );
     }
 }
 
@@ -58,10 +58,22 @@ const SearchWrapper = styled.div`
 		position: relative;
 	}
 
+
+  .input {
+		background: #FFFFFF;
+    box-shadow: 0px 2px 3px #E2E2E2;
+		border-radius: 24px;
+		width: 387px !important;
+		height: 35px;
+		position: absolute;
+		right: 0;
+	}
+
 	.search input,
 	.search .search-submit {
 		/* отключаем бордюры у инпутов */
 		border: none;
+		margin-right: 40px;
 	}
 
 	/* стили для поля ввода */
@@ -88,7 +100,7 @@ const SearchWrapper = styled.div`
 		color: #555;
 		outline: none;
 		
-		height: 48px;
+
 
 		font-style: normal;
 		font-weight: normal;
@@ -105,7 +117,7 @@ const SearchWrapper = styled.div`
 	.search .search-submit {
 		/* позиционируем кнопку абсолютно от правого края формы */
 		position: absolute;
-		top: 0;
+		top: 4px;
 		right: 0;
 		padding-right: 16.5px;
 
