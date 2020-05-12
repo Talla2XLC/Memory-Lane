@@ -1,11 +1,10 @@
-import React from 'react'
-import UserProfale from "./UserProfile/UserProfale";
+import React from 'react';
 
 
 export default function Learn() {
   return (
     <div className="learn">
-      <UserProfale />
+      Обучение
     </div>
   )
 }

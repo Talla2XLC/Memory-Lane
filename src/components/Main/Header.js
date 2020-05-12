@@ -20,7 +20,7 @@ class Header extends Component {
             <div className='logoDot'/>
           </a>
           <Notice />
-          <div className='userName'>{currentUser.first_name + ' ' + currentUser.last_name}</div>
+          <div className='userName'>{(currentUser.first_name || currentUser.last_name) ? currentUser.first_name + ' ' + currentUser.last_name : currentUser.email}</div>
           <div className='userAvatar'/>
           <SetingsMenu/>
         </div>
