@@ -48,7 +48,7 @@ export default class UserRegistration extends Component {
 		let isMax = value.length >= 8
 		let isCapital = value.match(/(?=.*?[A-Z])/)
 		let oneDigit = value.match(/(?=.*?[0-9])/)
-		let specialCharacter = value.match(/(?=.*?[#?!@$%^&*-])/)
+		// let specialCharacter = value.match(/(?=.*?[#?!@$%^&*-])/)
 	
 		switch(fieldName) {
 			case 'email':
@@ -60,7 +60,7 @@ export default class UserRegistration extends Component {
 				passwordValid = false
 
 				if (!isMax) {
-					fieldValidationErrors.password = 'Ваш пароль должен быть от 8 до 30 символов длиной'
+					fieldValidationErrors.password = 'Ваш пароль должен быть от 8 символов длиной'
 
 				} else if (!isCapital) {
 					fieldValidationErrors.password = 'Пароль должен содержать минимум одну заглавную букву'
@@ -68,8 +68,8 @@ export default class UserRegistration extends Component {
 				} else if (!oneDigit) {
 					fieldValidationErrors.password = 'Пароль должен содержать минимум одну цифру'
 
-				} else if (!specialCharacter) {
-					fieldValidationErrors.password = 'Пароль должен содержать минимум один специальный символ'
+				// } else if (!specialCharacter) {
+				// 	fieldValidationErrors.password = 'Пароль должен содержать минимум один специальный символ'
 
 				} else {
 					fieldValidationErrors.password = ''
@@ -127,12 +127,12 @@ export default class UserRegistration extends Component {
 	}
 
 	render() {
-		const { email, password,  confidentiality, formErrors, emailValid, passwordValid, formValid, modalOpened, hasRegistred } = this.state
+		const { email, password, confidentiality, formErrors, emailValid, passwordValid, formValid, modalOpened, hasRegistred } = this.state
 
 		const displayEmail = (email.length === 0 || email === null || emailValid) ? 'formErrors displayNone' : 'formErrors'
 		const displayPassword = (password.length === 0 || password === null || passwordValid) ? 'formErrors displayNone' : 'formErrors'
-		const inputEmail = (email.length > 0 && !emailValid) ? 'textInput inputUser-red' : 'textInput'
-		const inputPassword = (password.length > 0 && !passwordValid) ? 'textInput inputUser-red' : 'textInput'
+		const inputEmail = (email.length > 0 && !emailValid) ? 'textInput input_color_red' : 'textInput'
+		const inputPassword = (password.length > 0 && !passwordValid) ? 'textInput input_color_red' : 'textInput'
 		const checkBox = (emailValid && passwordValid && !confidentiality) ? 'checkbox-confidentiality checkbox-red' : 'checkbox-confidentiality'
 
 		if (hasRegistred) return <Redirect to='/auth'/>
@@ -185,7 +185,7 @@ export default class UserRegistration extends Component {
 					</div>
 
 					<input
-						className='textInput formItem__button formItem__button-360'
+						className='textInput formItem__button c-button--width360'
 						type='submit'
 						value='Продолжить регистрацию'
 						onClick={this.registerUser}

@@ -1,5 +1,4 @@
 import React from 'react';
-import './UserAuthorizationStyle.css';
 
 export const Tooltip = (tooltip) => 
   <div>

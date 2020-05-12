@@ -101,7 +101,7 @@ class UserAuthorization extends Component {
 	        </div>
 
 	        <input
-	          className='textInput formItem__button formItem__button-360'
+	          className='textInput formItem__button c-button--width360'
 	          type='submit'
 	          value='Войти'
 	          onClick={this.LogInUser}

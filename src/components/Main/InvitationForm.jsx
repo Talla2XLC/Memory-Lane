@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './AuthorizationFormStyle.css';
-import { Tooltip } from './Tooltip';
+import './UserAuthorizationStyle.css';
+import { Tooltip } from './UserRegistrationTooltip';
 import { ReactComponent as FormVK }   from './svg/form_vk.svg';
 import { ReactComponent as FormFB }   from './svg/form_fb.svg';
 import { ReactComponent as FormG }    from './svg/form_g.svg';

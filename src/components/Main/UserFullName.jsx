@@ -111,8 +111,8 @@ class UserFullName extends Component {
 	render() {
 	  const { firstName, lastName, formErrors, firstNameValid, lastNameValid, formValid } = this.state;
 
-	  const inputFirstName = (firstName.length > 0 && !firstNameValid) ? 'textInput inputUser-red' : 'textInput';
-	  const inputLastName = (lastName.length > 0 && !lastNameValid) ? 'textInput container__input inputUser-red' : 'textInput container__input';
+	  const inputFirstName = (firstName.length > 0 && !firstNameValid) ? 'textInput input_color_red' : 'textInput';
+	  const inputLastName = (lastName.length > 0 && !lastNameValid) ? 'textInput container__input input_color_red' : 'textInput container__input';
 	  const displayfirstName = (firstName.length === 0 || firstName === null || firstNameValid) ? 'formErrors displayNone' : 'formErrors';
 	  const displaylastName = (lastName.length === 0 || lastName === null || lastNameValid) ? 'formErrors displayNone' : 'formErrors';
 
@@ -150,7 +150,7 @@ class UserFullName extends Component {
 	        </div>
 
 	        <input
-	          className='textInput formItem__button formItem__button-360 formItem__button-64'
+	          className='textInput formItem__button c-button--width360 f__button--indent-mt64'
 	          type='submit'
 	          value='Представиться'
 	          onClick={this.introduceUser}
