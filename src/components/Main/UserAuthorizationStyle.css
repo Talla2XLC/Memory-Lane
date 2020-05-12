@@ -61,7 +61,6 @@
 .formContainerItem__form {
     width: 360px;
     margin-top: 48px;
-    /* position: relative; */
 }
 
 .formContainerItem__form input[type='email'],
@@ -88,15 +87,7 @@
 
 .formContainerItem__form input[type='password'] {
     margin-top: 12px;    
-    /* color: transparent; */
-    /* opacity: 0; */
 }
-
-/* .input-text_theme_star {
-    position: absolute;
-    display: block;
-    margin-top: 12px;
-} */
 
 .input_color_red {
     border: 1px solid #a94442!important;
