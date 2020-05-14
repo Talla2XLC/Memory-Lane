@@ -21,13 +21,13 @@ class UserAuthorization extends Component {
 	  emailError: false,
 	  passwordError: false,
 	  hasLoggedIn: false
-	}
+	};
 
 	handleInput = e => {
 	  const { name, value } = e.target;
 
 	  this.setState({ [name]: value });
-	}
+	};
 
 	LogInUser = () => {
 	  const { email, password } = this.state;
@@ -57,7 +57,7 @@ class UserAuthorization extends Component {
 	      }
 	    })
 	    .catch(error => console.error(error));
-	}
+	};
 
 	render() {
 	  const { email, password } = this.state;
@@ -110,10 +110,9 @@ class UserAuthorization extends Component {
 	      </div>
 
 	      <div className='registration-container__link'>
-	        <Link className='registration__link' to={ '/register' }>
+	        <Link className='registration__link' to='/register'>
 						Еще не зарегистрированы?
 	        </Link>
-	        {/* <a className='registration__link' href='#RegistrationForm' alt='Registration'>Еще не зарегистрированы?</a> */}
 	      </div>
 	      {/* Modal window here */}
 	    </div>
