@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+import './UserRegistrationCompletingStyle.css';
 
 import axios from 'axios';
 
 export default class UserRegistrationCompleting extends Component {
 
-  state = {
-    emailVerified: false
-  };
-  
   emailVerified = () => {
 		const { location } = this.props;
 
@@ -32,10 +30,7 @@ export default class UserRegistrationCompleting extends Component {
 					}
 				})
 				.then(res => {
-					if (res.data.result) {	// res.status === 200
-						this.setState({ emailVerified: true });
-
-					} else {	// res.status !== 200
+					if (!res.data.result) {	// res.status !== 200
 						console.error(res.data.error);
 						alert(`${res.data.error}`);
 					}
@@ -44,19 +39,12 @@ export default class UserRegistrationCompleting extends Component {
 	};
 
 	render() {
-		const { emailVerified } = this.state;
-
-		if (emailVerified) return <Redirect to='/auth'/>;
-
 		return (
 			<div className=''>
 				<h1 className=''>Вы почти зарегистрировались, подтвердите email</h1>
-				<input
-					className=''
-					type='submit'
-					value='Подтвердить электронный адрес email'
-					onClick={this.emailVerified}
-				/>
+				<Link className='registrationCompleting__link' to='/auth' onClick={this.emailVerified}>
+					Продолжить
+				</Link>
 			</div>
 		)
 	};
