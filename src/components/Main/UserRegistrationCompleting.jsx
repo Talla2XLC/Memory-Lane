@@ -1,22 +1,22 @@
-import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
-import axios from 'axios'
+import axios from 'axios';
 
 export default class UserRegistrationCompleting extends Component {
 
   state = {
     emailVerified: false
-  }
+  };
   
   emailVerified = () => {
-		const { location } = this.props
+		const { location } = this.props;
 
-		const query = new URLSearchParams(location.search)
+		const query = new URLSearchParams(location.search);
 
-		const email = query.get('email')
-		const token = query.get('token')
-		const key = query.get('memory')
+		const email = query.get('email');
+		const token = query.get('token');
+		const key = query.get('memory');
 
 		axios
 			.post(
@@ -33,19 +33,20 @@ export default class UserRegistrationCompleting extends Component {
 				})
 				.then(res => {
 					if (res.data.result) {	// res.status === 200
-						this.setState({ emailVerified: true })
+						this.setState({ emailVerified: true });
 
 					} else {	// res.status !== 200
-						console.error(res.data.error)
-						alert(`${res.data.error}`)
+						console.error(res.data.error);
+						alert(`${res.data.error}`);
 					}
 				})
-				.catch(error => console.error(error))
-	}
-	render() {
-		const { emailVerified } = this.state
+				.catch(error => console.error(error));
+	};
 
-		if (emailVerified) return <Redirect to='/auth'/>
+	render() {
+		const { emailVerified } = this.state;
+
+		if (emailVerified) return <Redirect to='/auth'/>;
 
 		return (
 			<div className=''>
@@ -58,5 +59,5 @@ export default class UserRegistrationCompleting extends Component {
 				/>
 			</div>
 		)
-	}
+	};
 }
