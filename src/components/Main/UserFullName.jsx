@@ -156,6 +156,14 @@ class UserFullName extends Component {
 	          onClick={this.introduceUser}
 	          disabled={!formValid}
 	        />
+
+					<input
+						className='textInput formItem__button c-button--width360 f__button--indent-mt64'
+						type='submit'
+						value='Пропустить'
+						onClick={this.introduceUserOrSkip}
+						style={{ marginTop: "1em" }}
+					/>
 	      </div>
 	      {/* Modal window here */}
 	    </div>
