@@ -1,16 +1,25 @@
 import React, {Component} from 'react';
-import Search from './Header/Search.jsx';
-import Notice from './Header/Notice.jsx';
-import SetingsMenu from './Header/Settings_menu.jsx';
-import AddSection from './Header/Add_section.jsx';
+import Search from './Header/Search';
+import Notice from './Header/Notice';
+import SettingsMenu from './Header/Settings_menu';
+import AddSection from './Header/Add_section';
+import AvatarButton from './Header/AvatarButton';
 
 import styled from 'styled-components';
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
 
 class Header extends Component {
+  fetchUserName(user) {
+    if (user.first_name || user.last_name) {
+      return ((user.first_name ? user.first_name : '') + ' ' + (user.last_name ? user.last_name : ''));
+    }
+    return user.email;
+
+  }
 
   render() {
     const { currentUser } = this.props;
+    console.log(currentUser);
 
     return (
       <HeaderWrapper className='headerDiv'>
@@ -20,9 +29,9 @@ class Header extends Component {
             <div className='logoDot'/>
           </a>
           <Notice />
-          <div className='userName'>{(currentUser.first_name || currentUser.last_name) ? currentUser.first_name + ' ' + currentUser.last_name : currentUser.email}</div>
-          <div className='userAvatar'/>
-          <SetingsMenu/>
+          <div className='userName'>{this.fetchUserName(currentUser)}</div>
+          <AvatarButton gender={currentUser.gender}/>
+          <SettingsMenu/>
         </div>
         <div className='header__bottom'>
           <Search/>
@@ -54,6 +63,7 @@ width: 1140px;
 .logo {
   float: left;
   margin-right: 6px;
+  margin-left: 45px;
 }
 .logoDot {
   width: 7px;
@@ -70,6 +80,7 @@ width: 1140px;
   display: flex;
   padding: 12px 0;
   box-sizing: border-box;
+  background: #FFD1A9;
 }
 
 
