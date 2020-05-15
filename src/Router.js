@@ -16,6 +16,7 @@ import Services from './components/Main/Services';
 import Learn from './components/Main/Learn';
 import DownloadPhoto from './components/Main/Albums/DownloadPhoto';
 import Detail from './components/Main/Stories/Detail';
+import Profile from './components/Main/UserProfile/UserProfale';
 import AddStory from './components/Main/Stories/AddStory';
 
 export default class Router extends Component {
@@ -40,6 +41,7 @@ export default class Router extends Component {
             { hasFullName === false ? <UserFullName /> : <Redirect to='/' />}
           </Route>
           <Route exact path='/learn/' component={ Learn } />
+          <Route exact path='/profile/' component={ Profile } />
           <Route exact path='/register/' component={ UserRegistration } />
 
           <Redirect to='/'/>

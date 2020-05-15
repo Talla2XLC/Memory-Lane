@@ -9,14 +9,15 @@ export default class Content extends Component {
     const { isAuthorized } = this.props;
 
     return (
-      <div className='Content'>
+      <ContentWrap>
         <Router isAuthorized={isAuthorized}/>  
-      </div>
+      </ContentWrap>
     )
   }
 }
 
 
 export const ContentWrap = styled.div`
-width: 1140px;
+  flex-grow: 1;
+  padding-left: 315px;
 `;

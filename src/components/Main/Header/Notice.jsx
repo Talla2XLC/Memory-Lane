@@ -29,7 +29,6 @@ const BellWrapper = styled.div`
     background-color: #fff;
     background: 50% no-repeat;
     opacity: 0.5;
-    width: 36px;
     padding: 0;
 }
 

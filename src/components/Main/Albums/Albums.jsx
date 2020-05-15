@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import AlbumsItem from './AlbumsItem.jsx';
 import './Albums.sass';
 import shortid from 'shortid';
-import Dropdown from './Dropdown.jsx';
 
 import Sorting from '../Sorting';
 
@@ -75,31 +74,27 @@ export default class Albums extends Component {
 
   render() {
     return (
-      <>
-        {/* <Sorting /> */}
-        <div className='contentContainer '>
-          <Sorting />
-          <Dropdown gridId={this.setGridType}/>
-          <div className={'albumContent ' + this.state.gridType} >
-            {
-              galleryData.map((card, index) => {
-                return <AlbumsItem
-                  id = {index}
-                  view={this.state.rowItemView ? 'flex-row' : 'flex-column'}
-                  url={card.url} name={card.name}
-                  autor={card.autor} date={card.date}
-                  key={ shortid.generate() }
-                  gridType={this.state.gridType}
-                  isDesc={!(this.state.gridType === 'smallRowView' || this.state.gridType === 'noPreview')}
-                  isImg={this.state.gridType !== 'noPreview'}
-                  selectId={this.selectImage}
-                  isSelected={this.state.itemSelected.includes(index)}
-                />;
-              })
-            }
-          </div>
+      <div className='contentContainer '>
+        <Sorting gridId={this.setGridType}/>
+        <div className={'albumContent ' + this.state.gridType} >
+          {
+            galleryData.map((card, index) => {
+              return <AlbumsItem
+                id = {index}
+                view={this.state.rowItemView ? 'flex-row' : 'flex-column'}
+                url={card.url} name={card.name}
+                autor={card.autor} date={card.date}
+                key={ shortid.generate() }
+                gridType={this.state.gridType}
+                isDesc={!(this.state.gridType === 'smallRowView' || this.state.gridType === 'noPreview')}
+                isImg={this.state.gridType !== 'noPreview'}
+                selectId={this.selectImage}
+                isSelected={this.state.itemSelected.includes(index)}
+              />;
+            })
+          }
         </div>
-      </>
+      </div>
     );
   }
 }

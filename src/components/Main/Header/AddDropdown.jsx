@@ -37,11 +37,11 @@ export default class AddDropdown extends Component {
           ? (
 
             <DropdownList>
-              <Link to='/albums/add'> <button className='dropdownButton'>Загрузить фото</button> </Link>
-              <Link to='/2/2'> <button className='dropdownButton'>Создать альбом</button> </Link>
-              <Link to='/stories/add'> <button className='dropdownButton'>Добавить историю</button> </Link>
-              <Link to='/4/4'> <button className='dropdownButton'>Добавить интервью</button> </Link>
-              <Link to='/persons/add'> <button className='dropdownButton'>Добавить персону</button> </Link>
+              <Link to='/albums/add' className='dropdownLink'> <button className='dropdownButton'>Загрузить фото</button> </Link>
+              <Link to='/2/2' className='dropdownLink'> <button className='dropdownButton'>Создать альбом</button> </Link>
+              <Link to='/stories/add' className='dropdownLink'> <button className='dropdownButton'>Добавить историю</button> </Link>
+              <Link to='/4/4' className='dropdownLink'> <button className='dropdownButton'>Добавить интервью</button> </Link>
+              <Link to='/persons/add' className='dropdownLink'> <button className='dropdownButton'>Добавить персону</button> </Link>
             </DropdownList>
           )
           : (
@@ -53,13 +53,24 @@ export default class AddDropdown extends Component {
   }
 }
 const DropdownList = styled.div`
-max-width: 200px;
-.dropdownButton {
-  background: #FFFFFF;
+position: absolute;
+display: flex;
+flex-flow: column nowrap;
+justify-content: flex-start;
+box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+border-radius: 10px;
+padding: 12px;
+background: #FFFFFF;
+.dropdownLink {
   padding: 5px;
   box-sizing: border-box;
   text-align: left;
-  min-width: 200px;
+}
+.dropdownButton {
+  padding: 0;
+}
+.dropdownLink:hover {
+  background: #F3F0F0;
 }
 
 `;

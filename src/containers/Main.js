@@ -17,7 +17,6 @@ import { ReactComponent as EducationIcon } from './svg/educationIcon.svg';
 class Main extends Component {
   constructor(props) {
     super(props);
-    this.setHeaderHeight = this.setHeaderHeight.bind(this);
     this.state = {
       navItems: [
         { endpoint: 'persons', title: 'Персоны', icon: <PersonsIcon/>  },
@@ -28,10 +27,6 @@ class Main extends Component {
       ],
       headerHeight: 0
     };
-  }
-
-  setHeaderHeight(height) {
-    this.setState({ headerHeight: height });
   }
 
   render() {
@@ -69,17 +64,21 @@ background-color: #F6F6F6;
 display: flex;
 flex-flow: column nowrap;
 height: 100vh;
+width: 100%;
 overflow: hidden;
 justify-content: stretch;
 
 box-sizing: border-box;
 
+.scrollbar-container {
+  margin-left: 0
+}
 
 .central-content {
+  display: flex;
   margin-left: auto;
   margin-right: auto;
-  width: 1140px;
-  height: calc(100vh - ${props => props.headerHeight}px);
+  width: 100%;
 }
 `;
 
