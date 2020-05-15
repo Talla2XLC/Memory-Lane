@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { fetchUserFullName } from '../../actions/actionUserFullName';
+import { askedToIntroduce } from '../../actions/actionUserHasIntroduced';
 
 import './UserAuthorizationStyle.css';
 
@@ -75,7 +76,7 @@ class UserFullName extends Component {
 	validateForm = () => {
 	  const { firstNameValid, lastNameValid } = this.state;
 
-	  this.setState({ formValid: firstNameValid && lastNameValid });
+	  this.setState({ formValid: firstNameValid || lastNameValid });
 	}
 
 	introduceUser = () => {
@@ -100,6 +101,35 @@ class UserFullName extends Component {
 	    .then(res => {
 	      if (res.data.result) {	// res.status === 200
 	        checkUserName();
+	      } else {	// res.status !== 200
+	        console.error(res.data.error);
+	        alert(`${res.data.error}`);
+	      }
+	    })
+	    .catch(error => console.error(error));
+	}
+
+	skipIntroduce = () => {
+		const { checkUserName, checkUserAskedToIntroduce } = this.props;
+
+	  const token = localStorage.getItem('token');
+
+	  axios
+	    .post(
+	      'http://api.memory-lane.ru/db/setAccount',
+	      {
+	        askedToIntroduce: 'true'
+	      },
+	      {
+	        headers: {
+	          'Content-Type': 'application/json',
+	          'Authorization': `${token}`
+	        }
+	      })
+	    .then(res => {
+				if (res.data.result) {	// res.status === 200
+					checkUserAskedToIntroduce();
+					checkUserName();
 	      } else {	// res.status !== 200
 	        console.error(res.data.error);
 	        alert(`${res.data.error}`);
@@ -156,6 +186,14 @@ class UserFullName extends Component {
 	          onClick={this.introduceUser}
 	          disabled={!formValid}
 	        />
+
+					<input
+						className='textInput formItem__button c-button--width360 f__button--indent-mt64'
+						type='submit'
+						value='Пропустить'
+						onClick={this.skipIntroduce}
+						style={{ marginTop: "1em" }}
+					/>
 	      </div>
 	      {/* Modal window here */}
 	    </div>
@@ -172,7 +210,10 @@ const mapDispatchToProps = dispatch => {
   return {
     checkUserName: () => {
       dispatch(fetchUserFullName());
-    }
+		},
+		checkUserAskedToIntroduce: () => {
+			dispatch(askedToIntroduce());
+		}
   };
 };
 

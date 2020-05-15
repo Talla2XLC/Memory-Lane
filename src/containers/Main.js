@@ -31,7 +31,7 @@ class Main extends Component {
 
   render() {
     const { navItems } = this.state;
-    const { loading, isAuthorized, headerHeight, hasFullName } = this.props;
+    const { loading, isAuthorized, headerHeight, hasFullName, askedToIntroduce } = this.props;
 
     return (
       <BrowserRouter>
@@ -39,7 +39,7 @@ class Main extends Component {
           isAuthorized ?
             (loading ?
               <h1>Загрузка данных</h1> :
-              hasFullName ?
+              (hasFullName || askedToIntroduce) ?
                 (<MainWrapper className='Main' headerHeight={headerHeight}>
                   <Header headerHeight={this.setHeaderHeight}/>
                   <PerfectScrollbar component='div'>
@@ -50,7 +50,7 @@ class Main extends Component {
                   </PerfectScrollbar>
                 </MainWrapper>) :
 
-                <Router isAuthorized={isAuthorized} hasFullName={hasFullName}/>
+                <Router isAuthorized={isAuthorized} hasFullName={hasFullName} />
             )
 
             : <Router isAuthorized={isAuthorized}/>
@@ -89,7 +89,8 @@ const mapStateToProps = state => {
     error: state.userInfo.error,
     isAuthorized: state.session.isAuthorized,
     currentUser: state.userInfo.currentUser,
-    hasFullName: !!(state.userInfo.currentUser.first_name || state.userInfo.currentUser.last_name)
+    hasFullName: !!(state.userInfo.currentUser.first_name || state.userInfo.currentUser.last_name),
+    askedToIntroduce: state.userInfo.currentUser.asked_to_introduce
   };
 };
 
