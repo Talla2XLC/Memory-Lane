@@ -33,7 +33,6 @@ export default class Router extends Component {
           <Route exact path='/albums/' component={ Albums } />
           <Route exact path='/albums/add/' component={ DownloadPhoto } />
           <Route exact path='/stories/' component={ Stories } />
-          {/* <Route exact path='/stories/1/' component={ Detail } /> */}
           <Route path='/stories/:id' component={ Detail } />
           <Route exact path='/stories/add/' component={ AddStory } />
           <Route exact path='/services/' component={ Services } />
