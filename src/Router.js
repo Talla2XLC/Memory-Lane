@@ -16,7 +16,7 @@ import Services from './components/Main/Services';
 import Learn from './components/Main/Learn';
 import DownloadPhoto from './components/Main/Albums/DownloadPhoto';
 import Detail from './components/Main/Stories/Detail';
-import Profile from './components/Main/UserProfile/UserProfale';
+import Profile from './components/Main/UserProfile/UserProfile';
 import AddStory from './components/Main/Stories/AddStory';
 
 export default class Router extends Component {
