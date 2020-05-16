@@ -42,7 +42,7 @@ export default function userInfo(state = initialState, action) {
         ...state,
         error: action.payload.error
       };
-      case 'SKIP_INTRODUCE_START':
+    case 'SKIP_INTRODUCE_START':
       return {
         ...state,
         loading: true

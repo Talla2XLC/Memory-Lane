@@ -46,10 +46,12 @@ class UserProfileInfoReName extends Component {
 
     const newData = {};
 
-    if (firstName && firstName !== this.props.currentUser.first_name) newData["first_name"] = firstName;
-    if (lastName && lastName !== this.props.currentUser.last_name) newData["last_name"] = lastName;
-    if (email && email !== this.props.currentUser.email) newData["email"] = email;
+    if (firstName && firstName !== this.props.currentUser.first_name) newData.first_name = firstName;
+    if (lastName && lastName !== this.props.currentUser.last_name) newData.last_name = lastName;
+    if (email && email !== this.props.currentUser.email) newData.email = email;
     if (gender && gender !== this.props.currentUser.gender) newData.gender = gender;
+    if (city && city !== this.props.currentUser.city) newData.city = city;
+    if (birthday && birthday !== this.props.currentUser.birthday) newData.birthday = birthday;
 
     Object.keys(newData).length ?
       (axios
@@ -128,7 +130,14 @@ class UserProfileInfoReName extends Component {
         </div>
         <div className='UserProfileInfoReName__form-item'>
           <label htmlFor='UserProfileInfoReName__form-city'> Город:</label>
-          <input id='UserProfileInfoReName__form-city' type='text' placeholder='Санкт-Петербург'/>
+          <input
+            id='UserProfileInfoReName__form-city'
+            type='text'
+            name='city'
+            placeholder='Санкт-Петербург'
+            value={this.state.newUserState.city}
+            onChange={this.handleInput}
+          />
         </div>
         <div className='UserProfileInfoReName__form-item'>
           <label htmlFor='UserProfileInfoReName__form-email'> Эл. почта: </label>
@@ -136,7 +145,6 @@ class UserProfileInfoReName extends Component {
             id='UserProfileInfoReName__form-email'
             type='email'
             name='email'
-            placeholder={this.props.currentUser.email}
             value={this.state.newUserState.email}
             onChange={this.handleInput}
           />
