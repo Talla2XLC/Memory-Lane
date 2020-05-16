@@ -22,9 +22,10 @@ export default class AlbumsItem extends Component {
     const img = this.props.isImg ? <img className={'img ' + this.props.gridType + '_img'} src={this.props.url} alt='gallery_pic'/> : '';
 
     const selectBTN =
-      <button className={'select-button ' + this.props.gridType + '_select-button'} onClick={() => this.handleItemSelect(this.props.id)}>
-        {this.props.isSelected ? checkMark : ''}
-      </button>;
+      <button className={
+        'select-button ' + this.props.gridType + '_select-button ' + (this.props.isSelected ? 'selected-button' : '')
+      } onClick={() => this.handleItemSelect(this.props.id)}
+      />;
 
     const imgDiv =
       <div className={'img-div ' + this.props.gridType + '_img-div'}>
