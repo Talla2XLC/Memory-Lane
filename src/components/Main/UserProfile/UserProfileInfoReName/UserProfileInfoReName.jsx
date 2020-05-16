@@ -97,7 +97,7 @@ class UserProfileInfoReName extends Component {
             type='text'
             name='last_name'
             placeholder='Иванов'
-            value={this.state.newUserState.last_name}
+            value={this.state.newUserState.last_name ?? ''}
             onChange={this.handleInput}
           />
         </div>
