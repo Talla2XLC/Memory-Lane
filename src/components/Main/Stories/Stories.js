@@ -29,8 +29,8 @@ class Stories extends Component {
           <div className='stories'>
             {
               Object.values(stories).map(story =>
-                <StoryItem
-                  id={story.id}
+                <StoryItem 
+                  key={story.id}
                   title={story.story_name}
                   author={story.author}
                   date={story.date_updated}
