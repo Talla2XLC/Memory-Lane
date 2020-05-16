@@ -1,32 +1,64 @@
 import React, { Component } from 'react';
-import StoriesItem from './StoriesItem.jsx';
-import './Stories.sass';
+
+import { fetchStories } from '../../../actions/actionStories';
+
+import StoryItem from './StoryItem';
 import Sorting from '../Sorting';
-import {storyData} from './storiesData';
-import { Link } from 'react-router-dom';
 
-export default class Stories extends Component {
-  render() {
-    return (
-      <div className='contentContainer'>
-        <Sorting/>
-        <div className='stories'>
-          {
-            storyData.map( story => {
-              return  <Link className='storyLink'
-                to={`/stories/${story.id}`}>
-                <StoriesItem
-                  url={story.url}
-                  autor={story.autor}
-                  date={story.date}
-                  id={story.id}
-                />
-              </Link>;
-            })
-          }
-        </div>
-      </div>
+import './Stories.sass';
 
-    );
+import { connect } from 'react-redux';
+
+class Stories extends Component {
+  constructor(props) {
+    super(props);
+
+    const { fetchStoriesData } = this.props;
+
+    fetchStoriesData();
   }
+
+  render() {
+    const { loading, stories } = this.props;
+    
+    return (
+      loading ?
+        <h1>Загрузка данных</h1> :
+        (<div className='contentContainer'>
+          <Sorting/>
+          <div className='stories'>
+            {
+              Object.values(stories).map(story =>
+                <StoryItem
+                  id={story.id}
+                  title={story.story_name}
+                  author={story.author}
+                  date={story.date_updated}
+                  content={story.content}
+                  picture={story.ico_url}
+                />
+              )
+            }
+          </div>
+        </div>)
+    );
+  };
 }
+
+const mapStateToProps = state => {
+  return {
+    loading: state.userStories.loading,
+    stories: state.userStories.stories,
+    error: state.userStories.error
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+		fetchStoriesData: () => {
+			dispatch(fetchStories());
+		}
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Stories);
