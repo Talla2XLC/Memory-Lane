@@ -34,8 +34,8 @@ export default class Router extends Component {
           <Route exact path='/albums/' component={ Albums } />
           <Route exact path='/albums/add/' component={ DownloadPhoto } />
           <Route exact path='/stories/' component={ Stories } />
-          <Route path='/stories/:id' component={ Detail } />
           <Route exact path='/stories/add/' component={ AddStory } />
+          <Route path='/stories/:id' component={ Detail } />
           <Route exact path='/services/' component={ Services } />
           <Route exact path='/userfullname/' >
             { hasFullName === false ? <UserFullName /> : <Redirect to='/' />}
