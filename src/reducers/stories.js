@@ -1,5 +1,7 @@
 const initialState = {
-  stories: null
+  loading: true,
+  stories: null,
+  error: null
 };
 
 export default function storiesInfo(state = initialState, action) {
