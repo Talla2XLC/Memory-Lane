@@ -8,17 +8,23 @@
 
 .select-button
   position: absolute
-  background: #FFFFFF
-  opacity: 0.5
-  width: 1rem
-  height: 1rem
+  background-color: #5DB07B
+  width: 22px
+  height: 22px
   top: 2rem
   left: 2rem
   border-radius: 50%
   border: 2px solid #FFFFFF
   font-size: 0.6rem
+  box-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1)
   &:focus
     outline: none
+
+.selected-button
+  background: url('svg/check.svg')
+  background-color: #5DB07B
+  background-repeat: no-repeat
+  background-position: center
 
 .bigRowView_img-div, .smallRowView_img-div
   margin-right: 2rem

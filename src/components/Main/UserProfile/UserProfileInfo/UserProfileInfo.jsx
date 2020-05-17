@@ -27,16 +27,16 @@ class UserProfileInfo extends Component {
         <ul className='UserProfileInfo__list'>
           <li className='UserProfileInfo__item'>
             <h3>Проект: </h3>
-            <span>Название текущего проекта</span>
+            <span>{/*Название текущего проекта*/}</span>
           </li>
           <li className='UserProfileInfo__item'>
             <h3> Дата рождения:</h3>
-            <span>дд.мм.гг</span>
+            <span>{currentUser.birthday}</span>
 
           </li>
           <li className='UserProfileInfo__item'>
             <h3>Город:</h3>
-            <span>Санкт-Петербург</span>
+            <span>{currentUser.city}</span>
 
           </li>
           <li className='UserProfileInfo__item'>
@@ -62,7 +62,7 @@ class UserProfileInfo extends Component {
           <li className='UserProfileInfo__item'>
             <h3>Ваш тариф:</h3>
             <div className='UserProfileInfo__item-rate'>
-              <span>Стандарт</span>
+              <span>{/*Стандарт*/}</span>
               <span className='UserProfileInfo__item-change'>Сменить тариф</span>
             </div>
 
