@@ -53,14 +53,12 @@ class UserAlbums extends Component {
 	  
 	  const albumsItems = userAlbums.map(albums =>
 	    (
-				  <Link key={albums.id} to={`/albums/${albums.id}`}>
+	      <Link key={albums.id} to={`/albums/${albums.id}`}>
 	        <Folder/>
 	        <div>
 	          {albums.album_name}
 	        </div>
 	      </Link>
-
-
 	    )
 	  );
 
