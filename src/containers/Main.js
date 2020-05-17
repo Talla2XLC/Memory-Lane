@@ -47,10 +47,13 @@ class Main extends Component {
               hasFullName ?
                 (<MainWrapper className='Main' headerHeight={headerHeight}>
                   <Header headerHeight={this.setHeaderHeight}/>
+                  
                   <PerfectScrollbar component='div'>
                     <div className='central-content'>
                       <MainNav navItems={navItems}/>
                       <Content isAuthorized={isAuthorized}/>
+
+
                     </div>
                   </PerfectScrollbar>
                 </MainWrapper>) :

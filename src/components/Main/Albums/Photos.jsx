@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AlbumsItem from './AlbumsItem.jsx';
+import AlbumsItem from './PhotoItem.jsx';
 import './Albums.sass';
 import shortid from 'shortid';
 import Dropdown from './Dropdown.jsx';

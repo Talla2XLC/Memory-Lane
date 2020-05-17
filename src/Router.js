@@ -8,9 +8,10 @@ import UserAuthorization from './components/Main/UserAuthorization';
 import Funnel from './components/Main/Funnel';
 
 import MainContent from './components/Main/MainContent';
-
+import UsersAlbums from './components/Main/Albums/UsersAlbums';
 import Persons from './components/Main/Persons';
-import Albums from './components/Main/Albums/Albums';
+// import Albums from './components/Main/Albums/Photos';
+import UserAlbum from './components/Main/Albums/UserAlbum';
 import Stories from './components/Main/Stories/Stories';
 import Services from './components/Main/Services';
 import Learn from './components/Main/Learn';
@@ -30,8 +31,12 @@ export default class Router extends Component {
             { hasFullName === false ? <Redirect to='/userfullname/' /> : <MainContent />}
           </Route>
           <Route exact path='/persons/' component={ Persons } />
-          <Route exact path='/albums/' component={ Albums } />
+
+          <Route exact path='/albums/' component={ UsersAlbums } />
+          <Route exact path='/albums/:id' component={ UserAlbum } />
+          {/* <Route exact path='/albums/' component={ Albums } /> */}
           <Route exact path='/albums/add/' component={ DownloadPhoto } />
+          {/* <Route exact path='/albums/addalbums/' component={ UsersAlbums } /> */}
           <Route exact path='/stories/' component={ Stories } />
           <Route path='/stories/:id' component={ Detail } />
           <Route exact path='/stories/add/' component={ AddStory } />

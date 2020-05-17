@@ -38,7 +38,7 @@ export default class AddDropdown extends Component {
 
             <DropdownList>
               <Link to='/albums/add'> <button className='dropdownButton'>Загрузить фото</button> </Link>
-              <Link to='/2/2'> <button className='dropdownButton'>Создать альбом</button> </Link>
+              <Link to='/albums/addalbums/'> <button className='dropdownButton'>Создать альбом</button> </Link>
               <Link to='/stories/add'> <button className='dropdownButton'>Добавить историю</button> </Link>
               <Link to='/4/4'> <button className='dropdownButton'>Добавить интервью</button> </Link>
               <Link to='/persons/add'> <button className='dropdownButton'>Добавить персону</button> </Link>
