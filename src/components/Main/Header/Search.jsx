@@ -162,9 +162,6 @@ const SearchWrapper = styled.div`
 		padding-top: 7px;
 		padding-bottom: 8px;
 	}
-	.input:focus {
-		border: 1px solid #000;
-	}
 
 	.search__list {
 		border-radius: 24px;
