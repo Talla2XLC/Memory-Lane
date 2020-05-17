@@ -61,7 +61,6 @@ justify-content: flex-start;
 align-items: center;
 margin-left: auto;
 margin-right: auto;
-border-bottom: 1px solid rgba(130, 132, 130, 0.3);
 padding: 12px 0;
 box-sizing: border-box;
 background: #FFD1A9;

@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import './UserProfileInfoReName.sass';
 import axios from 'axios';
+import {connect} from 'react-redux';
+
+import { fetchUserFullName } from 'actions/actionUserFullName';
 
 class UserProfileInfoReName extends Component {
   state = {
@@ -10,7 +13,10 @@ class UserProfileInfoReName extends Component {
       email: this.props.currentUser.email,
       gender: this.props.currentUser.gender,
       city: this.props.currentUser.city,
-      birthday: this.props.currentUser.birthday
+      birthday: this.props.currentUser.birthday,
+      birthday_day: this.props.currentUser.birthday.substr(8,2),
+      birthday_month: this.props.currentUser.birthday.substr(5,2),
+      birthday_year: this.props.currentUser.birthday.substr(0,4)
     }
   }
 
@@ -40,14 +46,16 @@ class UserProfileInfoReName extends Component {
   }
 
   commitUserInfo = () => {
-    const { firstName, lastName, email, gender, city, birthday } = this.state.newUserState;
+    const { first_name, last_name, email, gender, city, birthday_day, birthday_month, birthday_year } = this.state.newUserState;
+    const { getUserInfo } = this.props;
+    const birthday = birthday_year + '-' + birthday_month + '-' + birthday_day;
 
     const token = localStorage.getItem('token');
 
     const newData = {};
 
-    if (firstName && firstName !== this.props.currentUser.first_name) newData.first_name = firstName;
-    if (lastName && lastName !== this.props.currentUser.last_name) newData.last_name = lastName;
+    if (first_name && first_name !== this.props.currentUser.first_name) newData.first_name = first_name;
+    if (last_name && last_name !== this.props.currentUser.last_name) newData.last_name = last_name;
     if (email && email !== this.props.currentUser.email) newData.email = email;
     if (gender && gender !== this.props.currentUser.gender) newData.gender = gender;
     if (city && city !== this.props.currentUser.city) newData.city = city;
@@ -68,6 +76,7 @@ class UserProfileInfoReName extends Component {
           console.log(res);
           if (res.data.result) {	// res.status === 200
             this.handleSetEditing(false);
+            getUserInfo();
           } else {	// res.status !== 200
             console.error(res.data.error);
             alert(`${res.data.error}`);
@@ -106,23 +115,44 @@ class UserProfileInfoReName extends Component {
         <div className=' UserProfileInfoReName__form-item UserProfileInfoReName__form-date'>
           <label>Дата рождения: </label>
           <div className='UserProfileInfoReName__form-groups'>
-
             <div>
               <label>
-                <input type='text' placeholder='дд'/>
+                <input
+                  type='text'
+                  placeholder='дд'
+                  name='birthday_day'
+                  size='1'
+                  maxLength='2'
+                  value={this.state.newUserState.birthday_day ?? ''}
+                  onChange={this.handleInput}
+                />
                 <span/>
               </label>
-
             </div>
             <div>
               <label>
-                <input type='text' placeholder='мм'/>
+                <input
+                  type='text'
+                  placeholder='мм'
+                  name='birthday_month'
+                  size='1'
+                  maxLength='2'
+                  value={this.state.newUserState.birthday_month ?? ''}
+                  onChange={this.handleInput}
+                />
                 <span/>
               </label>
-
             </div>
             <div>
-              <input type='text' placeholder='гг'/>
+              <input
+                type='text'
+                placeholder='гггг'
+                name='birthday_year'
+                size='3'
+                maxLength='4'
+                value={this.state.newUserState.birthday_year ?? ''}
+                onChange={this.handleInput}
+              />
             </div>
 
           </div>
@@ -173,9 +203,9 @@ class UserProfileInfoReName extends Component {
             <label className='UserProfileInfoReName__checkbox'>
               <span className='UserProfileInfoReName__checkbox-text'> не указан </span>
               <input
-                id='undefined'
+                id='none'
                 type='radio'
-                checked={this.state.newUserState.gender === 'undefined'}
+                checked={this.state.newUserState.gender === 'none'}
                 onChange={this.checkGender}
               />
             </label>
@@ -192,4 +222,17 @@ class UserProfileInfoReName extends Component {
   }
 }
 
-export default UserProfileInfoReName;
+const mapStateToProps = state => {
+  return {
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getUserInfo: () => {
+      dispatch(fetchUserFullName());
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserProfileInfoReName);
