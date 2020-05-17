@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
 
-class UserAlbum extends Component {
+class Album extends Component {
   render() {
+    const { albumId } = this.props;
     const userAlbum = this.props.album;
-    const albumId = this.props.albumId;
     const albumItem = userAlbum.find( item => item.id === albumId);
 
     return (
@@ -20,7 +20,9 @@ class UserAlbum extends Component {
         </div>
         <div className='photoContainer'>
         </div>
-        <button>Добавить фото</button>
+        <button>
+          Добавить фото
+        </button>
       </>
     );
   }
@@ -35,4 +37,4 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-export default connect(mapStateToProps)(UserAlbum);
+export default connect(mapStateToProps)(Album);

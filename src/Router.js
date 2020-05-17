@@ -8,10 +8,10 @@ import UserAuthorization from './components/Main/UserAuthorization';
 import Funnel from './components/Main/Funnel';
 
 import MainContent from './components/Main/MainContent';
-import UsersAlbums from './components/Main/Albums/UsersAlbums';
+import UsersAlbums from './components/Main/Albums/UserAlbums';
 import Persons from './components/Main/Persons';
 // import Albums from './components/Main/Albums/Photos';
-import UserAlbum from './components/Main/Albums/UserAlbum';
+import UserAlbum from './components/Main/Albums/Album';
 import Stories from './components/Main/Stories/Stories';
 import Services from './components/Main/Services';
 import Learn from './components/Main/Learn';
