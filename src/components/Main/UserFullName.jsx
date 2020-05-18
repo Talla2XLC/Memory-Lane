@@ -110,7 +110,7 @@ class UserFullName extends Component {
 	}
 
 	skipIntroduce = () => {
-		const { checkUserName, checkUserAskedToIntroduce } = this.props;
+	  const { checkUserName, checkUserAskedToIntroduce } = this.props;
 
 	  const token = localStorage.getItem('token');
 
@@ -118,7 +118,7 @@ class UserFullName extends Component {
 	    .post(
 	      'http://api.memory-lane.ru/db/setAccount',
 	      {
-	        askedToIntroduce: 'true'
+	        asked_to_introduce: 'true'
 	      },
 	      {
 	        headers: {
@@ -127,9 +127,9 @@ class UserFullName extends Component {
 	        }
 	      })
 	    .then(res => {
-				if (res.data.result) {	// res.status === 200
-					checkUserAskedToIntroduce();
-					checkUserName();
+	      if (res.data.result) {	// res.status === 200
+	        checkUserAskedToIntroduce();
+	        checkUserName();
 	      } else {	// res.status !== 200
 	        console.error(res.data.error);
 	        alert(`${res.data.error}`);

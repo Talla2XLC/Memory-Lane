@@ -14,9 +14,9 @@ class UserProfileInfoReName extends Component {
       gender: this.props.currentUser.gender,
       city: this.props.currentUser.city,
       birthday: this.props.currentUser.birthday,
-      birthday_day: this.props.currentUser.birthday.substr(8,2),
-      birthday_month: this.props.currentUser.birthday.substr(5,2),
-      birthday_year: this.props.currentUser.birthday.substr(0,4)
+      birthday_day: this.props.currentUser.birthday.substr(8,2) ?? '',
+      birthday_month: this.props.currentUser.birthday.substr(5,2) ?? '',
+      birthday_year: this.props.currentUser.birthday.substr(0,4) ?? ''
     }
   }
 

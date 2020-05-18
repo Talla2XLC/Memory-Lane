@@ -27,7 +27,7 @@ class UserProfileInfo extends Component {
         <ul className='UserProfileInfo__list'>
           <li className='UserProfileInfo__item'>
             <h3> Дата рождения:</h3>
-            <span>{new Date(currentUser.birthday).toLocaleDateString('ru-RU')}</span>
+            <span>{currentUser.birthday ? new Date(currentUser.birthday).toLocaleDateString('ru-RU') : ''}</span>
           </li>
           <li className='UserProfileInfo__item'>
             <h3>Город:</h3>
