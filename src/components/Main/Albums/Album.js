@@ -31,9 +31,11 @@ class Album extends Component {
         })
       .then(res => {
         if (res.data.result) {		// res.status === 200
+          console.log(res.data);
           this.setState({ images: res.data });
           this.setState({ loading: false });
         } else {	// res.status !== 200
+          console.log(albumId);
           console.error(res.data.error);
           alert(`${res.data.error}`);
         }
