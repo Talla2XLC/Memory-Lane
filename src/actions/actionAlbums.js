@@ -32,7 +32,7 @@ export const getAlbums = () => dispatch => {
       }
     )
     .then(res => {
-      dispatch(getAlbumsSucces(res.data));
+      dispatch(getAlbumsSucces(res.data.content));
     })
     .catch(error => dispatch(getAlbumsFailed(error.message)));
 };

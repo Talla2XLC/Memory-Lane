@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 class Album extends Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class Album extends Component {
   }
 
   getImages() {
-    const { albumId, token } = this.props;
+    const { album, token } = this.props;
 
     this.setState({ loading: true });
 
@@ -28,7 +29,7 @@ class Album extends Component {
       .post(
         'http://api.memory-lane.ru/get/images',
         {
-          'id_album': albumId
+          'id_album': album.id
         },
         {
           headers: {
@@ -41,7 +42,7 @@ class Album extends Component {
           this.setState({ loading: false });
           console.log(res.data);
           if (res.data.content) {
-            this.setState({ images: res.data.content });
+            this.setState({ images: Object.values(res.data.content) });
             this.setState({ isEmpty: false });
             console.log(true);
           } else {
@@ -57,13 +58,13 @@ class Album extends Component {
   }
 
   uploadImage() {
-    const { albumId, token } = this.props;
+    const { album, token } = this.props;
     const { imagesToUpload } = this.state;
-    const data = new FormData()
+    const data = new FormData();
     for (let x = 0; x < imagesToUpload.length; x++) {
       data.append('images[]', this.state.imagesToUpload[x]);
     }
-    data.append('id_album', albumId);
+    data.append('id_album', album.id);
     
     if (imagesToUpload.length > 0)
       axios
@@ -95,29 +96,38 @@ class Album extends Component {
   }
 
   render() {
-    const { isEmpty } = this.state;
-    const { albumId } = this.props;
-    const userAlbum = this.props.album;
-    const albumItem = userAlbum.find( item => item.id === albumId);
+    const { isEmpty, images } = this.state;
+    const { album } = this.props;
+
+    const imagesItem = images.map(image =>
+      (
+        <Link className={'image-link'} key={image.id} to={`/image/${image.id}`}>
+          <img src={image.urls} alt={album.album_name + '_' + image.photo_name}/>
+          <div>
+            {image.photo_name}
+          </div>
+        </Link>
+      )
+    );
 
     return (
       <>
         <div>
-          Название альбома:
-          {albumItem.album_name}
+          Название альбома:&nbsp;
+          {album.album_name}
         </div>
         <div>
-          Описание альбома: 
-          {albumItem.description}
+          Описание альбома:&nbsp;
+          {album.description}
         </div>
-        <div className='photoContainer'>
-          {
-            isEmpty ?
-              <span>В данном альбоме ещё нет фото</span>
-              :
-              <span>Картинки</span>
-          }
-        </div>
+        {
+          isEmpty ?
+            <span>В данном альбоме ещё нет фото</span>
+            :
+            <div className='photoContainer'>
+              { imagesItem }
+            </div>
+        }
         <input type='file' name='file' multiple onChange={this.uploadFileHandler}/>
         <button onClick={this.uploadImage}>
           Загрузить фото
@@ -130,8 +140,7 @@ class Album extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    album: Object.values(state.albums.albums.content),
-    albumId: props.match.params.id,
+    album: state.albums.albums[props.match.params.id],
     token: state.session.sessionID
   };
 };
