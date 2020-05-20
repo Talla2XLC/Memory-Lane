@@ -26,25 +26,18 @@ class UserProfileInfo extends Component {
 
         <ul className='UserProfileInfo__list'>
           <li className='UserProfileInfo__item'>
-            <h3>Проект: </h3>
-            <span>{/*Название текущего проекта*/}</span>
-          </li>
-          <li className='UserProfileInfo__item'>
             <h3> Дата рождения:</h3>
-            <span>{currentUser.birthday}</span>
-
+            <span>{currentUser.birthday ? new Date(currentUser.birthday).toLocaleDateString('ru-RU') : ''}</span>
           </li>
           <li className='UserProfileInfo__item'>
             <h3>Город:</h3>
             <span>{currentUser.city}</span>
-
           </li>
           <li className='UserProfileInfo__item'>
             <h3>Эл. почта:</h3>
             <div>
               <span>{currentUser.email}</span>
               <div>
-
                 <label className='UserProfileInfo__checkbox'>
                   <input type='checkbox'/>
                   <span className='UserProfileInfo__checkbox-fake'/>
@@ -52,12 +45,10 @@ class UserProfileInfo extends Component {
                 </label>
               </div>
             </div>
-
           </li>
           <li className='UserProfileInfo__item'>
             <h3>Пол:</h3>
             <span>{this.fetchGender(currentUser.gender)}</span>
-
           </li>
           <li className='UserProfileInfo__item'>
             <h3>Ваш тариф:</h3>
@@ -65,7 +56,6 @@ class UserProfileInfo extends Component {
               <span>{/*Стандарт*/}</span>
               <span className='UserProfileInfo__item-change'>Сменить тариф</span>
             </div>
-
           </li>
         </ul>
 
