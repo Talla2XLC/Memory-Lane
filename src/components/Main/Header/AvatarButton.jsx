@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 
 import { ReactComponent as AvatarFemale } from './svg/avatarFemale.svg';
@@ -7,10 +8,6 @@ import { ReactComponent as AvatarMale } from './svg/avatarMale.svg';
 import { ReactComponent as AvatarUndefined } from './svg/avatarUndefined.svg';
 
 class AvatarButton extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   fetchUserAvatar(gender) {
     switch (gender) {
       case 'male':
@@ -27,9 +24,9 @@ class AvatarButton extends Component {
 
     return (
       <AvatarWrapper>
-        <button className='avatar-button'>
+        <Link className='avatar-button' to='/profile/'>
           {this.fetchUserAvatar(gender)}
-        </button>
+        </Link>
       </AvatarWrapper>
     );
   }
@@ -40,6 +37,9 @@ margin-right: 40px;
 .avatar-button{
   border: none;
   background: none;
+}
+.avatar-button:focus{
+  outline: none;
 }
 `;
 

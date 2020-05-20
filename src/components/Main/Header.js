@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Search from './Header/Search';
 import Notice from './Header/Notice';
-import SettingsMenu from './Header/Settings_menu';
 import AddSection from './Header/Add_section';
 import AvatarButton from './Header/AvatarButton';
 
@@ -19,24 +18,23 @@ class Header extends Component {
 
   render() {
     const { currentUser } = this.props;
-    console.log(currentUser);
 
     return (
       <HeaderWrapper className='headerDiv'>
-        <div className='header__top'>
-          <a href='/'>
-            <div className='logo logoFont'>Memory Lane</div>
-            <div className='logoDot'/>
-          </a>
-          <Notice />
-          <div className='userName'>{this.fetchUserName(currentUser)}</div>
-          <AvatarButton gender={currentUser.gender}/>
-          <SettingsMenu/>
-        </div>
-        <div className='header__bottom'>
+        <a className='logoLink' href='/'>
+          <div className='logo logoFont'>Memory Lane</div>
+          <div className='logoDot'/>
+        </a>
+        <div className='header__center'>
           <Search/>
           <AddSection/>
         </div>
+        <div className='header__right'>
+          <Notice />
+          <div className='userName'>{this.fetchUserName(currentUser)}</div>
+          <AvatarButton gender={currentUser.gender}/>
+        </div>
+
       </HeaderWrapper>
     );
   }
@@ -57,13 +55,22 @@ export default connect(mapStateToProps, mapDispatchToProps)(Header);
 
 const HeaderWrapper = styled.div`
 z-index: 5;
+width: 100%;
+display: flex;
+justify-content: flex-start;
+align-items: center;
 margin-left: auto;
 margin-right: auto;
-width: 1140px;
+padding: 12px 0;
+box-sizing: border-box;
+background: #FFD1A9;
+
+.logoLink {
+  margin-left: 45px;
+}
 .logo {
   float: left;
-  margin-right: 6px;
-  margin-left: 45px;
+  margin-right: 9px;
 }
 .logoDot {
   width: 7px;
@@ -74,16 +81,18 @@ width: 1140px;
   margin-top: 24px;
 }
 
-.header__top {
-  border-bottom: 1px solid rgba(130, 132, 130, 0.3);
-  margin-bottom: 30px;
+.header__center{
   display: flex;
-  padding: 12px 0;
-  box-sizing: border-box;
-  background: #FFD1A9;
+  justify-content: flex-start;
+  margin-left: 85px;
 }
 
-
+.header__right{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: auto;
+}
 .userAvatar {
   width: 40px;
   height: 40px;
@@ -92,7 +101,7 @@ width: 1140px;
 }
 
 .userName {
-  margin: 0 30px 0 15px;
+  margin: 0 15px 0 15px;
 }
 
 

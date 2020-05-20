@@ -1,4 +1,4 @@
-.UserProfaleInfoReName
+.UserProfileInfoReName
   &__form
     max-width: 410px
 
@@ -15,7 +15,6 @@
       justify-content: center
       input
         padding: 3px 0 3px 6px
-        max-width: 34px
         margin-right: 13px
       span
         position: relative
@@ -53,31 +52,15 @@
     &-gender
       display: flex
       justify-content: space-between
-  &__checkbox
 
-    &-text
+::-webkit-input-placeholder /* Edge */
+  color: #E0E0E0
 
-    &-fake
-      position: relative
-      display: inline-block
-      width: 16px
-      height: 16px
-      border: 1px solid #000
-      &:before
-        content: ''
+::-ms-input-placeholder /* Internet Explorer 10-11 */
+  color: #E0E0E0
 
-        position: absolute
-        top: 0
-        width: 14px
-        height: 14px
-        background-image: url('../../svg/inputcheck.svg')
-        background-position: center center
-        background-size: cover
-        opacity: 0
-    input
-      display: none
-      &:checked + .UserProfaleInfoReName__checkbox-fake:before
-        opacity: 1
+::placeholder
+  color: #E0E0E0
 
-
-
+label
+  margin-bottom: 0 !important

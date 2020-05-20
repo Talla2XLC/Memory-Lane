@@ -15,16 +15,15 @@ export default class AlbumsItem extends Component {
   }
 
   render() {
-    const checkMark = '\u2713';
-
     const desc = this.props.isDesc ? <div className='itemDescription text1'>Ipsum ex commodo ad ad ipsum non quis laborum adipisicing reprehenderit aliqua veniam excepteur.</div> : '';
 
     const img = this.props.isImg ? <img className={'img ' + this.props.gridType + '_img'} src={this.props.url} alt='gallery_pic'/> : '';
 
     const selectBTN =
-      <button className={'select-button ' + this.props.gridType + '_select-button'} onClick={() => this.handleItemSelect(this.props.id)}>
-        {this.props.isSelected ? checkMark : ''}
-      </button>;
+      <button className={
+        'select-button ' + this.props.gridType + '_select-button ' + (this.props.isSelected ? 'selected-button' : '')
+      } onClick={() => this.handleItemSelect(this.props.id)}
+      />;
 
     const imgDiv =
       <div className={'img-div ' + this.props.gridType + '_img-div'}>

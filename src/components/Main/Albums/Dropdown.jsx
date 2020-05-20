@@ -51,7 +51,7 @@ class Dropdown extends Component {
               <div className={'dropdown-list'}>
                 {
                   viewData.map(view => {
-                    return <button className='viewButton' key={view.id} onClick={() => this.handleClick(view.id, view.name)}>{view.name}</button>;
+                    return <button className='dropdownButton' key={view.id} onClick={() => this.handleClick(view.id, view.name)}>{view.name}</button>;
                   })
                 }
               </div>

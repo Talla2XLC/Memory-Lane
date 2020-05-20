@@ -17,7 +17,6 @@ import { ReactComponent as EducationIcon } from './svg/educationIcon.svg';
 class Main extends Component {
   constructor(props) {
     super(props);
-    this.setHeaderHeight = this.setHeaderHeight.bind(this);
     this.state = {
       navItems: [
         { endpoint: 'persons', title: 'Персоны', icon: <PersonsIcon/>  },
@@ -30,13 +29,9 @@ class Main extends Component {
     };
   }
 
-  setHeaderHeight(height) {
-    this.setState({ headerHeight: height });
-  }
-
   render() {
     const { navItems } = this.state;
-    const { loading, isAuthorized, headerHeight, hasFullName } = this.props;
+    const { loading, isAuthorized, headerHeight, hasFullName, askedToIntroduce } = this.props;
 
     return (
       <BrowserRouter>
@@ -44,7 +39,7 @@ class Main extends Component {
           isAuthorized ?
             (loading ?
               <h1>Загрузка данных</h1> :
-              hasFullName ?
+              (hasFullName || askedToIntroduce) ?
                 (<MainWrapper className='Main' headerHeight={headerHeight}>
                   <Header headerHeight={this.setHeaderHeight}/>
                   
@@ -58,7 +53,7 @@ class Main extends Component {
                   </PerfectScrollbar>
                 </MainWrapper>) :
 
-                <Router isAuthorized={isAuthorized} hasFullName={hasFullName}/>
+                <Router isAuthorized={isAuthorized} hasFullName={hasFullName} />
             )
 
             : <Router isAuthorized={isAuthorized}/>
@@ -72,17 +67,22 @@ background-color: #F6F6F6;
 display: flex;
 flex-flow: column nowrap;
 height: 100vh;
+width: 100%;
+min-width: 1340px;
 overflow: hidden;
 justify-content: stretch;
 
 box-sizing: border-box;
 
+.scrollbar-container {
+  margin-left: 0
+}
 
 .central-content {
+  display: flex;
   margin-left: auto;
   margin-right: auto;
-  width: 1140px;
-  height: calc(100vh - ${props => props.headerHeight}px);
+  width: 100%;
 }
 `;
 
@@ -93,7 +93,8 @@ const mapStateToProps = state => {
     error: state.userInfo.error,
     isAuthorized: state.session.isAuthorized,
     currentUser: state.userInfo.currentUser,
-    hasFullName: !!(state.userInfo.currentUser.first_name || state.userInfo.currentUser.last_name)
+    hasFullName: !!(state.userInfo.currentUser.first_name || state.userInfo.currentUser.last_name),
+    askedToIntroduce: state.userInfo.currentUser.asked_to_introduce
   };
 };
 

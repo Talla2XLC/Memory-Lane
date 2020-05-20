@@ -1,20 +1,39 @@
 .MainNav
   display: flex
-  flex-direction: column
+  flex-flow: column nowrap
+  align-items: center
   box-sizing: border-box
   position: fixed
-  z-index: 999
+  z-index: 10
+  width: 315px
+  height: 100%
+  background: white
+  padding: 2rem 0
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3)
   >a
     display: block
     margin-bottom: 36px
     color: #000000
-    font-family: Roboto
+    font-family: Roboto, sans-serif
     font-style: normal
     font-weight: normal
     font-size: 16px
     line-height: 19px
     &:last-of-type
       margin-bottom: 0
+    &:hover
+      text-decoration: none
+    &:hover .navItemSVG
+      background-color: #BDE1CA
+      border-radius: 50%
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3)
+    &:active .navItemSVG
+      background-color: #5DB07B
+      border-radius: 50%
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3)
+      > svg > path
+        fill: white
+
 
 .navigation-item
   display: flex
@@ -22,12 +41,12 @@
   align-items: center
 
 .navItemSVG
-  width: 67px
-  height: 67px 
-  border-radius: 50%
-  margin-bottom: 15px
-  background-color: #FFD1A9
   display: flex
-  padding: 19px
+  flex-flow: row nowrap
+  justify-content: center
+  align-items: center
+  width: 52px
+  height: 52px
+  margin-bottom: 6px
+  display: flex
   box-sizing: border-box
-

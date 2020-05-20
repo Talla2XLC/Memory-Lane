@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import Dropdown from './Albums/Dropdown';
 
 export default class Sorting extends Component {
   render() {
     return (
       <SortingContainer>
-        <div className='head1 sortingTitle '>
-        Сортировка
+        <div className="left-sorting">
+          <div className='sortingDate'>По дате</div>
+          <div className='sortingHuman'>По человеку</div>
         </div>
-        <div className='sortingDate'>По дате</div>
-        <div className='sortingHuman'>По человеку</div> 
+        <div className="right-sorting">
+          <div className='sortingAction'>Действие</div>
+          <Dropdown gridId={this.props.gridId}/>
+        </div>
 
       </SortingContainer>
     );
@@ -17,26 +21,32 @@ export default class Sorting extends Component {
 }
 
 export const SortingContainer = styled.div`
-display: grid;
+height: 72px;
+z-index: 2;
+width: 100%;
+position:sticky;
+top: 0;
+display: flex;
+flex-flow: row nowrap;
+align-items: center;
 background: #F6F6F6;
-width: inherit;
-grid-template-areas: "title title title" "date human view";
-grid-template-rows: 1fr 1fr;
-grid-template-columns: 100px 100px 1fr;
-position: fixed;
-z-index: 999;
+
+.left-sorting {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
 .sortingDate {
-grid-area: date;
-text-align: left;
+  margin-right: 30px;
 }
-.sortingHuman {
-grid-area: human;
-text-align: left;
+
+.right-sorting {
+  display: flex;
+  flex-flow: row nowrap;
+  margin-left: auto
 }
-.sortingTitle {
-  color: #000000;
-}
-.sortingDropdown {
-  grid-area: dropdown;
+
+.sortingAction {
+  margin-right: 30px;
 }
 `;

@@ -42,6 +42,23 @@ export default function userInfo(state = initialState, action) {
         ...state,
         error: action.payload.error
       };
+    case 'SKIP_INTRODUCE_START':
+      return {
+        ...state,
+        loading: true
+      };
+    case 'SKIP_INTRODUCE_SUCCESS':
+      return {
+        ...state,
+        error: null,
+        loading: false,
+        currentUser: action.payload
+      };
+    case 'SKIP_INTRODUCE_FAILED':
+      return {
+        ...state,
+        error: action.payload.error
+      };
     default:
       return state;
   }

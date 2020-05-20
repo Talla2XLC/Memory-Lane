@@ -1,5 +1,5 @@
 import React from 'react';
-import './UserProfaleNav.sass';
+import './UserProfileNav.sass';
 
 const UserProfaleNav = () => {
   return (

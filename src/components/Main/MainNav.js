@@ -15,8 +15,8 @@ export default class MainNav extends Component {
       (
         <Link className='navigation-item-link' key={ shortid.generate() } to={ `/${navItem.endpoint}/` }>
           <div className='navigation-item navFont'>
-            <div className='navItemSVG'>{navItem.icon}</div>
-            {navItem.title}
+            <div className='navItemSVG'>{ navItem.icon }</div>
+            { navItem.title }
           </div>
         </Link>
       ) 

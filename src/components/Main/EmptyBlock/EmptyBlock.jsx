@@ -6,12 +6,10 @@ import {ButtonContainer} from '../Button';
 export default class EmptyBlock extends Component {
   render() {
     return (
-      <div>
-        <div className='emptyBlock'>
-          <FamilySvg className='familySvg' />
-          <div className='head2 white'>Здесь пока нет ни одной записи</div>
-          <ButtonContainer className='emptyNewsBlockButton' white={true}>Перейти</ButtonContainer>
-        </div>
+      <div className='emptyBlock'>
+        <FamilySvg className='familySvg' />
+        <div className='head2'>Здесь пока нет ни одной записи</div>
+        <ButtonContainer className='emptyNewsBlockButton' >Перейти</ButtonContainer>
       </div>
     );
   }

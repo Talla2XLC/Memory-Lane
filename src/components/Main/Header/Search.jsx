@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-// import people from './people.json';
 import { ReactComponent as IconSearch } from './svg/searchIcon.svg';
+import { ReactComponent as FilterSearch } from './svg/filterIcon.svg';
 import styled from 'styled-components';
 
 
@@ -31,9 +31,12 @@ export default class Search extends Component {
       return (
         <SearchWrapper>
           <div className='search'>
-            <input className='input' placeholder='Поиск' type='search'/>
             <button className='search-submit'>
-              <IconSearch className='inputIcon'/>
+              <IconSearch />
+            </button>
+            <input className='input' placeholder='Поиск' type='search'/>
+            <button className='search-filter'>
+              <FilterSearch />
             </button>
           </div>
           <div className='search__list'>
@@ -47,7 +50,7 @@ export default class Search extends Component {
 }
 
 const SearchWrapper = styled.div`
-	width: 565px;
+  margin-right: 17px;
 
 	.search {
 		/* устанавливаем необходимую ширину формы в зависимости от дизайна
@@ -61,23 +64,21 @@ const SearchWrapper = styled.div`
 
   .input {
 		background: #FFFFFF;
-    box-shadow: 0px 2px 3px #E2E2E2;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
 		border-radius: 24px;
 		width: 387px !important;
 		height: 35px;
-		position: absolute;
-		right: 0;
 	}
 
-	.search input,
-	.search .search-submit {
+	.input,
+	.search-submit,
+	.search-filter {
 		/* отключаем бордюры у инпутов */
 		border: none;
-		margin-right: 40px;
 	}
 
 	/* стили для поля ввода */
-	.search .input {
+	.input {
 		/* растягиваем поле ввода на всю ширину формы */
 		width: 100%;
 
@@ -85,7 +86,7 @@ const SearchWrapper = styled.div`
 		** регулируем высоту формы
 		** внутренний отступ справа (37px) делаем больше левого,
 		** т.к. там будет размещена кнопка отправки	*/
-		padding: 8px 37px 9px 24px;
+		padding: 8px 37px 9px 40px;
 
 		/* чтобы ширина поля ввода (100%) включала в себя внутренние отступы */
 		-moz-box-sizing: border-box;
@@ -96,8 +97,8 @@ const SearchWrapper = styled.div`
 		border-radius: 24px;
 
 		background: #fff;
-		font: 16px Roboto, Tahoma, Arial, sans-serif;
-		color: #555;
+		font: 14px Roboto, Tahoma, Arial, sans-serif;
+		color: rgba(130, 132, 130, 0.3);
 		outline: none;
 		
 
@@ -108,20 +109,16 @@ const SearchWrapper = styled.div`
 	}
 
 	/* меняем оформление поля ввода при фокусе */
-	.search .input:focus {
+	.input:focus {
 		box-shadow: inset 0 0 2px rgba(0,0,0,0.2), inset 0 1px 2px rgba(0,0,0,0.2);
 		color: #000;
 	}
 
 	/* оформляем кнопку отправки */
-	.search .search-submit {
+	.search-submit,
+	.search-filter {
 		/* позиционируем кнопку абсолютно от правого края формы */
 		position: absolute;
-		top: 4px;
-		right: 0;
-		padding-right: 16.5px;
-
-		width: 37px;
 
 		/* растягиваем кнопку на всю высоту формы */
 		height: 100%;
@@ -132,10 +129,19 @@ const SearchWrapper = styled.div`
 		/* добавляем прозрачность кнопке отправки */
 		opacity: 0.5;
 	}
+	
+	.search-submit {
+		left: 12px;
+	}
+	
+	.search-filter {
+		right: 12px;
+	}
 
 	/* при наведении курсора меняем прозрачность кнопки отправки */
-	.search .search-submit:hover {
-		opacity: 0.8;
+	.search-submit:hover,
+	.search-filter:hover{
+		opacity: 1;
 	}
 
 	/* данное свойство необходимо для того, чтобы в браузерах
@@ -151,20 +157,10 @@ const SearchWrapper = styled.div`
 		width: 28%;
 		padding: 0 52px 0 0;
 	}
-	.search .input {
+	.input {
 		border: 1px solid #DFDFDF;
 		padding-top: 7px;
 		padding-bottom: 8px;
-	}
-	.search .input:focus {
-		border: 1px solid #000;
-	}
-	.search .search-submit {
-		filter: alpha(opacity=50);
-	}
-
-	.search .search-submit:hover {
-		filter: alpha(opacity=80);
 	}
 
 	.search__list {
