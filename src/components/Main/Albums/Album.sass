@@ -1,7 +1,27 @@
-.photoContainer
-  display: flex
-  flex-flow: column nowrap
+.albumContent
+  box-sizing: border-box
 
-.image-link > img
-  width: 50%
-  height: 20%
+.bigColView
+  display: grid
+  grid-gap: 35px 45px
+  grid-template-columns: repeat(3, 1fr)
+
+.smallColView
+  display: grid
+  grid-gap: 25px 30px
+  grid-template-columns: repeat(5, 1fr)
+
+.bigRowView
+  display: grid
+  grid-gap: 35px 45px
+  grid-template-columns: repeat(2, 1fr)
+
+.smallRowView
+  display: grid
+  grid-gap: 25px
+  grid-template-columns: repeat(3, 1fr)
+
+.noPreview
+  display: grid
+  grid-gap: 3rem
+  grid-template-columns: repeat(5, 1fr)
