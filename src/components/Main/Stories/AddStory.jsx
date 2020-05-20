@@ -11,10 +11,24 @@ class AddStory extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      storyContent: ''
+    }
+
     const { fetchStoriesData } = this.props;
 
     fetchStoriesData();
-  }
+  };
+
+  addStory() {
+
+  };
+
+  handleInput = e => {
+	  const { name, value } = e.target;
+
+	  this.setState({ [name]: value });
+	};
 
   render() {
     const { loading, stories } = this.props;
@@ -28,9 +42,9 @@ class AddStory extends Component {
               <div className='addStory__desk'>
                 <div className='font1Light'>Добавьте заголовок к вашей истории</div>
                 <div>тег</div>
-                <div className='font1Light'>{this.props.autor}</div>
-                <div className='font1Light'>{this.props.date}</div>
-                <div>country</div>
+                <div className='font1Light'>Автор</div>
+                <div className='font1Light'>Дата</div>
+                <div>Страна</div>
               </div>
               <div className='addStory__photo'>
                 <img className='addPhotoItem' src='https://picsum.photos/168/168' />
@@ -40,13 +54,17 @@ class AddStory extends Component {
                 <img className='addPhotoItem' src='https://picsum.photos/168/168' />
 
               </div>
-              <textarea className='addStory__textArea' />
+              <textarea
+                className='addStory__textArea'
+                name='storyContent'
+                onChange={this.handleInput}
+              />
               <button>Опубликовать</button>
             </div>  
           }
         </PerfectScrollbar>)
     );
-  }
+  };
 }
 
 const mapStateToProps = state => {
