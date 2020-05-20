@@ -4,6 +4,7 @@ import { fetchStories } from '../../../actions/actionStories';
 
 import StoryItem from './StoryItem';
 import Sorting from '../Sorting';
+import EmptyBlock from '../EmptyBlock/EmptyBlock';
 
 import './Stories.sass';
 
@@ -24,24 +25,26 @@ class Stories extends Component {
     return (
       loading ?
         <h1>Загрузка данных</h1> :
-        (<div className='contentContainer'>
-          <Sorting/>
-          <div className='stories'>
-            {
-              Object.values(stories).map(story =>
-                <StoryItem 
-                  key={story.id}
-                  id={story.id}
-                  title={story.story_name}
-                  author={story.author}
-                  date={story.date_updated}
-                  content={story.content}
-                  picture={story.ico_url}
-                />
-              )
-            }
-          </div>
-        </div>)
+          Object.keys(stories).length === 0 ?
+          <div className='contentContainer'> <EmptyBlock/> </div> :
+            (<div className='contentContainer'>
+              <Sorting/>
+              <div className='stories'>
+                {
+                  Object.values(stories).map(story =>
+                    <StoryItem 
+                      key={story.id}
+                      id={story.id}
+                      title={story.story_name}
+                      author={story.author}
+                      date={story.date_updated}
+                      content={story.content}
+                      picture={story.ico_url}
+                    />
+                  )
+                }
+              </div>
+            </div>)
     );
   };
 }
