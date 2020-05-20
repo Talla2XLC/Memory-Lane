@@ -6,6 +6,7 @@ import { fetchStories } from '../../../actions/actionStories';
 import './Stories.sass';
 
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 class AddStory extends Component {
   constructor(props) {
@@ -16,7 +17,8 @@ class AddStory extends Component {
       date: '',
       tag: '',
       country: '',
-      content: ''
+      content: '',
+      hasCreated: false
     }
 
     const { fetchStoriesData } = this.props;
@@ -25,7 +27,37 @@ class AddStory extends Component {
   };
 
   addStory() {
+    // const { author, date, tag, country, content } = this.state;
+    const token = localStorage.getItem('token');
 
+    axios.
+      post(
+        'http://api.memory-lane.ru/db/setHistory',
+        {
+          story_name: 'story_name',
+          author: 'author',
+          date: 'date',
+          tag: 'tag',
+          country: 'country',
+          content: 'content'
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token
+          }
+        }
+      )
+	    .then(res => {
+	      if (res.data.result) {	// res.status === 200
+          alert(`Вы успешно создали новую историю!`);
+          this.setState({ hasCreated: true });
+	      } else {	// res.status !== 200
+	        console.error(res.data.error);
+	        alert(`${res.data.error}`);
+	      }
+	    })
+	    .catch(error => console.error(error));
   };
 
   handleInput = e => {
@@ -63,7 +95,9 @@ class AddStory extends Component {
                 name='storyContent'
                 onChange={this.handleInput}
               />
-              <button>Опубликовать</button>
+              <button
+                onClick={this.addStory}
+              >Опубликовать</button>
             </div>  
           }
         </PerfectScrollbar>)
