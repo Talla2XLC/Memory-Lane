@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './AlbumsItem.sass';
+import './PhotoItem.sass';
 import {ReactComponent as DownloadIcon} from '../svg/downloadIcon.svg';
 import {ReactComponent as ShareIcon} from '../svg/shareIcon.svg';
 import {ReactComponent as CommentsIcon} from '../svg/commentsIcon.svg';

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import { getAlbums } from '../../../actions/actionAlbums';
 import {ReactComponent as Folder} from '../svg/folder.svg';
 import axios from 'axios';
-import './Album.sass';
+import './UserAlbums.sass';
 import { Link } from  'react-router-dom';
 
 class UserAlbums extends Component {
