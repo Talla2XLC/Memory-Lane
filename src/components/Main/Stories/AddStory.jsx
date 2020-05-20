@@ -12,7 +12,11 @@ class AddStory extends Component {
     super(props);
 
     this.state = {
-      storyContent: ''
+      author: '',
+      date: '',
+      tag: '',
+      country: '',
+      content: ''
     }
 
     const { fetchStoriesData } = this.props;
