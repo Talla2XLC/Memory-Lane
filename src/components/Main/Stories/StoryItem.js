@@ -20,9 +20,13 @@ export default class StoriesItem extends Component {
 
     return (
       <div className='story'>
-        <img className='story__photo' src={picture} alt='storyPicture'/>
+        <Link className='story__photo' to={`/stories/${id}`}>
+          <img src={picture} alt='storyPicture'/>
+        </Link>
         <div className='story__info'>
-          <div className='head2 story__title'>{title}</div>
+          <Link className='head2 story__title' to={`/stories/${id}`}>
+            {title}
+          </Link>
           <div className='text3 story__authorDateContainer'>
             <div className='story__author'>{author}</div>
             <div className='story__date'>{dateReadable}</div>
