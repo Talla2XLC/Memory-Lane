@@ -18,7 +18,7 @@ export default class AddStory extends Component {
 
   handleCancel = () => this.setState({ modalOpened: false, hasCreated: true });
 
-  addStory() {
+  addStory = () => {
     const { author, date, tag, country, content } = this.state;
     const token = localStorage.getItem('token');
 
@@ -41,9 +41,11 @@ export default class AddStory extends Component {
         }
       )
 	    .then(res => {
+        console.log(this.state.content)
 	      if (res.data.result) {	// res.status === 200
           alert(`Вы успешно создали новую историю!`);
           this.setState({ hasCreated: true });
+          //redirect to stories
 	      } else {	// res.status !== 200
 	        console.error(res.data.error);
 	        alert(`${res.data.error}`);
@@ -60,6 +62,7 @@ export default class AddStory extends Component {
 
   render() {
     const { loading, stories } = this.props;
+    console.log(this.state.content)
 
     return (
       loading ?
@@ -84,7 +87,7 @@ export default class AddStory extends Component {
 
               <textarea
                 className='addStory__textArea'
-                name='storyContent'
+                name='content'
                 onChange={this.handleInput}
               />
               <button
