@@ -1,33 +1,24 @@
 import React, { Component } from 'react';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
-import { fetchStories } from '../../../actions/actionStories';
-
 import './Stories.sass';
 
-import { connect } from 'react-redux';
 import axios from 'axios';
 
-class AddStory extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      author: '',
-      date: '',
-      tag: '',
-      country: '',
-      content: '',
-      hasCreated: false
-    }
-
-    const { fetchStoriesData } = this.props;
-
-    fetchStoriesData();
+export default class AddStory extends Component {
+  state = {
+    author: '',
+    date: '',
+    tag: '',
+    country: '',
+    content: '',
+    hasCreated: false
   };
 
+  
+
   addStory() {
-    // const { author, date, tag, country, content } = this.state;
+    const { author, date, tag, country, content } = this.state;
     const token = localStorage.getItem('token');
 
     axios.
@@ -104,21 +95,3 @@ class AddStory extends Component {
     );
   };
 }
-
-const mapStateToProps = state => {
-  return {
-    loading: state.userStories.loading,
-    stories: state.userStories.stories,
-    error: state.userStories.error
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-		fetchStoriesData: () => {
-			dispatch(fetchStories());
-		}
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AddStory);
