@@ -14,6 +14,40 @@ export default class Detail extends Component {
     hasEdited: false
   };
 
+  editStory = () => {
+    const { author, date, tag, country, content, modalOpened, hasEdited } = this.state;
+    const token = localStorage.getItem('token');
+
+    axios
+      .post(
+        'http://api.memory-lane.ru/db/updateHistory',
+        {
+          author: 'author',
+          date: 'date',
+          tag: 'tag',
+          country: 'country',
+          content: 'content'
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token
+          }
+        }
+      )
+      .then(res => {
+        if (res.data.result) {	// res.status === 200
+          alert(`Вы успешно отредактировали историю!`);
+          this.setState({ hasEdited: true });
+          //redirect to stories
+	      } else {	// res.status !== 200
+	        console.error(res.data.error);
+	        alert(`${res.data.error}`);
+	      }
+	    })
+	    .catch(error => console.error(error));
+  };
+
   render() {
 
     return (
