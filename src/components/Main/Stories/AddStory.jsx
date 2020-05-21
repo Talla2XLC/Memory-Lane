@@ -15,7 +15,7 @@ export default class AddStory extends Component {
     hasCreated: false
   };
 
-  
+  handleCancel = () => this.setState({ modalOpened: false, hasCreated: true });
 
   addStory() {
     const { author, date, tag, country, content } = this.state;
