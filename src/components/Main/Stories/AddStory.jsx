@@ -7,6 +7,7 @@ import axios from 'axios';
 
 export default class AddStory extends Component {
   state = {
+    storyName: '',
     author: '',
     date: '',
     tag: '',
@@ -19,14 +20,14 @@ export default class AddStory extends Component {
   handleCancel = () => this.setState({ modalOpened: false, hasCreated: true });
 
   addStory = () => {
-    const { author, date, tag, country, content } = this.state;
+    const { storyName, author, date, tag, country, content } = this.state;
     const token = localStorage.getItem('token');
 
     axios.
       post(
         'http://api.memory-lane.ru/db/setHistory',
         {
-          story_name: 'story_name',
+          story_name: 'storyName',
           author: 'author',
           date: 'date',
           tag: 'tag',
