@@ -10,22 +10,24 @@ import { ReactComponent as CommentsIcon } from '../svg/commentsIcon.svg';
 export default class StoriesItem extends Component {
   render() {
     const { id, title, author, date, content, picture } = this.props;
-    const dateReadable = new Date(date).toLocaleString();
+
+    let options = {
+      dateStyle: 'medium',
+      timeStyle: 'short'
+    };
+
+    const dateReadable = new Date(date).toLocaleString('en-US', options);
 
     return (
       <div className='story'>
-        <Link className='storyPictureLink' to={`/stories/${id}`}>
-          <img className='story__photo' src={picture} alt='storyPicture'/>
-        </Link>
-        
+        <img className='story__photo' src={picture} alt='storyPicture'/>
         <div className='story__info'>
-          <Link className='storyLink' to={`/stories/${id}`}>
-            <div className='head2'>{title}</div>
-            <span className='text3 story__author'>{author}</span>
-            <span className='text3 '>{dateReadable}</span>
-            <div className='story__desk text1'>{content}</div>
-          </Link>
-
+          <div className='head2 story__title'>{title}</div>
+          <div className='text3 story__authorDateContainer'>
+            <div className='story__author'>{author}</div>
+            <div className='story__date'>{dateReadable}</div>
+          </div>
+          <div className='text1 story__content'>{content}</div>
           <div className='story__icons'>
             <DownloadIcon/>
             <ShareIcon className='iconsMargin'/>
