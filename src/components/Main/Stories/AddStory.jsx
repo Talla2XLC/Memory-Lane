@@ -12,6 +12,7 @@ export default class AddStory extends Component {
     tag: '',
     country: '',
     content: '',
+    modalOpened: false,
     hasCreated: false
   };
 
@@ -30,7 +31,7 @@ export default class AddStory extends Component {
           date: 'date',
           tag: 'tag',
           country: 'country',
-          content: 'content'
+          content: content
         },
         {
           headers: {
@@ -79,8 +80,8 @@ export default class AddStory extends Component {
                 <img className='addPhotoItem' src='https://picsum.photos/168/168' />
                 <img className='addPhotoItem' src='https://picsum.photos/168/168' />
                 <img className='addPhotoItem' src='https://picsum.photos/168/168' />
-
               </div>
+
               <textarea
                 className='addStory__textArea'
                 name='storyContent'
