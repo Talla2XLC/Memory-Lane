@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import './Stories.sass';
-// import { detailStory } from './storiesData';
+import axios from 'axios';
 
 export default class Detail extends Component {
-
-  // /db/updateHistory
+  state = {
+    author: '',
+    date: '',
+    tag: '',
+    country: '',
+    content: '',
+    modalOpened: false,
+    hasEdited: false
+  };
 
   render() {
 
@@ -21,7 +28,11 @@ export default class Detail extends Component {
             <div>country</div>
             <div className='text1'> Eiusmod consectetur ullamco nostrud nisi laborum ullamco nulla non est velit. </div>
             <div className='action'>
-              <button>Редактировать</button>
+              <button
+                onClick={this.editStory}
+              >
+                Редактировать
+            </button>
             </div>
           </div>
           <div className='details__left'>
