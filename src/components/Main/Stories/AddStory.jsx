@@ -41,7 +41,6 @@ export default class AddStory extends Component {
         }
       )
 	    .then(res => {
-        console.log(this.state.content)
 	      if (res.data.result) {	// res.status === 200
           alert(`Вы успешно создали новую историю!`);
           this.setState({ hasCreated: true });
