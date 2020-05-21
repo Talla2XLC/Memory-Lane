@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import PerfectScrollbar from 'react-perfect-scrollbar';
+
 import './Stories.sass';
+
 import axios from 'axios';
 
 export default class Detail extends Component {
   state = {
+    storyName: '',
     author: '',
     date: '',
     tag: '',
@@ -15,13 +18,14 @@ export default class Detail extends Component {
   };
 
   editStory = () => {
-    const { author, date, tag, country, content, modalOpened, hasEdited } = this.state;
+    const { storyName, author, date, tag, country, content, modalOpened, hasEdited } = this.state;
     const token = localStorage.getItem('token');
 
     axios
       .post(
         'http://api.memory-lane.ru/db/updateHistory',
         {
+          story_name: 'storyName',
           author: 'author',
           date: 'date',
           tag: 'tag',
@@ -40,7 +44,8 @@ export default class Detail extends Component {
           alert(`Вы успешно отредактировали историю!`);
           this.setState({ hasEdited: true });
           //redirect to stories
-	      } else {	// res.status !== 200
+        } else {	// res.status !== 200
+          console.log(res)
 	        console.error(res.data.error);
 	        alert(`${res.data.error}`);
 	      }
