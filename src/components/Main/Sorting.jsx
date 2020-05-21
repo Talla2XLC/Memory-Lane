@@ -14,14 +14,13 @@ export default class Sorting extends Component {
           <div className='sortingAction'>Действие</div>
           <Dropdown gridId={this.props.gridId}/>
         </div>
-
       </SortingContainer>
     );
   }
 }
 
 export const SortingContainer = styled.div`
-height: 72px;
+height: 76px;
 z-index: 2;
 width: 100%;
 position:sticky;
@@ -29,7 +28,6 @@ top: 0;
 display: flex;
 flex-flow: row nowrap;
 align-items: center;
-background: #F6F6F6;
 
 .left-sorting {
   display: flex;
