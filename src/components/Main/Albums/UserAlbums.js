@@ -102,9 +102,9 @@ class UserAlbums extends Component {
 
 	        <div key={albums.id}>
 
-	        <Link to={`/albums/${albums.id}`}>      
+	        <Link className='userAlbumsLink' to={`/albums/${albums.id}`}>      
 	          <div className='imgWrap'>	      
-	            <img className={this.state.styleType + '__img'} src='https://picsum.photos/238/149' alt='albumPreview'/>
+	            <img className='imgWrap__img' src='https://picsum.photos/238/149' alt='albumPreview'/>
 	          </div>
 	        </Link>
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Dropdown.sass';
-
+import {ReactComponent as Arrow} from '../svg/arrow.svg';
 const viewData = [
   { name: 'Большая плитка', id: 1},
   { name: 'Средняя плитка', id: 2},
@@ -42,7 +42,9 @@ class DropdownForAlbums extends Component {
       <div className='menu' >
         <div className='viewButton' onClick={this.showMenu}>
           Вид
+          <Arrow className='arrow'/>
         </div>
+ 
         {
           this.state.showMenu
             ? (

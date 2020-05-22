@@ -31,37 +31,33 @@
 /////////
 
 .userAlbumsWrapBig
-  grid-template-columns: 1fr 1fr
+  grid-template-columns: repeat(2, 1fr)
   display: grid
   wrap: wrap
   gap: 29px 38px
-  &__img
-    width: 500px
-    background: linear-gradient(180deg, rgba(59, 62, 60, 0) 73.54%, #3B3E3C 100%)
-    border-radius: 5px
+
 
 .userAlbumsWrapMiddle
-  grid-template-columns: 238px 238px 238px 238px
+  grid-template-columns: repeat(4, 1fr)
   display: grid
   wrap: no-wrap
   gap: 29px 38px
-  &__img
-    width: 100%
-    background: linear-gradient(180deg, rgba(59, 62, 60, 0) 73.54%, #3B3E3C 100%)
-    border-radius: 5px
+
 
 .userAlbumsWrapSmall
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr
+  grid-template-columns: repeat(6, 1fr)
   display: grid
   wrap: no-wrap
   gap: 29px 38px
-  &__img
-    width: 100%
-    background: linear-gradient(180deg, rgba(59, 62, 60, 0) 73.54%, #3B3E3C 100%)
-    border-radius: 5px
+
+
 
 .imgWrap
   position: relative
+  &__img
+    width: 100%
+    background: linear-gradient(180deg, rgba(59, 62, 60, 0) 73.54%, #3B3E3C 100%)
+    border-radius: 5px
 
 
 .albumName
@@ -84,3 +80,5 @@
   &__li
     padding: 9px 0 9px 16px
 
+.userAlbumsLink 
+  width: 100%

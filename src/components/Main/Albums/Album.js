@@ -205,6 +205,7 @@ class Album extends Component {
             </div>
             :
             <>
+
               <Sorting gridId={this.setGridType}/>
               
               <div className={'albumContent ' + this.state.gridType} >
