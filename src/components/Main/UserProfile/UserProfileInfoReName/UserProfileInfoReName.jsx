@@ -14,9 +14,9 @@ class UserProfileInfoReName extends Component {
       gender: this.props.currentUser.gender,
       city: this.props.currentUser.city,
       birthday: this.props.currentUser.birthday,
-      birthday_day: this.props.currentUser.birthday.substr(8,2) ?? '',
-      birthday_month: this.props.currentUser.birthday.substr(5,2) ?? '',
-      birthday_year: this.props.currentUser.birthday.substr(0,4) ?? ''
+      birthday_day: this.props.currentUser.birthday ? this.props.currentUser.birthday.substr(8,2) : '',
+      birthday_month: this.props.currentUser.birthday ? this.props.currentUser.birthday.substr(5,2) : '',
+      birthday_year: this.props.currentUser.birthday ? this.props.currentUser.birthday.substr(0,4) : ''
     }
   }
 
@@ -48,7 +48,7 @@ class UserProfileInfoReName extends Component {
   commitUserInfo = () => {
     const { first_name, last_name, email, gender, city, birthday_day, birthday_month, birthday_year } = this.state.newUserState;
     const { getUserInfo } = this.props;
-    const birthday = birthday_year + '-' + birthday_month + '-' + birthday_day;
+    const birthday = (birthday_year && birthday_month && birthday_day) ? (birthday_year + '-' + birthday_month + '-' + birthday_day) : '';
 
     const token = localStorage.getItem('token');
 
