@@ -3,13 +3,14 @@ import {connect} from 'react-redux';
 import axios from 'axios';
 import Sorting from '../Sorting';
 import AlbumsItem from './PhotoItem';
+import {ButtonContainer} from '../Button';
+import './Album.sass';
 
 class Album extends Component {
   constructor(props) {
     super(props);
     this.uploadImage = this.uploadImage.bind(this);
     this.uploadFileHandler = this.uploadFileHandler.bind(this);
-
     this.setGridType = this.setGridType.bind(this);
     this.selectImage = this.selectImage.bind(this);
 
@@ -30,7 +31,6 @@ class Album extends Component {
 
   getImages() {
     const { album, token } = this.props;
-
     this.setState({ loading: true });
 
     axios
@@ -151,7 +151,7 @@ class Album extends Component {
         id = {image.id}
         view={this.state.rowItemView ? 'flex-row' : 'flex-column'}
         url={image.urls} name={image.photo_name}
-        autor={image.author} /*date={card.date}*/
+        autor={image.author} /* date={card.date}*/
         key={ image.id }
         gridType={this.state.gridType}
         isDesc={!(this.state.gridType === 'smallRowView' || this.state.gridType === 'noPreview')}
@@ -163,28 +163,55 @@ class Album extends Component {
 
     return (
       <div className='contentContainer '>
-        <Sorting gridId={this.setGridType}/>
-        <div>
-          Название альбома:&nbsp;
-          {album.album_name}
-        </div>
-        <div>
-          Описание альбома:&nbsp;
-          {album.description}
-        </div>
         {
           isEmpty ?
-            <span>В данном альбоме ещё нет фото</span>
-            :
-            <div className={'albumContent ' + this.state.gridType} >
-              { imagesItem }
-            </div>
-        }
 
-        <input type='file' name='file' multiple onChange={this.uploadFileHandler}/>
-        <button onClick={this.uploadImage}>
-          Загрузить фото
-        </button>
+
+            <div className='addPhotoWrap'>
+
+              <div className='head1 albumTitle'>
+            Загрузка фотографий
+              </div>
+              <div className='albumName'>
+                <div className='text1 albumDesc'>
+            Альбом для загрузки фото
+                </div>
+                <div className='text1'>
+            Новый альбом
+                </div>
+              </div>
+
+              <div className='addPhoto'> 
+                <div className='addPhoto__border' onChange={this.uploadFileHandler}>
+                  <input 
+                    className='input'
+                    type='file' 
+                    name='file' 
+                    multiple onChange={this.uploadFileHandler}/>
+                  <div className='addPhoto__border_text head3'>Перетащите фотографию сюда
+                  </div>
+                </div>
+              </div>
+
+              <div className='choicePhoto'>
+                <div className='choicePhoto__line'>
+                  <div className='choicePhoto__line_lineLeft'/>
+                  <span className='text1'>или</span>
+                  <div className='choicePhoto__line_lineRight'/>
+                </div>
+                <div className='text1'>Выберите файлы со своего компьютера</div>
+                <ButtonContainer className='choicePhoto__button' onClick={this.uploadImage}>Выбрать</ButtonContainer>
+              </div>
+            </div>
+            :
+            <>
+              <Sorting gridId={this.setGridType}/>
+              
+              <div className={'albumContent ' + this.state.gridType} >
+                { imagesItem }
+              </div>
+            </>
+        }
       </div>
     );
   }

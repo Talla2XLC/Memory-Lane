@@ -1,3 +1,6 @@
+.iconsMargin
+  margin: 0 10px
+  
 .albumContent
   box-sizing: border-box
 
@@ -25,3 +28,59 @@
   display: grid
   grid-gap: 3rem
   grid-template-columns: repeat(5, 1fr)
+/////////
+
+.userAlbumsWrapBig
+  grid-template-columns: 1fr 1fr
+  display: grid
+  wrap: wrap
+  gap: 29px 38px
+  &__img
+    width: 500px
+    background: linear-gradient(180deg, rgba(59, 62, 60, 0) 73.54%, #3B3E3C 100%)
+    border-radius: 5px
+
+.userAlbumsWrapMiddle
+  grid-template-columns: 238px 238px 238px 238px
+  display: grid
+  wrap: no-wrap
+  gap: 29px 38px
+  &__img
+    width: 100%
+    background: linear-gradient(180deg, rgba(59, 62, 60, 0) 73.54%, #3B3E3C 100%)
+    border-radius: 5px
+
+.userAlbumsWrapSmall
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr
+  display: grid
+  wrap: no-wrap
+  gap: 29px 38px
+  &__img
+    width: 100%
+    background: linear-gradient(180deg, rgba(59, 62, 60, 0) 73.54%, #3B3E3C 100%)
+    border-radius: 5px
+
+.imgWrap
+  position: relative
+
+
+.albumName
+  justify-content: space-between
+  text-align: left
+  color: #3B3E3C
+  margin-top: 8px
+
+ 
+.actionsForAlbums
+  position: relative
+  &__dropdown
+    height: inherit
+    width: 200px!important
+    position: absolute
+    z-index: 9999
+    right: 0
+    background: #fff
+    border-radius: 5px
+  &__li
+    padding: 9px 0 9px 16px
+
