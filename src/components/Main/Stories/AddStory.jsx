@@ -11,7 +11,7 @@ export default class AddStory extends Component {
     author: '',
     date: '',
     tag: '',
-    country: '',
+    city: '',
     content: '',
     modalOpened: false,
     hasCreated: false
@@ -20,18 +20,18 @@ export default class AddStory extends Component {
   handleCancel = () => this.setState({ modalOpened: false, hasCreated: true });
 
   addStory = () => {
-    const { storyName, author, date, tag, country, content } = this.state;
+    const { storyName, author, date, tag, city, content } = this.state;
     const token = localStorage.getItem('token');
 
     axios.
       post(
         'http://api.memory-lane.ru/db/setHistory',
         {
-          story_name: 'storyName',
+          story_name: storyName,
           author: 'author',
-          date: 'date',
-          tag: 'tag',
-          country: 'country',
+          date: date,
+          tag: tag,
+          city: city,
           content: content
         },
         {
@@ -42,6 +42,7 @@ export default class AddStory extends Component {
         }
       )
 	    .then(res => {
+        console.log(res);
 	      if (res.data.result) {	// res.status === 200
           alert(`Вы успешно создали новую историю!`);
           this.setState({ hasCreated: true });
@@ -61,8 +62,8 @@ export default class AddStory extends Component {
 	};
 
   render() {
-    const { loading, stories } = this.props;
-    console.log(this.state.content)
+    const { loading } = this.props;
+    const { storyName, author, date, tag, city, content, modalOpened, hasCreated } = this.state;
 
     return (
       loading ?
@@ -70,29 +71,89 @@ export default class AddStory extends Component {
         (<PerfectScrollbar>
           {    
             <div className='addStory'>
-              <div className='addStory__desk'>
-                <div className='font1Light'>Добавьте заголовок к вашей истории</div>
-                <div>тег</div>
-                <div className='font1Light'>Автор</div>
-                <div className='font1Light'>Дата</div>
-                <div>Страна</div>
-              </div>
+
+              <form className='addStory__desk'>
+                <input
+                  className=''
+                  name='storyName'
+                  type='text'
+                  size='0'
+                  placeholder='Добавьте заголовок к вашей истории'
+                  value={storyName}
+                  onChange={this.handleInput}
+                />
+
+                <input
+                  className=''
+                  name='author'
+                  type='text'
+                  size='0'
+                  placeholder='Автор'
+                  value={author}
+                  onChange={this.handleInput}
+                />
+
+                <input
+                  className=''
+                  name='date'
+                  type='text'
+                  size='0'
+                  placeholder='дата'
+                  value={date}
+                  onChange={this.handleInput}
+                />
+
+                <label for='start'>Дата</label>
+
+                <input
+                  type='date'
+                  id='start'
+                  name='trip-start'
+                  value='2018-07-22'
+                  min=''
+                  max='2220-12-31'>
+                </input>
+
+                <input
+                  className=''
+                  name='tag'
+                  type='text'
+                  size='0'
+                  placeholder='тег'
+                  value={tag}
+                  onChange={this.handleInput}
+                />
+
+                <input
+                  className=''
+                  name='city'
+                  type='text'
+                  size='0'
+                  placeholder='Город'
+                  value={city}
+                  onChange={this.handleInput}
+                />
+
+                <textarea
+                  className='addStory__textArea'
+                  name='content'
+                  onChange={this.handleInput}
+                />
+              </form>
+
               <div className='addStory__photo'>
-                <img className='addPhotoItem' src='https://picsum.photos/168/168' />
-                <img className='addPhotoItem' src='https://picsum.photos/168/168' />
-                <img className='addPhotoItem' src='https://picsum.photos/168/168' />
-                <img className='addPhotoItem' src='https://picsum.photos/168/168' />
-                <img className='addPhotoItem' src='https://picsum.photos/168/168' />
+                <img className='addPhotoItem' src='' alt='storyPicture' />
+                <img className='addPhotoItem' src='' alt='storyPicture' />
+                <img className='addPhotoItem' src='' alt='storyPicture' />
+                <img className='addPhotoItem' src='' alt='storyPicture' />
+                <img className='addPhotoItem' src='' alt='storyPicture' />
               </div>
 
-              <textarea
-                className='addStory__textArea'
-                name='content'
-                onChange={this.handleInput}
-              />
               <button
                 onClick={this.addStory}
-              >Опубликовать</button>
+              >
+                Опубликовать
+              </button>
             </div>  
           }
         </PerfectScrollbar>)
