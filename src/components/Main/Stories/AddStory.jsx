@@ -28,7 +28,7 @@ export default class AddStory extends Component {
         'http://api.memory-lane.ru/db/setHistory',
         {
           story_name: storyName,
-          author: 'author',
+          author: author,
           date: date,
           tag: tag,
           city: city,
