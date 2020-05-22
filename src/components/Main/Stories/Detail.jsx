@@ -26,6 +26,7 @@ export default class Detail extends Component {
         'http://api.memory-lane.ru/db/updateHistory',
         {
           story_name: 'storyName',
+          story_id: 28,
           author: 'author',
           date: 'date',
           tag: 'tag',
