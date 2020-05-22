@@ -10,10 +10,11 @@ padding: 10px 24px;
 color: ${props => 
     props.white ? '#278147' : '#FFFFFF'};
 font-style: normal;
-font-weight: bold;
+font-weight: 500;
 font-size: 18px;
 line-height: 20px;
 letter-spacing: 0.02em;
+cursor: pointer;
 outline: none;
 &:hover{
   background: ${ props => 

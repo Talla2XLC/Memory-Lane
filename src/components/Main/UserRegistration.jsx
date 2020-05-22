@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 
-import './UserAuthorizationStyle.css';
+import './UserFormStyle.css';
+import { ButtonContainer } from './Button.jsx';
 
 import FormModal  from './UserRegistrationModal';
 
@@ -10,7 +11,7 @@ import { ReactComponent as FormFB }	from './svg/form_fb.svg';
 import { ReactComponent as FormG }	from './svg/form_g.svg';
 import { ReactComponent as FormIns }	from './svg/form_ins.svg';
 
-import { Tooltip } from './UserRegistrationTooltip';
+// import { Tooltip } from './UserRegistrationTooltip';
 
 import axios from 'axios';
 
@@ -18,14 +19,14 @@ export default class UserRegistration extends Component {
 	state = {
 	  email: '',
 	  password: '',
-	  confidentiality: '',
 	  formErrors: {
 	    email: '',
-	    password: ''
+	    password: {message1: '', message2: '', message3: ''}
 	  },
 	  emailValid: false,
 	  passwordValid: false, 
 	  formValid: false,
+	  isOpen: false,
 	  modalOpened: false,
 	  hasRegistred: false
 	}
@@ -43,11 +44,11 @@ export default class UserRegistration extends Component {
 	  const fieldValidationErrors = this.state.formErrors;
 	  let emailValid = this.state.emailValid;
 	  let passwordValid = this.state.passwordValid;
+	  let Open = this.state.isOpen;
 
 	  const isMax = value.length >= 8;
 	  const isCapital = value.match(/(?=.*?[A-Z])/);
 	  const oneDigit = value.match(/(?=.*?[0-9])/);
-	  // let specialCharacter = value.match(/(?=.*?[#?!@$%^&*-])/)
 	
 	  switch (fieldName) {
 	    case 'email':
@@ -58,17 +59,15 @@ export default class UserRegistration extends Component {
 	    case 'password':
 	      passwordValid = false;
 
-	      if (!isMax) {
-	        fieldValidationErrors.password = 'Ваш пароль должен быть от 8 символов длиной';
-	      } else if (!isCapital) {
-	        fieldValidationErrors.password = 'Пароль должен содержать минимум одну заглавную букву';
+	      if (isMax) {
+			fieldValidationErrors.password.message1 = 'text_color_green';
+	      } else if (Open && !isMax) {
+	        fieldValidationErrors.password.message1 = 'text_color_red';
 	      } else if (!oneDigit) {
-	        fieldValidationErrors.password = 'Пароль должен содержать минимум одну цифру';
-
-	        // } else if (!specialCharacter) {
-	        // 	fieldValidationErrors.password = 'Пароль должен содержать минимум один специальный символ'
+	        fieldValidationErrors.password.message3 = 'Пароль должен содержать минимум одну цифру';
+	      } else if (!oneDigit) {
+	        fieldValidationErrors.password.message3 = 'Пароль должен содержать минимум одну цифру';
 	      } else {
-	        fieldValidationErrors.password = '';
 	        passwordValid = true;
 	      }
 	      break;
@@ -98,6 +97,8 @@ export default class UserRegistration extends Component {
 	registerUser = () => {
 	  const { email, password } = this.state;
 		
+	  this.setState({isOpen: true });
+
 	  axios
 	    .post(
 	      'http://api.memory-lane.ru/user/registration',
@@ -118,88 +119,97 @@ export default class UserRegistration extends Component {
 	        alert(`${res.data.error}`);
 	      }
 	    })
-	    .catch(error => console.error(error));
+		.catch(error => console.error(error));
+		
 	}
 
 	render() {
-	  const { email, password, confidentiality, formErrors, emailValid, passwordValid, formValid, modalOpened, hasRegistred } = this.state;
+		const { email, password, formErrors, emailValid, passwordValid, formValid, modalOpened, hasRegistred } = this.state;
 
-	  const displayEmail = (email.length === 0 || email === null || emailValid) ? 'formErrors displayNone' : 'formErrors';
-	  const displayPassword = (password.length === 0 || password === null || passwordValid) ? 'formErrors displayNone' : 'formErrors';
-	  const inputEmail = (email.length > 0 && !emailValid) ? 'textInput input_color_red' : 'textInput';
-	  const inputPassword = (password.length > 0 && !passwordValid) ? 'textInput input_color_red' : 'textInput';
-	  const checkBox = (emailValid && passwordValid && !confidentiality) ? 'checkbox-confidentiality checkbox-red' : 'checkbox-confidentiality';
+		const displayEmail = (email.length === 0 || email === null || emailValid) ? 'formErrors text_color_green' : 'formErrors';
+		const displayPassword = (password.length === 0 || password === null || passwordValid) ? 'formErrors text_color_green' : 'formErrors';
+		const inputEmail = (email.length > 0 && !emailValid) ? 'textInput input_color_red' : 'textInput';
+		const inputPassword = (password.length > 0 && modalOpened && !passwordValid) ? 'textInput' : 'textInput';
 
-	  if (hasRegistred) return <Redirect to='/auth'/>;
+		if (hasRegistred) return <Redirect to='/auth'/>;
 
-	  return (
-	    <div className='formWrapper'>
-	      <div className='formWrapperItem__titleContainer'>
-	        <h2 className='textBasic titleContainerItem__title'>Регистрация</h2>
-	      </div>
+		return (
+				<div className='container-form'>
+					<div className='formWrapper'>
+						<div className='formWrapperItem__titleContainer'>
+							<h2 className='textBasic titleContainerItem__title'>Регистрация</h2>
+						</div>
 
-	      <div className='formContainerItem__form'>
-	        <input
-	          className={inputEmail}
-	          name='email'
-	          type='email'
-	          size='0'
-	          placeholder='Введите электронную почту'
-	          value={email}
-	          onChange={this.handleInput}
-	          required
-	        />
-	        <div className={displayEmail}>
-	          <Tooltip tooltip={formErrors.email} />
-	        </div>
+						<div className='formContainerItem__form'>
 
-	        <input
-	          className={inputPassword}
-	          name='password'
-	          type='password'
-	          placeholder='Придумайте пароль'
-	          onChange={this.handleInput}
-	          value={password}
-	          autoComplete='current-password'
-	        />
+							<div className='formContainerItem__icons'>
+								<a href='https://vk.com/' alt='vk'><FormVK /></a>
+								<a href='https://www.instagram.com/' alt='ins'><FormIns /></a>
+								<a href='https://ru-ru.facebook.com/' alt='facebook'><FormFB /></a>
+								<a href='https://www.google.com/' alt='google'><FormG /></a>
+							</div>
 
-	        <div className={displayPassword}>
-	          <Tooltip tooltip={formErrors.password} />
-	        </div>
+							<input
+								className={inputEmail}
+								name='email'
+								type='email'
+								size='0'
+								placeholder='Введите электронную почту'
+								value={email}
+								onChange={this.handleInput}
+								required
+							/>
 
-	        <div className='formContainerItem__icons'>
-	          <a href='https://vk.com/' alt='vk'><FormVK /></a>
-	          <a href='https://www.instagram.com/' alt='ins'><FormIns /></a>
-	          <a href='https://ru-ru.facebook.com/' alt='facebook'><FormFB /></a>
-	          <a href='https://www.google.com/' alt='google'><FormG /></a>
-	        </div>
-						
-	        <div className={checkBox}>
-	          <input type='checkbox' id='fruit4' name='fruit-4' checked={confidentiality} onClick={this.confidentialityChange}/>
-	          <label htmlFor='fruit4'><span>Согласен с политикой конфиденциальности</span></label>
-	        </div>
+							{/* <div className={displayEmail}>
+								<Tooltip tooltip={formErrors.email} />
+							</div> */}
 
-	        <input
-	          className='textInput formItem__button c-button--width360'
-	          type='submit'
-	          value='Продолжить регистрацию'
-	          onClick={this.registerUser}
-	          disabled={!formValid || !confidentiality}
-	        />
-	      </div>
+							<input
+								className={inputPassword}
+								name='password'
+								type='password'
+								placeholder='Придумайте пароль'
+								onChange={this.handleInput}
+								value={password}
+								autoComplete='current-password'
+							/>
 
-	      {/* Change messages in modal window according to server response */}
-	      <FormModal
-	        title='registration successful'
-	        modalOpened={modalOpened}
-	        onCancel={this.handleCancel}
-	      >
-	        <h1>Поздравляем!</h1>
-	        <p>Вы почти зарегистрированы в memory-lane!<br/>
-						На почту отправлено письмо для подтверждения e-mail
-	        </p>
-	      </FormModal>
-	    </div>
-	  );
+							<div>
+								<p className={formErrors.password.message1}>Ваш пароль должен быть от 8 символов длиной</p>
+								<p>Пароль должен содержать минимум одну заглавную букву</p>
+								<p>Пароль должен содержать минимум одну цифру</p>
+							</div>
+
+							{/* <div className={displayPassword}>
+								<Tooltip tooltip={formErrors.password} />
+							</div> */}
+										
+							<ButtonContainer
+								className='textInput formItem__button c-button--width360'
+								type='submit'
+								onClick={this.registerUser}
+							>
+								Продолжить регистрацию
+							</ButtonContainer>
+
+							<div>
+								<span>Нажимая на кнопку, Вы соглашаетесь с политикой конфиденциальности</span>
+							</div>
+						</div>
+
+						{/* Change messages in modal window according to server response */}
+						<FormModal
+							title='registration successful'
+							modalOpened={modalOpened}
+							onCancel={this.handleCancel}
+						>
+							<h1>Поздравляем!</h1>
+							<p>Вы почти зарегистрированы в memory-lane!<br/>
+										На почту отправлено письмо для подтверждения e-mail
+							</p>
+						</FormModal>
+					</div>
+				</div>	
+		);
 	}
 }
