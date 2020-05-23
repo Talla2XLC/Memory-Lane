@@ -17,7 +17,7 @@ import Stories from './components/Main/Stories/Stories';
 import Services from './components/Main/Services';
 import Learn from './components/Main/Learn';
 import DownloadPhoto from './components/Main/Albums/DownloadPhoto';
-import Detail from './components/Main/Stories/Detail';
+import StoryEdit from './components/Main/Stories/StoryEdit';
 import Profile from './components/Main/UserProfile/UserProfile';
 import StoryAdd from './components/Main/Stories/StoryAdd';
 
@@ -41,7 +41,7 @@ export default class Router extends Component {
           <Route exact path='/photo/:id' component={ Photo } />
           <Route exact path='/stories/' component={ Stories } />
           <Route exact path='/stories/add/' component={ StoryAdd } />
-          <Route path='/stories/:id' component={ Detail } />
+          <Route path='/stories/:id' component={ StoryEdit } />
           <Route exact path='/services/' component={ Services } />
           <Route exact path='/userfullname/' >
             { hasFullName === false ? <UserFullName /> : <Redirect to='/' />}
