@@ -19,7 +19,7 @@ import thunk from 'redux-thunk';
 import { getUsers } from './actions/actionUser';
 import { sessionCheck } from './actions/sessionCheck';
 import { fetchUserFullName } from './actions/actionUserFullName';
-
+import { getAlbums } from './actions/actionAlbums';
 
 const store = createStore(
   rootReducer,
@@ -31,6 +31,8 @@ const store = createStore(
 store.dispatch(getUsers());
 store.dispatch(sessionCheck(store.getState().session.sessionID));
 store.dispatch(fetchUserFullName());
+store.dispatch(getAlbums());
+//получаю альбомы 
 
 ReactDOM.render(
   <React.StrictMode>

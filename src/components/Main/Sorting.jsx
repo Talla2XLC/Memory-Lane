@@ -1,21 +1,58 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Dropdown from './Albums/Dropdown';
+import DropdownForAlbums from './Albums/DropdownForAlbums';
+import {ReactComponent as Arrow} from './svg/arrow.svg';
+import {ReactComponent as Plus} from './svg/plus.svg';
+import { Link } from  'react-router-dom';
 
 export default class Sorting extends Component {
-  render() {
+  render() { 
+    const album  = this.props.album;
     return (
-      <SortingContainer>
-        <div className="left-sorting">
-          <div className='sortingDate'>По дате</div>
-          <div className='sortingHuman'>По человеку</div>
-        </div>
-        <div className="right-sorting">
-          <div className='sortingAction'>Действие</div>
-          <Dropdown gridId={this.props.gridId}/>
-        </div>
+      album ? 
+        <SortingContainer>
+          <div className='left-sorting'>
+            <div className='sortingItem'>По алфавиту
+            <Arrow className='arrow'/>
+            </div>
+            <div className='sortingItem'>По дате
+            <Arrow className='arrow'/>
+            </div>
+            <div className='sortingItem'>По заполненности
+            <Arrow className='arrow'/>
+            </div>
+          </div>
+          <div className='right-sorting-album'>
+            <DropdownForAlbums styleId={this.props.styleId}/>
+            <Link className='sortingLink' to='/albums/add/'>
+            <span className='createAlbum'>Cоздать альбом</span>
+              <Plus className='plus'/>
+            </Link>
 
-      </SortingContainer>
+
+          </div>
+        </SortingContainer> 
+
+        : 
+        <SortingContainer>
+          <div className='left-sorting'>
+          <div className='sortingItem'>По алфавиту
+            <Arrow className='arrow'/>
+            </div>
+            <div className='sortingItem'>По дате
+            <Arrow className='arrow'/>
+            </div>
+            <div className='sortingItem'>По заполненности
+            <Arrow className='arrow'/>
+            </div>
+          </div>
+          <div className='right-sorting-album'>
+
+            <Dropdown gridId={this.props.gridId}/>
+          </div>
+        </SortingContainer> 
+
     );
   }
 }
@@ -31,22 +68,32 @@ flex-flow: row nowrap;
 align-items: center;
 background: #F6F6F6;
 
+
 .left-sorting {
   display: flex;
   flex-flow: row nowrap;
 }
 
-.sortingDate {
-  margin-right: 30px;
+.sortingItem {
+  margin-right: 20px;
 }
 
-.right-sorting {
+.right-sorting-album {
   display: flex;
-  flex-flow: row nowrap;
-  margin-left: auto
-}
 
-.sortingAction {
-  margin-right: 30px;
+  flex-flow: row nowrap;
+  margin-left: auto;
+}
+.arrow {
+  margin-left: 4px;
+}
+.plus {
+  margin-left: 12px;
+}
+.createAlbum {
+  margin-left: 12px;
+}
+.sortingLink {
+  color: #3B3E3C;
 }
 `;

@@ -4,12 +4,10 @@ import {ReactComponent as Arrow} from '../svg/arrow.svg';
 const viewData = [
   { name: 'Большая плитка', id: 1},
   { name: 'Средняя плитка', id: 2},
-  { name: 'Средний список', id: 3},
-  { name: 'Маленький список', id: 4},
-  { name: 'Без превью', id: 5}
+  { name: 'Маленькая плитка', id: 3}
 ];
 
-class Dropdown extends Component {
+class DropdownForAlbums extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,8 +32,8 @@ class Dropdown extends Component {
     });
   }
 
-  handleClick(gridId, viewName) {
-    this.props.gridId(gridId);
+  handleClick(styleId, viewName) {
+    this.props.styleId(styleId);
     this.setState({currentView: viewName});
   }
 
@@ -46,6 +44,7 @@ class Dropdown extends Component {
           Вид
           <Arrow className='arrow'/>
         </div>
+ 
         {
           this.state.showMenu
             ? (
@@ -65,4 +64,4 @@ class Dropdown extends Component {
     );
   }
 }
-export default Dropdown;
+export default DropdownForAlbums;
