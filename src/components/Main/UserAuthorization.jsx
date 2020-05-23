@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import './UserFormStyle.css';
+import './UserFormStyle.sass';
 
 import { ReactComponent as FormVK }	from './svg/form_vk.svg';
 import { ReactComponent as FormFB }	from './svg/form_fb.svg';

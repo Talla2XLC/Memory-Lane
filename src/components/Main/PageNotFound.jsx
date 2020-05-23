@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './UserFormStyle.css';
+import './UserFormStyle.sass';
 import { ButtonContainer } from './Button.jsx';
 
 export default class PageNotFound extends Component {

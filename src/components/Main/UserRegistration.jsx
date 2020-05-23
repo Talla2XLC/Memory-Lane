@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 
-import './UserFormStyle.css';
+import './UserFormStyle.sass';
 import { ButtonContainer } from './Button.jsx';
 
 import FormModal  from './UserRegistrationModal';
@@ -57,16 +57,21 @@ export default class UserRegistration extends Component {
 	      break;
 
 	    case 'password':
-	      passwordValid = false;
+		  passwordValid = false;
+		//   Open = false;
 
-	      if (isMax) {
-			fieldValidationErrors.password.message1 = 'text_color_green';
-	      } else if (Open && !isMax) {
-	        fieldValidationErrors.password.message1 = 'text_color_red';
-	      } else if (!oneDigit) {
-	        fieldValidationErrors.password.message3 = 'Пароль должен содержать минимум одну цифру';
-	      } else if (!oneDigit) {
-	        fieldValidationErrors.password.message3 = 'Пароль должен содержать минимум одну цифру';
+	      if (Open && !isMax) {
+			fieldValidationErrors.password.message1 = 'text_theme_erorr';
+	      } else if (isMax) {
+	        fieldValidationErrors.password.message1 = 'text_color_green';
+	      } else if (Open && !isCapital) {
+	        fieldValidationErrors.password.message2 = 'text_theme_erorr';
+	      } else if (isCapital) {
+	        fieldValidationErrors.password.message2 = 'text_color_green';
+	      } else if (Open && !oneDigit) {
+	        fieldValidationErrors.password.message3 = 'text_theme_erorr';
+	      } else if (oneDigit) {
+	        fieldValidationErrors.password.message3 = 'text_color_green';
 	      } else {
 	        passwordValid = true;
 	      }
@@ -126,10 +131,9 @@ export default class UserRegistration extends Component {
 	render() {
 		const { email, password, formErrors, emailValid, passwordValid, formValid, modalOpened, hasRegistred } = this.state;
 
-		const displayEmail = (email.length === 0 || email === null || emailValid) ? 'formErrors text_color_green' : 'formErrors';
-		const displayPassword = (password.length === 0 || password === null || passwordValid) ? 'formErrors text_color_green' : 'formErrors';
-		const inputEmail = (email.length > 0 && !emailValid) ? 'textInput input_color_red' : 'textInput';
-		const inputPassword = (password.length > 0 && modalOpened && !passwordValid) ? 'textInput' : 'textInput';
+		const inputEmail = (email.length > 0 && !emailValid) ? 'text-basic text_theme_erorr' : 'text-basic';
+		const inputPassword = (password.length > 0 && modalOpened && !passwordValid) ? 'text-basic' : 'text-basic';
+		// const btnEye = '';
 
 		if (hasRegistred) return <Redirect to='/auth'/>;
 
@@ -137,62 +141,66 @@ export default class UserRegistration extends Component {
 				<div className='container-form'>
 					<div className='formWrapper'>
 						<div className='formWrapperItem__titleContainer'>
-							<h2 className='textBasic titleContainerItem__title'>Регистрация</h2>
+							<h2 className='titleContainerItem__title'>Регистрация</h2>
 						</div>
 
 						<div className='formContainerItem__form'>
 
 							<div className='formContainerItem__icons'>
-								<a href='https://vk.com/' alt='vk'><FormVK /></a>
-								<a href='https://www.instagram.com/' alt='ins'><FormIns /></a>
-								<a href='https://ru-ru.facebook.com/' alt='facebook'><FormFB /></a>
-								<a href='https://www.google.com/' alt='google'><FormG /></a>
+								<div>
+									<a className='socials-icon' href='https://vk.com/' alt='vk'><FormVK /></a>
+									<a className='socials-icon' href='https://www.instagram.com/' alt='ins'><FormIns /></a>
+									<a className='socials-icon' href='https://ru-ru.facebook.com/' alt='facebook'><FormFB /></a>
+									<a className='socials-icon' href='https://www.google.com/' alt='google'><FormG /></a>									
+								</div>
+								<div className='formContainerItem__message'>Присоединиться через соц. сети</div>
 							</div>
 
-							<input
-								className={inputEmail}
-								name='email'
-								type='email'
-								size='0'
-								placeholder='Введите электронную почту'
-								value={email}
-								onChange={this.handleInput}
-								required
-							/>
-
-							{/* <div className={displayEmail}>
-								<Tooltip tooltip={formErrors.email} />
-							</div> */}
-
-							<input
-								className={inputPassword}
-								name='password'
-								type='password'
-								placeholder='Придумайте пароль'
-								onChange={this.handleInput}
-								value={password}
-								autoComplete='current-password'
-							/>
-
+							<div className='form-or'><hr/>или<hr/></div>
 							<div>
-								<p className={formErrors.password.message1}>Ваш пароль должен быть от 8 символов длиной</p>
-								<p>Пароль должен содержать минимум одну заглавную букву</p>
-								<p>Пароль должен содержать минимум одну цифру</p>
+								<legend>Эл. почта</legend>
+								<input
+									className={inputEmail}
+									name='email'
+									type='email'
+									size='0'
+									placeholder='Введите электронную почту'
+									value={email}
+									onChange={this.handleInput}
+									required
+								/>
 							</div>
 
-							{/* <div className={displayPassword}>
-								<Tooltip tooltip={formErrors.password} />
-							</div> */}
+							<div className='form-password'>
+								<legend>Пароль</legend>	
+								<input
+									id='password'
+									className={inputPassword}
+									name='password'
+									type='password'
+									placeholder='Придумайте пароль'
+									onChange={this.handleInput}
+									value={password}
+									autoComplete='current-password'
+								/>
+								{/* <button className={btnEye} /> */}
+							</div>
+
+							<ul className='f-validation-message'> 
+								<li className={'validation-message ' + formErrors.password.message1}>Ваш пароль должен быть от 8 символов длиной</li>
+								<li className={'validation-message ' + formErrors.password.message2}>Пароль должен содержать минимум одну заглавную букву</li>
+								<li className={'validation-message ' + formErrors.password.message3}>Пароль должен содержать минимум одну цифру</li>
+							</ul>
 										
 							<ButtonContainer
-								className='textInput formItem__button c-button--width360'
+								className='formItem__button'
 								type='submit'
 								onClick={this.registerUser}
 							>
-								Продолжить регистрацию
+								Зарегистрироваться
 							</ButtonContainer>
 
-							<div>
+							<div className='f-privacy-agreement'>
 								<span>Нажимая на кнопку, Вы соглашаетесь с политикой конфиденциальности</span>
 							</div>
 						</div>

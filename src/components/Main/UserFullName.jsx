@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { fetchUserFullName } from '../../actions/actionUserFullName';
 import { askedToIntroduce } from '../../actions/actionUserHasIntroduced';
 
-import './UserFormStyle.css';
+import './UserFormStyle.sass';
 
 import { Tooltip } from './UserRegistrationTooltip';
 

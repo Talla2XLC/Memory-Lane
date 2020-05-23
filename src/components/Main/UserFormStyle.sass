@@ -1,0 +1,142 @@
+%text-basic
+    font-family: Roboto
+    font-style: normal
+    font-weight: normal
+    font-size: 18px
+    line-height: 27px  
+
+.container-form 
+    display: flex
+    justify-content: flex-end
+    background: url(svg/form_phone_item.svg) #5DB07B no-repeat
+    background-position: left top
+    background-size: contain
+    height: 969px
+
+.formWrapper 
+    background-color: #fff
+    padding-top: 156px
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: flex-start
+    width: 705px
+    height: 100%
+
+.formWrapperItem__titleContainer 
+    width: 356px
+    height: 39px
+    .titleContainerItem__title
+        @extend %text-basic
+        font-weight: 500
+        font-size: 32px
+        line-height: 38px
+        color: #3B3E3C
+
+.formContainerItem__icons
+    margin-top: 48px
+    >div 
+        display: flex
+        justify-content: space-around
+        margin-left: 243px
+        width: 200px
+        .socials-icon
+            color: #5DB07B
+            &:hover 
+                color: #278147
+            &:focus 
+                color: #3B3E3C     
+    .formContainerItem__message
+        @extend %text-basic
+        width: 404px
+        margin-left: 151px
+        margin-top: 12px
+
+.container__input 
+    margin-top: 12px
+    background: #FFFFFF
+    border: 1px solid rgba(130, 132, 130, 0.3)
+    box-sizing: border-box
+    border-radius: 10px
+
+.formContainerItem__form 
+    width: 100%
+    display: flex
+    flex-direction: column
+    @extend %text-basic
+    legend
+        color: #828482
+        font-size: 16px
+        line-height: 24px
+        text-align: left
+        padding-left: 189px
+    .form-password legend
+        margin-top: 16px
+    input[type='email'],
+    input[type='text'],
+    input[type='password'] 
+        width: 360px
+        height: 46.83px
+        background: #FFFFFF
+        border: 1px solid rgba(130, 132, 130, 0.3)
+        box-sizing: border-box
+        border-radius: 10px
+        padding-left: 12.96px
+        &:hover
+            border: 1px solid #BDE1CA
+            outline: 0
+        &:focus
+            border: 1px solid #5DB07B
+            outline: 0
+    .formItem__button
+        width: 255px
+        margin-left: 221px
+        margin-top: 48px
+
+.f-validation-message
+    width: 360px
+    margin-left: 173px
+    text-align: left
+    .validation-message 
+        @extend %text-basic
+        font-size: 12px
+        line-height: 16px
+        margin-top: 8px
+        list-style: disc inside
+
+.text_theme_erorr
+    color: red
+
+.text_color_green 
+    color: green   
+
+.f-privacy-agreement
+    margin-top: 24px
+    >span
+        color: #828482
+        @extend %text-basic
+        font-size: 10px
+        line-height: 15px
+
+/* Page not found */
+
+.container-not-found 
+    background: url(svg/404_page_not_found.svg) no-repeat
+    background-position: center top
+    height: 897.04px
+    margin-top: 32.96px
+
+.not-found__btn 
+    margin-top: 619.04px
+
+.form-or 
+    display: flex
+    column: row
+    align-items: center
+    margin: 24px 0
+    hr
+        width: 156px
+        border: 1px solid rgba(130, 132, 130, 0.3)
+        margin: 10px 30px 10px 151px
+        &:nth-child(2)
+            margin-left: 30px
