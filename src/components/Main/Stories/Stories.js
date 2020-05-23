@@ -4,7 +4,7 @@ import { fetchStories } from '../../../actions/actionStories';
 
 import StoryItem from './StoryItem';
 import Sorting from '../Sorting';
-import EmptyBlock from '../EmptyBlock/EmptyBlock';
+import StoriesEmpty from './StoriesEmpty';
 
 import './Stories.sass';
 
@@ -26,7 +26,7 @@ class Stories extends Component {
       loading ?
         <h1>Загрузка данных</h1> :
           Object.keys(stories).length === 0 ?
-          <div className='contentContainer'> <EmptyBlock/> </div> :
+          <div className='contentContainer'> <StoriesEmpty/> </div> :
             (<div className='contentContainer'>
               <Sorting/>
               <div className='stories'>
