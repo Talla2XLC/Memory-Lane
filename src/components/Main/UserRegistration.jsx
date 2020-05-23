@@ -129,7 +129,7 @@ export default class UserRegistration extends Component {
 	}
 
 	render() {
-		const { email, password, formErrors, emailValid, passwordValid, formValid, modalOpened, hasRegistred } = this.state;
+		const { email, password, formErrors, emailValid, passwordValid, modalOpened, hasRegistred } = this.state;
 
 		const inputEmail = (email.length > 0 && !emailValid) ? 'text-basic text_theme_erorr' : 'text-basic';
 		const inputPassword = (password.length > 0 && modalOpened && !passwordValid) ? 'text-basic' : 'text-basic';
