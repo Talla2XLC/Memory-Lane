@@ -44,9 +44,7 @@ export default class AddDropdown extends Component {
               <Link to='/persons/add' className='dropdownLink'> <button className='dropdownButton'>Добавить персону</button> </Link>
             </DropdownList>
           )
-          : (
-            null
-          )
+          : null
       }
     </>
     );
