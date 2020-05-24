@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PerfectScrollbar from 'react-perfect-scrollbar';
+import { Redirect } from 'react-router-dom';
 
 import './Stories.sass';
 
@@ -7,6 +8,7 @@ import { ButtonContainer } from '../Button';
 import { ButtonEncircledCross } from '../ButtonEncircledCross';
 
 import axios from 'axios';
+
 
 export default class AddStory extends Component {
   state = {
@@ -16,11 +18,11 @@ export default class AddStory extends Component {
     tags: '',
     city: '',
     content: '',
-    isVisible: false,
+    // isVisible: false,
     // isInputEmpty: true,
     // isTextAreaEmpty: true,
     // modalOpened: false,
-    // hasCreated: false
+    hasCreated: false
   };
 
   // handleCancel = () => this.setState({ modalOpened: false, hasCreated: true });
@@ -48,11 +50,8 @@ export default class AddStory extends Component {
         }
       )
 	    .then(res => {
-        console.log(res);
 	      if (res.data.result) {	// res.status === 200
-          alert(`Вы успешно создали новую историю!`);
-          // this.setState({ hasCreated: true });
-          // ? redirect to stories
+          this.setState({ hasCreated: true });
 	      } else {	// res.status !== 200
 	        console.error(res.data.error);
 	        alert(`${res.data.error}`);
@@ -65,9 +64,6 @@ export default class AddStory extends Component {
     const { name, value } = e.target;
 
     this.setState({ [name]: value });
-
-    // value.length ? this.setState({ isInputEmpty: false }) : this.setState({ isInputEmpty: true });
-    value ? this.setState({ isVisible: true }) : this.setState({ isVisible: false });
   };
   
   handleTextArea = e => {
@@ -77,14 +73,13 @@ export default class AddStory extends Component {
     style.height = scrollHeight + 1 + 'px';
 
     this.setState({ [name]: value });
-
-    // value.length ? this.setState({ isTextAreaEmpty: false }) : this.setState({ isTextAreaEmpty: true });
-    value ? this.setState({ isVisible: true }) : this.setState({ isVisible: false });
   };
 
   render() {
     const { loading } = this.props;
-    const { storyName, author, date, tags, city, content, isVisible, isInputEmpty, isTextAreaEmpty, modalOpened, hasCreated } = this.state;
+    const { storyName, author, date, tags, city, content, hasCreated } = this.state;
+
+    if (hasCreated) return <Redirect to='/stories'/>
 
     return (
       loading ?
@@ -105,7 +100,7 @@ export default class AddStory extends Component {
               { /* TODO: Dynamic tags appearance */ }
               <input
                 className='head2 storyAdd__tags'
-                type='text'
+                type='hidden'
                 name='tags'
                 value={tags}
                 placeholder='Тег'
@@ -148,28 +143,15 @@ export default class AddStory extends Component {
                   placeholder='История'
                   onChange={this.handleTextArea}
                 />
-              </div>
-                
+              </div>     
             </form>
 
-            { /* 
-            <div className='addStory__photo'>
-              <img className='addPhotoItem' src='' alt='storyPicture' />
-              <img className='addPhotoItem' src='' alt='storyPicture' />
-              <img className='addPhotoItem' src='' alt='storyPicture' />
-              <img className='addPhotoItem' src='' alt='storyPicture' />
-              <img className='addPhotoItem' src='' alt='storyPicture' />
-            </div>
-            */ }
-
             <ButtonContainer
-              style={{ display: isVisible ? 'flex' : 'none' }}
-              // style={{ display: (isInputEmpty && isTextAreaEmpty) ? 'none' : 'flex' }}
-              // style={{ display: (inputText.length && textAreaText.length) ? 'flex' : 'none' }}
+              style={{ display: (storyName || author || date || tags || city || content) ? 'flex' : 'none' }}
               onClick={this.storyAdd}
             >
               Опубликовать
-            // </ButtonContainer>
+            </ButtonContainer>
           </div>
         </PerfectScrollbar>)
     );
