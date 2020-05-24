@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import FormPortal from './UserRegistrationPortal';
+import FormPortal from '../UserRegistrationPortal';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
-import {modalClose} from '../../actions/modalClose';
+import {modalClose} from '../../../actions/modalClose';
 
 class MainModal extends Component {
   render() {
@@ -53,13 +53,16 @@ const FormModalWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  heigth: 320px;
   border-radius: 10px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .modalBody {
-  text-align: center;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  padding: 0 24px;
+  box-sizing: border-box;
 }
 
 .modalBody h1 {
@@ -72,6 +75,7 @@ const FormModalWrapper = styled.div`
 .modalBody p {
   font-size: 16px;
   color: #828482;
+  margin-bottom: 0;
 }
 
 .modalHeader {
@@ -90,7 +94,7 @@ const FormModalWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  min-height: 72px;
+  min-height: 24px;
 }
 
 .modalFooter button:last-child {
@@ -99,26 +103,29 @@ const FormModalWrapper = styled.div`
 
 .times {
   position: absolute;
-  right: 32px;
-  top: 32px;
+  right: 22px;
+  top: 22px;
   width: 34px;
   height: 32px;
-  opacity: 0.3;
+  opacity: 1;
   cursor: pointer;
   border: none;
   outline: none;
   background-color: #fff;
 }
 .times:hover {
-  opacity: 1;
+  opacity: 0.3;
+}
+.times:active {
+  opacity: 0.6;
 }
 .times:before, .times:after {
   position: absolute;
   left: 15px;
   content: ' ';
-  height: 33px;
+  height: 20px;
   width: 2px;
-  background-color: #333;
+  background-color: #3B3E3C;
   top: 0;
 }
 .times:before {

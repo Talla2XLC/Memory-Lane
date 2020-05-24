@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { getAlbums } from '../../../actions/actionAlbums';
-import axios from 'axios';
 import './UserAlbums.sass';
 import { Link } from  'react-router-dom';
 import {ReactComponent as DownloadIcon} from '../svg/downloadIcon.svg';
@@ -11,6 +10,7 @@ import {ReactComponent as CopyIcon} from '../svg/copyIcon.svg';
 import {ReactComponent as DeleteIcon} from '../svg/deleteIcon.svg';
 import {ReactComponent as Dots} from '../svg/dots.svg';
 import Sorting from '../Sorting';
+
 class UserAlbums extends Component {
   constructor(props) {
     super(props);
@@ -40,34 +40,6 @@ class UserAlbums extends Component {
 	  const { name, value } = e.target;
 	  this.setState({ [name]: value });
 	}
-  
-	addAlbum = () => {
-	  const { albumName, description } = this.state;
-	  const { downloadAlbums } = this.props;
-	  const token = localStorage.getItem('token');
-
-	  axios
-	    .post(
-	      'http://api.memory-lane.ru/db/setAlbum',
-	      {
-	        'album_name': albumName,
-	        'description': description
-	      },
-	      {
-	        headers: {
-	          'Content-Type': 'application/json',
-	          'Authorization': `${token}`
-	        }
-	      })
-	    .then(res => {
-	      if (res.data.result) {
-	        downloadAlbums();
-	      } else {
-	        console.error(res.data.error);
-	      }
-	    })
-	    .catch(error => console.error(error));
-	}
 
 	setStyleType(styleId) {
 	  switch (styleId) {
@@ -89,7 +61,6 @@ class UserAlbums extends Component {
 	}
   
 	render() {
-	  const { albumName, description } = this.state;
 	  const { loading } = this.props;
 	  const userAlbums = typeof this.props.albums === 'object' ? Object.values(this.props.albums) : [];
 		

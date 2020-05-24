@@ -5,12 +5,11 @@ import Sorting from '../Sorting';
 import AlbumsItem from './PhotoItem';
 import {ButtonContainer} from '../Button';
 import './Album.sass';
+import EmptyBlock from '../EmptyBlock/EmptyBlock';
 
 class Album extends Component {
   constructor(props) {
     super(props);
-    this.uploadImage = this.uploadImage.bind(this);
-    this.uploadFileHandler = this.uploadFileHandler.bind(this);
     this.setGridType = this.setGridType.bind(this);
     this.selectImage = this.selectImage.bind(this);
 
@@ -60,44 +59,6 @@ class Album extends Component {
         }
       })
       .catch(error => console.error(error));
-  }
-
-  uploadImage() {
-    const { album, token } = this.props;
-    const { imagesToUpload } = this.state;
-    const data = new FormData();
-    for (let x = 0; x < imagesToUpload.length; x++) {
-      data.append('images[]', this.state.imagesToUpload[x]);
-    }
-    data.append('id_album', album.id);
-    
-    if (imagesToUpload.length > 0)
-      axios
-        .post(
-          'http://api.memory-lane.ru/upload/images',
-          data,
-          {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-              'Authorization': `${token}`
-            }
-          })
-        .then(res => {
-          if (res.data.result) {		// res.status === 200
-            this.getImages();
-          } else {	// res.status !== 200
-            this.setState({ errorMessage: res.data });
-            alert(`${res.data.error}`);
-          }
-        })
-        .catch(error => console.error(error));
-  }
-
-  uploadFileHandler(event) {
-    event.persist();
-    this.setState({
-      imagesToUpload: event.target.files
-    });
   }
 
   setGridType(gridId) {
@@ -165,47 +126,12 @@ class Album extends Component {
       <div className='contentContainer '>
         {
           isEmpty ?
-
-
-            <div className='addPhotoWrap'>
-
-              <div className='head1 albumTitle'>
-            Загрузка фотографий
-              </div>
-              <div className='albumName'>
-                <div className='text1 albumDesc'>
-            Альбом для загрузки фото
-                </div>
-                <div className='text1'>
-            Новый альбом
-                </div>
-              </div>
-
-              <div className='addPhoto'> 
-                <div className='addPhoto__border' onChange={this.uploadFileHandler}>
-                  <input 
-                    className='addPhoto-input'
-                    type='file' 
-                    name='file' 
-                    multiple onChange={this.uploadFileHandler}/>
-                  <div className='addPhoto__border_text head3'>Перетащите фотографию сюда
-                  </div>
-                </div>
-              </div>
-
-              <div className='choicePhoto'>
-                <div className='choicePhoto__line'>
-                  <div className='choicePhoto__line_lineLeft'/>
-                  <span className='text1'>или</span>
-                  <div className='choicePhoto__line_lineRight'/>
-                </div>
-                <div className='text1'>Выберите файлы со своего компьютера</div>
-                <ButtonContainer className='choicePhoto__button' onClick={this.uploadImage}>Выбрать</ButtonContainer>
-              </div>
+            <div className='contentContainer'>
+              <Sorting/>
+              <EmptyBlock albumId={album.id}/>
             </div>
             :
             <>
-
               <Sorting gridId={this.setGridType}/>
               
               <div className={'albumContent ' + this.state.gridType} >

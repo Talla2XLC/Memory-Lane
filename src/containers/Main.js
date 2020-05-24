@@ -14,7 +14,8 @@ import { ReactComponent as StoryIcon } from './svg/storyIcon.svg';
 import { ReactComponent as ServiceIcon } from './svg/serviceIcon.svg';
 import { ReactComponent as EducationIcon } from './svg/educationIcon.svg';
 
-import MainModal  from '../components/Main/MainModal';
+import MainModal  from '../components/Main/Modal/MainModal';
+import ModalAddAlbum  from '../components/Main/Modal/addAlbum';
 
 class Main extends Component {
   constructor(props) {
@@ -56,9 +57,7 @@ class Main extends Component {
                     modalOpened={modalAddAlbumOpened}
                     modalType={'addAlbum'}
                   >
-                    <h1>Создание Альбома</h1>
-                    <p>Введите название</p>
-                    <input className='add-album-input' placeholder='Название альбома' type='text'/>
+                    <ModalAddAlbum/>
                   </MainModal>
                 </MainWrapper>) :
 
