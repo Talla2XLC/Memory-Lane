@@ -135,7 +135,7 @@ export default class AddStory extends Component {
               />
 
               <div className='storyAdd__wrapper'>
-                <ButtonEncircledCross />
+                // <ButtonEncircledCross />
                 <textarea
                   className='text1 storyAdd__content'
                   name='content'
