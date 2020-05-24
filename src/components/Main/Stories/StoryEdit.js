@@ -5,7 +5,7 @@ import './Stories.sass';
 
 import axios from 'axios';
 
-export default class Detail extends Component {
+export default class StoryEdit extends Component {
   state = {
     storyName: '',
     author: '',
@@ -26,7 +26,7 @@ export default class Detail extends Component {
         'http://api.memory-lane.ru/db/updateHistory',
         {
           story_name: 'storyName',
-          story_id: 28,
+          // story_id: 28,
           author: 'author',
           date: 'date',
           tag: 'tag',
@@ -47,6 +47,7 @@ export default class Detail extends Component {
           //redirect to stories
         } else {	// res.status !== 200
           console.log(res)
+          console.log(this.props)
 	        console.error(res.data.error);
 	        alert(`${res.data.error}`);
 	      }
