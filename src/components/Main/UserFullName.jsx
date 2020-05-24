@@ -187,13 +187,13 @@ class UserFullName extends Component {
 	          disabled={!formValid}
 	        />
 
-					<input
-						className='textInput formItem__button c-button--width360 f__button--indent-mt64'
-						type='submit'
-						value='Пропустить'
-						onClick={this.skipIntroduce}
-						style={{ marginTop: "1em" }}
-					/>
+	        <input
+	          className='textInput formItem__button c-button--width360 f__button--indent-mt64'
+	          type='submit'
+	          value='Пропустить'
+	          onClick={this.skipIntroduce}
+	          style={{ marginTop: '1em' }}
+	        />
 	      </div>
 	      {/* Modal window here */}
 	    </div>
@@ -210,10 +210,10 @@ const mapDispatchToProps = dispatch => {
   return {
     checkUserName: () => {
       dispatch(fetchUserFullName());
-		},
-		checkUserAskedToIntroduce: () => {
-			dispatch(askedToIntroduce());
-		}
+    },
+    checkUserAskedToIntroduce: () => {
+      dispatch(askedToIntroduce());
+    }
   };
 };
 

@@ -14,6 +14,8 @@ import { ReactComponent as StoryIcon } from './svg/storyIcon.svg';
 import { ReactComponent as ServiceIcon } from './svg/serviceIcon.svg';
 import { ReactComponent as EducationIcon } from './svg/educationIcon.svg';
 
+import MainModal  from '../components/Main/MainModal';
+
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -24,14 +26,13 @@ class Main extends Component {
         { endpoint: 'stories', title: 'Истории', icon: <StoryIcon/>   },
         { endpoint: 'services', title: 'Сервисы', icon: <ServiceIcon/>   },
         { endpoint: 'learn', title: 'Обучение', icon: <EducationIcon/>   }
-      ],
-      headerHeight: 0
+      ]
     };
   }
 
   render() {
     const { navItems } = this.state;
-    const { loading, isAuthorized, headerHeight, hasFullName, askedToIntroduce } = this.props;
+    const { loading, isAuthorized, hasFullName, askedToIntroduce, modalAddAlbumOpened } = this.props;
 
     return (
       <BrowserRouter>
@@ -40,8 +41,8 @@ class Main extends Component {
             (loading ?
               <h1>Загрузка данных</h1> :
               (hasFullName || askedToIntroduce) ?
-                (<MainWrapper className='Main' headerHeight={headerHeight}>
-                  <Header headerHeight={this.setHeaderHeight}/>
+                (<MainWrapper className='Main'>
+                  <Header />
                   
                   <PerfectScrollbar component='div'>
                     <div className='central-content'>
@@ -51,6 +52,14 @@ class Main extends Component {
 
                     </div>
                   </PerfectScrollbar>
+                  <MainModal
+                    modalOpened={modalAddAlbumOpened}
+                    modalType={'addAlbum'}
+                  >
+                    <h1>Создание Альбома</h1>
+                    <p>Введите название</p>
+                    <input className='add-album-input' placeholder='Название альбома' type='text'/>
+                  </MainModal>
                 </MainWrapper>) :
 
                 <Router isAuthorized={isAuthorized} hasFullName={hasFullName} />
@@ -94,7 +103,8 @@ const mapStateToProps = state => {
     isAuthorized: state.session.isAuthorized,
     currentUser: state.userInfo.currentUser,
     hasFullName: !!(state.userInfo.currentUser.first_name || state.userInfo.currentUser.last_name),
-    askedToIntroduce: state.userInfo.currentUser.asked_to_introduce
+    askedToIntroduce: state.userInfo.currentUser.asked_to_introduce,
+    modalAddAlbumOpened: state.modal.addAlbumOpened
   };
 };
 

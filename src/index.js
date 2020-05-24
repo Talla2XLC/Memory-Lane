@@ -32,7 +32,6 @@ store.dispatch(getUsers());
 store.dispatch(sessionCheck(store.getState().session.sessionID));
 store.dispatch(fetchUserFullName());
 store.dispatch(getAlbums());
-//получаю альбомы 
 
 ReactDOM.render(
   <React.StrictMode>

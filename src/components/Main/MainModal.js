@@ -1,30 +1,36 @@
-import React  from 'react';
+import React, {Component} from 'react';
 import FormPortal from './UserRegistrationPortal';
 import styled from 'styled-components';
+import {connect} from 'react-redux';
+import {modalClose} from '../../actions/modalClose';
 
-const FormModal = ({ modalOpened, onCancel, children }) => {
-  return (
-    <>                                                                      
-      { modalOpened &&
-        <FormPortal>
-          <FormModalWrapper>
-            <div className='modalOverlay'>
-              <div className='modalWindow'>
-                <div className='modalHeader'>
-                  <button className='times' onClick={onCancel} />
+class MainModal extends Component {
+  render() {
+    const { modalOpened, modalType, closeModal, children } = this.props;
+    
+    return (
+      <>
+        { modalOpened &&
+          <FormPortal>
+            <FormModalWrapper>
+              <div className='modalOverlay'>
+                <div className='modalWindow'>
+                  <div className='modalHeader'>
+                    <button className='times' onClick={e => {closeModal(modalType);}} />
+                  </div>
+                  <div className='modalBody'>
+                    {children}
+                  </div>
+                  <div className='modalFooter' />
                 </div>
-                <div className='modalBody'>
-                  {children}
-                </div>
-                <div className='modalFooter' />
               </div>
-            </div>
-          </FormModalWrapper>
-        </FormPortal>
-      }
-    </>
-  );
-};
+            </FormModalWrapper>
+          </FormPortal>
+        }
+      </>
+    );
+  }
+}
 
 const FormModalWrapper = styled.div`
 .modalOverlay {
@@ -48,13 +54,9 @@ const FormModalWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   heigth: 320px;
+  border-radius: 10px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
 }
-
-// .modalHeader,
-// .modalBody,
-// .modalFooter {
-//   padding: 8px 20px;
-// }
 
 .modalBody {
   text-align: center;
@@ -62,16 +64,18 @@ const FormModalWrapper = styled.div`
 
 .modalBody h1 {
   margin-bottom: 26px;
-  font-size: 2rem;
+  font-size: 24px;
+  color: #3B3E3C;
+  font-family: Rubik;
 }
 
 .modalBody p {
-  font-size: 1.6rem;
+  font-size: 16px;
+  color: #828482;
 }
 
 .modalHeader {
-  min-height: 72px;
-  // border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  min-height: 42px;
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
@@ -127,4 +131,17 @@ const FormModalWrapper = styled.div`
 }
 
 `;
-export default FormModal;
+const mapStateToProps = state => {
+  return {
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    closeModal: type => {
+      dispatch(modalClose(type));
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainModal);
