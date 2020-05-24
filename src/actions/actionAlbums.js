@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 const getAlbumsStarted = albums => ({
   type: 'GET_ALBUMS_DATA_STARTED',
   payload: albums

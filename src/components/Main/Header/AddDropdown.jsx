@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { ReactComponent as IconAddSection } from './svg/addIcon.svg';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-export default class AddDropdown extends Component {
+import {connect} from 'react-redux';
+import {modalOpen} from '../../../actions/modalOpen';
+
+class AddDropdown extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,7 +38,7 @@ export default class AddDropdown extends Component {
 
             <DropdownList>
               <Link to='/albums/add' className='dropdownLink'> <button className='dropdownButton'>Загрузить фото</button> </Link>
-              <Link to='/2/2' className='dropdownLink'> <button className='dropdownButton'>Создать альбом</button> </Link>
+              <span className='dropdownLink'> <button className='dropdownButton' onClick={this.props.openModalAddAlbum}>Создать альбом</button> </span>
               <Link to='/stories/add' className='dropdownLink'> <button className='dropdownButton'>Добавить историю</button> </Link>
               <Link to='/4/4' className='dropdownLink'> <button className='dropdownButton'>Добавить интервью</button> </Link>
               <Link to='/persons/add' className='dropdownLink'> <button className='dropdownButton'>Добавить персону</button> </Link>
@@ -47,6 +50,7 @@ export default class AddDropdown extends Component {
     );
   }
 }
+
 const DropdownList = styled.div`
 position: absolute;
 display: flex;
@@ -69,3 +73,18 @@ background: #FFFFFF;
 }
 
 `;
+
+const mapStateToProps = state => {
+  return {
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    openModalAddAlbum: () => {
+      dispatch(modalOpen('addAlbum'));
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddDropdown);
