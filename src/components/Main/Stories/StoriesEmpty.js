@@ -1,31 +1,36 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-import './EmptyBlock.sass';
+import './Stories.sass';
 
 import { ReactComponent as FamilySvg } from '../svg/family.svg';
 import { ButtonContainer } from '../Button';
 
-class EmptyBlock extends Component {
+class StoriesEmpty extends Component {
 
   // this.props.match.params
 
-  forwardToAddStory = () => this.props.history.push('/stories/add');
-
+  forwardToAddStory = () => {
+    const { history } = this.props;
+    // albums?
+    history.push('/stories/add');
+    // !albums? -> addNewAlbum
+  };
+  
   render() {
     return (
       <div className='emptyBlock'>
         <FamilySvg className='familySvg' />
-        <div className='head2'>Здесь пока нет ни одной записи</div>
+        <div className='head2'>Здесь пока нет ни одной истории</div>
         <ButtonContainer
           className='emptyNewsBlockButton'
           onClick={this.forwardToAddStory}
         >
-          Перейти
+          Написать
         </ButtonContainer>
       </div>
     );
   };
 }
 
-export default withRouter(EmptyBlock);
+export default withRouter(StoriesEmpty);
