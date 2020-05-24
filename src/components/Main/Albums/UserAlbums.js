@@ -22,17 +22,17 @@ class UserAlbums extends Component {
       albumName: '',
       description: '',
       styleType: 'userAlbumsWrapBig',
-      showActions: false
+      showActions: ''
     };
   }
-  showActions(event) {
+  showActions(event, id) {
     event.preventDefault();
-    this.setState({ showActions: true }, () => {
+    this.setState({ showActions: id }, () => {
       document.addEventListener('click', this.closeActions);
     });
   }
   closeActions() {
-    this.setState({ showActions: false }, () => {
+    this.setState({ showActions: '' }, () => {
       document.removeEventListener('click', this.closeActions);
     });
   }
@@ -95,25 +95,19 @@ class UserAlbums extends Component {
 		
 
 	  const albumsItems = userAlbums.map(albums =>
-
-
 	    (
-
-
 	        <div key={albums.id}>
-
 	        <Link className='userAlbumsLink' to={`/albums/${albums.id}`}>      
 	          <div className='imgWrap'>	      
 	            <img className='imgWrap__img' src='https://picsum.photos/238/149' alt='albumPreview'/>
 	          </div>
 	        </Link>
-
 	          <div className='albumName'>
 	            {albums.album_name}
 	            <div className='actionsForAlbums'>
-	            <Dots  onClick={this.showActions}/>
+	            <Dots className={'dots-list'} onClick={e => {this.showActions(e, albums.id);}}/>
 	              {
-	                this.state.showActions 
+	                this.state.showActions === albums.id
 	                  ? 
 	                  (<ul className='actionsForAlbums__dropdown'>
 	
@@ -137,21 +131,11 @@ class UserAlbums extends Component {
 	                    </li>
 							  </ul>)
 	                  :
-	                  (
-	                    null
-	                  )
-
-
+	                  null
 	              }
-
 	            </div>
-
-
 	          </div>
-
 	        </div>
-
-			
 	    )
 	  );
 
