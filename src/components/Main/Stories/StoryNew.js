@@ -10,7 +10,7 @@ import { ButtonEncircledCross } from '../ButtonEncircledCross';
 import axios from 'axios';
 
 
-export default class AddStory extends Component {
+export default class StoryNew extends Component {
   state = {
     storyName: '',
     author: '',
@@ -18,16 +18,10 @@ export default class AddStory extends Component {
     tags: '',
     city: '',
     content: '',
-    // isVisible: false,
-    // isInputEmpty: true,
-    // isTextAreaEmpty: true,
-    // modalOpened: false,
     hasCreated: false
   };
 
-  // handleCancel = () => this.setState({ modalOpened: false, hasCreated: true });
-
-  storyAdd = () => {
+  storyNew = () => {
     const { storyName, author, date, tags, city, content } = this.state;
     const token = localStorage.getItem('token');
 
@@ -50,7 +44,7 @@ export default class AddStory extends Component {
         }
       )
 	    .then(res => {
-	      if (res.data.result) {	// res.status === 200
+        if (res.data.result) {	// res.status === 200
           this.setState({ hasCreated: true });
 	      } else {	// res.status !== 200
 	        console.error(res.data.error);
@@ -85,11 +79,11 @@ export default class AddStory extends Component {
       loading ?
         <h1>Загрузка данных</h1> :
         (<PerfectScrollbar>
-          <div className='storyAdd'>
+          <div className='storyNew'>
 
-            <form className='storyAdd__desk'>
+            <form className='storyNew__desk'>
               <input
-                className='head2 storyAdd__name'
+                className='head2 storyNew__name'
                 type='text'
                 name='storyName'
                 value={storyName}
@@ -99,7 +93,7 @@ export default class AddStory extends Component {
 
               { /* TODO: Dynamic tags appearance */ }
               <input
-                className='head2 storyAdd__tags'
+                className='head2 storyNew__tags'
                 type='hidden'
                 name='tags'
                 value={tags}
@@ -108,7 +102,7 @@ export default class AddStory extends Component {
               />
 
               <input
-                className='text3 storyAdd__input'
+                className='text3 storyNew__input'
                 type='text'
                 name='date'
                 value={date}
@@ -117,7 +111,7 @@ export default class AddStory extends Component {
               />
 
               <input
-                className='text3 storyAdd__input'
+                className='text3 storyNew__input'
                 type='text'
                 name='author'
                 value={author}
@@ -126,7 +120,7 @@ export default class AddStory extends Component {
               />
 
               <input
-                className='text3 storyAdd__input'
+                className='text3 storyNew__input'
                 type='text'
                 name='city'
                 value={city}
@@ -134,9 +128,9 @@ export default class AddStory extends Component {
                 onChange={this.handleInput}
               />
 
-              <div className='storyAdd__wrapper'>
+              <div className='storyNew__wrapper'>
                 <textarea
-                  className='text1 storyAdd__content'
+                  className='text1 storyNew__content'
                   name='content'
                   value={content}
                   placeholder='История'
@@ -147,7 +141,7 @@ export default class AddStory extends Component {
 
             <ButtonContainer
               style={{ display: (storyName || author || date || tags || city || content) ? 'flex' : 'none' }}
-              onClick={this.storyAdd}
+              onClick={this.storyNew}
             >
               Опубликовать
             </ButtonContainer>
