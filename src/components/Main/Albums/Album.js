@@ -184,7 +184,7 @@ class Album extends Component {
               <div className='addPhoto'> 
                 <div className='addPhoto__border' onChange={this.uploadFileHandler}>
                   <input 
-                    className='input'
+                    className='addPhoto-input'
                     type='file' 
                     name='file' 
                     multiple onChange={this.uploadFileHandler}/>

@@ -35,8 +35,8 @@ export default class Router extends Component {
           <Route exact path='/persons/' component={ Persons } />
 
           <Route exact path='/albums/' component={ UsersAlbums } />
-          <Route exact path='/albums/:id' component={ Album } />
           <Route exact path='/albums/add/' component={ DownloadPhoto } />
+          <Route exact path='/albums/:id' component={ Album } />
           {/* <Route exact path='/albums/addalbums/' component={ UsersAlbums } /> */}
           <Route exact path='/photo/:id' component={ Photo } />
           <Route exact path='/stories/' component={ Stories } />

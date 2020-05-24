@@ -28,10 +28,7 @@ export default class AddDropdown extends Component {
 
   render() {
     return (<>
-
       <IconAddSection onClick={this.showMenu}/>
-
-
       {
         this.state.showMenu
           ? (
