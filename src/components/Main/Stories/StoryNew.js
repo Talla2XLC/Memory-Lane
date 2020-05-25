@@ -5,12 +5,14 @@ import { Redirect } from 'react-router-dom';
 import './Stories.sass';
 
 import { ButtonContainer } from '../Button';
-import { ButtonEncircledCross } from '../ButtonEncircledCross';
+import StoriesDropDown from './StoriesDropdown';
+import { ReactComponent as EncircledCross } from '../svg/add_circle_outline_24px.svg';
+
+import { connect } from 'react-redux';
 
 import axios from 'axios';
 
-
-export default class StoryNew extends Component {
+class StoryNew extends Component {
   state = {
     storyName: '',
     author: '',
@@ -18,7 +20,12 @@ export default class StoryNew extends Component {
     tags: '',
     city: '',
     content: '',
-    hasCreated: false
+    hasCreated: false,
+
+    selectedAlbum: this.props.location.state ? this.props.location.state.albumId : '',
+    dropdownOpened: false,
+    images: [],
+    imagesToUpload: []
   };
 
   storyNew = () => {
@@ -69,9 +76,31 @@ export default class StoryNew extends Component {
     this.setState({ [name]: value });
   };
 
+  uploadFileHandler(event) {
+    event.persist();
+    this.setState({
+      imagesToUpload: event.target.files
+    });
+  };
+
+  handleShowDropdown = e => {
+    e.preventDefault();
+
+    this.setState({ dropdownOpened: !this.state.dropdownOpened });
+  }
+
+  handleDropdownSelect = id => {
+    this.setState({ selectedAlbum: id, dropdownOpened: false });
+  }
+
   render() {
-    const { loading } = this.props;
-    const { storyName, author, date, tags, city, content, hasCreated } = this.state;
+    const { loading, albums } = this.props;
+    const { storyName, author, date, tags, city, content, hasCreated, dropdownOpened, selectedAlbum } = this.state;
+
+    // console.log(this.props);
+    // console.log(this.state);
+
+    // const albumName = albums[selectedAlbum] ? albums[selectedAlbum].album_name : '';
 
     if (hasCreated) return <Redirect to='/stories'/>
 
@@ -128,7 +157,23 @@ export default class StoryNew extends Component {
                 onChange={this.handleInput}
               />
 
+              <div className='storyNew__photoStore'>
+                <img />
+              </div>
+
               <div className='storyNew__wrapper'>
+                <button onClick={this.handleShowDropdown}>
+                  <EncircledCross />
+                </button>
+                {
+                  dropdownOpened ?
+                    <StoriesDropDown
+                      // currentAlbum={albumName ?? 'Новый альбом'}
+                      albums={albums}
+                      handleSelect={this.handleDropdownSelect}
+                    /> :
+                    null
+                }
                 <textarea
                   className='text1 storyNew__content'
                   name='content'
@@ -150,3 +195,16 @@ export default class StoryNew extends Component {
     );
   };
 }
+
+const mapStateToProps = (state) => {
+  return {
+    albums: state.albums.albums
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(StoryNew);
