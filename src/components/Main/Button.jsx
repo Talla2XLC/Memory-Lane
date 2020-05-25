@@ -22,7 +22,9 @@ outline: none;
   outline: none;
 }
 &:focus {
-  box-shadow: inset 2px 2px 2px rgba(48, 48, 48, 0.2);
   outline: none;
+}
+&:active {  
+  box-shadow: inset 2px 2px 2px rgba(48, 48, 48, 0.2);
 }
 `;

@@ -16,7 +16,7 @@ import Photo from './components/Main/Albums/PhotoFull';
 import Stories from './components/Main/Stories/Stories';
 import Services from './components/Main/Services';
 import Learn from './components/Main/Learn';
-import DownloadPhoto from './components/Main/Albums/DownloadPhoto';
+import DownloadPhoto from './components/Main/Albums/UploadPhoto';
 import StoryEdit from './components/Main/Stories/StoryEdit';
 import StoryView from './components/Main/Stories/StoryView';
 import Profile from './components/Main/UserProfile/UserProfile';
