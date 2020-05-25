@@ -29,14 +29,14 @@ export default function MainContent() {
         <p className='mainText textPosition'>
           Наши задания помогут вам наполнить историю воспоминаниями
         </p>
-        <ButtonContainer>Перейти</ButtonContainer>
+        <ButtonContainer className='btn-position'>Перейти</ButtonContainer>
       </div>
       <div className='mainContainer__item div2 basicItem'>
         <p className='head2'>Пригласить друга</p>
         <p className='mainText textPosition'>
           Пригласите своего близкого человека,<br /> чтобы он стал частью вашей истории.
         </p>
-        <ButtonContainer> Пригласить</ButtonContainer>
+        <ButtonContainer className='btn-position'> Пригласить</ButtonContainer>
       </div>
       <div className='mainContainer__item div3 basicItem' >Реклама</div>
     </div>

@@ -3,6 +3,7 @@ import { fetchUserFullName } from '../../actions/actionUserFullName';
 import { askedToIntroduce } from '../../actions/actionUserHasIntroduced';
 
 import './UserFormStyle.sass';
+import { ButtonContainer } from './Button.jsx';
 
 import { Tooltip } from './UserRegistrationTooltip';
 
@@ -147,56 +148,59 @@ class UserFullName extends Component {
 	  const displaylastName = (lastName.length === 0 || lastName === null || lastNameValid) ? 'formErrors displayNone' : 'formErrors';
 
 	  return (
-	    <div className='formWrapper'>
-	      <div className='formWrapperItem__titleContainer title__item'>
-	        <h2 className='textBasic titleContainerItem__title'>Мы не знаем, как к вам обращаться, представьтесь, пожалуйста</h2>
-	      </div>
+		<div className='container-form'>
+			<div className='formWrapper'>
+			<div className='formWrapperItem__titleContainer'>
+				<h2 className='titleContainerItem__title'>Давайте познакомимся</h2>
+			</div>
 
-	      <div className='formContainerItem__form'>
-	        <input
-	          className={inputFirstName}
-	          name='firstName'
-	          type='text'
-	          size='0'
-	          placeholder='Введите свое имя'
-	          value={firstName}
-	          onChange={this.handleInput}
-	          required
-	        />
-	        <div className={displayfirstName}>
-	          <Tooltip tooltip={formErrors.firstName}/>
-	        </div>
+			<div className='formContainerItem__form'>
+				<input
+					className={inputFirstName}
+					name='firstName'
+					type='text'
+					size='0'
+					placeholder='Введите свое имя'
+					value={firstName}
+					onChange={this.handleInput}
+					required
+				/>
+				<div className={displayfirstName}>
+					<Tooltip tooltip={formErrors.firstName}/>
+				</div>
 
-	        <input
-	          className={inputLastName}
-	          name='lastName'
-	          type='text'
-	          placeholder='Введите свою фамилию'
-	          onChange={this.handleInput}
-	          value={lastName}
-	        />
-	        <div className={displaylastName}>
-	          <Tooltip tooltip={formErrors.lastName}/>
-	        </div>
+				<input
+					className={inputLastName}
+					name='lastName'
+					type='text'
+					placeholder='Введите свою фамилию'
+					onChange={this.handleInput}
+					value={lastName}
+				/>
+				<div className={displaylastName}>
+					<Tooltip tooltip={formErrors.lastName}/>
+				</div>
 
-	        <input
-	          className='textInput formItem__button c-button--width360 f__button--indent-mt64'
-	          type='submit'
-	          value='Представиться'
-	          onClick={this.introduceUser}
-	          disabled={!formValid}
-	        />
+				<ButtonContainer
+					className='btn-introduce'
+					type='submit'
+					value='Представиться'
+					onClick={this.introduceUser}
+				>
+					Представиться
+				</ButtonContainer>
 
-					<input
-						className='textInput formItem__button c-button--width360 f__button--indent-mt64'
-						type='submit'
-						value='Пропустить'
-						onClick={this.skipIntroduce}
-						style={{ marginTop: "1em" }}
-					/>
-	      </div>
-	      {/* Modal window here */}
-	    </div>
+						<ButtonContainer
+							className='btn-skip'
+							type='submit'
+							onClick={this.skipIntroduce}
+						>
+							Пропустить
+						</ButtonContainer>
+			</div>
+			{/* Modal window here */}
+			</div>
+		</div>
 	  );
 	}
 }

@@ -147,7 +147,7 @@ export default class UserRegistration extends Component {
 						<div className='formContainerItem__form'>
 
 							<div className='formContainerItem__icons'>
-								<div>
+								<div className='container__icons'>
 									<a className='socials-icon' href='https://vk.com/' alt='vk'><FormVK /></a>
 									<a className='socials-icon' href='https://www.instagram.com/' alt='ins'><FormIns /></a>
 									<a className='socials-icon' href='https://ru-ru.facebook.com/' alt='facebook'><FormFB /></a>
@@ -186,21 +186,21 @@ export default class UserRegistration extends Component {
 								{/* <button className={btnEye} /> */}
 							</div>
 
-							<ul className='f-validation-message'> 
-								<li className={'validation-message ' + formErrors.password.message1}>Ваш пароль должен быть от 8 символов длиной</li>
-								<li className={'validation-message ' + formErrors.password.message2}>Пароль должен содержать минимум одну заглавную букву</li>
-								<li className={'validation-message ' + formErrors.password.message3}>Пароль должен содержать минимум одну цифру</li>
+							<ul className='c-validation-message'> 
+								<li className={'validation-message__text ' + formErrors.password.message1}>Ваш пароль должен быть от 8 символов длиной</li>
+								<li className={'validation-message__text ' + formErrors.password.message2}>Пароль должен содержать минимум одну заглавную букву</li>
+								<li className={'validation-message__text ' + formErrors.password.message3}>Пароль должен содержать минимум одну цифру</li>
 							</ul>
 										
 							<ButtonContainer
-								className='formItem__button'
+								className='btn-registry'
 								type='submit'
 								onClick={this.registerUser}
 							>
 								Зарегистрироваться
 							</ButtonContainer>
 
-							<div className='f-privacy-agreement'>
+							<div className='c-privacy-agreement'>
 								<span>Нажимая на кнопку, Вы соглашаетесь с политикой конфиденциальности</span>
 							</div>
 						</div>
