@@ -214,10 +214,10 @@ const mapDispatchToProps = dispatch => {
   return {
     checkUserName: () => {
       dispatch(fetchUserFullName());
-		},
-		checkUserAskedToIntroduce: () => {
-			dispatch(askedToIntroduce());
-		}
+    },
+    checkUserAskedToIntroduce: () => {
+      dispatch(askedToIntroduce());
+    }
   };
 };
 

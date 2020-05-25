@@ -1,27 +1,61 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Dropdown from './Albums/Dropdown';
+import DropdownForAlbums from './Albums/DropdownForAlbums';
+import {ReactComponent as Arrow} from './svg/arrow.svg';
+import {ReactComponent as Plus} from './svg/plus.svg';
+import {connect} from 'react-redux';
+import {modalOpen} from '../../actions/modalOpen';
 
-export default class Sorting extends Component {
+class Sorting extends Component {
   render() {
-    return (
-      <SortingContainer>
-        <div className="left-sorting">
-          <div className='sortingDate'>По дате</div>
-          <div className='sortingHuman'>По человеку</div>
-        </div>
-        <div className="right-sorting">
-          <div className='sortingAction'>Действие</div>
-          <Dropdown gridId={this.props.gridId}/>
-        </div>
+    const { album, openModalAddAlbum } = this.props;
 
-      </SortingContainer>
+    return (
+      album ? 
+        <SortingContainer>
+          <div className='left-sorting'>
+            <div className='sortingItem'>По алфавиту
+              <Arrow className='arrow'/>
+            </div>
+            <div className='sortingItem'>По дате
+              <Arrow className='arrow'/>
+            </div>
+            <div className='sortingItem'>По заполненности
+              <Arrow className='arrow'/>
+            </div>
+          </div>
+          <div className='right-sorting-album'>
+            <DropdownForAlbums styleId={this.props.styleId}/>
+            <button className='sortingBtn' onClick={ openModalAddAlbum }>
+              <span className='createAlbum'>Cоздать альбом</span>
+              <Plus className='plus'/>
+            </button>
+          </div>
+        </SortingContainer>
+        : 
+        <SortingContainer>
+          <div className='left-sorting'>
+            <div className='sortingItem'>По алфавиту
+              <Arrow className='arrow'/>
+            </div>
+            <div className='sortingItem'>По дате
+              <Arrow className='arrow'/>
+            </div>
+            <div className='sortingItem'>По заполненности
+              <Arrow className='arrow'/>
+            </div>
+          </div>
+          <div className='right-sorting-album'>
+            <Dropdown gridId={this.props.gridId}/>
+          </div>
+        </SortingContainer>
     );
   }
 }
 
 export const SortingContainer = styled.div`
-height: 72px;
+height: 76px;
 z-index: 2;
 width: 100%;
 position:sticky;
@@ -29,24 +63,64 @@ top: 0;
 display: flex;
 flex-flow: row nowrap;
 align-items: center;
-background: #F6F6F6;
+
 
 .left-sorting {
   display: flex;
   flex-flow: row nowrap;
 }
 
-.sortingDate {
-  margin-right: 30px;
+.sortingItem {
+  margin-right: 20px;
 }
 
-.right-sorting {
+.right-sorting-album {
   display: flex;
+
   flex-flow: row nowrap;
-  margin-left: auto
+  margin-left: auto;
+}
+.arrow {
+  margin-left: 4px;
 }
 
-.sortingAction {
-  margin-right: 30px;
+.createAlbum {
+  margin-left: 12px;
+}
+
+.sortingBtn {
+  color: #3B3E3C;
+  background: none;
+  border: none;  
+  &:focus {
+    outline: none;
+  }
+  &:hover .plus > path{
+    fill: #5DB07B;
+  }
+  &:active .plus{
+    transform: rotate(45deg);
+    > path{
+      fill: #278147;
+    }
+  }
+}
+.plus {
+  margin-left: 12px;
 }
 `;
+
+const mapStateToProps = (state) => {
+  return {
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    openModalAddAlbum: () => {
+      dispatch(modalOpen('addAlbum'));
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sorting);

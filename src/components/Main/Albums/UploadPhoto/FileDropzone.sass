@@ -1,0 +1,50 @@
+.dropzone-container
+  height: 100%
+  display: flex
+  flex-flow: column nowrap
+  overflow: hidden
+
+.dropzone
+  flex-grow: 1
+  border: 1px dashed #828482
+  box-sizing: border-box
+  border-radius: 10px
+  display: flex
+  flex-flow: column nowrap
+  justify-content: center
+  cursor: pointer
+  &:focus
+    outline: none
+
+.dropzone-txt
+  margin: auto
+  color:  #828482
+  font-size: 22px
+
+.thumb-container
+  display: flex
+  flex-flow: row wrap
+  margin-top: 16px
+  justify-content: space-between
+
+.thumb
+  display: inline-flex
+  justify-content: center
+  border-radius: 2px
+  border: 1px solid #eaeaea
+  margin-bottom: 8px
+  margin-right: 8px
+  width: 100px
+  height: 100px
+  padding: 4px
+  box-sizing: border-box
+
+.thumb-inner
+  display: flex
+  min-width: 0
+  overflow: hidden
+
+.thumb-img
+  display: block
+  width: auto
+  height: 100%

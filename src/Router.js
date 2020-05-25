@@ -8,16 +8,19 @@ import UserAuthorization from './components/Main/UserAuthorization';
 import Funnel from './components/Main/Funnel';
 
 import MainContent from './components/Main/MainContent';
-
+import UsersAlbums from './components/Main/Albums/UserAlbums';
 import Persons from './components/Main/Persons';
-import Albums from './components/Main/Albums/Albums';
+// import Albums from './components/Main/Albums/Photos';
+import Album from './components/Main/Albums/Album';
+import Photo from './components/Main/Albums/PhotoFull';
 import Stories from './components/Main/Stories/Stories';
 import Services from './components/Main/Services';
 import Learn from './components/Main/Learn';
-import DownloadPhoto from './components/Main/Albums/DownloadPhoto';
-import Detail from './components/Main/Stories/Detail';
+import DownloadPhoto from './components/Main/Albums/UploadPhoto/UploadPhoto';
+// import StoryEdit from './components/Main/Stories/StoryEdit';
+import StoryView from './components/Main/Stories/StoryView';
 import Profile from './components/Main/UserProfile/UserProfile';
-import AddStory from './components/Main/Stories/AddStory';
+import StoryAdd from './components/Main/Stories/StoryAdd';
 
 export default class Router extends Component {
 
@@ -31,11 +34,15 @@ export default class Router extends Component {
             { hasFullName === false ? <Redirect to='/userfullname/' /> : <MainContent />}
           </Route>
           <Route exact path='/persons/' component={ Persons } />
-          <Route exact path='/albums/' component={ Albums } />
+
+          <Route exact path='/albums/' component={ UsersAlbums } />
           <Route exact path='/albums/add/' component={ DownloadPhoto } />
+          <Route exact path='/albums/:id' component={ Album } />
+          {/* <Route exact path='/albums/addalbums/' component={ UsersAlbums } /> */}
+          <Route exact path='/photo/:id' component={ Photo } />
           <Route exact path='/stories/' component={ Stories } />
-          <Route path='/stories/:id' component={ Detail } />
-          <Route exact path='/stories/add/' component={ AddStory } />
+          <Route exact path='/stories/add/' component={ StoryAdd } />
+          <Route path='/stories/:id' component={ StoryView } />
           <Route exact path='/services/' component={ Services } />
           <Route exact path='/userfullname/' >
             { hasFullName === false ? <UserFullName /> : <Redirect to='/' />}

@@ -8,24 +8,23 @@ const FormModal = ({ modalOpened, onCancel, children }) => {
       { modalOpened &&
         <FormPortal>
           <FormModalWrapper>
-            <div className="modalOverlay">
-              <div className="modalWindow">
-                <div className="modalHeader">
-                  <button className="times" onClick={onCancel}></button>
+            <div className='modalOverlay'>
+              <div className='modalWindow'>
+                <div className='modalHeader'>
+                  <button className='times' onClick={onCancel} />
                 </div>
-                <div className="modalBody">
+                <div className='modalBody'>
                   {children}
                 </div>
-                <div className="modalFooter">
-                </div>
+                <div className='modalFooter' />
               </div>
             </div>
           </FormModalWrapper>
         </FormPortal>
       }
     </>
-  )
-}
+  );
+};
 
 const FormModalWrapper = styled.div`
 .modalOverlay {
@@ -128,4 +127,4 @@ const FormModalWrapper = styled.div`
 }
 
 `;
-export default FormModal
+export default FormModal;

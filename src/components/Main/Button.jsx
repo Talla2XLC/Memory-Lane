@@ -26,4 +26,7 @@ outline: none;
   box-shadow: inset 2px 2px 2px rgba(48, 48, 48, 0.4);
   outline: none;
 }
+&:active {  
+  box-shadow: inset 2px 2px 2px rgba(48, 48, 48, 0.2);
+}
 `;

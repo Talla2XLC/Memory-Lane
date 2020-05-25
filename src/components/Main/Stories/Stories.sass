@@ -1,36 +1,107 @@
 .stories
-  padding-top: 100px
+  padding-top: 38px
   box-sizing: border-box
 .story
   width: 100%
-  max-height: 300px
+  max-height: 260px
   display: flex
   flex-flow: row nowrap
   text-align: left
-  margin: 0 0 34px 0
+  margin-bottom: 67px
   box-sizing: border-box
   &__photo
-    width: 260px
+    width: 267px
     height: 260px
     border-radius: 10px
-    margin-right: 35px
-  &__action
-    position: absolute
-    right: 0
+    margin-right: 28px
   &__info
-    margin-bottom: 30px
-  &__desk
-    max-width: 800px
+    max-width: 744px
+  &__title
+    width: 477px
+    margin-bottom: 6px
+    line-height: 36px
     overflow: hidden
     text-overflow: ellipsis
+  &__authorDateContainer
+    display: flex
+    height: 24px
+    margin-bottom: 12px
+  &__author
+    width: 108px
+    margin-right: 24px
+    overflow: hidden
+    text-overflow: ellipsis
+  &__date
+    width: 183px
+  &__content
+    width: 744px
+    height: 135px
+    overflow: hidden
     word-wrap: break-word
-    max-height: 10.8em
-    line-height: 1.8em
-  &__autor
-    margin: 6px 24px 0 0
   &__icons
-    margin-top: 15px
+    margin-top: 21px
+    // 1st margin-right 15
+    // 2nd margin-right 20
 
+.storyAdd
+  padding: 30px 150px 0 30px
+  box-sizing: border-box
+  margin-left: 102px
+  input
+    border: none
+    outline: none
+  &__desk
+    text-align: left
+    display: flex
+    flex-direction: column
+  &__name
+    width: 772px
+    height: 36px
+    margin-bottom: 32px
+
+  // TODO: Dynamic tags appearance
+  &__tags
+    width: 652px
+    height: 32px
+  &__content
+    width: 772px
+    height: 27px
+    margin-top: 32px
+    text-align: left
+    font-size: 18px
+    overflow: hidden
+    resize: none
+    outline: none
+    border: 1px dashed transparent
+
+    // display: block
+    // width: 100%
+    // box-sizing: border-box
+    
+    // min-height: 3em
+    
+  &__input
+    width: 772px
+    height: 24px
+    margin-top: 12px
+    color: #3B3E3C
+  // &__photo
+  //   box-sizing: border-box
+  //   display: flex
+  //   justify-content: space-between
+  //   flex-flow: row nowrap
+  //   margin: 32px 0
+  >button
+    position: fixed
+    left: 323px
+    bottom: 24px
+    margin-left: 126px
+    margin-bottom: 34px
+    font-weight: 500
+    letter-spacing: 0.006em
+
+.addPhotoItem
+  margin: 0 5px
 
 .iconsMargin
   margin: 0 25px 0 25px
@@ -53,7 +124,3 @@
   &__title
     width: 100%
     margin-bottom: 10px
-
-
-.storyLink
-  color: black
