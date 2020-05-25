@@ -16,6 +16,7 @@ import { ReactComponent as EducationIcon } from './svg/educationIcon.svg';
 
 import MainModal  from '../components/Main/Modal/MainModal';
 import ModalAddAlbum  from '../components/Main/Modal/addAlbum';
+import ModalChooseAlbum  from '../components/Main/Modal/chooseAlbum';
 
 class Main extends Component {
   constructor(props) {
@@ -33,8 +34,17 @@ class Main extends Component {
 
   render() {
     const { navItems } = this.state;
-    const { loading, isAuthorized, hasFullName, askedToIntroduce, modalAddAlbumOpened } = this.props;
+    const 
+      {
+        loading,
+        isAuthorized,
+        hasFullName,
+        askedToIntroduce,
+        modalAddAlbumOpened,
+        modalChooseAlbumOpened
+      } = this.props;
 
+    console.log(this.props);
     return (
       <BrowserRouter>
         {
@@ -43,22 +53,30 @@ class Main extends Component {
               <h1>Загрузка данных</h1> :
               (hasFullName || askedToIntroduce) ?
                 (<MainWrapper className='Main'>
-                  <Header />
                   
+                  <Header />
+
                   <PerfectScrollbar component='div'>
                     <div className='central-content'>
                       <MainNav navItems={navItems}/>
                       <Content isAuthorized={isAuthorized}/>
-
-
                     </div>
                   </PerfectScrollbar>
+
                   <MainModal
                     modalOpened={modalAddAlbumOpened}
                     modalType={'addAlbum'}
                   >
                     <ModalAddAlbum/>
                   </MainModal>
+
+                  <MainModal
+                    modalOpened={modalChooseAlbumOpened}
+                    modalType={'chooseAlbum'}
+                  >
+                    <ModalChooseAlbum/>
+                  </MainModal>
+
                 </MainWrapper>) :
 
                 <Router isAuthorized={isAuthorized} hasFullName={hasFullName} />
@@ -103,7 +121,8 @@ const mapStateToProps = state => {
     currentUser: state.userInfo.currentUser,
     hasFullName: !!(state.userInfo.currentUser.first_name || state.userInfo.currentUser.last_name),
     askedToIntroduce: state.userInfo.currentUser.asked_to_introduce,
-    modalAddAlbumOpened: state.modal.addAlbumOpened
+    modalAddAlbumOpened: state.modal.addAlbumOpened,
+    modalChooseAlbumOpened: state.modal.chooseAlbumOpened
   };
 };
 
