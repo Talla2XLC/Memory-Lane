@@ -16,7 +16,7 @@ import { ReactComponent as EducationIcon } from './svg/educationIcon.svg';
 
 import MainModal  from '../components/Main/Modal/MainModal';
 import ModalAddAlbum  from '../components/Main/Modal/addAlbum';
-import ModalChooseAlbum  from '../components/Main/Modal/chooseAlbum';
+import ModalChooseAlbum  from '../components/Main/Modal/ChooseAlbum';
 
 class Main extends Component {
   constructor(props) {
@@ -44,7 +44,6 @@ class Main extends Component {
         modalChooseAlbumOpened
       } = this.props;
 
-    console.log(this.props);
     return (
       <BrowserRouter>
         {
