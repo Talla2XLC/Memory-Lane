@@ -5,7 +5,6 @@ import { Redirect } from 'react-router-dom';
 import './Stories.sass';
 
 import { ButtonContainer } from '../Button';
-import { ButtonEncircledCross } from '../ButtonEncircledCross';
 
 import axios from 'axios';
 
@@ -31,8 +30,8 @@ export default class AddStory extends Component {
     const { storyName, author, date, tags, city, content } = this.state;
     const token = localStorage.getItem('token');
 
-    axios.
-      post(
+    axios
+      .post(
         'http://api.memory-lane.ru/db/setHistory',
         {
           story_name: storyName,

@@ -4,7 +4,6 @@ import Dropdown from './Albums/Dropdown';
 import DropdownForAlbums from './Albums/DropdownForAlbums';
 import {ReactComponent as Arrow} from './svg/arrow.svg';
 import {ReactComponent as Plus} from './svg/plus.svg';
-import { Link } from  'react-router-dom';
 import {connect} from 'react-redux';
 import {modalOpen} from '../../actions/modalOpen';
 
