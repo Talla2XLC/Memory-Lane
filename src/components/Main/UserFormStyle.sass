@@ -13,16 +13,22 @@
     font-family: "Icon Font"
     content: $glyph
 
-$button-registry: registry, 255px, 48px 0 0 221px;    
-$button-auth: auth, 132px, 48px 0 0 287px;
-$button-introduce: introduce, 181px, 48px 0 0 200px;
-$button-skip: skip, 155px, 48px 0 0 173px; 
+$button-registry: registry, 255px, 48px 0 0 221px    
+$button-auth: auth, 132px, 48px 0 0 287px
+$button-introduce: introduce, 181px, 48px 0 0 200px
+$button-skip: skip, 155px, 48px 0 0 173px
+$button-eye: show_closed, 24px, 12px 8px 12px
 
 .btn
-  @each $name, $width, $margin in $button-registry, $button-auth, $button-introduce, $button-skip 
+  @each $name, $width, $margin in $button-registry, $button-auth, $button-introduce, $button-skip, $button-eye 
     &-#{$name} 
       width: $width
       margin: $margin 
+      @if $name == 'show_closed'
+        position: absolute
+        height: 24px
+        border: none
+        background-color: #fff
       @if $name == 'skip'
         background: #fff!important 
         border: solid #5DB07B dashed 2px!important 
@@ -43,6 +49,7 @@ $button-skip: skip, 155px, 48px 0 0 173px;
   font-weight: normal
   font-size: 18px
   line-height: 27px 
+  color: #3B3E3C
 
 .container-form 
   display: flex
@@ -107,6 +114,8 @@ $button-skip: skip, 155px, 48px 0 0 173px;
   display: flex
   flex-direction: column
   @extend %text-basic
+  .form-password
+    position: relative
   legend
     color: #828482
     font-size: 16px
@@ -118,13 +127,14 @@ $button-skip: skip, 155px, 48px 0 0 173px;
   input[type='email'],
   input[type='text'],
   input[type='password'] 
-    width: 360px
-    height: 46.83px
+    width: 356px
+    
     background: #FFFFFF
     border: 1px solid rgba(130, 132, 130, 0.3)
     box-sizing: border-box
     border-radius: 10px
-    padding-left: 12.96px
+    padding: 10.5px 12px
+    padding-top: 10.5px
     &:hover
       border: 1px solid #BDE1CA
       outline: 0
@@ -163,16 +173,34 @@ $button-skip: skip, 155px, 48px 0 0 173px;
     @extend %text-basic
     font-size: 16px
     line-height: 24px
-    color: #828482       
+    color: #828482
+    &:hover
+      text-decoration: none!important 
+      color: #3B3E3C     
 
 .form-or 
   display: flex
   column: row
   align-items: center
   margin: 24px 0
+  @extend %text-basic
   hr
     width: 156px
     border: 1px solid rgba(130, 132, 130, 0.3)
     margin: 10px 30px 10px 151px
     &:nth-child(2)
       margin-left: 30px
+
+.c-password-reset
+  margin-top: 8px
+  width: 124px
+  height: 24px
+  margin-left: 409px
+  .c-password-reset__link
+    cursor: pointer
+    @extend %text-basic
+    font-size: 16px
+    line-height: 24px
+    color: #828482 
+    &:hover
+      color: #3B3E3C   

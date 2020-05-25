@@ -8,6 +8,7 @@ import { ReactComponent as FormVK }	from './svg/form_vk.svg';
 import { ReactComponent as FormFB }	from './svg/form_fb.svg';
 import { ReactComponent as FormG }	from './svg/form_g.svg';
 import { ReactComponent as FormIns }	from './svg/form_ins.svg';
+import { ReactComponent as EyeClosed }	from './svg/eye_closed.svg';
 
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -21,9 +22,15 @@ class UserAuthorization extends Component {
 	  password: '',
 	  emailError: false,
 	  passwordError: false,
-	  hasLoggedIn: false
+	  hasLoggedIn: false,
+	  openEye: false
 	};
-
+	
+	clickEye = () => {
+		const { openEye } = this.state;
+		this.setState({ openEye: true })
+	}
+	
 	handleInput = e => {
 	  const { name, value } = e.target;
 
@@ -61,7 +68,7 @@ class UserAuthorization extends Component {
 	};
 
 	render() {
-	  const { email, password } = this.state;
+	  const { email, password, openEye } = this.state;
 
 	  return (
 		<div className='container-form'>
@@ -104,14 +111,24 @@ class UserAuthorization extends Component {
 					<input
 						className='textInput'
 						name='password'
-						type='password'
+						type={openEye ? 'text': 'password'}
 						placeholder='Введите пароль'
 						onChange={this.handleInput}
 						value={password}
 					/>
+					<button 
+						className='btn-show_closed'
+						onClick={this.clickEye}
+					>
+					    <EyeClosed/>
+					</button>
 				</div>
 				{/* <PasswordErrorMessage passwordError={this.state.passwordError} /> */}
-
+                <div className='c-password-reset'>
+					<a className='c-password-reset__link'>
+						Забыли пароль?
+					</a>
+				</div>
 				<ButtonContainer
 					className='btn-auth'
 					type='submit'
