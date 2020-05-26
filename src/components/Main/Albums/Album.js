@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import axios from 'axios';
 import Sorting from '../Sorting';
 import AlbumsItem from './PhotoItem';
-import {ButtonContainer} from '../Button';
 import './Album.sass';
 import EmptyBlock from '../EmptyBlock/EmptyBlock';
 

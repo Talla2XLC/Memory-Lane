@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 import './Stories.sass';
 
 import { ButtonContainer } from '../Button';
+
 import StoriesDropDown from './StoriesDropdown';
 import { ReactComponent as EncircledCross } from '../svg/add_circle_outline_24px.svg';
 
@@ -28,8 +29,8 @@ export default class StoryNew extends Component {
     const { storyName, author, date, tags, city, content } = this.state;
     const token = localStorage.getItem('token');
 
-    axios.
-      post(
+    axios
+      .post(
         'http://api.memory-lane.ru/db/setHistory',
         {
           story_name: storyName,

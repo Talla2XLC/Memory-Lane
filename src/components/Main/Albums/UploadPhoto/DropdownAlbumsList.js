@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import './DropdownAlbumsList.sass';
-import {ReactComponent as CurrentAlbumIco} from './svg/currentAlbum.svg';
-import {ReactComponent as NewAlbumIco} from './svg/newAlbum.svg';
-import {modalOpen} from '../../../actions/modalOpen';
+import {ReactComponent as CurrentAlbumIco} from '../svg/currentAlbum.svg';
+import {ReactComponent as NewAlbumIco} from '../svg/newAlbum.svg';
+import {modalOpen} from 'actions/modalOpen';
 import {connect} from 'react-redux';
 
 class DropdownAlbumsList extends Component {
@@ -11,7 +11,7 @@ class DropdownAlbumsList extends Component {
   }
 
   render() {
-    const { currentAlbum, openModalAddAlbum } = this.props;
+    const { openModalAddAlbum } = this.props;
     const albums = typeof this.props.albums === 'object' ? Object.values(this.props.albums) : [];
 
     const newAlbumsItem =

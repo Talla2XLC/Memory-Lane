@@ -8,7 +8,7 @@ import {ReactComponent as CommentsIcon} from '../svg/commentsIcon.svg';
 export default class PhotoFull extends Component {
 
   render() {
-    const { isDesc, isImg, gridType, url, id, view, name, autor, date } = this.props.location.props;
+    const { isDesc, isImg, gridType, url, view, name, autor, date } = this.props.location.props;
     const desc = isDesc ? <div className='itemDescription text1'>Ipsum ex commodo ad ad ipsum non quis laborum adipisicing reprehenderit aliqua veniam excepteur.</div> : '';
 
     const img = isImg ? <img className={'img ' + gridType + '_img'} src={url} alt='gallery_pic'/> : '';
