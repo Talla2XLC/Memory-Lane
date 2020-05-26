@@ -1,13 +1,16 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {modalClose} from '../../../actions/modalClose';
-import {getAlbums} from '../../../actions/actionAlbums';
+import React, { Component } from 'react';
+
+import { modalClose } from '../../../actions/modalClose';
+import { getAlbums } from '../../../actions/actionAlbums';
+
+import { ButtonContainer } from '../Button';
+
+import './ChooseAlbum.sass';
+
+import { connect } from 'react-redux';
+
 import axios from 'axios';
-import {ButtonContainer} from '../Button';
-import './addAlbum.sass';
 
-
-//!! Use this to render albums list
 // const albumsItems = albums.map( album =>
 //   (
 //     <button
@@ -20,70 +23,67 @@ import './addAlbum.sass';
 //   )
 // );
 
-class ModalAddAlbumContent extends Component {
+class ModalChooseAlbum extends Component {
   state = {
     albumName: ''
   }
 
-  addAlbum = () => {
-    const { albumName } = this.state;
-    const { downloadAlbums, sessionID, closeModal } = this.props;
+  // addAlbum = () => {
+  //   const { albumName } = this.state;
+  //   const { downloadAlbums, closeModalChooseAlbum, sessionID } = this.props;
 
-    axios
-      .post(
-        'http://api.memory-lane.ru/db/setAlbum',
-        {
-          'album_name': albumName
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `${sessionID}`
-          }
-        })
-      .then(res => {
-        if (res.data.result) {
-          downloadAlbums();
-          closeModal('addAlbum');
-        } else {
-          console.error(res.data.error);
-        }
-      })
-      .catch(error => console.error(error));
-  }
+  //   axios
+  //     .post(
+  //       'http://api.memory-lane.ru/db/setAlbum',
+  //       {
+  //         'album_name': albumName
+  //       },
+  //       {
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //           'Authorization': `${sessionID}`
+  //         }
+  //       })
+  //     .then(res => {
+  //       if (res.data.result) {
+  //         downloadAlbums();
+  //         closeModalChooseAlbum('chooseAlbum');
+  //       } else {
+  //         console.error(res.data.error);
+  //       }
+  //     })
+  //     .catch(error => console.error(error));
+  // }
 
-  handleInput = e => {
-    const { name, value } = e.target;
+  // handleInput = e => {
+  //   const { name, value } = e.target;
 
-    this.setState({ [name]: value });
-  }
-
-  handleCreateClick = () => {
-    this.addAlbum();
-  }
+  //   this.setState({ [name]: value });
+  // }
 
   render() {
-    const { closeModal } = this.props;
+    const { closeModalChooseAlbum } = this.props;
     const { albumName } = this.state;
 
+    console.log(this.props);
+
     return (
-      <div className={'modal-add-album-content'}>
-        <h1>Создание Альбома</h1>
-        <div className='modal-content-middle'>
-          <p>!!!!!!!</p>
-          <input
-            name='albumName'
-            className='add-album-input'
-            placeholder='Название альбома'
-            type='text'
-            onChange={this.handleInput}
-            value={albumName}
-          />
+      <div className='modal-choose-album-content'>
+        <h1>Выберите альбом</h1>
+        {/* <div className='modal-content-middle'>
+
         </div>
         <div className='modal-content-bottom'>
-          <button className={'cancel-btn'} onClick={e => {closeModal('addAlbum');}}>Отмена</button>
-          <ButtonContainer onClick={this.handleCreateClick}>Создать</ButtonContainer>
-        </div>
+          <button
+            className='cancel-btn'
+            onClick={closeModalChooseAlbum}
+          >
+            Отмена
+          </button>
+          <ButtonContainer>
+            Выбрать
+          </ButtonContainer>
+        </div> */}
       </div>
     );
   }
@@ -91,14 +91,15 @@ class ModalAddAlbumContent extends Component {
 
 const mapStateToProps = state => {
   return {
-    sessionID: state.session.sessionID
+    sessionID: state.session.sessionID,
+    albums: state.albums.albums
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    closeModal: type => {
-      dispatch(modalClose(type));
+    closeModalChooseAlbum: () => {
+      dispatch(modalClose('chooseAlbum'));
     },
     downloadAlbums: () => {
       dispatch(getAlbums());
@@ -106,4 +107,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ModalAddAlbumContent);
+export default connect(mapStateToProps, mapDispatchToProps)(ModalChooseAlbum);
