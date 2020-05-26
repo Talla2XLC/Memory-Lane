@@ -10,6 +10,7 @@ import { ReactComponent as FormVK }	from './svg/form_vk.svg';
 import { ReactComponent as FormFB }	from './svg/form_fb.svg';
 import { ReactComponent as FormG }	from './svg/form_g.svg';
 import { ReactComponent as FormIns }	from './svg/form_ins.svg';
+import { ReactComponent as EyeClosed }	from './svg/eye_closed.svg';
 
 // import { Tooltip } from './UserRegistrationTooltip';
 
@@ -19,6 +20,7 @@ export default class UserRegistration extends Component {
 	state = {
 	  email: '',
 	  password: '',
+	  openEye: false,
 	  formErrors: {
 	    email: '',
 	    password: {message1: '', message2: '', message3: ''}
@@ -29,6 +31,11 @@ export default class UserRegistration extends Component {
 	  isOpen: false,
 	  modalOpened: false,
 	  hasRegistred: false
+	}
+
+	clickEye = () => {
+		const { openEye } = this.state;
+		this.setState({ openEye: !openEye })
 	}
 
 	handleInput = e => {
@@ -129,7 +136,7 @@ export default class UserRegistration extends Component {
 	}
 
 	render() {
-		const { email, password, formErrors, emailValid, passwordValid, modalOpened, hasRegistred } = this.state;
+		const { email, password, formErrors, emailValid, passwordValid, modalOpened, hasRegistred, openEye } = this.state;
 
 		const inputEmail = (email.length > 0 && !emailValid) ? 'text-basic text_theme_erorr' : 'text-basic';
 		const inputPassword = (password.length > 0 && modalOpened && !passwordValid) ? 'text-basic' : 'text-basic';
@@ -144,9 +151,7 @@ export default class UserRegistration extends Component {
 							<h2 className='titleContainerItem__title'>Регистрация</h2>
 						</div>
 
-						<div className='formContainerItem__form'>
-
-							<div className='formContainerItem__icons'>
+						<div className='formContainerItem__icons'>
 								<div className='container__icons'>
 									<a className='socials-icon' href='https://vk.com/' alt='vk'><FormVK /></a>
 									<a className='socials-icon' href='https://www.instagram.com/' alt='ins'><FormIns /></a>
@@ -154,9 +159,12 @@ export default class UserRegistration extends Component {
 									<a className='socials-icon' href='https://www.google.com/' alt='google'><FormG /></a>									
 								</div>
 								<div className='formContainerItem__message'>Присоединиться через соц. сети</div>
-							</div>
+						</div>
 
-							<div className='form-or'><hr/>или<hr/></div>
+						<div className='form-or'><hr/>или<hr/></div>
+
+						<div className='formContainerItem__form'>
+
 							<div>
 								<legend>Эл. почта</legend>
 								<input
@@ -177,13 +185,18 @@ export default class UserRegistration extends Component {
 									id='password'
 									className={inputPassword}
 									name='password'
-									type='password'
+									type={openEye ? 'text': 'password'}
 									placeholder='Придумайте пароль'
 									onChange={this.handleInput}
 									value={password}
 									autoComplete='current-password'
 								/>
-								{/* <button className={btnEye} /> */}
+								<button 
+									className='btn-show_closed'
+									onClick={this.clickEye}
+								>
+					    			<EyeClosed/>
+								</button>
 							</div>
 
 							<ul className='c-validation-message'> 

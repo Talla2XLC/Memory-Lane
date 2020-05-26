@@ -19,7 +19,7 @@ const PageNotFoundWrapper = styled.div`
 .container-not-found {
     background: url(svg/404_page_not_found.svg) no-repeat
     background-position: center top
-    height: 897.04px
+    height: 100vh
     margin-top: 32.96px
 }
 

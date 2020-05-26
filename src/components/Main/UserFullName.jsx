@@ -14,6 +14,15 @@ class UserFullName extends Component {
 	state = {
 	  firstName: '',
 	  lastName: '',
+	  gender: '',
+	//   dob: {
+	// 	day: '', 
+	// 	month: '', 
+	// 	year: ''
+	//   },
+	  day: '', 
+	  month: '', 
+	  year: '',
 	  formErrors: {
 	    firstName: '',
 	    lastName: ''
@@ -140,12 +149,7 @@ class UserFullName extends Component {
 	}
 
 	render() {
-	  const { firstName, lastName, formErrors, firstNameValid, lastNameValid, formValid } = this.state;
-
-	  const inputFirstName = (firstName.length > 0 && !firstNameValid) ? 'textInput input_color_red' : 'textInput';
-	  const inputLastName = (lastName.length > 0 && !lastNameValid) ? 'textInput container__input input_color_red' : 'textInput container__input';
-	  const displayfirstName = (firstName.length === 0 || firstName === null || firstNameValid) ? 'formErrors displayNone' : 'formErrors';
-	  const displaylastName = (lastName.length === 0 || lastName === null || lastNameValid) ? 'formErrors displayNone' : 'formErrors';
+	  const { firstName, lastName, formErrors, firstNameValid, lastNameValid, formValid, day, month, year } = this.state;
 
 	  return (
 		<div className='container-form'>
@@ -155,48 +159,115 @@ class UserFullName extends Component {
 			</div>
 
 			<div className='formContainerItem__form'>
-				<input
-					className={inputFirstName}
-					name='firstName'
-					type='text'
-					size='0'
-					placeholder='Введите свое имя'
-					value={firstName}
-					onChange={this.handleInput}
-					required
-				/>
-				<div className={displayfirstName}>
-					<Tooltip tooltip={formErrors.firstName}/>
+			    <div>
+					<legend>Имя</legend>
+						<input
+							name='firstName'
+							type='text'
+							size='0'
+							placeholder='Наталья'
+							value={firstName}
+							onChange={this.handleInput}
+							required
+						/>
+				</div>
+				<div className='form-password'>
+					<legend>Фамилия</legend>	
+						<input
+							name='lastName'
+							type='text'
+							placeholder='Натальевна'
+							onChange={this.handleInput}
+							value={lastName}
+						/>
 				</div>
 
-				<input
-					className={inputLastName}
-					name='lastName'
-					type='text'
-					placeholder='Введите свою фамилию'
-					onChange={this.handleInput}
-					value={lastName}
-				/>
-				<div className={displaylastName}>
-					<Tooltip tooltip={formErrors.lastName}/>
+				<div class="genderWrapper">
+					<legend>Пол</legend>
+					<div>
+						<span>М</span>
+						<input 
+							type="radio" 
+							name="gender" 
+							value="male" 
+						/>
+						<span>Ж</span>
+						<input 
+							type="radio" 
+							name="gender" 
+							value="female" 
+						/>
+					</div>
 				</div>
 
-				<ButtonContainer
-					className='btn-introduce'
-					type='submit'
-					value='Представиться'
-					onClick={this.introduceUser}
-				>
-					Представиться
-				</ButtonContainer>
+				<div className='dobWrapper'>
+					<legend>Дата рождения</legend>
+					<div>
+						<div className='dayWrapper'>
+							<span>День</span>
+							<input 
+								style={{width: 60, height: 48}}
+								onChange={this.handleInput}
+								placeholder='ДД'
+								type="number"
+								name="day" 
+								value={day} 
+								min="1" 
+								max="31"
+								list='numbList'
+							/>
+							{/* <datalist id="numbList">
+								<option value="1" />
+							</datalist> */}
+						</div>
 
-						<ButtonContainer
-							className='btn-skip'
-							type='submit'
-							onClick={this.skipIntroduce}
-						>
-							Пропустить
-						</ButtonContainer>
+						<div className='monthWrapper'>
+							<span>Месяц</span>
+							<input 
+								style={{width: 73, height: 48}}
+								onChange={this.handleInput}
+								placeholder='ММ'
+								type="number"
+								name="month" 
+								value={month} 
+								min="1" 
+								max="12"
+							/>
+						</div>
+						<div className='yearWrapper'>
+							<span>Год</span>
+							<input 
+								style={{width: 179, height: 48}}
+								onChange={this.handleInput}
+								placeholder='ГГГГ'
+								type="number"
+								name="year" 
+								value={year} 
+								min="1"
+								max='9999'
+							/>
+						</div>
+					</div>
+				</div>
+
+				<div className='btnContainer-fullname'>
+					<ButtonContainer
+						className='btn-skip'
+						type='submit'
+						onClick={this.skipIntroduce}
+					>
+						Пропустить
+					</ButtonContainer>
+
+					<ButtonContainer
+						className='btn-introduce'
+						type='submit'
+						value='Представиться'
+						onClick={this.introduceUser}
+					>
+						Представиться
+					</ButtonContainer>
+				</div>
 			</div>
 			{/* Modal window here */}
 			</div>

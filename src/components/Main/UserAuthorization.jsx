@@ -28,7 +28,7 @@ class UserAuthorization extends Component {
 	
 	clickEye = () => {
 		const { openEye } = this.state;
-		this.setState({ openEye: true })
+		this.setState({ openEye: !openEye })
 	}
 	
 	handleInput = e => {
@@ -73,13 +73,12 @@ class UserAuthorization extends Component {
 	  return (
 		<div className='container-form'>
 			<div className='formWrapper'>
+				
 			<div className='formWrapperItem__titleContainer'>
 				<h2 className='titleContainerItem__title'>Войти</h2>
 			</div>
 
-			<div className='formContainerItem__form'>
-				
-				<div className='formContainerItem__icons'>
+			<div className='formContainerItem__icons'>
 					<div className='container__icons'>
 						<a className='socials-icon' href='https://vk.com/' alt='vk'><FormVK /></a>
 						<a className='socials-icon' href='https://www.instagram.com/' alt='ins'><FormIns /></a>
@@ -87,9 +86,11 @@ class UserAuthorization extends Component {
 						<a className='socials-icon' href='https://www.google.com/' alt='google'><FormG /></a>									
 					</div>
 					<div className='formContainerItem__message'>Присоединиться через соц. сети</div>
-				</div>
+			</div>
 
-				<div className='form-or'><hr/>или<hr/></div>
+			<div className='form-or'><hr/>или<hr/></div>
+
+			<div className='formContainerItem__form'>
 
 				<div>
 					<legend>Эл. почта</legend>
@@ -115,6 +116,7 @@ class UserAuthorization extends Component {
 						placeholder='Введите пароль'
 						onChange={this.handleInput}
 						value={password}
+						required
 					/>
 					<button 
 						className='btn-show_closed'
@@ -136,7 +138,7 @@ class UserAuthorization extends Component {
 				>
 					Войти
 				</ButtonContainer>
-
+			
 			</div>
 
 			<div className='c-registration__link'>
