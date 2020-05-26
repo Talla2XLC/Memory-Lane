@@ -16,7 +16,9 @@ import { ReactComponent as EducationIcon } from './svg/educationIcon.svg';
 
 import MainModal  from '../components/Main/Modal/MainModal';
 import ModalAddAlbum  from '../components/Main/Modal/addAlbum';
-import ModalChooseAlbum  from '../components/Main/Modal/ChooseAlbum';
+
+import ChooseAlbumMainModal  from '../components/Main/Modal/ChooseAlbumMainModal';
+import ChooseAlbum  from '../components/Main/Modal/ChooseAlbum';
 
 class Main extends Component {
   constructor(props) {
@@ -51,33 +53,28 @@ class Main extends Component {
             (loading ?
               <h1>Загрузка данных</h1> :
               (hasFullName || askedToIntroduce) ?
-                (<MainWrapper className='Main'>
-                  
+                <MainWrapper className='Main'>
                   <Header />
-
                   <PerfectScrollbar component='div'>
                     <div className='central-content'>
                       <MainNav navItems={navItems}/>
                       <Content isAuthorized={isAuthorized}/>
                     </div>
                   </PerfectScrollbar>
-
                   <MainModal
                     modalOpened={modalAddAlbumOpened}
                     modalType={'addAlbum'}
                   >
                     <ModalAddAlbum/>
                   </MainModal>
-
-                  <MainModal
+                  <ChooseAlbumMainModal
                     modalOpened={modalChooseAlbumOpened}
                     modalType={'chooseAlbum'}
                   >
-                    <ModalChooseAlbum/>
-                  </MainModal>
-
-                </MainWrapper>) :
-
+                    <ChooseAlbum/>
+                  </ChooseAlbumMainModal>
+                </MainWrapper> :
+                
                 <Router isAuthorized={isAuthorized} hasFullName={hasFullName} />
             )
 
