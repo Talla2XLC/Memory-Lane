@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+// import { BrowserRouter } from 'react-router-dom';
+// <BrowserRouter></BrowserRouter>
 
 import styled from 'styled-components';
 
@@ -8,10 +10,11 @@ import { getAlbums } from '../../../../actions/actionAlbums';
 import { modalClose } from '../../../../actions/modalClose';
 
 import FormPortal from '../../UserRegistrationPortal';
+
 import { ButtonContainer } from '../../Button';
 
 import ChooseAlbumSearch from './ChooseAlbumSearch';
-import AlbumItem from './AlbumItem';
+import AlbumItem from './ChooseAlbumItemAlbum';
 
 import './ChooseAlbum.sass';
 

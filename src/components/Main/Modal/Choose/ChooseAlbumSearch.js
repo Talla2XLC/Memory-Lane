@@ -9,7 +9,7 @@ export default class ChooseAlbumSearch extends Component {
 
   render() {
     return (
-      <>
+      <div className='searchWrapper'>
         <div className='search'>
           <button className='search__submit'>
             <IconSearch />
@@ -23,7 +23,7 @@ export default class ChooseAlbumSearch extends Component {
             <FilterSearch />
           </button> */}
         </div>
-      </>
+      </div>
     );
   };
 }

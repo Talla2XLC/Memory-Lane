@@ -51,9 +51,9 @@ class Stories extends Component {
 
 const mapStateToProps = state => {
   return {
-    loading: state.userStories.loading,
-    stories: state.userStories.stories,
-    error: state.userStories.error
+    loading: state.storiesInfo.loading,
+    stories: state.storiesInfo.stories,
+    error: state.storiesInfo.error
   };
 };
 

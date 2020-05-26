@@ -1,15 +1,18 @@
 import { combineReducers } from 'redux';
 import userInfo from './user';
 import session from './session';
-import userStories from './stories';
+import modal from './modal';
 
 import albums from './albums';
-import modal from './modal';
+import photosInfo from './photos';
+import storiesInfo from './stories';
+
 const rootReducer = combineReducers({
   userInfo,
   session,
-  userStories,
+  storiesInfo,
   albums,
+  photosInfo,
   modal
 });
 

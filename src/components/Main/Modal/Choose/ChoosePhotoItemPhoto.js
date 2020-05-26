@@ -11,7 +11,7 @@ import FormPortal from '../../UserRegistrationPortal';
 import { ButtonContainer } from '../../Button';
 
 import ChooseAlbumSearch from './ChooseAlbumSearch';
-import AlbumItem from './AlbumItem';
+import AlbumItem from './ChooseAlbumItemAlbum';
 
 import './ChooseAlbum.sass';
 

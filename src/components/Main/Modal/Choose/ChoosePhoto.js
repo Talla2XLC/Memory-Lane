@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+// import { BrowserRouter } from 'react-router-dom';
+// <BrowserRouter></BrowserRouter>
 
 import styled from 'styled-components';
 
@@ -8,10 +10,11 @@ import { getAlbums } from '../../../../actions/actionAlbums';
 import { modalClose } from '../../../../actions/modalClose';
 
 import FormPortal from '../../UserRegistrationPortal';
+
 import { ButtonContainer } from '../../Button';
 
 import ChooseAlbumSearch from './ChooseAlbumSearch';
-import AlbumItem from './AlbumItem';
+import AlbumItem from './ChooseAlbumItemAlbum';
 
 import './ChooseAlbum.sass';
 
@@ -22,7 +25,7 @@ class ModalChoosePhoto extends Component {
   render() {
     const { modalOpened, modalType, closeModal, albums } = this.props;
 
-    console.log('ChoosePhoto', 25, this.props);
+    console.log('ChooseAlbum', 25, this.props);
 
     // const albumItems = albums.map(album =>
     //   <button
@@ -106,4 +109,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ModalChooseAlbum);
+export default connect(mapStateToProps, mapDispatchToProps)(ModalChoosePhoto);
