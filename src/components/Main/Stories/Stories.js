@@ -25,16 +25,16 @@ class Stories extends Component {
     if (loading) return <h1>Загрузка данных</h1>;
 
     const storyItems = Object.values(stories).map(story =>
-      <StoryItem 
-        key={story.id}
-        id={story.id}
-        title={story.story_name}
-        author={story.author}
-        date={story.date_updated}
-        content={story.content}
-        picture={story.ico_url}
-      />
-    )
+        <StoryItem 
+          key={story.id}
+          id={story.id}
+          title={story.story_name}
+          author={story.author}
+          date={story.date_updated}
+          content={story.content}
+          picture={story.ico_url}
+        />
+      )
     
     return (
       Object.keys(stories).length === 0 ?
