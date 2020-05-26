@@ -17,8 +17,7 @@ import { ReactComponent as EducationIcon } from './svg/educationIcon.svg';
 import MainModal  from '../components/Main/Modal/MainModal';
 import ModalAddAlbum  from '../components/Main/Modal/addAlbum';
 
-import ChooseAlbumMainModal  from '../components/Main/Modal/ChooseAlbumMainModal';
-import ChooseAlbum  from '../components/Main/Modal/ChooseAlbum';
+import ChooseAlbumModal  from '../components/Main/Modal/ChooseAlbum/ChooseAlbum';
 
 class Main extends Component {
   constructor(props) {
@@ -67,12 +66,10 @@ class Main extends Component {
                   >
                     <ModalAddAlbum/>
                   </MainModal>
-                  <ChooseAlbumMainModal
+                  <ChooseAlbumModal
                     modalOpened={modalChooseAlbumOpened}
                     modalType={'chooseAlbum'}
-                  >
-                    <ChooseAlbum/>
-                  </ChooseAlbumMainModal>
+                  />
                 </MainWrapper> :
                 
                 <Router isAuthorized={isAuthorized} hasFullName={hasFullName} />
