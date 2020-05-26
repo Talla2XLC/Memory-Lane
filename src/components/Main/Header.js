@@ -104,7 +104,6 @@ background: #FFD1A9;
   margin: 0 15px 0 15px;
 }
 
-
 .header__bottom {
   display: flex;
   justify-content: flex-end;

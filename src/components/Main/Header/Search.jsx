@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { ReactComponent as IconSearch } from './svg/searchIcon.svg';
 import { ReactComponent as FilterSearch } from './svg/filterIcon.svg';
 import styled from 'styled-components';
+// import './Search.sass';
 
 
 export default class Search extends Component {
@@ -34,7 +35,7 @@ export default class Search extends Component {
             <button className='search-submit'>
               <IconSearch />
             </button>
-            <input className='input' placeholder='Поиск' type='search'/>
+            <input className='input' placeholder='Поиск' type='text'/>
             <button className='search-filter'>
               <FilterSearch />
             </button>
@@ -51,7 +52,7 @@ export default class Search extends Component {
 
 const SearchWrapper = styled.div`
   margin-right: 17px;
-
+	  
 	.search {
 		/* устанавливаем необходимую ширину формы в зависимости от дизайна
 		** форма без проблем растягивается */
@@ -59,15 +60,22 @@ const SearchWrapper = styled.div`
 		/* кнопку отправки будем позиционировать абсолютно,
 		** поэтому необходимо это свойство */
 		position: relative;
+		
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 14px;
 	}
 
 
   .input {
 		background: #FFFFFF;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
 		border-radius: 24px;
 		width: 387px !important;
 		height: 35px;
+		line-height: 14px;
 	}
 
 	.input,
@@ -110,7 +118,7 @@ const SearchWrapper = styled.div`
 
 	/* меняем оформление поля ввода при фокусе */
 	.input:focus {
-		box-shadow: inset 0 0 2px rgba(0,0,0,0.2), inset 0 1px 2px rgba(0,0,0,0.2);
+		box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
 		color: #000;
 	}
 
@@ -146,7 +154,7 @@ const SearchWrapper = styled.div`
 
 	/* данное свойство необходимо для того, чтобы в браузерах
 	** Chrome и Safari можно было стилизовать инпуты */
-	input[type="search"] {
+	input[type="text"] {
 		-webkit-appearance: none;
 	}
 

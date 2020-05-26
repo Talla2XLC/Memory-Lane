@@ -1,0 +1,269 @@
+// $status-colors: ( primary: #000, success: #27BA6C, info: #03a9f4, warning: #FF8833, danger: #ff1a1a );
+ 
+//.message 
+  @each $status, $color in $status-colors 
+    &--#{$status}-bg 
+      color: $color  
+
+// $icons: ("eye": "\f112", "start": "\f12e", "stop": "\f12f")
+
+// @each $name, $glyph in $icons
+  .icon-#{$name}:before
+    display: inline-block
+    font-family: "Icon Font"
+    content: $glyph
+
+//.position
+
+//$button-registry: registry, 255px, 48px 0 0 221px    
+//$button-auth: auth, 132px, 48px 0 0 287px
+//$button-introduce: introduce, 181px, 48px 0 0 200px
+//$button-skip: skip, 155px, 48px 0 0 173px
+//$button-eye: show_closed, 24px, 12px 8px 12px
+
+//.btn
+  @each $name, $width, $margin in $button-registry, $button-auth, $button-introduce, $button-skip, $button-eye 
+    &-#{$name} 
+      width: $width
+      margin: $margin 
+      @if $name == 'show_closed'
+        position: absolute
+        height: 24px
+        border: none
+        background-color: #fff
+      @if $name == 'skip'
+        background: #fff!important 
+        border: solid #5DB07B dashed 2px!important 
+        color: #5DB07B!important 
+        box-shadow: 0px 0px 0px 2px #5DB07B!important
+        &:hover
+            border: solid #278147 dashed 2px!important 
+            color: #278147!important 
+            box-shadow: 0px 0px 0px 2px #278147!important
+        &:focus
+            border: solid #3B3E3C dashed 2px!important 
+            color: #3B3E3C!important 
+            box-shadow: 0px 0px 0px 2px #3B3E3C!important
+
+// form-input
+
+%text-basic
+  font-family: Roboto
+  font-style: normal
+  font-weight: normal
+  font-size: 18px
+  line-height: 27px 
+  color: #3B3E3C
+
+.container-form 
+  display: flex
+  justify-content: flex-end
+  background: url(svg/form_phone_item.svg) #5DB07B no-repeat
+  background-position: left top
+  background-size: contain
+  height: 100vh
+
+.formWrapper 
+  background-color: #fff
+  //320/568
+  //375/667
+  //1024/768
+  //1366/768 
+  //1440/900
+  padding-top: 15vh
+  width: 705px
+  //1920/1080
+  //width: 50vw
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: flex-start
+  // @if #{container-form} width>1440px 
+  //width: 705px
+  min-height: 100%
+
+.formWrapperItem__titleContainer 
+  width: 356px
+  .titleContainerItem__title
+    @extend %text-basic
+    font-family: Rubik
+    font-weight: 500
+    font-size: 32px
+    line-height: 38px
+    color: #3B3E3C
+
+.formContainerItem__icons
+  margin-top: 52px
+  >div 
+    //display: flex
+    //margin-left: 151px
+    //width: 404px
+  .container__icons
+    //padding: 0 98px 0 92px
+    //justify-content: space-between
+    .socials-icon
+      color: #5DB07B
+      &:hover 
+        color: #278147
+      &:focus 
+        color: #3B3E3C   
+    .socials-icon:nth-child(n+2) 
+      margin-left: 18px
+  .formContainerItem__message
+    @extend %text-basic
+    width: 404px
+    margin-top: 12px
+    color: #3B3E3C
+    justify-content: center
+
+.container__input 
+  margin-top: 12px
+  background: #FFFFFF
+  border: 1px solid rgba(130, 132, 130, 0.3)
+  box-sizing: border-box
+  border-radius: 10px
+
+.formContainerItem__form 
+  //width: 100%
+  //display: flex
+  //flex-direction: column
+  margin: 0 auto
+  .form-password
+    position: relative
+  legend
+    //margin-top: 5.8vh
+    color: #828482
+    font-size: 16px
+    line-height: 24px
+    text-align: left
+    padding-left: 16px
+  .form-password legend
+    margin-top: 16px
+  input[type='email'],
+  input[type='text'],
+  input[type='password'] 
+    @extend %text-basic
+    width: 356px
+    background: #FFFFFF
+    border: 1px solid rgba(130, 132, 130, 0.3)
+    box-sizing: border-box
+    border-radius: 10px
+    padding: 10.5px 12px
+    padding-top: 10.5px
+    &:hover
+      border: 1px solid #BDE1CA
+      outline: 0
+    &:focus
+      border: 1px solid #5DB07B
+      outline: 0
+
+.c-validation-message
+  width: 360px
+  //margin-left: 173px
+  text-align: left
+  .validation-message__text 
+    @extend %text-basic
+    font-size: 12px
+    line-height: 16px
+    margin-top: 8px
+    list-style: disc inside
+
+.text_theme_erorr
+  color: red
+
+.text_color_green 
+  color: green   
+
+.c-privacy-agreement
+  margin-top: 34px
+  >span
+    color: #828482
+    @extend %text-basic
+    font-size: 10px
+    line-height: 15px
+
+.c-registration__link
+  margin-top: 32px
+  .registration__link
+    @extend %text-basic
+    font-size: 16px
+    line-height: 24px
+    color: #828482
+    &:hover
+      text-decoration: none!important 
+      color: #3B3E3C     
+
+.form-or 
+  display: flex
+  column: row
+  align-items: center
+  margin: 24px 0
+  @extend %text-basic
+  hr
+    width: 156px
+    border: 1px solid rgba(130, 132, 130, 0.3)
+    margin: 10px 0px
+    &:nth-child(1)
+      margin-right: 30px      
+    &:nth-child(2)
+      margin-left: 30px
+
+.c-password-reset
+  margin-top: 8px
+  width: 124px
+  height: 24px
+  .c-password-reset__link
+    cursor: pointer
+    @extend %text-basic
+    font-size: 16px
+    line-height: 24px
+    color: #828482 
+    &:hover
+      color: #3B3E3C   
+
+.btnContainer-fullname
+  margin-top: 48px
+
+.btn-show_closed
+  width: 24px
+  height: 24px
+  position: absolute
+  right: 8px
+  bottom: 12px
+  background-color: #fff 
+  border: none
+  svg  
+    vertical-align: baseline
+
+.dobWrapper
+  legend
+    width: auto
+    font-weight: 500
+    font-size: 18px
+    line-height: 21px
+    color: #3B3E3C
+  >div
+    display: inline-flex
+    >span
+      align-self: flex-start
+  input[type='number']
+    -moz-appearance: textfield
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button
+    -webkit-appearance: none
+
+.genderWrapper
+  display: flex
+  legend
+    width: auto
+    font-weight: 500
+    font-size: 18px
+    line-height: 21px
+    text-align: center
+    color: #3B3E3C
+  span 
+    @extend %text-basic
+    font-size: 16px
+    line-height: 24px
+    text-align: center
+    color: #828482

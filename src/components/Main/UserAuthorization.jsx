@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import './UserAuthorizationStyle.css';
+import './UserFormStyle.sass';
+import { ButtonContainer } from './Button.jsx';
 
 import { ReactComponent as FormVK }	from './svg/form_vk.svg';
 import { ReactComponent as FormFB }	from './svg/form_fb.svg';
 import { ReactComponent as FormG }	from './svg/form_g.svg';
 import { ReactComponent as FormIns }	from './svg/form_ins.svg';
+import { ReactComponent as EyeClosed }	from './svg/eye_closed.svg';
 
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -20,9 +22,15 @@ class UserAuthorization extends Component {
 	  password: '',
 	  emailError: false,
 	  passwordError: false,
-	  hasLoggedIn: false
+	  hasLoggedIn: false,
+	  openEye: false
 	};
-
+	
+	clickEye = () => {
+		const { openEye } = this.state;
+		this.setState({ openEye: !openEye })
+	}
+	
 	handleInput = e => {
 	  const { name, value } = e.target;
 
@@ -60,62 +68,87 @@ class UserAuthorization extends Component {
 	};
 
 	render() {
-	  const { email, password } = this.state;
+	  const { email, password, openEye } = this.state;
 
 	  return (
-	    <div className='formWrapper'>
-	      <div className='formWrapperItem__titleContainer'>
-	        <h2 className='textBasic titleContainerItem__title'>Войти</h2>
-	      </div>
+		<div className='container-form'>
+			<div className='formWrapper'>
+				
+			<div className='formWrapperItem__titleContainer'>
+				<h2 className='titleContainerItem__title'>Войти</h2>
+			</div>
 
-	      <div className='formContainerItem__form'>
-	        <input
-	          className='textInput'
-	          name='email'
-	          type='email'
-	          size='0'
-	          placeholder='Введите электронную почту'
-	          value={email} 
-	          onChange={this.handleInput}
-	          required
-	        />
+			<div className='formContainerItem__icons'>
+					<div className='container__icons'>
+						<a className='socials-icon' href='https://vk.com/' alt='vk'><FormVK /></a>
+						<a className='socials-icon' href='https://www.instagram.com/' alt='ins'><FormIns /></a>
+						<a className='socials-icon' href='https://ru-ru.facebook.com/' alt='facebook'><FormFB /></a>
+						<a className='socials-icon' href='https://www.google.com/' alt='google'><FormG /></a>									
+					</div>
+					<div className='formContainerItem__message'>Присоединиться через соц. сети</div>
+			</div>
 
-	        {/* <EmailErrorMessage emailError={this.state.emailError}/> */}
+			<div className='form-or'><hr/>или<hr/></div>
 
-	        <input
-	          className='textInput'
-	          name='password'
-	          type='password'
-	          placeholder='Введите пароль'
-	          onChange={this.handleInput}
-	          value={password}
-	        />
+			<div className='formContainerItem__form'>
 
-	        {/* <PasswordErrorMessage passwordError={this.state.passwordError} /> */}
+				<div>
+					<legend>Эл. почта</legend>
+					<input
+						className='textInput'
+						name='email'
+						type='email'
+						size='0'
+						placeholder='Введите электронную почту'
+						value={email} 
+						onChange={this.handleInput}
+						required
+					/>
+				</div>
 
-	        <div className='formContainerItem__icons'>
-	          <a href='https://vk.com/' alt='vk'><FormVK /></a>
-	          <a href='https://www.instagram.com/' alt='ins'><FormIns /></a>
-	          <a href='https://ru-ru.facebook.com/' alt='facebook'><FormFB /></a>
-	          <a href='https://www.google.com/' alt='google'><FormG /></a>
-	        </div>
+				{/* <EmailErrorMessage emailError={this.state.emailError}/> */}
+				<div className='form-password'>
+					<legend>Пароль</legend>	
+					<input
+						className='textInput'
+						name='password'
+						type={openEye ? 'text': 'password'}
+						placeholder='Введите пароль'
+						onChange={this.handleInput}
+						value={password}
+						required
+					/>
+					<button 
+						className='btn-show_closed'
+						onClick={this.clickEye}
+					>
+					    <EyeClosed/>
+					</button>
+				</div>
+				{/* <PasswordErrorMessage passwordError={this.state.passwordError} /> */}
+                <div className='c-password-reset'>
+					<a className='c-password-reset__link'>
+						Забыли пароль?
+					</a>
+				</div>
+				<ButtonContainer
+					className='btn-auth'
+					type='submit'
+					onClick={this.LogInUser}
+				>
+					Войти
+				</ButtonContainer>
+			
+			</div>
 
-	        <input
-	          className='textInput formItem__button c-button--width360'
-	          type='submit'
-	          value='Войти'
-	          onClick={this.LogInUser}
-	        />
-
-	      </div>
-
-	      <div className='registration-container__link'>
-	        <Link className='registration__link' to='/register'>
-						Еще не зарегистрированы?
-	        </Link>
-	      </div>
-	      {/* Modal window here */}
-	    </div>
+			<div className='c-registration__link'>
+				<Link className='registration__link' to='/register'>
+							Вы еще не зарегистрированы?
+				</Link>
+			</div>
+			{/* Modal window here */}
+			</div>
+		</div>
 	  );
 	}
 }

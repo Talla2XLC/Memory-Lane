@@ -1,3 +1,10 @@
+%text-basic
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+
 .contentContainer
   height: 100%
   display: flex
@@ -12,14 +19,14 @@
 .mainContainer
  display: grid
  grid-template-columns: repeat(2, 1fr)
- grid-column-gap: 30px
+ grid-column-gap: 29px
  grid-row-gap: 48px
  margin: 30px 0 120px
 
  &__item
   background: #FFFFFF
   border-radius: 10px
-  padding: 30px
+  padding: 32px 79px 35px 48px
   box-sizing: border-box
   text-align: left
   width: 100%
@@ -39,10 +46,15 @@
   flex-flow: row nowrap
   justify-content: center
   align-items: center
-  font-family: Rubik, sans-serif
+  @extend %text-basic
+  color: #828482
+
+.mainText 
+  @extend %text-basic
+  color: #3B3E3C
 
 .textPosition
-  margin-bottom: 35px
+  margin-bottom: 29px
   
 .MainContent
   &__header
@@ -59,11 +71,14 @@
       font-size: 48px
       line-height: 58px
       margin-bottom: 24px
+      letter-spacing: 0.006em;
 
     &-text
+      font-family: Roboto;
       font-size: 24px
       line-height: 36px
-      max-width: 357px
+      max-width: 355px
 
 .NewsBlock__title
   text-align: left
+  line-height: 38px;
