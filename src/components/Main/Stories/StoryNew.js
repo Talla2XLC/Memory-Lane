@@ -8,11 +8,9 @@ import { ButtonContainer } from '../Button';
 import StoriesDropDown from './StoriesDropdown';
 import { ReactComponent as EncircledCross } from '../svg/add_circle_outline_24px.svg';
 
-import { connect } from 'react-redux';
-
 import axios from 'axios';
 
-class StoryNew extends Component {
+export default class StoryNew extends Component {
   state = {
     storyName: '',
     author: '',
@@ -21,10 +19,8 @@ class StoryNew extends Component {
     city: '',
     content: '',
     hasCreated: false,
-
-    selectedAlbum: this.props.location.state ? this.props.location.state.albumId : '',
     dropdownOpened: false,
-    images: [],
+    // images: [],
     imagesToUpload: []
   };
 
@@ -76,31 +72,33 @@ class StoryNew extends Component {
     this.setState({ [name]: value });
   };
 
-  uploadFileHandler(event) {
-    event.persist();
-    this.setState({
-      imagesToUpload: event.target.files
-    });
-  };
+  // uploadFileHandler(event) {
+  //   event.persist();
+  //   this.setState({
+  //     imagesToUpload: event.target.files
+  //   });
+  // };
 
   handleShowDropdown = e => {
     e.preventDefault();
 
     this.setState({ dropdownOpened: !this.state.dropdownOpened });
-  }
-
-  handleDropdownSelect = id => {
-    this.setState({ selectedAlbum: id, dropdownOpened: false });
-  }
+  };
 
   render() {
-    const { loading, albums } = this.props;
-    const { storyName, author, date, tags, city, content, hasCreated, dropdownOpened, selectedAlbum } = this.state;
+    const 
+      { 
+        storyName,
+        author,
+        date,
+        tags,
+        city,
+        content,
+        hasCreated,
+        dropdownOpened
+      } = this.state;
 
-    // console.log(this.props);
-    // console.log(this.state);
-
-    // const albumName = albums[selectedAlbum] ? albums[selectedAlbum].album_name : '';
+      const { loading, albums } = this.props;
 
     if (hasCreated) return <Redirect to='/stories'/>
 
@@ -169,7 +167,7 @@ class StoryNew extends Component {
                   dropdownOpened ?
                     <StoriesDropDown
                       // currentAlbum={albumName ?? 'Новый альбом'}
-                      albums={albums}
+                      // albums={albums}
                       handleSelect={this.handleDropdownSelect}
                     /> :
                     null
@@ -195,16 +193,3 @@ class StoryNew extends Component {
     );
   };
 }
-
-const mapStateToProps = (state) => {
-  return {
-    albums: state.albums.albums
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(StoryNew);
