@@ -21,30 +21,30 @@ class Stories extends Component {
 
   render() {
     const { loading, stories } = this.props;
+
+    if (loading) return <h1>Загрузка данных</h1>;
+
+    const storyItems = Object.values(stories).map(story =>
+      <StoryItem 
+        key={story.id}
+        id={story.id}
+        title={story.story_name}
+        author={story.author}
+        date={story.date_updated}
+        content={story.content}
+        picture={story.ico_url}
+      />
+    )
     
     return (
-      loading ?
-        <h1>Загрузка данных</h1> :
-          Object.keys(stories).length === 0 ?
-          <div className='contentContainer'> <StoriesEmpty/> </div> :
-            (<div className='contentContainer'>
-              <Sorting/>
-              <div className='stories'>
-                {
-                  Object.values(stories).map(story =>
-                    <StoryItem 
-                      key={story.id}
-                      id={story.id}
-                      title={story.story_name}
-                      author={story.author}
-                      date={story.date_updated}
-                      content={story.content}
-                      picture={story.ico_url}
-                    />
-                  )
-                }
-              </div>
-            </div>)
+      Object.keys(stories).length === 0 ?
+      <div className='contentContainer'> <StoriesEmpty/> </div> :
+        <div className='contentContainer'>
+          <Sorting/>
+          <div className='stories'>
+            {storyItems}
+          </div>
+        </div>
     );
   };
 }
