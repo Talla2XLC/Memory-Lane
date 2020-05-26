@@ -17,12 +17,12 @@ import './ChooseAlbum.sass';
 
 import axios from 'axios';
 
-class ModalChooseAlbum extends Component {
+class ModalChoosePhoto extends Component {
 
   render() {
     const { modalOpened, modalType, closeModal, albums } = this.props;
 
-    console.log(this.props);
+    console.log('ChoosePhoto', 25, this.props);
 
     // const albumItems = albums.map(album =>
     //   <button
@@ -45,23 +45,18 @@ class ModalChooseAlbum extends Component {
     
     return (
       <>
-        { modalOpened &&
-          <FormPortal>
-
+        { 
+          modalOpened &&
+            <FormPortal>
               <div className='modalOverlay'>
-
                 <div className='modalWindow'>
-
                   <div className='modalHeader'>
-                  <h1>Выберите альбом</h1>
+                    Выберите альбом
                     <button
                       className='times'
                       onClick={e => closeModal(modalType)}
                     />
                   </div>
-
-
-
                   <div className='modalBody'>
                     <div className='searchAndNewAlbum'>
                       <ChooseAlbumSearch/>
@@ -69,28 +64,24 @@ class ModalChooseAlbum extends Component {
                     <div className='albums'>
                       {storiesAlbums}
                     </div>
-
-                      
-
-                      <div className='modal-content-bottom'>
-                        <button
-                          className='cancel-btn'
-                          onClick={closeModal}
-                        >
-                          Отмена
-                        </button>
-
-                        <ButtonContainer>
-                          Выбрать
-                        </ButtonContainer>
-                      </div>
-
                   </div>
-                  <div className='modalFooter' />
+                  <div className='modalFooter'>
+                    <div className='modalContentBottom'>
+                      <button
+                        className='cancel-btn'
+                        onClick={e => closeModal(modalType)}
+                      >
+                        Отмена
+                      </button>
+
+                      <ButtonContainer>
+                        Выбрать
+                      </ButtonContainer>
+                    </div>
+                  </div>
                 </div>
               </div>
-
-          </FormPortal>
+            </FormPortal>
         }
       </>
     );

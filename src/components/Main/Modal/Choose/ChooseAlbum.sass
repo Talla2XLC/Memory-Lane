@@ -5,16 +5,17 @@
   bottom: 0
   left: 0
   right: 0
-  overflow-y: auto
 
 .modalWindow
   position: absolute
+  left: 185px
+  top: 59px
   display: flex
   flex-direction: column
   // justify-content: space-between
-  min-height: 907px
+  max-height: 85%
   width: 1070px
-  margin: 59px 185px 58px 188px
+  // margin: 59px 185px 58px 188px
   background-color: #FFF
   border-radius: 10px
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3)
@@ -31,16 +32,22 @@
 
 .modalBody
   overflow-y: auto
+  margin: 0px 24px 0px 91px
   >.searchAndNewAlbum
-    margin-top: 36px
+    background: #FFFFFF
+    border: 1px solid black
+    // margin-bottom: 68px
     position: fixed
+    height: 141px
+    width: 941px
   >.albums
-    margin-top: 210px
-    background: yellow
+    margin-top: 208px
+    outline: yellow
     display: flex
-    height: 701px
-    flex-flow: column nowrap
+    max-height: 701px
+    flex-flow: row wrap
     align-items: center
+    justify-content: space-between
     padding: 0 24px
     box-sizing: border-box
     
@@ -49,8 +56,7 @@
   display: flex
   justify-content: flex-end
   align-items: center
-  // min-height: 94px
-  height: 94px
+  min-height: 94px
   background: red
 
 .modalFooter button:last-child
@@ -72,45 +78,41 @@
 .modalTitle
   font-weight: bold
 
+.times
+  position: absolute
+  right: 36px
+  top: 22px
+  width: 34px
+  height: 32px
+  opacity: 1
+  cursor: pointer
+  border: none
+  outline: none
+  background-color: #fff
 
+.times:hover
+  opacity: 0.3
 
+.times:active
+  opacity: 0.6
 
+.times:before,
+.times:after
+  position: absolute
+  left: 16px
+  content: ' '
+  height: 20px
+  width: 2px
+  background-color: #3B3E3C
+  top: 5px
 
-// .times
-//   position: absolute
-//   right: 36px
-//   top: 22px
-//   width: 34px
-//   height: 32px
-//   opacity: 1
-//   cursor: pointer
-//   border: none
-//   outline: none
-//   background-color: #fff
+.times:before 
+  transform: rotate(45deg)
+  right: 32px
 
-// .times:hover
-//   opacity: 0.3
-
-// .times:active
-//   opacity: 0.6
-
-// .times:before,
-// .times:after
-//   position: absolute
-//   left: 15px
-//   content: ' '
-//   height: 20px
-//   width: 2px
-//   background-color: #3B3E3C
-//   top: 0
-
-// .times:before 
-//   transform: rotate(45deg)
-//   right: 32px
-
-// .times:after 
-//   transform: rotate(-45deg)
-//   right: 32px
+.times:after 
+  transform: rotate(-45deg)
+  right: 32px
 
 
 
@@ -142,8 +144,8 @@
 //   &:focus
 //     outline: none
 
-// .modal-content-bottom
-//   align-self: flex-end
+.modalContentBottom
+  align-self: flex-end
 
 // .cancel-btn
 //   background: none
