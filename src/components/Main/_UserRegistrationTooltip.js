@@ -11,5 +11,5 @@ export const Tooltip = (tooltip) =>
         return '';
       }
     })}
-  </div> 
+  </div>
 
