@@ -127,7 +127,7 @@ class UserAuthorization extends Component {
 				</div>
 				{/* <PasswordErrorMessage passwordError={this.state.passwordError} /> */}
                 <div className='c-password-reset'>
-					<a className='c-password-reset__link'>
+					<a href='http://dev.memory-lane.ru/auth' className='c-password-reset__link'>
 						Забыли пароль?
 					</a>
 				</div>

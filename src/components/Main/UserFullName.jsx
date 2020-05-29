@@ -6,7 +6,7 @@ import './UserFormStyle.sass';
 import {Radio, RadioGroup} from 'react-icheck';
 import { ButtonContainer } from './Button.jsx';
 
-import { Tooltip } from './_UserRegistrationTooltip';
+// import { Tooltip } from './_UserRegistrationTooltip';
 
 import axios from 'axios';
 import {connect} from 'react-redux';
@@ -145,7 +145,7 @@ class UserFullName extends Component {
 	}
 
 	render() {
-	  const { firstName, lastName, formErrors, firstNameValid, lastNameValid, formValid, dobDay, dobMonth, dobYear, gender } = this.state;
+	  const { firstName, lastName, dobDay, dobMonth, dobYear } = this.state;
 
 	  return (
 		<div className='container-form'>

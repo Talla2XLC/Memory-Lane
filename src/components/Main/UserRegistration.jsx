@@ -61,7 +61,12 @@ export default class UserRegistration extends Component {
 	  switch (fieldName) {
 	    case 'email':
 		  emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-	      fieldValidationErrors.email = emailValid ? '' : 'Неверно введён email';
+		  fieldValidationErrors.email = emailValid ? '' : 'Неверно введён email';
+
+		  if (emailValid) {
+				fieldErrorStyle.email = '';
+		  } 
+			
 	      break;
 
 	    case 'password':
@@ -74,7 +79,8 @@ export default class UserRegistration extends Component {
 		  if (isMax && isCapital && oneDigit) {
 		    fieldErrorStyle.password.inputStatus = '';	  
 	        passwordValid = true;
-	      }
+		  }
+		  
 	      break;
 
 	    default:
@@ -102,13 +108,23 @@ export default class UserRegistration extends Component {
 		const isCapital = name.match(/(?=.*?[A-Z])/);
 		const oneDigit = name.match(/(?=.*?[0-9])/);
 
-		if (name == email) {
+		if (name === email) {
 			emailValid = email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-			if (fieldErrorStyle.email = emailValid) return true
-			fieldErrorStyle.email = 'status_error';
+			if (emailValid) {
+				fieldErrorStyle.email = '';
+				return true; 
+			} fieldErrorStyle.email ='status_error';
+			
+			this.setState(
+				{ 
+					formErrorStyle: fieldErrorStyle, 
+					emailValid: emailValid
+				},
+				this.validateForm
+			);
 		}
 
-		if (name == password) {
+		if (name === password) {
 			
 			passwordValid  = false; 
 
@@ -129,7 +145,6 @@ export default class UserRegistration extends Component {
 				{ 
 					formErrors: fieldValidationErrors, 
 					formErrorStyle: fieldErrorStyle, 
-					emailValid: emailValid,
 					passwordValid: passwordValid
 				},
 				this.validateForm
@@ -183,7 +198,7 @@ export default class UserRegistration extends Component {
 	}
 
 	render() {
-		const { email, password, formErrors, formErrorStyle, emailValid, passwordValid, modalOpened, hasRegistred, openEye } = this.state;
+		const { email, password, formErrorStyle, modalOpened, hasRegistred, openEye } = this.state;
 
 		if (hasRegistred) return <Redirect to='/auth'/>;
 
