@@ -19,7 +19,23 @@ export default class AlbumsItem extends Component {
     const { isDesc, isImg, gridType, url, isSelected, id, view, name, autor, date } = this.props;
     const desc = isDesc ? <div className='itemDescription text1'>Ipsum ex commodo ad ad ipsum non quis laborum adipisicing reprehenderit aliqua veniam excepteur.</div> : '';
 
-    const img = isImg ? <img className={'img ' + gridType + '_img'} src={url} alt='gallery_pic'/> : '';
+    const img = isImg ?
+      <Link to={{
+        pathname: '/photo/' + id,
+        props: {
+          isDesc: isDesc,
+          isImg: isImg,
+          gridType: gridType,
+          url: url,
+          id: id,
+          view: view,
+          name: name,
+          autor: autor,
+          date: date
+        }
+      }} >
+        <img className={'img ' + gridType + '_img'} src={url} alt='gallery_pic'/>
+      </Link> : '';
 
     const selectBTN =
       <button className={
@@ -32,24 +48,10 @@ export default class AlbumsItem extends Component {
         {img}
         {selectBTN}
       </div>;
+
     return (
       <div className={'albumItem ' + view}>
-        <Link to={{
-          pathname: '/photo/' + id,
-          props: {
-            isDesc: isDesc,
-            isImg: isImg,
-            gridType: gridType,
-            url: url,
-            id: id,
-            view: view,
-            name: name,
-            autor: autor,
-            date: date
-          }
-        }} >
-          {imgDiv}
-        </Link>
+        {imgDiv}
         <div className='contentZone flex-column'>
           <span className={gridType === 'bigColView' ? 'head3 font3' : 'head3 font2'}>
             {name}

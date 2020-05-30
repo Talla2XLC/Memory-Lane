@@ -58,20 +58,26 @@ flex-flow: column nowrap;
 justify-content: flex-start;
 box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
 border-radius: 10px;
-padding: 12px;
 background: #FFFFFF;
+overflow: hidden;
+padding: 6px 0;
 .dropdownLink {
-  padding: 5px;
   box-sizing: border-box;
   text-align: left;
 }
 .dropdownButton {
-  padding: 0;
+  padding: 5px 12px;
+  width: 100%;
+  &:hover {
+    background: rgba(189, 225, 202, 0.3);
+  }
+  &:active {
+    background: #5DB07B;
+  }
+  &:focus {
+    outline: none;
+  }
 }
-.dropdownLink:hover {
-  background: #F3F0F0;
-}
-
 `;
 
 const mapStateToProps = state => {
