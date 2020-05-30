@@ -56,6 +56,7 @@ class Sorting extends Component {
 }
 
 export const SortingContainer = styled.div`
+background: #F6F6F6;
 height: 76px;
 z-index: 2;
 width: 100%;

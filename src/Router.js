@@ -6,10 +6,11 @@ import UserRegistrationCompleting from './components/Main/UserRegistrationComple
 import UserFullName from './components/Main/UserFullName';
 import UserAuthorization from './components/Main/UserAuthorization';
 import Funnel from './components/Main/Funnel';
-
+import Persons from './components/Main/Persons/Persons';
 import MainContent from './components/Main/MainContent';
 import UsersAlbums from './components/Main/Albums/UserAlbums';
-import Persons from './components/Main/Persons';
+import AddPerson from './components/Main/Persons/AddPerson';
+import Person from './components/Main/Persons/Person';
 // import Albums from './components/Main/Albums/Photos';
 import Album from './components/Main/Albums/Album';
 import Photo from './components/Main/Albums/PhotoFull';
@@ -21,6 +22,7 @@ import StoryEdit from './components/Main/Stories/StoryEdit';
 import StoryView from './components/Main/Stories/StoryView';
 import Profile from './components/Main/UserProfile/UserProfile';
 import StoryAdd from './components/Main/Stories/StoryAdd';
+import EditPerson from './components/Main/Persons/EditPerson';
 
 export default class Router extends Component {
 
@@ -34,10 +36,14 @@ export default class Router extends Component {
             { hasFullName === false ? <Redirect to='/userfullname/' /> : <MainContent />}
           </Route>
           <Route exact path='/persons/' component={ Persons } />
-
+          <Route exact path='/persons/add/' component={ AddPerson } />
           <Route exact path='/albums/' component={ UsersAlbums } />
           <Route exact path='/albums/add/' component={ DownloadPhoto } />
           <Route exact path='/albums/:id' component={ Album } />
+          <Route exact path='/persons/:id' component={ Person } />
+          <Route exact path='/persons/edit/:id'component={ EditPerson }/>         
+   
+       
           {/* <Route exact path='/albums/addalbums/' component={ UsersAlbums } /> */}
           <Route exact path='/photo/:id' component={ Photo } />
           <Route exact path='/stories/' component={ Stories } />

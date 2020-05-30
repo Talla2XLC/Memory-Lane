@@ -1,0 +1,89 @@
+.personsContainer 
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  wrap: no-wrap
+  gap: 29px 
+  box-sizing: border-box
+.persons
+  padding: 0 44px
+  box-sizing: border-box
+.personContainer
+  padding: 64px  44px 0 28px
+  display: grid
+  grid-template-columns: 327px 1fr
+  grid-template-rows: 73px 600px 1fr
+  grid-template-areas: 'title title' 'personInfo personFoto' 'personInfo personStory'
+.personsLink
+  width: 100%
+
+.personsImg
+  width: 100%
+  border-radius: 10px
+
+.personInfo
+  grid-area: personInfo
+  max-height: 600px
+  text-align: left
+  margin: 0 45px 0 0 
+  &__text
+    margin: 30px 0 0 0
+.personsName
+  margin-top: 12px
+.textAlign
+  text-align: left
+.personFoto
+   grid-area: personFoto
+   height: 600px
+   &__container
+    display: grid
+    grid-template-columns: 1fr 1fr 1fr
+    grid-gap: 25px
+
+
+.personStory
+  grid-area: personStory
+
+
+.profilePhoto
+  width: 100%
+  border-radius: 10px
+
+.changeProfilePhoto
+  text-align: center
+  margin-top: 16px
+
+.img 
+  width: 100%
+  border-radius: 10px
+
+.title
+  grid-area: title
+  text-align: left
+  margin-bottom: 16px
+.addPersonContainer
+  padding: 64px  44px 0 28px
+
+.addPerson
+  display: grid
+  grid-template-columns: 2fr 5fr
+  margin-top: 33px
+  &__text
+    width: 60%
+    margin-left: 30px
+    width: 600px
+
+.infoGroup
+  display: grid
+  grid-template-columns: 3fr 1fr
+  margin-bottom: 16px
+  &__name
+    text-align: left
+  &__input 
+    background: rgba(130, 132, 130, 0.1)
+    border: 1px solid rgba(130, 132, 130, 0.3)
+    box-sizing: border-box
+    border-radius: 10px
+    width: 416px
+
+.addPersonButton
+  float: right

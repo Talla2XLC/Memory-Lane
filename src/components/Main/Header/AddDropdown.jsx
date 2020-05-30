@@ -41,7 +41,7 @@ class AddDropdown extends Component {
               <span className='dropdownLink'> <button className='dropdownButton' onClick={this.props.openModalAddAlbum}>Создать альбом</button> </span>
               <Link to='/stories/add' className='dropdownLink'> <button className='dropdownButton'>Добавить историю</button> </Link>
               <Link to='/4/4' className='dropdownLink'> <button className='dropdownButton'>Добавить интервью</button> </Link>
-              <Link to='/persons/add' className='dropdownLink'> <button className='dropdownButton'>Добавить персону</button> </Link>
+              <Link to='/persons/add/' className='dropdownLink'> <button className='dropdownButton'>Добавить персону</button> </Link>
             </DropdownList>
           )
           : null
