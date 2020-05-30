@@ -6,6 +6,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import 'normalize.css';
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import './stylesGlobal/fonts.sass';
+import './stylesGlobal/media_mixins.sass';
 import './stylesGlobal/variables.sass';
 import './stylesGlobal/styles.sass';
 import './stylesGlobal/scrollbar.sass';

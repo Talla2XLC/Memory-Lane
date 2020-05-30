@@ -1,3 +1,5 @@
+@import ../../stylesGlobal/media_mixins.sass
+
 // Colors
 
 $border-color: rgba(130, 132, 130, 0.3)
@@ -28,7 +30,6 @@ $color-socialIcons_focus: #3B3E3C
   font-size: 18px
   line-height: 27px 
   color: #3B3E3C
-  
 
 // Headings and labels
 
@@ -65,6 +66,11 @@ legend
 // Position of elements
 
 //.position
+
+.position-btn_top
+  @include max-height(825)
+    margin-top: 28px!important
+    margin-bottom: 20px
 
 .title_position_bottom 
   margin-bottom: 48px
@@ -178,22 +184,21 @@ input
 
 .formWrapper 
   background-color: #fff
-  //320/568
-  //375/667
-  //1024/768
-  //1366/768 
-  //1440/900
   padding-top: 15vh
-  width: 705px
-  //1920/1080
-  //width: 50vw
+  flex-basis: 705px
   display: flex
   flex-direction: column
   align-items: center
   justify-content: flex-start
-  // @if #{container-form} width>1440px 
-  //width: 705px
   min-height: 100%
+  @include max-height(700)
+    padding-top: 5vh
+  @include height(701, 825)
+    padding-top: 10vh
+  @include max-width(1024)
+    margin: 0 auto
+  @include min-width(1025)
+    flex-basis: 50%
 
 .formWrapperItem__titleContainer 
   width: 356px
@@ -220,6 +225,10 @@ input
     margin-top: 12px
     color: #3B3E3C
     justify-content: center
+  @include max-height(700)
+    margin-top: 33px
+  @include height(701, 825)
+    margin-top: 40px
 
 .container__input 
   margin-top: 12px
@@ -268,6 +277,8 @@ input
     @extend %text-basic
     font-size: 10px
     line-height: 15px
+  @include max-height(825)
+    margin-bottom: 60px
 
 .c-registration__link
   margin-top: 32px
@@ -360,3 +371,4 @@ input
     margin-left: 47px
   span 
     @extend %text-basic
+

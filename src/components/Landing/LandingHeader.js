@@ -8,7 +8,7 @@ function LandingHeader() {
     e.preventDefault();
     window.scrollTo({
       left: 0,
-      top: document.body.scrollHeight,
+      top: 6000, 
       behavior: "smooth"
     });
   }

@@ -251,7 +251,7 @@ class UserFullName extends Component {
 					</div>
 				</div>
 
-				<div className='btnContainer-fullname'>
+				<div className='btnContainer-fullname position-btn_top'>
 					<ButtonContainer
 						className='btn-skip'
 						type='submit'

@@ -210,13 +210,13 @@ export default class UserRegistration extends Component {
 						</div>
 
 						<div className='formContainerItem__icons'>
-								<div className='container__icons'>
-									<a className='socials-icon' href='https://vk.com/' alt='vk'><FormVK /></a>
-									<a className='socials-icon' href='https://www.instagram.com/' alt='ins'><FormIns /></a>
-									<a className='socials-icon' href='https://ru-ru.facebook.com/' alt='facebook'><FormFB /></a>
-									<a className='socials-icon' href='https://www.google.com/' alt='google'><FormG /></a>									
-								</div>
-								<div className='formContainerItem__message'>Присоединиться через соц. сети</div>
+							<div className='container__icons'>
+								<a className='socials-icon' href='https://vk.com/' alt='vk'><FormVK /></a>
+								<a className='socials-icon' href='https://www.instagram.com/' alt='ins'><FormIns /></a>
+								<a className='socials-icon' href='https://ru-ru.facebook.com/' alt='facebook'><FormFB /></a>
+								<a className='socials-icon' href='https://www.google.com/' alt='google'><FormG /></a>									
+							</div>
+							<div className='formContainerItem__message'>Присоединиться через соц. сети</div>
 						</div>
 
 						<div className='form-or'><hr/>или<hr/></div>
