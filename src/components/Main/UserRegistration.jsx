@@ -12,8 +12,6 @@ import { ReactComponent as FormG }	from './svg/form_g.svg';
 import { ReactComponent as FormIns }	from './svg/form_ins.svg';
 import { ReactComponent as EyeClosed }	from './svg/eye_closed.svg';
 
-// import { Tooltip } from './UserRegistrationTooltip';
-
 import axios from 'axios';
 
 export default class UserRegistration extends Component {
@@ -42,11 +40,6 @@ export default class UserRegistration extends Component {
 
 	  this.setState({ [name]: value },
 		() => { this.handleValidateField(name, value) });
-	}
-
-	clickEye = () => {
-		const { openEye } = this.state;
-		this.setState({ openEye: !openEye })
 	}
 
 	handleValidateField = (fieldName, value) => {
@@ -252,7 +245,7 @@ export default class UserRegistration extends Component {
 								/>
 								<button 
 									className='btn-show_closed'
-									onClick={this.clickEye}
+									onClick={() => this.setState({ openEye: !openEye })}
 								>
 					    			<EyeClosed/>
 								</button>
