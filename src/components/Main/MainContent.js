@@ -3,6 +3,7 @@ import './MainContent.sass';
 import NewsFeed from './NewsFeed';
 import { ButtonContainer } from './Button.jsx';
 import { ReactComponent as HeaderImg } from './svg/Image.svg';
+import {Link} from "react-router-dom";
 
 export default function MainContent() {
   return <div className='contentContainer'>
@@ -17,7 +18,7 @@ export default function MainContent() {
           вашу историю, чтобы остаться
           в памяти у потомков!
         </p>
-        <ButtonContainer >Перейти</ButtonContainer>
+        <Link to='/photo/add'><ButtonContainer >Загрузить фото</ButtonContainer></Link>
       </div>
       <div className='MainContent__header-imj'>
         <HeaderImg />

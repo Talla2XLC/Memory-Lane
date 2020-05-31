@@ -10,7 +10,6 @@ import Funnel from './components/Main/Funnel';
 import MainContent from './components/Main/MainContent';
 import UsersAlbums from './components/Main/Albums/UserAlbums';
 import Persons from './components/Main/Persons';
-// import Albums from './components/Main/Albums/Photos';
 import Album from './components/Main/Albums/Album';
 import Photo from './components/Main/Albums/PhotoFull';
 import Stories from './components/Main/Stories/Stories';
@@ -36,7 +35,7 @@ export default class Router extends Component {
           <Route exact path='/persons/' component={ Persons } />
 
           <Route exact path='/albums/' component={ UsersAlbums } />
-          <Route exact path='/albums/add/' component={ DownloadPhoto } />
+          <Route exact path='/photo/add/' component={ DownloadPhoto } />
           <Route exact path='/albums/:id' component={ Album } />
           {/* <Route exact path='/albums/addalbums/' component={ UsersAlbums } /> */}
           <Route exact path='/photo/:id' component={ Photo } />

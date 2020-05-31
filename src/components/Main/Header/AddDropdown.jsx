@@ -37,7 +37,7 @@ class AddDropdown extends Component {
           ? (
 
             <DropdownList>
-              <Link to='/albums/add' className='dropdownLink'> <button className='dropdownButton'>Загрузить фото</button> </Link>
+              <Link to='/photo/add' className='dropdownLink'> <button className='dropdownButton'>Загрузить фото</button> </Link>
               <span className='dropdownLink'> <button className='dropdownButton' onClick={this.props.openModalAddAlbum}>Создать альбом</button> </span>
               <Link to='/stories/add' className='dropdownLink'> <button className='dropdownButton'>Добавить историю</button> </Link>
               <Link to='/4/4' className='dropdownLink'> <button className='dropdownButton'>Добавить интервью</button> </Link>
