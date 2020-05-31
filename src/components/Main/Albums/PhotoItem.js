@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './PhotoItem.sass';
-import {ReactComponent as DownloadIcon} from '../svg/downloadIcon.svg';
-import {ReactComponent as ShareIcon} from '../svg/shareIcon.svg';
-import {ReactComponent as CommentsIcon} from '../svg/commentsIcon.svg';
+import InteractionIcons from 'components/Main/General/InteractionIcons';
 import { Link } from  'react-router-dom';
 
 
@@ -20,20 +18,23 @@ export default class AlbumsItem extends Component {
     const desc = isDesc ? <div className='itemDescription text1'>Ipsum ex commodo ad ad ipsum non quis laborum adipisicing reprehenderit aliqua veniam excepteur.</div> : '';
 
     const img = isImg ?
-      <Link to={{
-        pathname: '/photo/' + id,
-        props: {
-          isDesc: isDesc,
-          isImg: isImg,
-          gridType: gridType,
-          url: url,
-          id: id,
-          view: view,
-          name: name,
-          autor: autor,
-          date: date
-        }
-      }} >
+      <Link
+        to={{
+          pathname: '/photo/' + id,
+          props: {
+            isDesc: isDesc,
+            isImg: isImg,
+            gridType: gridType,
+            url: url,
+            id: id,
+            view: view,
+            name: name,
+            autor: autor,
+            date: date
+          }
+        }}
+        className='photo-link'
+      >
         <img className={'img ' + gridType + '_img'} src={url} alt='gallery_pic'/>
       </Link> : '';
 
@@ -61,10 +62,8 @@ export default class AlbumsItem extends Component {
             <div className='text3'>{date}</div>
           </div>
           {desc}
-          <div className='almunIcons'>
-            <DownloadIcon/>
-            <ShareIcon className='iconsMargin'/>
-            <CommentsIcon/>
+          <div className='albumIcons'>
+            <InteractionIcons fileUrl={url}/>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 .albumItem
-  justify-content: stretch
+  justify-content: space-between
   text-align: left
   position: relative
 
@@ -8,7 +8,8 @@
 
 .select-button
   position: absolute
-  background-color: #5DB07B
+  background: #3B3E3C
+  opacity: 0.3
   width: 22px
   height: 22px
   top: 2rem
@@ -17,14 +18,13 @@
   border: 2px solid #FFFFFF
   font-size: 0.6rem
   box-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1)
+  z-index: 3
   &:focus
     outline: none
 
 .selected-button
-  background: url('svg/check.svg')
-  background-color: #5DB07B
-  background-repeat: no-repeat
-  background-position: center
+  background: #5DB07B url('svg/check.svg') no-repeat center
+  opacity: 1
 
 .bigRowView_img-div, .smallRowView_img-div
   margin-right: 2rem
@@ -33,7 +33,6 @@
   margin-right: 0
   height: 100%
   width: 100%
-
   position: absolute
 
 .bigColView_img, .smallColView_img
@@ -71,7 +70,6 @@
 
 .contentZone
   position: relative
-  flex-grow: 1
   justify-content: space-between
 
 .itemName
@@ -84,9 +82,6 @@
   position: absolute
   right: 0
   top: 2px
-
-.downloadIcon
-  margin-right: 20px
 
 .iconBig
   width: 1.4rem
@@ -101,10 +96,6 @@
 .itemDescription 
   text-align: left
 
-
-.almunIcons
+.albumIcons
   margin-top: 15px
-
-.iconsMargin
-  margin: 0 25px 0 25px
 

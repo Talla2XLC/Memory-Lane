@@ -9,12 +9,12 @@ import {ReactComponent as RenameIcon} from '../svg/reNameIcon.svg';
 import {ReactComponent as CopyIcon} from '../svg/copyIcon.svg';
 import {ReactComponent as DeleteIcon} from '../svg/deleteIcon.svg';
 import {ReactComponent as Dots} from '../svg/dots.svg';
-import Sorting from '../Sorting';
+import Sorting from '../General/Sorting/Sorting';
 
 class UserAlbums extends Component {
   constructor(props) {
     super(props);
-    this.setStyleType = this.setStyleType.bind(this);
+    this.setGridType = this.setGridType.bind(this);
     this.showActions = this.showActions.bind(this);
     this.closeActions = this.closeActions.bind(this);
 
@@ -41,8 +41,8 @@ class UserAlbums extends Component {
 	  this.setState({ [name]: value });
 	}
 
-	setStyleType(styleId) {
-	  switch (styleId) {
+	setGridType(gridId) {
+	  switch (gridId) {
 	    case 1:
 	      this.setState({styleType: 'userAlbumsWrapBig'});
 	      this.setState({rowItemView: false});
@@ -61,24 +61,24 @@ class UserAlbums extends Component {
 	}
   
 	render() {
-	  const { loading } = this.props;
-	  const userAlbums = typeof this.props.albums === 'object' ? Object.values(this.props.albums) : [];
+	  const { loading, albums } = this.props;
+	  const userAlbums = albums ?? [];
 		
 
-	  const albumsItems = userAlbums.map(albums =>
+	  const albumsItems = userAlbums.map((album, index) =>
 	    (
-	        <div key={albums.id}>
-	        <Link className='userAlbumsLink' to={`/albums/${albums.id}`}>      
+	        <div key={album.id}>
+	        <Link className='userAlbumsLink' to={`/albums/${index}`}>
 	          <div className='imgWrap'>	      
 	            <img className='imgWrap__img' src='https://picsum.photos/238/149' alt='albumPreview'/>
 	          </div>
 	        </Link>
 	          <div className='albumName'>
-	            {albums.album_name}
+	            <span className='albumName-span'>{album.album_name}</span>
 	            <div className='actionsForAlbums'>
-	            <Dots className={'dots-list'} onClick={e => {this.showActions(e, albums.id);}}/>
+	            <Dots className={'dots-list'} onClick={e => {this.showActions(e, album.id);}}/>
 	              {
-	                this.state.showActions === albums.id
+	                this.state.showActions === album.id
 	                  ? 
 	                  (<ul className='actionsForAlbums__dropdown'>
 	
@@ -113,8 +113,9 @@ class UserAlbums extends Component {
 	  return (
 	    loading ? <h1>Загрузка данных</h1> :
 	      <div className='contentContainer'>
-	        <Sorting album={true} 
-	          styleId={this.setStyleType}
+	        <Sorting
+	          currentPage='allAlbums'
+	          setGridType={this.setGridType}
 	        />
 	        <div className={this.state.styleType}>
 	          {albumsItems}
