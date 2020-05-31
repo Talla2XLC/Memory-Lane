@@ -4,6 +4,11 @@ import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
 import {modalOpen} from '../../../actions/modalOpen';
+import { ReactComponent as NewAlbumSVG } from './svg/newAlbum.svg';
+import { ReactComponent as NewInterviewSVG } from './svg/newInterview.svg';
+import { ReactComponent as NewPersonSVG } from './svg/newPerson.svg';
+import { ReactComponent as NewPhotoSVG } from './svg/newPhoto.svg';
+import { ReactComponent as NewStorySVG } from './svg/newStory.svg';
 
 class AddDropdown extends Component {
   constructor(props) {
@@ -35,13 +40,27 @@ class AddDropdown extends Component {
       {
         this.state.showMenu
           ? (
-
             <DropdownList>
-              <Link to='/photo/add' className='dropdownLink'> <button className='dropdownButton'>Загрузить фото</button> </Link>
-              <span className='dropdownLink'> <button className='dropdownButton' onClick={this.props.openModalAddAlbum}>Создать альбом</button> </span>
-              <Link to='/stories/add' className='dropdownLink'> <button className='dropdownButton'>Добавить историю</button> </Link>
-              <Link to='/4/4' className='dropdownLink'> <button className='dropdownButton'>Добавить интервью</button> </Link>
-              <Link to='/persons/add' className='dropdownLink'> <button className='dropdownButton'>Добавить персону</button> </Link>
+              <Link to='/photo/add' className='dropdownLink'>
+                <NewPhotoSVG/>
+                <button className='dropdownButton-add'>Загрузить фото</button>
+              </Link>
+              <span className='dropdownLink'>
+                <NewAlbumSVG/>
+                <button className='dropdownButton-add' onClick={this.props.openModalAddAlbum}>Создать альбом</button>
+              </span>
+              <Link to='/stories/add' className='dropdownLink'>
+                <NewStorySVG/>
+                <button className='dropdownButton-add'>Добавить историю</button>
+              </Link>
+              <Link to='/4/4' className='dropdownLink'>
+                <NewInterviewSVG/>
+                <button className='dropdownButton-add'>Добавить интервью</button>
+              </Link>
+              <Link to='/persons/add' className='dropdownLink'>
+                <NewPersonSVG/>
+                <button className='dropdownButton-add'>Добавить персону</button>
+              </Link>
             </DropdownList>
           )
           : null
@@ -53,6 +72,7 @@ class AddDropdown extends Component {
 
 const DropdownList = styled.div`
 position: absolute;
+top: 39px;
 display: flex;
 z-index: 10;
 flex-flow: column nowrap;
@@ -62,20 +82,44 @@ box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
 border-radius: 10px;
 background: #FFFFFF;
 overflow: hidden;
-padding: 6px 0;
+padding: 10px 0;
 .dropdownLink {
   box-sizing: border-box;
-  text-align: left;
-}
-.dropdownButton {
-  padding: 5px 12px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 6px 30px 6px 14px;
   width: 100%;
+  background: none;
+  border: none;
+  color: #3B3E3C;
+  text-decoration: none;
   &:hover {
-    background: rgba(189, 225, 202, 0.3);
+    background: #BDE1CA;
   }
   &:active {
     background: #5DB07B;
+    color: white;
+    >svg>path {
+      fill: white;
+    }
+    >button {
+      color: white;
+    }
   }
+  > svg {
+    margin-right: 16px;
+  }
+}
+.dropdownButton-add {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  width: 100%;
+  text-align: left;
+  white-space: nowrap;
   &:focus {
     outline: none;
   }

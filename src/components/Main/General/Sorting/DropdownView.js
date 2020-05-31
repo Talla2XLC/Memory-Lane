@@ -26,7 +26,7 @@ class DropdownView extends Component {
           viewData: [
             { name: 'Большая плитка', id: 1},
             { name: 'Средняя плитка', id: 2},
-            { name: 'Средний список', id: 3}
+            { name: 'Маленькая плитка', id: 3}
           ]
         });
         break;
@@ -85,7 +85,7 @@ class DropdownView extends Component {
     }
 
     return (
-      <div className='menu' >
+      <div className='dropdown-view' >
         <div className='viewButton' onClick={this.showMenu}>
           Вид
           <Arrow className='arrow'/>
@@ -96,7 +96,10 @@ class DropdownView extends Component {
               <div className={'dropdown-list'}>
                 {
                   viewData.map(view => {
-                    return <button className='dropdownButton' key={view.id} onClick={() => this.handleClick(view.id, view.name)}>{fetchDropdownSvg(view.id)}{view.name}</button>;
+                    return <button className='dropdownButton' key={view.id} onClick={() => this.handleClick(view.id, view.name)}>
+                      {fetchDropdownSvg(view.id)}
+                      <span className='dropdownButton-span'>{view.name}</span>
+                    </button>;
                   })
                 }
               </div>
