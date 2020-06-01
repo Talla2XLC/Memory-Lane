@@ -85,7 +85,7 @@ class DropdownView extends Component {
     }
 
     return (
-      <div className='dropdown-view' >
+      <div className='dropdown-div' >
         <div className='viewButton' onClick={this.showMenu}>
           Вид
           <Arrow className='arrow'/>

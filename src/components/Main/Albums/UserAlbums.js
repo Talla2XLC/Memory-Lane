@@ -3,13 +3,8 @@ import {connect} from 'react-redux';
 import { getAlbums } from '../../../actions/actionAlbums';
 import './UserAlbums.sass';
 import { Link } from  'react-router-dom';
-import {ReactComponent as DownloadIcon} from '../svg/downloadIcon.svg';
-import {ReactComponent as ShareIcon} from '../svg/shareIcon.svg';
-import {ReactComponent as RenameIcon} from '../svg/reNameIcon.svg';
-import {ReactComponent as CopyIcon} from '../svg/copyIcon.svg';
-import {ReactComponent as DeleteIcon} from '../svg/deleteIcon.svg';
-import {ReactComponent as Dots} from '../svg/dots.svg';
 import Sorting from '../General/Sorting/Sorting';
+import DropdownAction from '../General/DropdownAction/DropdownAction';
 
 class UserAlbums extends Component {
   constructor(props) {
@@ -70,41 +65,14 @@ class UserAlbums extends Component {
 	        <div key={album.id}>
 	        <Link className='userAlbumsLink' to={`/albums/${index}`}>
 	          <div className='imgWrap'>	      
-	            <img className='imgWrap__img' src='https://picsum.photos/238/149' alt='albumPreview'/>
+	            <img className='imgWrap__img' src={album.photo[album.photo.length - 1].content_url} alt='albumPreview'/>
 	          </div>
 	        </Link>
 	          <div className='albumName'>
 	            <span className='albumName-span'>{album.album_name}</span>
-	            <div className='actionsForAlbums'>
-	            <Dots className={'dots-list'} onClick={e => {this.showActions(e, album.id);}}/>
-	              {
-	                this.state.showActions === album.id
-	                  ? 
-	                  (<ul className='actionsForAlbums__dropdown'>
-	
-	                    <li className='actionsForAlbums__li'>
-	                      <ShareIcon/> Поделиться
-	                    </li>
-	                    <li className='actionsForAlbums__li'>
-	                      <DownloadIcon/>Скачать
-
-	                    </li>
-	                    <li className='actionsForAlbums__li'>
-	                      <RenameIcon/>Переименовать
-
-	                    </li>
-	                    <li className='actionsForAlbums__li'>
-	                      <CopyIcon/>Копировать
-	                    </li>
-	                    <li className='actionsForAlbums__li'>
-	                      <DeleteIcon/>Удалить
-
-	                    </li>
-							  </ul>)
-	                  :
-	                  null
-	              }
-	            </div>
+	          <DropdownAction
+	            currentPage='allAlbums'
+	          />
 	          </div>
 	        </div>
 	    )

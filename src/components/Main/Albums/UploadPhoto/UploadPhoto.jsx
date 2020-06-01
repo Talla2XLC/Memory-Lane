@@ -30,10 +30,6 @@ class UploadPhoto extends Component {
     return {
       selectedAlbum: 0
     };
-
-
-    // Return null to indicate no change to state.
-    return null;
   }
 
   uploadImage() {
