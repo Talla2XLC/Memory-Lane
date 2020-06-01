@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './UserAuthorizationStyle.css';
-import { Tooltip } from './UserRegistrationTooltip';
+import './UserFormStyle.sass';
+// import { Tooltip } from './UserRegistrationTooltip';
 import { ReactComponent as FormVK }   from './svg/form_vk.svg';
 import { ReactComponent as FormFB }   from './svg/form_fb.svg';
 import { ReactComponent as FormG }    from './svg/form_g.svg';
@@ -20,10 +20,6 @@ handleUserInput = (e) => {
   const value = e.target.value;                                    
   this.setState({[name]: value},                                          
     () => { this.validateField(name, value); });             
-}
-
-handleRadioChange = (e) => {
-  this.setState({role: e.target.value});
 }
 
 validateField(fieldName, value) {
@@ -47,7 +43,7 @@ isOpen = (e) => {
 }
 
 render() {
-  const { email, emailValid } = this.state;
+  const { email, emailValid, role } = this.state;
   const displayTooltipEmail = (email.length === 0 || email === null || emailValid) ? 'formErrors displayNone' : 'formErrors';
   const inputEmail = (email.length > 0 && !emailValid) ? 'textInput input_color_red' : 'textInput';
   return (
@@ -67,23 +63,53 @@ render() {
           onChange={this.handleUserInput}
           required
         />
-        <div className={displayTooltipEmail}>
+        {/* <div className={displayTooltipEmail}>
           <Tooltip tooltip={this.state.formErrors.email} />
-        </div>
+        </div> */}
 
         <div className='role-form'>
           <div className='role-form__title'>Роль</div>
           <div className='radio-input'>
-            <input type='radio' id='reader' name='role' value='reader' checked={this.state.role == 'reader'} onClick={this.handleRadioChange}/>
-            <label htmlFor='reader'><span>Читатель</span><span>Только чтение</span></label>
+            <input 
+              type='radio' 
+              id='reader' 
+              name='role' 
+              value='reader' 
+              checked={role == 'reader'} 
+              onClick={this.handleUserInput}
+            />
+            <label htmlFor='reader'>
+              <span>Читатель</span>
+              <span>Только чтение</span>
+            </label>
           </div>
           <div className='radio-input'>
-            <input type='radio' id='сommentator' name='role' value='сommentator' checked={this.state.role == 'сommentator'} onClick={this.handleRadioChange}/>
-            <label htmlFor='сommentator'><span>Комментатор</span><span>Читать и оставлять комментарии</span></label>
+            <input 
+            type='radio' 
+            id='сommentator' 
+            name='role' 
+            value='сommentator' 
+            checked={role == 'сommentator'} 
+            onClick={this.handleUserInput}
+            />
+            <label htmlFor='сommentator'>
+              <span>Комментатор</span>
+              <span>Читать и оставлять комментарии</span>
+            </label>
           </div>
           <div className='radio-input'>
-            <input type='radio' id='administrator' name='role' value='administrator' checked={this.state.role == 'administrator'} onClick={this.handleRadioChange}/>
-            <label htmlFor='administrator'><span>Администратор</span><span>Добавлять фотографии без удаления</span></label>
+            <input 
+              type='radio' 
+              id='administrator' 
+              name='role' 
+              value='administrator' 
+              checked={role == 'administrator'} 
+              onClick={this.handleUserInput}
+            />
+            <label htmlFor='administrator'>
+              <span>Администратор</span>
+              <span>Добавлять фотографии без удаления</span>
+            </label>
           </div>
         </div>
 
