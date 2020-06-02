@@ -21,4 +21,5 @@ export default class addSection extends Component {
 
 const AddSectionWrapper = styled.div`
 cursor: pointer;
+position: relative;
 `;

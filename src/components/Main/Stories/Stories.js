@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { fetchStories } from '../../../actions/actionStories';
 
 import StoryItem from './StoryItem';
-import Sorting from '../Sorting';
+import Sorting from '../General/Sorting/Sorting';
 import StoriesEmpty from './StoriesEmpty';
 
 import './Stories.sass';

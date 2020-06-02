@@ -3,6 +3,7 @@ import './MainContent.sass';
 import NewsFeed from './NewsFeed';
 import { ButtonContainer } from './Button.jsx';
 import { ReactComponent as HeaderImg } from './svg/Image.svg';
+import {Link} from "react-router-dom";
 
 export default function MainContent() {
   return <div className='contentContainer'>
@@ -17,7 +18,7 @@ export default function MainContent() {
           вашу историю, чтобы остаться
           в памяти у потомков!
         </p>
-        <ButtonContainer >Перейти</ButtonContainer>
+        <Link to='/photo/add'><ButtonContainer >Загрузить фото</ButtonContainer></Link>
       </div>
       <div className='MainContent__header-imj'>
         <HeaderImg />
@@ -29,14 +30,14 @@ export default function MainContent() {
         <p className='mainText textPosition'>
           Наши задания помогут вам наполнить историю воспоминаниями
         </p>
-        <ButtonContainer>Перейти</ButtonContainer>
+        <ButtonContainer className='btn-position'>Перейти</ButtonContainer>
       </div>
       <div className='mainContainer__item div2 basicItem'>
         <p className='head2'>Пригласить друга</p>
         <p className='mainText textPosition'>
           Пригласите своего близкого человека,<br /> чтобы он стал частью вашей истории.
         </p>
-        <ButtonContainer> Пригласить</ButtonContainer>
+        <ButtonContainer className='btn-position'> Пригласить</ButtonContainer>
       </div>
       <div className='mainContainer__item div3 basicItem' >Реклама</div>
     </div>

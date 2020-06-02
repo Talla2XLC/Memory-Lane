@@ -14,11 +14,26 @@ class UploadPhoto extends Component {
     this.setDropdownImages = this.setDropdownImages.bind(this);
 
     this.state = {
-      selectedAlbum: this.props.location.state ? this.props.location.state.albumId : Object.values(this.props.albums)[0].id,
+      selectedAlbum: '',
       dropdownOpened: false,
       imagesToUpload: [],
       uploadComplete: false
     };
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    if (props.location.state) {
+      return {
+        selectedAlbum: props.location.state.albumId
+      };
+    }
+    return {
+      selectedAlbum: 0
+    };
+
+
+    // Return null to indicate no change to state.
+    return null;
   }
 
   uploadImage() {
@@ -78,29 +93,31 @@ class UploadPhoto extends Component {
 
   render() {
     const { dropdownOpened, selectedAlbum, imagesToUpload, uploadComplete } = this.state;
-    const { albums } = this.props;
+    const { albums, loading } = this.props;
 
     return (
-      <>
-        <SelectNewPhoto
-          albums={albums}
-          dropdownOpened={dropdownOpened}
-          selectedAlbum={selectedAlbum}
-          imagesToUpload={imagesToUpload}
-          toggleDropdown={this.handleToggleDropdown}
-          dropdownSelect={this.handleDropdownSelect}
-          setFilesToUpload={this.uploadFileHandler}
-          setDropdownImages={this.setDropdownImages}
-          startUpload={this.uploadImage}
-        />
-        { uploadComplete && <Redirect to = { `/albums/${selectedAlbum}` } /> }
-      </>
+      loading ? <h1>Загрузка данных</h1> :
+        <>
+          <SelectNewPhoto
+            albums={albums}
+            dropdownOpened={dropdownOpened}
+            selectedAlbum={selectedAlbum}
+            imagesToUpload={imagesToUpload}
+            toggleDropdown={this.handleToggleDropdown}
+            dropdownSelect={this.handleDropdownSelect}
+            setFilesToUpload={this.uploadFileHandler}
+            setDropdownImages={this.setDropdownImages}
+            startUpload={this.uploadImage}
+          />
+          { uploadComplete && <Redirect to = { `/albums/${selectedAlbum}` } /> }
+        </>
     );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
+    loading: state.albums.loading,
     albums: state.albums.albums,
     token: state.session.sessionID
   };

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
-import Sorting from '../Sorting';
+import Sorting from '../General/Sorting/Sorting';
 import AlbumsItem from './PhotoItem';
 import './Album.sass';
 import EmptyBlock from '../EmptyBlock/EmptyBlock';
@@ -131,8 +131,10 @@ class Album extends Component {
             </div>
             :
             <>
-              <Sorting gridId={this.setGridType}/>
-              
+              <Sorting
+                currentPage='album'
+                setGridType={this.setGridType}
+              />
               <div className={'albumContent ' + this.state.gridType} >
                 { imagesItem }
               </div>

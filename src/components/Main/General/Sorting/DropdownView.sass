@@ -1,0 +1,49 @@
+.dropdown-view
+  position: relative
+
+.viewButton
+  cursor: pointer
+
+.dropdown-list
+  position: absolute
+  top: 29px
+  right: 0
+  display: flex
+  flex-flow: column nowrap
+  justify-content: flex-start
+  align-items: flex-start
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3)
+  border-radius: 10px
+  background: #FFFFFF
+  overflow: hidden
+  padding: 10px 0
+
+.dropdownButton
+  display: flex
+  flex-flow: row nowrap
+  justify-content: flex-start
+  align-items: center
+  padding: 6px 30px 6px 15px
+  width: 100%
+  background: none
+  border: none
+  color: #3B3E3C
+  &:hover
+    background: #BDE1CA
+  &:active
+    background: #5DB07B
+    color: white
+    >svg>path
+      fill: white
+  &:focus
+    outline: none
+  > svg
+    margin-right: 17px
+
+.arrow 
+  margin-left: 4px
+
+.dropdownButton-span
+  text-align: left
+  white-space: nowrap
+  line-height: 24px
