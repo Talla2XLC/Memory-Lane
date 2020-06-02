@@ -108,11 +108,12 @@ class Album extends Component {
 
     const imagesItem = images.map(image => {
       return <AlbumsItem
+        key={image.id}
         id = {image.id}
         view={this.state.rowItemView ? 'flex-row' : 'flex-column'}
         url={image.urls} name={image.photo_name}
-        autor={image.author} /* date={card.date}*/
-        key={ image.id }
+        author={image.author}
+        desc = {image.description}
         gridType={this.state.gridType}
         isDesc={!(this.state.gridType === 'smallRowView' || this.state.gridType === 'noPreview')}
         isImg={this.state.gridType !== 'noPreview'}

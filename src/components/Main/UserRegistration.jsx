@@ -12,8 +12,6 @@ import { ReactComponent as FormG }	from './svg/form_g.svg';
 import { ReactComponent as FormIns }	from './svg/form_ins.svg';
 import { ReactComponent as EyeClosed }	from './svg/eye_closed.svg';
 
-// import { Tooltip } from './UserRegistrationTooltip';
-
 import axios from 'axios';
 
 export default class UserRegistration extends Component {
@@ -25,6 +23,10 @@ export default class UserRegistration extends Component {
 	    email: '',
 	    password: {message1: '', message2: '', message3: ''}
 	  },
+	  formErrorStyle: {
+		email: '',
+	    password: {messageStatus1: '', messageStatus2: '', messageStatus3: '', inputStatus: ''}  
+	  },
 	  emailValid: false,
 	  passwordValid: false, 
 	  formValid: false,
@@ -33,25 +35,17 @@ export default class UserRegistration extends Component {
 	  hasRegistred: false
 	}
 
-	clickEye = () => {
-		const { openEye } = this.state;
-		this.setState({ openEye: !openEye })
-	}
-
 	handleInput = e => {
 	  const { name, value } = e.target;
 
 	  this.setState({ [name]: value },
-	    () => { this.validateField(name, value); });
+		() => { this.handleValidateField(name, value) });
 	}
 
-	confidentialityChange = e => this.setState({ confidentiality: e.target.checked })
-
-	validateField(fieldName, value) {
+	handleValidateField = (fieldName, value) => {
+	  let { emailValid, passwordValid } = this.state;
 	  const fieldValidationErrors = this.state.formErrors;
-	  let emailValid = this.state.emailValid;
-	  let passwordValid = this.state.passwordValid;
-	  let Open = this.state.isOpen;
+	  const fieldErrorStyle = this.state.formErrorStyle;
 
 	  const isMax = value.length >= 8;
 	  const isCapital = value.match(/(?=.*?[A-Z])/);
@@ -59,29 +53,27 @@ export default class UserRegistration extends Component {
 	
 	  switch (fieldName) {
 	    case 'email':
-	      emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-	      fieldValidationErrors.email = emailValid ? '' : 'Неверно введён email';
+		  emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+		  fieldValidationErrors.email = emailValid ? '' : 'Неверно введён email';
+
+		  if (emailValid) {
+				fieldErrorStyle.email = '';
+		  } 
+			
 	      break;
 
 	    case 'password':
 		  passwordValid = false;
-		//   Open = false;
 
-	      if (Open && !isMax) {
-			fieldValidationErrors.password.message1 = 'text_theme_erorr';
-	      } else if (isMax) {
-	        fieldValidationErrors.password.message1 = 'text_color_green';
-	      } else if (Open && !isCapital) {
-	        fieldValidationErrors.password.message2 = 'text_theme_erorr';
-	      } else if (isCapital) {
-	        fieldValidationErrors.password.message2 = 'text_color_green';
-	      } else if (Open && !oneDigit) {
-	        fieldValidationErrors.password.message3 = 'text_theme_erorr';
-	      } else if (oneDigit) {
-	        fieldValidationErrors.password.message3 = 'text_color_green';
-	      } else {
+		  (isMax) ? fieldErrorStyle.password.messageStatus1 = 'text_color_green' : fieldErrorStyle.password.messageStatus1 = ''; 
+		  (isCapital) ? fieldErrorStyle.password.messageStatus2 = 'text_color_green' : fieldErrorStyle.password.messageStatus2 = '';
+		  (oneDigit) ? fieldErrorStyle.password.messageStatus3 = 'text_color_green' : fieldErrorStyle.password.messageStatus3 = '';
+		  
+		  if (isMax && isCapital && oneDigit) {
+		    fieldErrorStyle.password.inputStatus = '';	  
 	        passwordValid = true;
-	      }
+		  }
+		  
 	      break;
 
 	    default:
@@ -90,12 +82,73 @@ export default class UserRegistration extends Component {
 
 	  this.setState(
 	    {
-	      formErrors: fieldValidationErrors,
+		  formErrors: fieldValidationErrors,
+		  formErrorStyle: fieldErrorStyle, 
 	      emailValid: emailValid,
 	      passwordValid: passwordValid
 	    },
 	    this.validateForm
 	  );
+	}
+
+	clickValidateField = (name) => {
+
+		const { email, password } = this.state;
+		let { emailValid, passwordValid } = this.state;
+		const fieldValidationErrors = this.state.formErrors;
+		const fieldErrorStyle = this.state.formErrorStyle;
+		const isMax = name.length >= 8;
+		const isCapital = name.match(/(?=.*?[A-Z])/);
+		const oneDigit = name.match(/(?=.*?[0-9])/);
+
+		if (name === email) {
+			emailValid = email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+			if (emailValid) {
+				fieldErrorStyle.email = '';
+				return true; 
+			} fieldErrorStyle.email ='status_error';
+			
+			this.setState(
+				{ 
+					formErrorStyle: fieldErrorStyle, 
+					emailValid: emailValid
+				},
+				this.validateForm
+			);
+		}
+
+		if (name === password) {
+			
+			passwordValid  = false; 
+
+			if (!isMax) { 
+				fieldErrorStyle.password.messageStatus1 = 'text_color_error'; 
+				fieldErrorStyle.password.inputStatus = 'status_error'; 
+			} 
+			if (!isCapital) { 
+				fieldErrorStyle.password.messageStatus2 = 'text_color_error'; 
+				fieldErrorStyle.password.inputStatus = 'status_error'; 
+			} 
+			if (!oneDigit) { 
+				fieldErrorStyle.password.messageStatus3 = 'text_color_error'; 
+				fieldErrorStyle.password.inputStatus = 'status_error';
+			} 
+
+			this.setState(
+				{ 
+					formErrors: fieldValidationErrors, 
+					formErrorStyle: fieldErrorStyle, 
+					passwordValid: passwordValid
+				},
+				this.validateForm
+			);
+
+			if (isMax && isCapital && oneDigit) {
+				passwordValid = true;
+				return true;
+			} else return false
+
+		}
 	}
 
 	validateForm = () => {
@@ -106,41 +159,39 @@ export default class UserRegistration extends Component {
 
 	handleCancel = () => this.setState({ modalOpened: false, hasRegistred: true })
 
-	registerUser = () => {
+	registerUser = (e) => {
 	  const { email, password } = this.state;
-		
-	  this.setState({isOpen: true });
+	  const isEmailValid = this.clickValidateField(email);
+	  const isPasswordValid = this.clickValidateField(password);
 
-	  axios
-	    .post(
-	      'http://api.memory-lane.ru/user/registration',
-	      { 
-	        'email': email,
-	        'password': password
-	      },
-	      {
-	        headers: {
-	          'Content-Type': 'application/json'
-	        }
-	      })
-	    .then(res => {
-	      if (res.data.result) {		// res.status === 200
-	        this.setState({ modalOpened: true });
-	      } else {	// res.status !== 200
-	        console.error(res.data.error);
-	        alert(`${res.data.error}`);
-	      }
-	    })
-		.catch(error => console.error(error));
+	  if (isEmailValid && isPasswordValid) {
+			axios
+				.post(
+				'http://api.memory-lane.ru/user/registration',
+				{ 
+					'email': email,
+					'password': password
+				},
+				{
+					headers: {
+					'Content-Type': 'application/json'
+					}
+				})
+				.then(res => {
+				if (res.data.result) {		// res.status === 200
+					this.setState({ modalOpened: true });
+				} else {	// res.status !== 200
+					console.error(res.data.error);
+					alert(`${res.data.error}`);
+				}
+				})
+				.catch(error => console.error(error)); 
+		} e.preventDefault();
 		
 	}
 
 	render() {
-		const { email, password, formErrors, emailValid, passwordValid, modalOpened, hasRegistred, openEye } = this.state;
-
-		const inputEmail = (email.length > 0 && !emailValid) ? 'text-basic text_theme_erorr' : 'text-basic';
-		const inputPassword = (password.length > 0 && modalOpened && !passwordValid) ? 'text-basic' : 'text-basic';
-		// const btnEye = '';
+		const { email, password, formErrorStyle, modalOpened, hasRegistred, openEye } = this.state;
 
 		if (hasRegistred) return <Redirect to='/auth'/>;
 
@@ -152,13 +203,13 @@ export default class UserRegistration extends Component {
 						</div>
 
 						<div className='formContainerItem__icons'>
-								<div className='container__icons'>
-									<a className='socials-icon' href='https://vk.com/' alt='vk'><FormVK /></a>
-									<a className='socials-icon' href='https://www.instagram.com/' alt='ins'><FormIns /></a>
-									<a className='socials-icon' href='https://ru-ru.facebook.com/' alt='facebook'><FormFB /></a>
-									<a className='socials-icon' href='https://www.google.com/' alt='google'><FormG /></a>									
-								</div>
-								<div className='formContainerItem__message'>Присоединиться через соц. сети</div>
+							<div className='container__icons'>
+								<a className='socials-icon' href='https://vk.com/' alt='vk'><FormVK /></a>
+								<a className='socials-icon' href='https://www.instagram.com/' alt='ins'><FormIns /></a>
+								<a className='socials-icon' href='https://ru-ru.facebook.com/' alt='facebook'><FormFB /></a>
+								<a className='socials-icon' href='https://www.google.com/' alt='google'><FormG /></a>									
+							</div>
+							<div className='formContainerItem__message'>Присоединиться через соц. сети</div>
 						</div>
 
 						<div className='form-or'><hr/>или<hr/></div>
@@ -168,7 +219,7 @@ export default class UserRegistration extends Component {
 							<div>
 								<legend>Эл. почта</legend>
 								<input
-									className={inputEmail}
+									className={formErrorStyle.email}
 									name='email'
 									type='email'
 									size='0'
@@ -183,26 +234,33 @@ export default class UserRegistration extends Component {
 								<legend>Пароль</legend>	
 								<input
 									id='password'
-									className={inputPassword}
+									className={formErrorStyle.password.inputStatus}
 									name='password'
 									type={openEye ? 'text': 'password'}
 									placeholder='Придумайте пароль'
 									onChange={this.handleInput}
 									value={password}
 									autoComplete='current-password'
+									required
 								/>
 								<button 
 									className='btn-show_closed'
-									onClick={this.clickEye}
+									onClick={() => this.setState({ openEye: !openEye })}
 								>
 					    			<EyeClosed/>
 								</button>
 							</div>
 
 							<ul className='c-validation-message'> 
-								<li className={'validation-message__text ' + formErrors.password.message1}>Ваш пароль должен быть от 8 символов длиной</li>
-								<li className={'validation-message__text ' + formErrors.password.message2}>Пароль должен содержать минимум одну заглавную букву</li>
-								<li className={'validation-message__text ' + formErrors.password.message3}>Пароль должен содержать минимум одну цифру</li>
+								<li className={'validation-message__text ' + formErrorStyle.password.messageStatus1}>
+									Ваш пароль должен быть от 8 символов длиной
+								</li>
+								<li className={'validation-message__text ' + formErrorStyle.password.messageStatus2}>
+									Пароль должен содержать минимум одну заглавную букву
+								</li>
+								<li className={'validation-message__text ' + formErrorStyle.password.messageStatus3}>
+									Пароль должен содержать минимум одну цифру
+								</li>
 							</ul>
 										
 							<ButtonContainer

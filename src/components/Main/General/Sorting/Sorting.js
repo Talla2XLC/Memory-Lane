@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import DropdownView from './DropdownView';
+import DropdownAction from "../DropdownAction/DropdownAction";
+
 import {ReactComponent as Arrow} from './svg/arrow.svg';
 import {ReactComponent as Plus} from '../../svg/plus.svg';
 import {connect} from 'react-redux';
@@ -27,11 +29,6 @@ class Sorting extends Component {
 
     const person =
       <div className='sortingItem'>По человеку
-        <Arrow className='arrow'/>
-      </div>;
-
-    const actionAlbum =
-      <div className='sortingItem'>Действие
         <Arrow className='arrow'/>
       </div>;
 
@@ -62,7 +59,7 @@ class Sorting extends Component {
               {person}
             </div>
             <div className='right-sorting-album'>
-              {actionAlbum}
+              <DropdownAction currentPage={page} />
               <DropdownView currentPage={page} setGridType={setGridType}/>
             </div>
           </SortingContainer>;
@@ -95,6 +92,7 @@ align-items: center;
 
 .sortingItem {
   margin-right: 20px;
+  cursor: pointer;
 }
 
 .right-sorting-album {

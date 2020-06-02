@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './PhotoFull.sass';
-import {ReactComponent as DownloadIcon} from '../svg/downloadIcon.svg';
-import {ReactComponent as ShareIcon} from '../svg/shareIcon.svg';
+import {ReactComponent as DownloadIcon} from '../General/DropdownAction/svg/downloadIcon.svg';
+import {ReactComponent as ShareIcon} from '../General/DropdownAction/svg/shareIcon.svg';
 import {ReactComponent as CommentsIcon} from '../svg/commentsIcon.svg';
 
 

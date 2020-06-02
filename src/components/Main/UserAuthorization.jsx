@@ -26,11 +26,6 @@ class UserAuthorization extends Component {
 	  openEye: false
 	};
 	
-	clickEye = () => {
-		const { openEye } = this.state;
-		this.setState({ openEye: !openEye })
-	}
-	
 	handleInput = e => {
 	  const { name, value } = e.target;
 
@@ -88,7 +83,9 @@ class UserAuthorization extends Component {
 					<div className='formContainerItem__message'>Присоединиться через соц. сети</div>
 			</div>
 
-			<div className='form-or'><hr/>или<hr/></div>
+			<div className='form-or'>
+				<hr/>или<hr/>
+			</div>
 
 			<div className='formContainerItem__form'>
 
@@ -120,14 +117,15 @@ class UserAuthorization extends Component {
 					/>
 					<button 
 						className='btn-show_closed'
-						onClick={this.clickEye}
+						// onClick={this.clickEye}
+						onClick={() => this.setState({ openEye: !openEye })}
 					>
 					    <EyeClosed/>
 					</button>
 				</div>
 				{/* <PasswordErrorMessage passwordError={this.state.passwordError} /> */}
                 <div className='c-password-reset'>
-					<a className='c-password-reset__link'>
+					<a href='http://dev.memory-lane.ru/auth' className='c-password-reset__link'>
 						Забыли пароль?
 					</a>
 				</div>

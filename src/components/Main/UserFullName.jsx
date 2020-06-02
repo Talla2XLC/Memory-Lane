@@ -3,9 +3,10 @@ import { fetchUserFullName } from '../../actions/actionUserFullName';
 import { askedToIntroduce } from '../../actions/actionUserHasIntroduced';
 
 import './UserFormStyle.sass';
+import {Radio, RadioGroup} from 'react-icheck';
 import { ButtonContainer } from './Button.jsx';
 
-import { Tooltip } from './UserRegistrationTooltip';
+// import { Tooltip } from './_UserRegistrationTooltip';
 
 import axios from 'axios';
 import {connect} from 'react-redux';
@@ -15,14 +16,9 @@ class UserFullName extends Component {
 	  firstName: '',
 	  lastName: '',
 	  gender: '',
-	//   dob: {
-	// 	day: '', 
-	// 	month: '', 
-	// 	year: ''
-	//   },
-	  day: '', 
-	  month: '', 
-	  year: '',
+	  dobDay: '', 
+	  dobMonth: '', 
+	  dobYear: '',
 	  formErrors: {
 	    firstName: '',
 	    lastName: ''
@@ -149,13 +145,13 @@ class UserFullName extends Component {
 	}
 
 	render() {
-	  const { firstName, lastName, formErrors, firstNameValid, lastNameValid, formValid, day, month, year } = this.state;
+	  const { firstName, lastName, dobDay, dobMonth, dobYear } = this.state;
 
 	  return (
 		<div className='container-form'>
 			<div className='formWrapper'>
 			<div className='formWrapperItem__titleContainer'>
-				<h2 className='titleContainerItem__title'>Давайте познакомимся</h2>
+				<h2 className='titleContainerItem__title title_position_bottom'>Давайте познакомимся</h2>
 			</div>
 
 			<div className='formContainerItem__form'>
@@ -165,7 +161,7 @@ class UserFullName extends Component {
 							name='firstName'
 							type='text'
 							size='0'
-							placeholder='Наталья'
+							placeholder='Имя'
 							value={firstName}
 							onChange={this.handleInput}
 							required
@@ -176,27 +172,32 @@ class UserFullName extends Component {
 						<input
 							name='lastName'
 							type='text'
-							placeholder='Натальевна'
+							placeholder='Фамилия'
 							onChange={this.handleInput}
 							value={lastName}
 						/>
 				</div>
 
 				<div class="genderWrapper">
-					<legend>Пол</legend>
 					<div>
-						<span>М</span>
-						<input 
-							type="radio" 
-							name="gender" 
-							value="male" 
-						/>
-						<span>Ж</span>
-						<input 
-							type="radio" 
-							name="gender" 
-							value="female" 
-						/>
+						
+						<RadioGroup name="gender">
+							<Radio
+							  value="male"
+							  radioClass="genderRadio_input"
+							  increaseArea="20%"
+							  label="<span class='gender__label'>Мужчина</span>"
+							  onClick={this.handleInput}
+							/>
+							<Radio
+							  value="female"
+							  radioClass="genderRadio_input"
+							  increaseArea="20%"
+							  label="Женщина"
+							  onClick={this.handleInput}
+							/>
+						</RadioGroup>
+
 					</div>
 				</div>
 
@@ -209,11 +210,11 @@ class UserFullName extends Component {
 								style={{width: 60, height: 48}}
 								onChange={this.handleInput}
 								placeholder='ДД'
-								type="number"
-								name="day" 
-								value={day} 
-								min="1" 
-								max="31"
+								type='number'
+								name='dobDay' 
+								value={dobDay} 
+								min='1' 
+								max='31'
 								list='numbList'
 							/>
 							{/* <datalist id="numbList">
@@ -227,11 +228,11 @@ class UserFullName extends Component {
 								style={{width: 73, height: 48}}
 								onChange={this.handleInput}
 								placeholder='ММ'
-								type="number"
-								name="month" 
-								value={month} 
-								min="1" 
-								max="12"
+								type='number'
+								name='dobMonth' 
+								value={dobMonth} 
+								min='1' 
+								max='12'
 							/>
 						</div>
 						<div className='yearWrapper'>
@@ -240,9 +241,9 @@ class UserFullName extends Component {
 								style={{width: 179, height: 48}}
 								onChange={this.handleInput}
 								placeholder='ГГГГ'
-								type="number"
-								name="year" 
-								value={year} 
+								type='number'
+								name='dobYear' 
+								value={dobYear} 
 								min="1"
 								max='9999'
 							/>
@@ -250,7 +251,7 @@ class UserFullName extends Component {
 					</div>
 				</div>
 
-				<div className='btnContainer-fullname'>
+				<div className='btnContainer-fullname position-btn_top'>
 					<ButtonContainer
 						className='btn-skip'
 						type='submit'
