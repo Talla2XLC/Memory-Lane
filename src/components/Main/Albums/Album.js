@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import axios from 'axios';
 import Sorting from '../General/Sorting/Sorting';
 import AlbumsItem from './PhotoItem';
 import './Album.sass';
@@ -13,10 +12,8 @@ class Album extends Component {
     this.selectImage = this.selectImage.bind(this);
 
     this.state = {
-      loading: true,
       images: [],
       isEmpty: true,
-      imagesToUpload: [],
       gridType: 'bigColView',
       rowItemView: false,
       itemSelected: []
@@ -24,40 +21,9 @@ class Album extends Component {
   }
 
   componentDidMount() {
-    this.getImages();
-  }
-
-  getImages() {
-    const { album, token } = this.props;
-    this.setState({ loading: true });
-
-    axios
-      .post(
-        'http://api.memory-lane.ru/get/images',
-        {
-          'id_album': album.id
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `${token}`
-          }
-        })
-      .then(res => {
-        if (res.data.result) {		// res.status === 200
-          this.setState({ loading: false });
-          if (res.data.content) {
-            this.setState({ images: Object.values(res.data.content) });
-            this.setState({ isEmpty: false });
-          } else {
-            this.setState({ isEmpty: true });
-          }
-        } else {	// res.status !== 200
-          console.error(res.data.error);
-          alert(`${res.data.error}`);
-        }
-      })
-      .catch(error => console.error(error));
+    if (this.props.album) {
+      this.setState({isEmpty: false, images: this.props.album.photo});
+    }
   }
 
   setGridType(gridId) {
@@ -102,6 +68,25 @@ class Album extends Component {
     this.setState({itemSelected: newItemArr});
   }
 
+  performAction(id) {
+    switch (id) {
+      case 1:
+        break;
+      case 2:
+        break;
+      case 3:
+        break;
+      case 4:
+        break;
+      case 5:
+        break;
+      case 6:
+        break;
+      default:
+        break;
+    }
+  }
+
   render() {
     const { isEmpty, images } = this.state;
     const { album } = this.props;
@@ -111,7 +96,7 @@ class Album extends Component {
         key={image.id}
         id = {image.id}
         view={this.state.rowItemView ? 'flex-row' : 'flex-column'}
-        url={image.urls} name={image.photo_name}
+        url={image.content_url} name={image.photo_name}
         author={image.author}
         desc = {image.description}
         gridType={this.state.gridType}
@@ -135,6 +120,7 @@ class Album extends Component {
               <Sorting
                 currentPage='album'
                 setGridType={this.setGridType}
+                performAction={this.performAction}
               />
               <div className={'albumContent ' + this.state.gridType} >
                 { imagesItem }

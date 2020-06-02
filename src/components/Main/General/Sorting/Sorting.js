@@ -10,7 +10,7 @@ import {modalOpen} from 'actions/modalOpen';
 
 class Sorting extends Component {
   render() {
-    const { currentPage, openModalAddAlbum, setGridType } = this.props;
+    const { currentPage, openModalAddAlbum, setGridType, performAction } = this.props;
 
     const alphabet =
       <div className='sortingItem'>По алфавиту
@@ -59,8 +59,8 @@ class Sorting extends Component {
               {person}
             </div>
             <div className='right-sorting-album'>
-              <DropdownAction currentPage={page} />
-              <DropdownView currentPage={page} setGridType={setGridType}/>
+              <DropdownAction currentPage={page} performAction={performAction} />
+              <DropdownView currentPage={page} setGridType={setGridType} />
             </div>
           </SortingContainer>;
         default:

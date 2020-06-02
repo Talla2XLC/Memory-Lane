@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { getAlbums } from '../../../actions/actionAlbums';
+import { getAlbums } from 'actions/actionAlbums';
 import './UserAlbums.sass';
 import { Link } from  'react-router-dom';
 import Sorting from '../General/Sorting/Sorting';
 import DropdownAction from '../General/DropdownAction/DropdownAction';
+import axios from 'axios';
 
 class UserAlbums extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class UserAlbums extends Component {
     this.setGridType = this.setGridType.bind(this);
     this.showActions = this.showActions.bind(this);
     this.closeActions = this.closeActions.bind(this);
+    this.performAction = this.performAction.bind(this);
 
     this.state = {
       albumName: '',
@@ -54,11 +56,52 @@ class UserAlbums extends Component {
 	      return;
 	  }
 	}
+	
+	performAction(actionId, albumId) {
+	  switch (actionId) {
+	    case 1:
+	      break;
+	    case 2:
+	      break;
+	    case 3:
+	      break;
+	    case 4:
+	      break;
+	    case 5:
+	      break;
+	    case 6:
+	      this.deleteAlbum(albumId);
+	      break;
+	    default:
+	      break;
+	  }
+	}
+
+	deleteAlbum(id) {
+	  axios
+	    .post(
+	      'http://api.memory-lane.ru/db/deleteAlbum',
+	      {
+	        album_id: id
+	      },
+	      {
+	        headers: {
+	          'Content-Type': 'application/json',
+	          'Authorization': `${this.props.token}`
+	        }
+	      }
+	    )
+	    .then(res => {
+	      if (res.data.result) {
+	        this.props.downloadAlbums();
+	      }
+	    })
+	    .catch(error => console.error(error));
+	}
   
 	render() {
 	  const { loading, albums } = this.props;
 	  const userAlbums = albums ?? [];
-		
 
 	  const albumsItems = userAlbums.map((album, index) =>
 	    (
@@ -72,6 +115,8 @@ class UserAlbums extends Component {
 	            <span className='albumName-span'>{album.album_name}</span>
 	          <DropdownAction
 	            currentPage='allAlbums'
+	            albumId={album.id}
+	            performAction={this.performAction}
 	          />
 	          </div>
 	        </div>
@@ -84,6 +129,7 @@ class UserAlbums extends Component {
 	        <Sorting
 	          currentPage='allAlbums'
 	          setGridType={this.setGridType}
+	          performAction={this.performAction}
 	        />
 	        <div className={this.state.styleType}>
 	          {albumsItems}
@@ -96,7 +142,8 @@ class UserAlbums extends Component {
 const mapStateToProps = (state) => {
   return {
     loading: state.albums.loading,
-    albums: state.albums.albums
+    albums: state.albums.albums,
+    token: state.session.sessionID
   };
 };
 
