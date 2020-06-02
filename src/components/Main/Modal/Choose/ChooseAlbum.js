@@ -37,14 +37,14 @@ class ModalChooseAlbum extends Component {
     //   </button>
     // );
 
-    const storiesAlbums = Object.values(albums).map(album =>
-        <AlbumItem 
-          key={album.id}
-          id={album.id}
-          title={album.album_name}
-          // picture={album.ico_url}
-        />
-      )
+    // const storiesAlbums = Object.values(albums).map(album =>
+    //     <AlbumItem 
+    //       key={album.id}
+    //       id={album.id}
+    //       title={album.album_name}
+    //       // picture={album.ico_url}
+    //     />
+    //   )
     
     return (
       <>
@@ -65,7 +65,7 @@ class ModalChooseAlbum extends Component {
                       <ChooseAlbumSearch/>
                     </div>
                     <div className='albums'>
-                      {storiesAlbums}
+                      {/* {storiesAlbums} */}
                     </div>
                   </div>
                   <div className='modalFooter'>
