@@ -14,8 +14,8 @@ export default class AlbumsItem extends Component {
   }
 
   render() {
-    const { isDesc, isImg, gridType, url, isSelected, id, view, name, autor, date } = this.props;
-    const desc = isDesc ? <div className='itemDescription text1'>Ipsum ex commodo ad ad ipsum non quis laborum adipisicing reprehenderit aliqua veniam excepteur.</div> : '';
+    const { isDesc, isImg, gridType, url, isSelected, id, view, name, author, date } = this.props;
+    const desc = isDesc ? this.props.desc : '';
 
     const img = isImg ?
       <Link
@@ -29,7 +29,7 @@ export default class AlbumsItem extends Component {
             id: id,
             view: view,
             name: name,
-            autor: autor,
+            author: author,
             date: date
           }
         }}
@@ -58,7 +58,7 @@ export default class AlbumsItem extends Component {
             {name}
           </span>
           <div className='AutorDate'>
-            <div className='text3'>{autor}</div>
+            <div className='text3'>{author}</div>
             <div className='text3'>{date}</div>
           </div>
           {desc}

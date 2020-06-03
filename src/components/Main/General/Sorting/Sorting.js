@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import DropdownView from './DropdownView';
+import DropdownAction from "../DropdownAction/DropdownAction";
+
 import {ReactComponent as Arrow} from './svg/arrow.svg';
 import {ReactComponent as Plus} from '../../svg/plus.svg';
 import {connect} from 'react-redux';
@@ -8,7 +10,7 @@ import {modalOpen} from 'actions/modalOpen';
 
 class Sorting extends Component {
   render() {
-    const { currentPage, openModalAddAlbum, setGridType } = this.props;
+    const { currentPage, openModalAddAlbum, setGridType, performAction } = this.props;
 
     const alphabet =
       <div className='sortingItem'>По алфавиту
@@ -27,11 +29,6 @@ class Sorting extends Component {
 
     const person =
       <div className='sortingItem'>По человеку
-        <Arrow className='arrow'/>
-      </div>;
-
-    const actionAlbum =
-      <div className='sortingItem'>Действие
         <Arrow className='arrow'/>
       </div>;
 
@@ -62,8 +59,8 @@ class Sorting extends Component {
               {person}
             </div>
             <div className='right-sorting-album'>
-              {actionAlbum}
-              <DropdownView currentPage={page} setGridType={setGridType}/>
+              <DropdownAction currentPage={page} performAction={performAction} />
+              <DropdownView currentPage={page} setGridType={setGridType} />
             </div>
           </SortingContainer>;
         default:
@@ -95,6 +92,7 @@ align-items: center;
 
 .sortingItem {
   margin-right: 20px;
+  cursor: pointer;
 }
 
 .right-sorting-album {
