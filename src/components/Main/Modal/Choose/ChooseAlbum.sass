@@ -1,16 +1,19 @@
-.modalOverlay
+.modalChooseOverlay
   background-color: rgba(0, 0, 0, 0.5)
-  position: fixed
+  position: absolute
+  z-index: 2
   top: 0
   bottom: 0
   left: 0
   right: 0
 
-.modalWindow
+.modalChooseWindow
+  display: flex
   position: absolute
+  // z-index: 3
   left: 185px
   top: 59px
-  display: flex
+
   flex-direction: column
   // justify-content: space-between
   max-height: 85%
@@ -20,24 +23,29 @@
   border-radius: 10px
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3)
   overflow: auto
-  // /* transform: translate(-50%, -50%) */
+  // transform: translate(-50%, -50%)
+  // overflow-x: none 
 
-.modalHeader
-  background: coral
-  min-height: 70px
+.modalChooseHeader
   display: flex
-  justify-content: space-between
+  min-height: 70px
+  background-color: #FFD1A9
   box-sizing: border-box
   align-items: center
+  >.modalChooseTitle
+    width: 337px
+    height: 27px
+    margin-left: 45px
 
-.modalBody
+
+.modalChooseBody
   overflow-y: auto
   margin: 0px 24px 0px 91px
   >.searchAndNewAlbum
     background: #FFFFFF
     z-index: 1
     border: 1px solid black
-    position: fixed
+    position: absolute
     height: 141px
     width: 941px
   >.albums
@@ -51,34 +59,17 @@
     justify-content: left
     box-sizing: border-box
     
-
-.modalFooter
+.modalChooseFooter
   display: flex
   justify-content: flex-end
   align-items: center
   min-height: 94px
   background: red
 
-.modalFooter button:last-child
+.modalChooseFooter button:last-child
   margin-left: 10px
 
-// .modalBody h1
-//   margin-bottom: 26px
-//   font-size: 24px
-//   color: #3B3E3C
-//   font-family: Rubik
-
-// .modalBody p
-//   font-size: 16px
-//   color: #828482
-//   margin-bottom: 0
-
-
-
-.modalTitle
-  font-weight: bold
-
-.times
+.modalChooseHeaderButton
   position: absolute
   right: 36px
   top: 22px
@@ -88,16 +79,16 @@
   cursor: pointer
   border: none
   outline: none
-  background-color: #fff
+  background-color: transparent
 
-.times:hover
+.modalChooseHeaderButton:hover
   opacity: 0.3
 
-.times:active
+.modalChooseHeaderButton:active
   opacity: 0.6
 
-.times:before,
-.times:after
+.modalChooseHeaderButton:before,
+.modalChooseHeaderButton:after
   position: absolute
   left: 16px
   content: ' '
@@ -106,11 +97,11 @@
   background-color: #3B3E3C
   top: 5px
 
-.times:before 
+.modalChooseHeaderButton:before 
   transform: rotate(45deg)
   right: 32px
 
-.times:after 
+.modalChooseHeaderButton:after 
   transform: rotate(-45deg)
   right: 32px
 
@@ -144,8 +135,8 @@
 //   &:focus
 //     outline: none
 
-.modalContentBottom
-  align-self: flex-end
+// .modalChooseContentBottom
+//   align-self: flex-end
 
 // .cancel-btn
 //   background: none

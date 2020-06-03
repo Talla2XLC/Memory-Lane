@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-// import { BrowserRouter } from 'react-router-dom';
-// <BrowserRouter></BrowserRouter>
 
-import styled from 'styled-components';
+// import PerfectScrollbar from 'react-perfect-scrollbar';
 
 import { connect } from 'react-redux';
 
@@ -37,39 +35,43 @@ class ModalChooseAlbum extends Component {
     //   </button>
     // );
 
-    // const storiesAlbums = Object.values(albums).map(album =>
-    //     <AlbumItem 
-    //       key={album.id}
-    //       id={album.id}
-    //       title={album.album_name}
-    //       // picture={album.ico_url}
-    //     />
-    //   )
+    const storiesAlbums = Object.values(albums).map(album =>
+        <AlbumItem 
+          key={album.id}
+          id={album.id}
+          title={album.album_name}
+          // picture={album.ico_url}
+        />
+      )
     
     return (
       <>
         { 
           modalOpened &&
             <FormPortal>
-              <div className='modalOverlay'>
-                <div className='modalWindow'>
-                  <div className='modalHeader'>
-                    Выберите альбом
+              <div className='modalChooseOverlay'>
+                <div className='modalChooseWindow'>
+                  <div className='modalChooseHeader'>
+                    <div className='head3 modalChooseTitle'>
+                      Выберите альбом
+                    </div>
                     <button
-                      className='times'
+                      className='modalChooseHeaderButton'
                       onClick={e => closeModal(modalType)}
                     />
                   </div>
-                  <div className='modalBody'>
-                    <div className='searchAndNewAlbum'>
-                      <ChooseAlbumSearch/>
+                  {/* <PerfectScrollbar component='div'> */}
+                    <div className='modalChooseBody'>
+                      <div className='searchAndNewAlbum'>
+                        <ChooseAlbumSearch/>
+                      </div>
+                      <div className='albums'>
+                        {storiesAlbums}
+                      </div>
                     </div>
-                    <div className='albums'>
-                      {/* {storiesAlbums} */}
-                    </div>
-                  </div>
-                  <div className='modalFooter'>
-                    <div className='modalContentBottom'>
+                  {/* </PerfectScrollbar> */}
+                  <div className='modalChooseFooter'>
+                    <div className='modaChooseContentBottom'>
                       <button
                         className='cancel-btn'
                         onClick={e => closeModal(modalType)}
