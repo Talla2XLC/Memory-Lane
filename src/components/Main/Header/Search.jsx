@@ -2,53 +2,148 @@ import React, { Component } from 'react';
 import { ReactComponent as IconSearch } from './svg/searchIcon.svg';
 import { ReactComponent as FilterSearch } from './svg/filterIcon.svg';
 import styled from 'styled-components';
+import axios from 'axios';
+import {connect} from 'react-redux';
 // import './Search.sass';
 
-
-export default class Search extends Component {
+class Search extends Component {
     state = {
-      // filtered: people
-    }
+	  query: '',
+	  results: [],
+	  filtered: '',
+	  isOpen: false
+    };
 
-    // handleClick () => {
+    handleClick = () => {
+		const { query, results } = this.state;
+		const { token } = this.props;
 
-    // }
+		this.setState({ isOpen: true }); 
+		
+		// const results[0] = 5;
+		
+		// const results[0] = content.filter((person) => {                         													 // save matches in state in people array
+        //     return person.album.indexOf(query) >= 0;           													 // returns the values ​​of an array of objects by indices (.toLowerCase()?)
+    	// });
 
-    // handleChange = (event) => {												 
-    //     const {value} = event.target;                                       													 // destructuring applied instead const value = event.target.value;
+		// this.setState({ results });
 
-    //     const filtered = people.filter((person) => {                         													 // save matches in state in people array
-    //         return person.name.indexOf(value) >= 0;           													 // returns the values ​​of an array of objects by indices (.toLowerCase()?)
-    // });
+		axios
+			.post(
+			'http://api.memory-lane.ru/search',
+			{
+				search: query
+			},
+			{
+				headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `${token}`
+				}
+			})
+			.then(res => {
+				// console.log(res);
+				// console.warn(res.data);
+				// const resultNotFoundMsg = !res.data.content.length
+				// 	? 'There are no more search results. Please try a new search.'
+				// 	: '';
+				// this.setState({
+				// 	results: res.data.conten,
+				// 	// message: resultNotFoundMsg,
+				// 	loading: false
+				// });
 
-    //     this.setState({ filtered });
-    // }
+				console.log(res.data.conten[0].album);
+			})
+			.catch((error) => {
+				if (axios.isCancel(error) || error) {
+					this.setState({
+						loading: false,
+						message: 'Failed to fetch results. Please check network',
+					});
+				}
+			});
+	
+    };
+
+    // renderSearchResults = () => {
+    //     const {results} = this.state;
+    //     if (Object.keys(results).length && results.length) {
+    //         return (
+    //             <div className="results-container">
+    //                 {results.map((result) => {
+    //                     return (
+    //                         <a key={result.id} href={result.previewURL} className="result-items">
+    //                             <h6 className="image-username">{result.user}</h6>
+    //                             <div className="image-wrapper">
+    //                                 <img className="image" src={result.previewURL} alt={`${result.user}`}/>
+    //                             </div>
+    //                         </a>
+    //                     );
+    //                 })}
+    //             </div>
+    //         );
+    //     }
+    // };
+
+    handleChange = (event) => {												 
+        const { value } = event.target;                                       													 // destructuring applied instead const value = event.target.value;
+		this.setState({ query: value });
+	}
 
     mapPerson = (person, i) => {
       return <li className='mini-suggest__item' key={i}>{person.name}<b>{i}</b></li>;
     }
 
     render = () => {
+	  const { results, isOpen } = this.state; 	
+
       return (
+		<>
         <SearchWrapper>
           <div className='search'>
-            <button className='search-submit'>
+			<button 
+				className='search-submit'
+				onClick={ this.handleClick }
+			>
               <IconSearch />
             </button>
-            <input className='input' placeholder='Поиск' type='text'/>
-            <button className='search-filter'>
+			<input 
+				className='input' 
+				placeholder='Поиск' 
+				type='text'
+				onChange={this.handleChange}
+				onKeyPress={event => {
+                    if (event.key === "Enter") {
+                      this.handleClick();
+                    }
+                  }}
+			/>
+			<button 
+				className='search-filter'
+			>
               <FilterSearch />
             </button>
           </div>
           <div className='search__list'>
-            <ul>
-              {/* {this.state.filtered.map(this.mapPerson)} */}
-            </ul>
+            {/* <ul>
+              { isOpen ? results.map(this.mapPerson) : '' }
+            </ul> */}
           </div>
         </SearchWrapper>
+		{/* { this.renderSearchResults() } */}
+		</>
       );
     }
 }
+
+const mapStateToProps = (state) => {
+	return {
+	  token: state.session.sessionID
+	};
+  };
+  
+export default connect(mapStateToProps)(Search);
+
 
 const SearchWrapper = styled.div`
   margin-right: 17px;

@@ -17,14 +17,14 @@ import { sessionCheck } from '../../actions/sessionCheck';
 import { fetchUserFullName } from '../../actions/actionUserFullName';
 
 class UserAuthorization extends Component {
-	state = {
-	  email: '',
-	  password: '',
-	  emailError: false,
-	  passwordError: false,
-	  hasLoggedIn: false,
-	  openEye: false
-	};
+  state = {
+	email: '',
+	password: '',
+	emailError: false,
+	passwordError: false,
+	hasLoggedIn: false,
+	openEye: false
+  };
 	
 	handleInput = e => {
 	  const { name, value } = e.target;
