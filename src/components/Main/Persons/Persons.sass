@@ -1,25 +1,39 @@
+.title
+  grid-area: title
+  text-align: left
+  margin-bottom: 16px
+.textTransform
+  text-transform: capitalize
+  
+
 .personsContainer 
+  padding: 0 44px
+  box-sizing: border-box
+.persons
   display: grid
   grid-template-columns: repeat(3, 1fr)
   wrap: no-wrap
   gap: 29px 
   box-sizing: border-box
-.persons
-  padding: 0 44px
-  box-sizing: border-box
-.personContainer
+  &__link
+    width: 100%
+  &__img
+    width: 100%
+    border-radius: 10px
+  &__align
+    text-align: left
+  &__name
+    margin-top: 12px
+
+
+.personItem
   padding: 64px  44px 0 28px
   display: grid
   grid-template-columns: 327px 1fr
   grid-template-rows: 73px 600px 1fr
   grid-template-areas: 'title title' 'personInfo personFoto' 'personInfo personStory'
-.personsLink
-  width: 100%
-
-.personsImg
-  width: 100%
-  border-radius: 10px
-
+  &__button
+    margin-top: 24px
 .personInfo
   grid-area: personInfo
   max-height: 600px
@@ -27,43 +41,19 @@
   margin: 0 45px 0 0 
   &__text
     margin: 30px 0 0 0
-.personsName
-  margin-top: 12px
-.textAlign
-  text-align: left
-.personFoto
-   grid-area: personFoto
-   height: 600px
-   &__container
-    display: grid
-    grid-template-columns: 1fr 1fr 1fr
-    grid-gap: 25px
-
-
+  &__ico
+   width: 100%
+   border-radius: 10px
 .personStory
   grid-area: personStory
+.genderForm
+  display: flex
+  width: 400px
 
 
-.profilePhoto
-  width: 100%
-  border-radius: 10px
-
-.changeProfilePhoto
-  text-align: center
-  margin-top: 16px
-
-.img 
-  width: 100%
-  border-radius: 10px
-
-.title
-  grid-area: title
-  text-align: left
-  margin-bottom: 16px
-.addPersonContainer
+.setPersonContainer
   padding: 64px  44px 0 28px
-
-.addPerson
+.setPerson
   display: grid
   grid-template-columns: 2fr 5fr
   margin-top: 33px
@@ -71,7 +61,10 @@
     width: 60%
     margin-left: 30px
     width: 600px
-
+  &__img
+    width: 365px
+  &__button
+    float: right
 .infoGroup
   display: grid
   grid-template-columns: 3fr 1fr
@@ -84,6 +77,14 @@
     box-sizing: border-box
     border-radius: 10px
     width: 416px
-
-.addPersonButton
+  &__checkbox
+    margin: 4px 8px 0 8px
+.invitePerson
+  display: flex
   float: right
+  margin: 20px 0
+  &__margin
+    margin: 8px 30px 0 0
+.tag 
+  clear: both
+  margin: 20px 0

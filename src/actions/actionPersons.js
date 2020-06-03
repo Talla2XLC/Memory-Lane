@@ -12,7 +12,10 @@ const getPersonsFailed = error => ({
   type: 'GET_PERSONS_DATA_FAILED',
   payload: error
 });
-
+export const setIco = ico => ({
+  type: 'SET_ICO',
+  payload: ico
+});
 
 export const getPersons = () => dispatch => {
   dispatch(getPersonsStarted());

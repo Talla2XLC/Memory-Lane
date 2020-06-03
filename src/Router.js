@@ -9,7 +9,7 @@ import Funnel from './components/Main/Funnel';
 import Persons from './components/Main/Persons/Persons';
 import MainContent from './components/Main/MainContent';
 import UsersAlbums from './components/Main/Albums/UserAlbums';
-import Persons from './components/Main/Persons';
+// import Persons from './components/Main/Persons';
 import AddPerson from './components/Main/Persons/AddPerson';
 import Person from './components/Main/Persons/Person';
 // import Albums from './components/Main/Albums/Photos';

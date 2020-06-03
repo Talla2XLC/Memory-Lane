@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './Persons.sass';
 import { Link } from  'react-router-dom';
-import  Sorting  from '../Sorting';
+import  Sorting  from '../General/Sorting/Sorting';
+import './Persons.sass';
+
 
 class Persons extends Component {
 
@@ -10,33 +11,33 @@ class Persons extends Component {
     const { loading } = this.props;
     const userPersons = this.props.persons;
 	  const personItems = userPersons.map(item =>
-
       (<div key={item.id}>
-        <Link className='personsLink' to={`/persons/${item.id}`}>   
-          <img className='personsImg' src='https://www.fillmurray.com/g/238/149' />
+        <Link className='persons__link' to={`/persons/${item.id}`}>   
+          <img className='persons__img' src={item.ico_url} alt='persons icon'/>
         </Link>
-        <div className='head3 textAlign personsName'>
+        <div className='head3 persons__align persons__name'>
           {item.last_name}  {item.first_name} {item.patronymic}
         </div>
-        <div className=' text1 textAlign'>
+        <div className=' text1 persons__align'>
         132 фотографии
         </div>
-        <div className='text1 textAlign'>
+        <div className='text1 persons__align'>
         4 истории
         </div>
       </div>
       )
     );
+
     return (
       loading
         ?
         <div>loading</div>
         :
-        <div className='persons'>
-          <Sorting className='personsSorting' album={true}/>
-          <div className='personsContainer'>
-            {personItems}</div>
-
+        <div className='personsContainer'>
+          <Sorting currentPage='persons'/>
+          <div className='persons'>
+            {personItems}
+          </div>
         </div>);
   }
 }
