@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import './UserFormStyle.sass';
 import { ButtonContainer } from './Button.jsx';
 
-import FormModal  from './UserRegistrationModal';
+import Portal from './Modal/Portal';
 
 import { ReactComponent as FormVK }	from './svg/form_vk.svg';
 import { ReactComponent as FormFB }	from './svg/form_fb.svg';
@@ -277,7 +277,7 @@ export default class UserRegistration extends Component {
 						</div>
 
 						{/* Change messages in modal window according to server response */}
-						<FormModal
+						<Portal
 							title='registration successful'
 							modalOpened={modalOpened}
 							onCancel={this.handleCancel}
@@ -286,7 +286,7 @@ export default class UserRegistration extends Component {
 							<p>Вы почти зарегистрированы в memory-lane!<br/>
 										На почту отправлено письмо для подтверждения e-mail
 							</p>
-						</FormModal>
+						</Portal>
 					</div>
 				</div>	
 		);
