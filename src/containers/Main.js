@@ -87,7 +87,6 @@ display: flex;
 flex-flow: column nowrap;
 height: 100vh;
 width: 100%;
-min-width: 1340px;
 overflow: hidden;
 justify-content: stretch;
 
