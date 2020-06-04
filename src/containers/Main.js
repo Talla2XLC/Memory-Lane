@@ -65,12 +65,10 @@ class Main extends Component {
                   >
                     <ModalAddAlbum/>
                   </MainModal>
-                  <MainModal
+                  <ModalChooseAlbum
                     modalOpened={modalChooseAlbumOpened}
                     modalType={'chooseAlbum'}
-                  >
-                    <ModalChooseAlbum/>
-                  </MainModal>
+                  />
                 </MainWrapper> :
                 
                 <Router isAuthorized={isAuthorized} hasFullName={hasFullName} />
