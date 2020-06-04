@@ -17,8 +17,6 @@ import { ReactComponent as EducationIcon } from './svg/educationIcon.svg';
 import MainModal  from '../components/Main/Modal/MainModal';
 import ModalAddAlbum  from '../components/Main/Modal/addAlbum';
 
-import ChooseAlbumModal  from '../components/Main/Modal/Choose/ChooseAlbum';
-
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -66,10 +64,6 @@ class Main extends Component {
                   >
                     <ModalAddAlbum/>
                   </MainModal>
-                  <ChooseAlbumModal
-                    modalOpened={modalChooseAlbumOpened}
-                    modalType={'chooseAlbum'}
-                  />
                 </MainWrapper> :
                 
                 <Router isAuthorized={isAuthorized} hasFullName={hasFullName} />
@@ -87,6 +81,7 @@ display: flex;
 flex-flow: column nowrap;
 height: 100vh;
 width: 100%;
+min-width: 1340px;
 overflow: hidden;
 justify-content: stretch;
 
