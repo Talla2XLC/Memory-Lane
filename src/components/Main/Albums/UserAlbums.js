@@ -82,7 +82,7 @@ class UserAlbums extends Component {
 	    .post(
 	      'http://api.memory-lane.ru/db/deleteAlbum',
 	      {
-	        album_id: id
+	        id_album: id
 	      },
 	      {
 	        headers: {
@@ -92,6 +92,7 @@ class UserAlbums extends Component {
 	      }
 	    )
 	    .then(res => {
+	      console.log(res);
 	      if (res.data.result) {
 	        this.props.downloadAlbums();
 	      }
