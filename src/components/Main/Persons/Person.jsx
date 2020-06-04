@@ -7,6 +7,7 @@ import EditPerson from './EditPerson';
 import { getPersons } from '../../../actions/actionPersons';
 import {ReactComponent as EmtyPhoto} from './svg/emptyPhotoBlock.svg';
 import {ReactComponent as EmtyStory} from './svg/emptyStoryBlock.svg';
+import { Link } from 'react-router-dom';
 
 class Person extends Component {
   constructor(props) {
@@ -14,27 +15,30 @@ class Person extends Component {
     this.editOn = this.editOn.bind(this);
     this.state = {
       edit: false
-
     };
   }
 
   deletePerson = () => {
     const { sessionID } = this.props;
-    const currentId = this.props.match.params.id;
+    const currentId = this.props.match.params.id;   
     const data = new FormData();
     data.append('id', currentId);
     axios
       .post(
         'http://api.memory-lane.ru/db/deletePerson',
-        data,
+        {
+          'id': currentId
+        }
+        ,
         {
           headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/json',
             'Authorization': `${sessionID}`
+            // 'Origin': 'http://localhost:3000'
           }
         })
       .then(res => {
-        console.log(res);
+        // console.log(res);
         if (res.data.result) {
           this.props.downloadPersons();
         } else {
@@ -49,6 +53,7 @@ class Person extends Component {
     this.setState({edit: true});
   }
 
+
   render() {
     const currentId = this.props.match.params.id;
     const userPersons =  this.props.persons;
@@ -58,7 +63,6 @@ class Person extends Component {
 
     return (
       !edit ? 
-
         <div className='personItem'>
           <div className='head1 title'>{currentPerson.last_name} {currentPerson.first_name} {currentPerson.patronymic}</div>
           <div  className='personInfo'>
@@ -79,12 +83,10 @@ class Person extends Component {
               </div>
             </div>
             <ButtonContainer className='personItem__button' onClick={this.editOn}>Редактировать</ButtonContainer>
+            <Link  to={'/persons/'}>
             <ButtonContainer className='personItem__button' onClick={this.deletePerson}>Удалить</ButtonContainer>
-            
-
+            </Link>
           </div>
-
-
           <div className='personFoto'>
             <div className='head3 title'>Фото с персоной</div>
             <div className='personFoto__container'>
@@ -99,7 +101,6 @@ class Person extends Component {
 
           </div>
         </div>
-
         :
         <EditPerson 
           currentId={currentId}

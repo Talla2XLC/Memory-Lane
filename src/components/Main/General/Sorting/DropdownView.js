@@ -41,6 +41,15 @@ class DropdownView extends Component {
           ]
         });
         break;
+      case 'persons':
+        this.setState({
+          viewData: [
+            { name: 'Большая плитка', id: 1},
+            { name: 'Средняя плитка', id: 2},
+            { name: 'Маленькая плитка', id: 3}
+          ]
+        });
+        break;
       default:
         break;
     }
@@ -82,7 +91,7 @@ class DropdownView extends Component {
         default:
           return '';
       }
-    }
+    };
 
     return (
       <div className='dropdown-view' >

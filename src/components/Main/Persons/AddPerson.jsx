@@ -6,12 +6,14 @@ import { ButtonContainer } from '../Button';
 import { getPersons } from '../../../actions/actionPersons';
 import FileInput from './FileInput';
 import './Persons.sass';
-
+// import TagsInput from './TagsInput';
+// import { ReactComponent as TegIcon } from './svg/addTegIcon.svg';
 
 class AddPerson extends Component {
   constructor(props) {
     super(props);
     this.uploadPhoto =  this.uploadPhoto.bind(this);
+    this.setTegs =  this.setTegs.bind(this);
 
     this.state = {
       lastName: '',
@@ -20,13 +22,13 @@ class AddPerson extends Component {
       roleInFamily: '',
       city: '',
       gender: '',
-      imagesToUpload: ''
+      imagesToUpload: '',
+      tags: []
     };
   }
 
-
   addPerson = () => {
-    const { lastName, firstName, patronymic, gender, roleInFamily, city, imagesToUpload } = this.state;
+    const { lastName, firstName, patronymic, gender, roleInFamily, city, imagesToUpload, input } = this.state;
     const { sessionID } = this.props;
     const data = new FormData();
     data.append('last_name', lastName);
@@ -36,7 +38,7 @@ class AddPerson extends Component {
     data.append('city', city);
     data.append('gender', gender);
     data.append('ico_url', imagesToUpload[0]);
-
+    // data.append('input', input);
     axios
       .post(
         'http://api.memory-lane.ru/db/setPerson',
@@ -63,15 +65,20 @@ class AddPerson extends Component {
     });
   }
 
-
   handleInput = e => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   }
 
+  // setTegs(newText) {
+  //   this.setState({
+  //     tags: [...this.state.tags, newText]
+  //   });
+  // }
+
+
   render() {
-    const { lastName, firstName, patronymic, roleInFamily, city, imagesToUpload } = this.state;
-    
+    const { lastName, firstName, patronymic, roleInFamily, city, imagesToUpload, tags } = this.state;
     return (
       <div className='setPersonContainer'>
         <div className='head1 title'> Создание персоны </div>
@@ -79,7 +86,7 @@ class AddPerson extends Component {
         <div className='setPerson'>
 
           <div className='setPerson__ico' > 
-            <img className='setPerson__img' src={(this.state.imagesToUpload.length > 0) ? this.state.imagesToUpload[0].preview : 'http://placehold.it/365x365'} alt='persons icon'/>
+            <img className='setPerson__img' src={(imagesToUpload.length > 0) ? this.state.imagesToUpload[0].preview : 'http://placehold.it/365x365'} alt='persons icon'/>
             <FileInput
               imagesToUpload={imagesToUpload}
               uploadPhoto={this.uploadPhoto}/>
@@ -141,19 +148,11 @@ class AddPerson extends Component {
                   onChange={this.handleInput}/> Женщина<br/>
               </form>
             </div>
-
-            <div className='infoGroup'>
-              <label className='infoGroup__name' htmlFor='city'>Степень родства:</label>
+            {/* <div className='infoGroup'>
+              <label className='infoGroup__name' htmlFor='date'>Дата рождения:</label>
               <input
-                name='roleInFamily'
-                id='roleInFamily'
-                className='infoGroup__input'
-                placeholder=' '
-                type='text'
-                onChange={this.handleInput}
-                value={roleInFamily}/>
-            </div>
-
+              />
+            </div> */}
             <div className='infoGroup'>
               <label className='infoGroup__name' htmlFor='city'>Место рождения:</label>
               <input
@@ -165,30 +164,31 @@ class AddPerson extends Component {
                 onChange={this.handleInput}
                 value={city}/>
             </div>
-
-            
-            {/* <div className='infoGroup'>
-              <label className='infoGroup__name' htmlFor='yourInput'>Ваше поле:</label>
+            <div className='infoGroup'>
+              <label className='infoGroup__name' htmlFor='city'>Степень родства:</label>
               <input
-                name=''
-                id='yourInput'
+                name='roleInFamily'
+                id='roleInFamily'
                 className='infoGroup__input'
                 placeholder=' '
                 type='text'
                 onChange={this.handleInput}
-                value={}
+                value={roleInFamily}/>
+            </div>
+            {/* <div className='infoGroup'>
+              <label className='infoGroup__name' htmlFor='yourInput'>Введите свое поле:</label>
+              <input
               />
             </div> */}
 
-
-            <div className='invitePerson'>
-              <div className='invitePerson__margin'> Пригласить персону </div>
-              <ButtonContainer white={true}>Пригласить</ButtonContainer>
-            </div>
-
-            <div className='tag'>
+            {/* <div className='infoGroup'>
               <div className='infoGroup__name'> Теги:</div>
-            </div>
+              <TagsInput
+                className='infoGroup__input'
+                tags={tags}
+                setTegs={this.setTegs}
+              /> */}
+            {/* </div> */}
             <Link className='setPerson__button' to={'/persons/'}>
               <ButtonContainer onClick={this.addPerson}>Сохранить</ButtonContainer>
             </Link>

@@ -19,7 +19,7 @@ class EditPerson extends Component {
       roleInFamily: this.props.currentPerson.role_in_family,
       city: this.props.currentPerson.city,
       gender: this.props.currentPerson.gender,
-      imagesToUpload: this.props.currentPerson.ico_url,
+      imagesToUpload: this.props.currentPerson.ico_url
     };
   }
 
@@ -33,7 +33,7 @@ class EditPerson extends Component {
     data.append('role_in_family', roleInFamily);
     data.append('city', city);
     data.append('gender', gender);
-    data.append('ico_url', imagesToUpload);
+    data.append('ico_url', imagesToUpload[0]);
     data.append('id', currentId);
 
     axios
@@ -42,7 +42,7 @@ class EditPerson extends Component {
         data,
         {
           headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'multipart/form-data',
             'Authorization': `${sessionID}`
           }
         })
@@ -50,6 +50,7 @@ class EditPerson extends Component {
         console.log(res)
         if (res.data.result) {
           this.props.downloadPersons();
+          
         } else {
           console.error(res.data.error);
         }
@@ -69,15 +70,14 @@ class EditPerson extends Component {
 
   render() {
     const { lastName, firstName, patronymic, roleInFamily, city, imagesToUpload } = this.state;
-
     return (
       <div className='setPersonContainer'>
-        <div className='head1 title'> Создание персоны </div>
+        <div className='head1 title'> Изменение персоны </div>
 
         <div className='setPerson'>
 
           <div className='setPerson__ico' > 
-            <img className='setPerson__img' src={(imagesToUpload.length > 0) ? imagesToUpload : 'http://placehold.it/365x365'} alt='persons icon'/>
+            <img className='setPerson__img' src={(typeof imagesToUpload === 'string') ? this.state.imagesToUpload : this.state.imagesToUpload[0].preview} alt='persons icon'/>
             <FileInput
               imagesToUpload={imagesToUpload}
               uploadPhoto={this.uploadPhoto}/>
