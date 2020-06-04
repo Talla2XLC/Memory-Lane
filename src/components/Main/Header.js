@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Search from './Header/Search';
+import Search from './Header/Search/Search';
 import Notice from './Header/Notice';
 import AddSection from './Header/Add_section';
 import AvatarButton from './Header/AvatarButton';

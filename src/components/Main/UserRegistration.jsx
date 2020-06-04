@@ -11,6 +11,7 @@ import { ReactComponent as FormFB }	from './svg/form_fb.svg';
 import { ReactComponent as FormG }	from './svg/form_g.svg';
 import { ReactComponent as FormIns }	from './svg/form_ins.svg';
 import { ReactComponent as EyeClosed }	from './svg/eye_closed.svg';
+import { ReactComponent as EyeOpen }	from './svg/eye_open.svg';
 
 import axios from 'axios';
 
@@ -255,7 +256,7 @@ export default class UserRegistration extends Component {
 				  className='btn-show_closed'
 				  onClick={() => this.setState({ openEye: !openEye })}
 				>
-				  <EyeClosed/>
+				  {openEye ? <EyeOpen/> : <EyeClosed/>}
 				</button>
 			  </div>
 

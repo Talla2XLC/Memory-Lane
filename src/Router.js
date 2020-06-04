@@ -20,6 +20,7 @@ import DownloadPhoto from './components/Main/Albums/UploadPhoto/UploadPhoto';
 import StoryView from './components/Main/Stories/StoryView';
 import Profile from './components/Main/UserProfile/UserProfile';
 import StoryAdd from './components/Main/Stories/StoryAdd';
+import Search from './components/Main/Header/Search/Search';
 
 export default class Router extends Component {
 
@@ -34,6 +35,7 @@ export default class Router extends Component {
           </Route>
           <Route exact path='/persons/' component={ Persons } />
 
+          <Route exact path='/search/' component={ Search } />
           <Route exact path='/albums/' component={ UsersAlbums } />
           <Route exact path='/photo/add/' component={ DownloadPhoto } />
           <Route exact path='/albums/:id' component={ Album } />
