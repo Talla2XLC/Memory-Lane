@@ -13,7 +13,7 @@ class AddPerson extends Component {
   constructor(props) {
     super(props);
     this.uploadPhoto =  this.uploadPhoto.bind(this);
-    this.setTegs =  this.setTegs.bind(this);
+    // this.setTegs =  this.setTegs.bind(this);
 
     this.state = {
       lastName: '',
