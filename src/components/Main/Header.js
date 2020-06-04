@@ -64,6 +64,7 @@ margin-right: auto;
 padding: 11px 0;
 box-sizing: border-box;
 background: #FFD1A9;
+padding-right: 40px;
 
 .logoLink {
   margin-left: 45px;

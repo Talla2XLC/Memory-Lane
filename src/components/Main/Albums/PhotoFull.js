@@ -1,41 +1,61 @@
 import React, { Component } from 'react';
 import './PhotoFull.sass';
-import {ReactComponent as DownloadIcon} from '../General/DropdownAction/svg/downloadIcon.svg';
-import {ReactComponent as ShareIcon} from '../General/DropdownAction/svg/shareIcon.svg';
-import {ReactComponent as CommentsIcon} from '../svg/commentsIcon.svg';
+import InteractionIcons from 'components/Main/General/InteractionIcons';
+import AvatarButton from '../Header/AvatarButton';
+import {connect} from 'react-redux';
+import { ReactComponent as GoBack } from 'components/Main/svg/goBack.svg';
 
 
-export default class PhotoFull extends Component {
+class PhotoFull extends Component {
+  constructor(props){
+    super(props);
+    this.goBack = this.goBack.bind(this);
+  }
+
+  goBack() {
+    this.props.history.goBack();
+  }
 
   render() {
-    const { isDesc, isImg, gridType, url, view, name, autor, date } = this.props.location.props;
-    const desc = isDesc ? <div className='itemDescription text1'>Ipsum ex commodo ad ad ipsum non quis laborum adipisicing reprehenderit aliqua veniam excepteur.</div> : '';
+    const { url, name, author, date, coordinates, desc } = this.props.location.props;
+    const coords = JSON.parse(coordinates);
 
-    const img = isImg ? <img className={'img ' + gridType + '_img'} src={url} alt='gallery_pic'/> : '';
+    const img = <img className={'img'} src={url} alt='gallery_pic'/>;
 
     const imgDiv =
-      <div className={'img-div ' + gridType + '_img-div'}>
+      <div className={'img-div photo-full-img'}>
         {img}
+        <InteractionIcons fileUrl={url}/>
       </div>;
     return (
-      <div className={'albumItem ' + view}>
+      <div className={'photo-full'}>
+        <GoBack className='go-back' onClick={this.goBack}/>
+        <h1 className='photo-full-header'>{name}</h1>
         {imgDiv}
-        <div className='contentZone flex-column'>
-          <span className='bigColView'>
-            {name}
-          </span>
-          <div className='AuthorDate'>
-            <div className='text3'>{autor}</div>
-            <div className='text3'>{date}</div>
+        <div className='photo-full-contentZone'>
+          <h1 className='photo-full-header'>Описание</h1>
+          <span className='photo-full-desc text3'>{desc}</span>
+          <div className='photo-full-author'>
+            <AvatarButton gender={this.props.currentUser.gender} />
+            <div className='photo-full-author-span navFont'>{author}</div>
           </div>
-          {desc}
-          <div className='albumIcons'>
-            <DownloadIcon/>
-            <ShareIcon className='iconsMargin'/>
-            <CommentsIcon/>
-          </div>
+          <div className='text3'>{date}</div>
         </div>
+        <div className='face' />
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    currentUser: state.userInfo.currentUser
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PhotoFull);

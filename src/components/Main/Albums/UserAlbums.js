@@ -22,6 +22,7 @@ class UserAlbums extends Component {
       showActions: ''
     };
   }
+
   showActions(event, id) {
     event.preventDefault();
     this.setState({ showActions: id }, () => {
@@ -126,7 +127,7 @@ class UserAlbums extends Component {
 
 	  return (
 	    loading ? <h1>Загрузка данных</h1> :
-	      <div className='contentContainer'>
+	      <div className='albums-container'>
 	        <Sorting
 	          currentPage='allAlbums'
 	          setGridType={this.setGridType}

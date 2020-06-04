@@ -33,7 +33,6 @@ class AvatarButton extends Component {
 }
 
 const AvatarWrapper = styled.div`
-margin-right: 40px;
 .avatar-button{
   border: none;
   background: none;
