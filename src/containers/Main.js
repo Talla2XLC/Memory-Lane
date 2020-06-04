@@ -44,9 +44,6 @@ class Main extends Component {
         modalChooseAlbumOpened
       } = this.props;
 
-      console.log('Main props', this.props);
-      console.log('Main state', this.state);
-
     return (
       <BrowserRouter>
         {
