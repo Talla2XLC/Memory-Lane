@@ -1,20 +1,34 @@
 import React, { Component } from 'react';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
-
 import './Stories.sass';
 
 export default class StoryView extends Component {
 
-  render() {
-    console.log(this.props)
+  render() {    
+    const { 
+      id,
+      content,
+      date,
+      title,
+      author,
+      city,
+      tags,
+      picture
+    } = this.props.location.state;
 
     return (
-      (<PerfectScrollbar>
+      <PerfectScrollbar>
         <div className='storyView'>
-          Здесь должно быть отображение истории
+          <div className='head2 storyView__title'>{title.title}</div>
+          <div className='storyView__tags'>Здесь должны быть теги<br/>{tags.tags}</div>
+          <div className='text3 storyView__date'>{date.date}</div>
+          <div className='text3 storyView__author'>{author.author}</div>
+          <div className='text3 storyView__city'>{city.city}</div>
+          <div className='text1 storyView__content'>{content.content}</div>
+          <div className='storyView__picture'>{picture.picture}</div>
         </div>
-      </PerfectScrollbar>)
+      </PerfectScrollbar>
     );
   };
 }
