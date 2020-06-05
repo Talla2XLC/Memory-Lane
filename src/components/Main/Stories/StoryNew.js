@@ -1,31 +1,42 @@
-import React, { Component } from 'react';
-// import PerfectScrollbar from 'react-perfect-scrollbar';
-import { Redirect } from 'react-router-dom';
+import React, {Component} from 'react';
+import PerfectScrollbar from 'react-perfect-scrollbar';
+import {Redirect} from 'react-router-dom';
 
 import './Stories.sass';
 
-import { ButtonContainer } from '../Button';
+import {ButtonContainer} from '../Button';
 
 import StoriesDropDown from './StoriesDropdown';
-import { ReactComponent as Plus } from '../svg/plus.svg';
+import {ReactComponent as Plus} from '../svg/plus.svg';
+import {ReactComponent as StoryBackwards} from '../../Main/svg/back_arrow.svg';
 
 import axios from 'axios';
 
 export default class StoryNew extends Component {
-  state = {
-    storyName: '',
-    author: '',
-    date: '',
-    tags: '',
-    city: '',
-    content: '',
-    hasCreated: false,
-    dropdownOpened: false,
-    // images: [],
-    imagesToUpload: []
-  };
+  constructor(props) {
+    super(props);
 
-  storyNew = () => {
+    this.state = {
+      storyName: '',
+      author: '',
+      date: '',
+      tags: '',
+      city: '',
+      content: '',
+      hasCreated: false,
+      dropdownOpened: false,
+      // images: [],
+      // imagesToUpload: []
+    };
+
+    this.storyNew = this.storyNew.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+    this.handleTextArea = this.handleTextArea.bind(this);
+    this.handleShowDropdown = this.handleShowDropdown.bind(this);
+  }
+
+
+  storyNew() {
     const { storyName, author, date, tags, city, content } = this.state;
     const token = localStorage.getItem('token');
 
@@ -58,13 +69,13 @@ export default class StoryNew extends Component {
 	    .catch(error => console.error(error));
   };
 
-  handleInput = e => {
+  handleInput(e) {
     const { name, value } = e.target;
 
     this.setState({ [name]: value });
   };
   
-  handleTextArea = e => {
+  handleTextArea(e) {
     const { name, value, style, scrollHeight } = e.target;
 
     style.height = 'auto';
@@ -80,7 +91,7 @@ export default class StoryNew extends Component {
   //   });
   // };
 
-  handleShowDropdown = e => {
+  handleShowDropdown(e) {
     e.preventDefault();
 
     this.setState({ dropdownOpened: !this.state.dropdownOpened });
@@ -99,14 +110,20 @@ export default class StoryNew extends Component {
         dropdownOpened
       } = this.state;
 
-      const { loading, albums } = this.props;
+      const { loading, albums, history } = this.props;
 
     if (hasCreated) return <Redirect to='/stories'/>
 
     return (
       loading ?
         <h1>Загрузка данных</h1> :
-        // (<PerfectScrollbar>
+        (<PerfectScrollbar>
+          <button
+            className='storyBackwards'
+            onClick={history.goBack}
+          >
+            <StoryBackwards/>
+          </button>
           <div className='storyNew'>
 
             <form className='storyNew__desk'>
@@ -192,7 +209,7 @@ export default class StoryNew extends Component {
               Опубликовать
             </ButtonContainer>
           </div>
-        // </PerfectScrollbar>)
+        </PerfectScrollbar>)
     );
   };
 }
