@@ -47,7 +47,9 @@
   padding: 30px 150px 0 30px
   box-sizing: border-box
   margin-left: 102px
+  // background: yellow
   input
+    border-radius: 0px
     border: none
     outline: none
   &__desk
@@ -65,10 +67,11 @@
     height: 32px
   &__wrapper
     // min-height: 200px
-    // display: flex
-    // align-items: flex-start
+    position: relative
+    // background: coral
+    display: flex
+    align-items: flex-start
     // margin-top: 32px
-    margin-left: -40px
     overflow: none
     >textarea
       width: 772px
@@ -80,9 +83,11 @@
       resize: none
       outline: none
       border: 1px dashed transparent
+      padding-left: 10px
     >button
-      // position: absolute
-      margin-bottom: 50px
+      position: absolute
+      margin-left: -35px
+      // margin-bottom: 50px
       width: 40px
       background: transparent
       border: none
