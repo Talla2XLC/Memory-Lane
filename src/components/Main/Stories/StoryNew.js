@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PerfectScrollbar from 'react-perfect-scrollbar';
+// import PerfectScrollbar from 'react-perfect-scrollbar';
 import {Redirect} from 'react-router-dom';
 
 import './Stories.sass';
@@ -117,7 +117,8 @@ export default class StoryNew extends Component {
     return (
       loading ?
         <h1>Загрузка данных</h1> :
-        (<PerfectScrollbar>
+        // (<PerfectScrollbar>
+        <>
           <button
             className='storyBackwards'
             onClick={history.goBack}
@@ -209,7 +210,8 @@ export default class StoryNew extends Component {
               Опубликовать
             </ButtonContainer>
           </div>
-        </PerfectScrollbar>)
+        </>
+        // </PerfectScrollbar>)
     );
   };
 }
