@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { getAlbums } from '../../../../actions/actionAlbums';
 import { modalClose } from '../../../../actions/modalClose';
 
-import FormPortal from '../../UserRegistrationPortal';
+import Portal from '../Portal';
 
 import { ButtonContainer } from '../../Button';
 
@@ -23,7 +23,7 @@ class ModalChooseAlbum extends Component {
   render() {
     const { modalOpened, modalType, closeModal, albums } = this.props;
 
-    console.log('ChooseAlbum', 25, this.props);
+    console.log('ChooseAlbum props', this.props);
 
     // const albumItems = albums.map(album =>
     //   <button
@@ -48,7 +48,7 @@ class ModalChooseAlbum extends Component {
       <>
         { 
           modalOpened &&
-            <FormPortal>
+            <Portal>
               <div className='modalChooseOverlay'>
                 <div className='modalChooseWindow'>
                   <div className='modalChooseHeader'>
@@ -60,7 +60,7 @@ class ModalChooseAlbum extends Component {
                       onClick={e => closeModal(modalType)}
                     />
                   </div>
-                  {/* <PerfectScrollbar component='div'> */}
+                  {/* <PerfectScrollbar component='div' style={{ right: 0 }}> */}
                     <div className='modalChooseBody'>
                       <div className='searchAndNewAlbum'>
                         <ChooseAlbumSearch/>
@@ -73,7 +73,7 @@ class ModalChooseAlbum extends Component {
                   <div className='modalChooseFooter'>
                     <div className='modaChooseContentBottom'>
                       <button
-                        className='cancel-btn'
+                        className='modaChooseCancelBtn'
                         onClick={e => closeModal(modalType)}
                       >
                         Отмена
@@ -86,7 +86,7 @@ class ModalChooseAlbum extends Component {
                   </div>
                 </div>
               </div>
-            </FormPortal>
+            </Portal>
         }
       </>
     );
