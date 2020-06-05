@@ -3,21 +3,31 @@ import { withRouter } from 'react-router-dom';
 
 import './Stories.sass';
 
-import { ReactComponent as FamilySvg } from '../svg/family.svg';
+import Sorting from '../General/Sorting/Sorting';
+
+import { ReactComponent as GuySvg } from '../svg/guy_with_magnifier.svg';
 import { ButtonContainer } from '../Button';
 
 class StoriesEmpty extends Component {
+  constructor(props) {
+    super(props);
 
-  forwardToAddStory = () => {
+    this.forwardToAddStory = this.forwardToAddStory.bind(this);
+  }
+
+  forwardToAddStory() {
     const { history } = this.props;
     
     history.push('/stories/add');
-  };
+  }
   
   render() {
     return (
       <div className='emptyBlock'>
-        <FamilySvg className='familySvg'/>
+        <Sorting
+          currentPage='stories'
+        />
+        <GuySvg className='guySvg'/>
         <div className='head2'>Здесь пока нет ни одной истории</div>
         <ButtonContainer
           className='emptyNewsBlockButton'
@@ -27,7 +37,7 @@ class StoriesEmpty extends Component {
         </ButtonContainer>
       </div>
     );
-  };
+  }
 }
 
 export default withRouter(StoriesEmpty);
