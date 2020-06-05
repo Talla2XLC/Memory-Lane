@@ -28,10 +28,14 @@ class Stories extends Component {
         <StoryItem 
           key={story.id}
           id={story.id}
+          content={story.content}
+          // Change date below to user input data
+          // date={story.date}
+          date={story.date_updated}
           title={story.story_name}
           author={story.author}
-          date={story.date_updated}
-          content={story.content}
+          city={story.city}
+          tags={story.tags}
           picture={story.ico_url}
         />
       )
