@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PerfectScrollbar from 'react-perfect-scrollbar';
+// import PerfectScrollbar from 'react-perfect-scrollbar';
 import { Redirect } from 'react-router-dom';
 
 import './Stories.sass';
@@ -7,7 +7,7 @@ import './Stories.sass';
 import { ButtonContainer } from '../Button';
 
 import StoriesDropDown from './StoriesDropdown';
-import { ReactComponent as EncircledCross } from '../svg/add_circle_outline_24px.svg';
+import { ReactComponent as Plus } from '../svg/plus.svg';
 
 import axios from 'axios';
 
@@ -106,7 +106,7 @@ export default class StoryNew extends Component {
     return (
       loading ?
         <h1>Загрузка данных</h1> :
-        (<PerfectScrollbar>
+        // (<PerfectScrollbar>
           <div className='storyNew'>
 
             <form className='storyNew__desk'>
@@ -162,7 +162,7 @@ export default class StoryNew extends Component {
 
               <div className='storyNew__wrapper'>
                 <button onClick={this.handleShowDropdown}>
-                  <EncircledCross />
+                  <Plus/>
                 </button>
                 {
                   dropdownOpened ?
@@ -190,7 +190,7 @@ export default class StoryNew extends Component {
               Опубликовать
             </ButtonContainer>
           </div>
-        </PerfectScrollbar>)
+        // </PerfectScrollbar>)
     );
   };
 }
