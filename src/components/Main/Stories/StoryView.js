@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
+import {ReactComponent as StoryBackwards} from '../../Main/svg/back_arrow.svg';
+
 import './Stories.sass';
 
 export default class StoryView extends Component {
@@ -19,6 +21,12 @@ export default class StoryView extends Component {
 
     return (
       <PerfectScrollbar>
+        <button
+          className='storyBackwards'
+          onClick={this.props.history.goBack}
+        >
+          <StoryBackwards/>
+        </button>
         <div className='storyView'>
           <div className='head2 storyView__title'>{title.title}</div>
           <div className='storyView__tags'>Здесь должны быть теги<br/>{tags.tags}</div>
