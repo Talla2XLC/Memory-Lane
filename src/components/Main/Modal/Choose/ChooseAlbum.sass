@@ -1,6 +1,6 @@
 .modalChooseOverlay
   background-color: rgba(0, 0, 0, 0.5)
-  position: absolute
+  position: fixed
   z-index: 2
   top: 0
   bottom: 0
@@ -10,21 +10,16 @@
 .modalChooseWindow
   display: flex
   position: absolute
-  // z-index: 3
+  max-height: 85%
   left: 185px
   top: 59px
-
+  right: 185px
+  bottom: 58px
   flex-direction: column
-  // justify-content: space-between
-  max-height: 85%
-  width: 1070px
-  // margin: 59px 185px 58px 188px
   background-color: #FFF
   border-radius: 10px
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3)
-  overflow: auto
-  // transform: translate(-50%, -50%)
-  // overflow-x: none 
+  overflow: none
 
 .modalChooseHeader
   display: flex
@@ -36,18 +31,31 @@
     width: 337px
     height: 27px
     margin-left: 45px
-
+  >.modalChooseHeaderButton
+    position: absolute
+    right: 36px
+    top: 22px
+    width: 34px
+    height: 32px
+    opacity: 1
+    cursor: pointer
+    border: none
+    outline: none
+    background-color: transparent
 
 .modalChooseBody
   overflow-y: auto
   margin: 0px 24px 0px 91px
+  display: flex
   >.searchAndNewAlbum
+    //!!
+    display: flex
     background: #FFFFFF
     z-index: 1
     border: 1px solid black
     position: absolute
     height: 141px
-    width: 941px
+    min-width: 941px
   >.albums
     border: 1px solid blue
     display: flex
@@ -64,22 +72,33 @@
   justify-content: flex-end
   align-items: center
   min-height: 94px
-  background: red
+  >.modaChooseContentBottom
+    margin-right: 93px
+    >.modaChooseCancelBtn
+      background: none
+      border: none
+      margin-right: 10px
+      color: #5DB07B
+      font-family: Rubik
+      font-style: normal
+      font-weight: 500
+      font-size: 18px
+      line-height: 20px
+      box-sizing: border-box
+      padding: 10px 24px
+      &:hover
+        background: rgba(189, 225, 202, 0.4)
+        border-radius: 24px
+        color: #5DB07B
+      &:active
+        color: #278147
+      &:focus
+        outline: none
 
-.modalChooseFooter button:last-child
-  margin-left: 10px
+// .modalChooseFooter button:last-child
+//   margin-left: 10px
 
-.modalChooseHeaderButton
-  position: absolute
-  right: 36px
-  top: 22px
-  width: 34px
-  height: 32px
-  opacity: 1
-  cursor: pointer
-  border: none
-  outline: none
-  background-color: transparent
+
 
 .modalChooseHeaderButton:hover
   opacity: 0.3
@@ -138,23 +157,4 @@
 // .modalChooseContentBottom
 //   align-self: flex-end
 
-// .cancel-btn
-//   background: none
-//   border: none
-//   margin-right: 72px
-//   color: #5DB07B
-//   font-family: Rubik
-//   font-style: normal
-//   font-weight: 500
-//   font-size: 18px
-//   line-height: 20px
-//   box-sizing: border-box
-//   padding: 10px 24px
-//   &:hover
-//     background: rgba(189, 225, 202, 0.4)
-//     border-radius: 24px
-//     color: #5DB07B
-//   &:active
-//     color: #278147
-//   &:focus
-//     outline: none
+
