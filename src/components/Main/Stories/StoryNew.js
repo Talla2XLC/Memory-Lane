@@ -119,16 +119,17 @@ export default class StoryNew extends Component {
                 onChange={this.handleInput}
               />
 
-              { /* TODO: Dynamic tags appearance */ }
+              { /* TODO: Dynamic tags appearance (react-tag-input) */ }
               <input
                 className='head2 storyNew__tags'
-                type='hidden'
+                type='text'
                 name='tags'
                 value={tags}
-                placeholder='Тег'
+                placeholder='Теги'
                 onChange={this.handleInput}
               />
 
+              { /* TODO: date from calendar here */ }
               <input
                 className='text3 storyNew__input'
                 type='text'
@@ -138,12 +139,13 @@ export default class StoryNew extends Component {
                 onChange={this.handleInput}
               />
 
+              { /* TODO: selecting persons here */ }
               <input
                 className='text3 storyNew__input'
                 type='text'
                 name='author'
                 value={author}
-                placeholder='Имя'
+                placeholder='О ком'
                 onChange={this.handleInput}
               />
 
