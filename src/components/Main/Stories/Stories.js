@@ -40,7 +40,9 @@ class Stories extends Component {
       Object.keys(stories).length === 0 ?
       <div className='contentContainer'> <StoriesEmpty/> </div> :
         <div className='contentContainer'>
-          <Sorting/>
+          <Sorting
+            currentPage='stories'
+          />
           <div className='stories'>
             {storyItems}
           </div>
