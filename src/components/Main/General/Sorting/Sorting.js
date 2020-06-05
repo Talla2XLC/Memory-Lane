@@ -73,7 +73,7 @@ class Sorting extends Component {
             </div>
             <div className='right-sorting-stories'>
               <Link to={'add'}>
-                Создать Историю
+                Создать историю
               </Link>
               <Link to={'add'} >
                 <Plus className='right-sorting-stories-plus'/>
