@@ -17,8 +17,8 @@ const fetchPhotosFailed = error => ({
 export const fetchPhotos = () => dispatch => {
   dispatch(fetchPhotosStart());
 
-  console.log('!', this.props);
-  console.log('!', this.state);
+  console.log('ActionPhotos', this.props);
+  console.log('ActionPhotos', this.state);
 
   const token = localStorage.getItem('token');
 
