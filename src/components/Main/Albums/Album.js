@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import axios from 'axios';
 import Sorting from '../General/Sorting/Sorting';
 import AlbumsItem from './PhotoItem';
 import './Album.sass';
 import EmptyBlock from '../EmptyBlock/EmptyBlock';
+import {ReactComponent as GoBack} from 'components/Main/svg/goBack.svg';
 
 class Album extends Component {
   constructor(props) {
     super(props);
     this.setGridType = this.setGridType.bind(this);
     this.selectImage = this.selectImage.bind(this);
+    this.goBack = this.goBack.bind(this);
 
     this.state = {
-      loading: true,
       images: [],
       isEmpty: true,
-      imagesToUpload: [],
       gridType: 'bigColView',
       rowItemView: false,
       itemSelected: []
@@ -24,40 +23,13 @@ class Album extends Component {
   }
 
   componentDidMount() {
-    this.getImages();
+    if (this.props.album) {
+      this.setState({isEmpty: false, images: this.props.album.photo});
+    }
   }
 
-  getImages() {
-    const { album, token } = this.props;
-    this.setState({ loading: true });
-
-    axios
-      .post(
-        'http://api.memory-lane.ru/get/images',
-        {
-          'id_album': album.id
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `${token}`
-          }
-        })
-      .then(res => {
-        if (res.data.result) {		// res.status === 200
-          this.setState({ loading: false });
-          if (res.data.content) {
-            this.setState({ images: Object.values(res.data.content) });
-            this.setState({ isEmpty: false });
-          } else {
-            this.setState({ isEmpty: true });
-          }
-        } else {	// res.status !== 200
-          console.error(res.data.error);
-          alert(`${res.data.error}`);
-        }
-      })
-      .catch(error => console.error(error));
+  goBack() {
+    this.props.history.goBack();
   }
 
   setGridType(gridId) {
@@ -102,6 +74,25 @@ class Album extends Component {
     this.setState({itemSelected: newItemArr});
   }
 
+  performAction(id) {
+    switch (id) {
+      case 1:
+        break;
+      case 2:
+        break;
+      case 3:
+        break;
+      case 4:
+        break;
+      case 5:
+        break;
+      case 6:
+        break;
+      default:
+        break;
+    }
+  }
+
   render() {
     const { isEmpty, images } = this.state;
     const { album } = this.props;
@@ -111,9 +102,10 @@ class Album extends Component {
         key={image.id}
         id = {image.id}
         view={this.state.rowItemView ? 'flex-row' : 'flex-column'}
-        url={image.urls} name={image.photo_name}
+        url={image.content_url} name={image.photo_name}
         author={image.author}
         desc = {image.description}
+        coordinates={image.coordinates}
         gridType={this.state.gridType}
         isDesc={!(this.state.gridType === 'smallRowView' || this.state.gridType === 'noPreview')}
         isImg={this.state.gridType !== 'noPreview'}
@@ -123,25 +115,30 @@ class Album extends Component {
     });
 
     return (
-      <div className='contentContainer '>
-        {
-          isEmpty ?
-            <div className='contentContainer'>
-              <Sorting/>
-              <EmptyBlock albumId={album.id}/>
-            </div>
-            :
-            <>
-              <Sorting
-                currentPage='album'
-                setGridType={this.setGridType}
-              />
-              <div className={'albumContent ' + this.state.gridType} >
-                { imagesItem }
-              </div>
-            </>
-        }
-      </div>
+      isEmpty ?
+        <div className='album-container'>
+          <GoBack className='go-back' onClick={this.goBack}/>
+          <h1 className='album-header'>{album.album_name}</h1>
+          <Sorting
+            currentPage='album'
+            setGridType={this.setGridType}
+            performAction={this.performAction}
+          />
+          <EmptyBlock albumId={album.id}/>
+        </div>
+        :
+        <div className='album-container'>
+          <GoBack className='go-back' onClick={this.goBack}/>
+          <h1 className='album-header'>{album.album_name}</h1>
+          <Sorting
+            currentPage='album'
+            setGridType={this.setGridType}
+            performAction={this.performAction}
+          />
+          <div className={'albumContent ' + this.state.gridType} >
+            { imagesItem }
+          </div>
+        </div>
     );
   }
 }

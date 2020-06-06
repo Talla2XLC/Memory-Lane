@@ -61,9 +61,17 @@ class DropdownAction extends Component {
     });
   }
 
+  handlePhotoAction(id) {
+    this.props.performAction(id);
+  }
+
+  handleAlbumAction(actionId, albumId) {
+    this.props.performAction(actionId, albumId);
+  }
+
   render() {
     const { actionsData } = this.state;
-    const { currentPage } = this.props;
+    const { currentPage, albumId } = this.props;
 
     const fetchDropdownSvg = actionId => {
       switch (actionId) {
@@ -100,10 +108,14 @@ class DropdownAction extends Component {
             ? (
               <div className={'dropdown-list'}>
                 {
-                  actionsData.map(view => {
-                    return <button className='dropdownButton' key={view.id} onClick={() => this.handleClick(view.id, view.name)}>
-                      {fetchDropdownSvg(view.id)}
-                      <span className='dropdownButton-span'>{view.name}</span>
+                  actionsData.map(action => {
+                    return <button
+                      className='dropdownButton'
+                      key={action.id}
+                      onClick={currentPage === 'allAlbums' ? () => this.handleAlbumAction(action.id, albumId) : () => this.handlePhotoAction(action.id)}
+                    >
+                      {fetchDropdownSvg(action.id)}
+                      <span className='dropdownButton-span'>{action.name}</span>
                     </button>;
                   })
                 }

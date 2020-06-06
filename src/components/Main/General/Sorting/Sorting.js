@@ -9,10 +9,10 @@ import {ReactComponent as Arrow} from './svg/arrow.svg';
 import {ReactComponent as Plus} from '../../svg/plus.svg';
 import {connect} from 'react-redux';
 import {modalOpen} from 'actions/modalOpen';
-
+import { Link } from  'react-router-dom';
 class Sorting extends Component {
   render() {
-    const { currentPage, openModalAddAlbum, setGridType } = this.props;
+    const { currentPage, openModalAddAlbum, setGridType, performAction } = this.props;
 
     const alphabet =
       <div className='sortingItem'>По алфавиту
@@ -39,6 +39,12 @@ class Sorting extends Component {
       <span className='createAlbum'>Cоздать альбом</span>
       <Plus className='plus'/>
     </button>;
+    
+    const addPerson =
+    <Link to='/persons/add/'>
+      <span className='createPerson'>Cоздать персону</span>
+      <Plus className='plus'/>
+    </Link>;
 
     const fetchSorting = page => {
       switch (page) {
@@ -61,8 +67,20 @@ class Sorting extends Component {
               {person}
             </div>
             <div className='right-sorting-album'>
-              <DropdownAction currentPage={page} />
+              <DropdownAction currentPage={page} performAction={performAction} />
+              <DropdownView currentPage={page} setGridType={setGridType} />
+            </div>
+          </SortingContainer>;
+        case 'persons':
+          return <SortingContainer>
+            <div className='left-sorting'>
+              {alphabet}
+              {date}
+              {fullness}
+            </div>
+            <div className='right-sorting-album'>
               <DropdownView currentPage={page} setGridType={setGridType}/>
+              {addPerson}
             </div>
           </SortingContainer>;
         case 'stories':
@@ -80,10 +98,11 @@ class Sorting extends Component {
               </Link>
             </div>
           </SortingContainer>;
+
         default:
           return '';
       }
-    }
+    };
 
     return (
       fetchSorting(currentPage)
@@ -100,6 +119,7 @@ top: 0;
 display: flex;
 flex-flow: row nowrap;
 align-items: center;
+background: #F6F6F6;
 
 
 .left-sorting {
@@ -156,6 +176,10 @@ align-items: center;
 }
 .plus {
   margin-left: 12px;
+}
+
+.createPerson {
+  color: #3B3E3C;
 }
 `;
 
