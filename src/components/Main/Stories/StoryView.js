@@ -34,7 +34,9 @@ export default class StoryView extends Component {
           <div className='text3 storyView__author'>{author.author}</div>
           <div className='text3 storyView__city'>{city.city}</div>
           <div className='text1 storyView__content'>{content.content}</div>
-          <div className='storyView__picture'>{picture.picture}</div>
+          <div className='storyView__picture'>
+            <img src={picture.picture} alt='storyPicture'/>
+          </div>
         </div>
       </PerfectScrollbar>
     );
