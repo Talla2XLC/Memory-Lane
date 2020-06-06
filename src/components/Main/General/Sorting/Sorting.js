@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import DropdownView from './DropdownView';
 import DropdownAction from "../DropdownAction/DropdownAction";
-
-import {Link} from 'react-router-dom';
-
 import {ReactComponent as Arrow} from './svg/arrow.svg';
 import {ReactComponent as Plus} from '../../svg/plus.svg';
 import {connect} from 'react-redux';

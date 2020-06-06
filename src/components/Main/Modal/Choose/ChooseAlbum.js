@@ -76,6 +76,7 @@ class ModalChooseAlbum extends Component {
                   {/* <PerfectScrollbar component='div' style={{ right: 0 }}> */}
                     <div className='modalChooseBody'>
                       <div className='searchAndNewAlbum'>
+                        {/* DIFFERENT PROPS TO THE SEARCH FOR PLACEHOLDER */}
                         <ChooseAlbumSearch/>
                         {!this.state.goToAlbumPhotos ?
                           <div className='searchAndNewAlbumAddAlbum'>
