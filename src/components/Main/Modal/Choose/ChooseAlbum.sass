@@ -48,24 +48,32 @@
   margin: 0px 24px 0px 91px
   display: flex
   >.searchAndNewAlbum
-    //!!
     display: flex
-    background: #FFFFFF
     z-index: 1
-    border: 1px solid black
     position: absolute
-    height: 141px
-    min-width: 941px
-  >.albums
-    border: 1px solid blue
+    min-width: 539px
+    max-width: 939px
+    margin-top: 36px
+    >.searchAndNewAlbumAddAlbum
+      display: flex
+      flex-flow: row nowrap
+      margin-left: 269px
+      >a:first-child
+        color: #3B3E3C
+        margin-right: 12px
+
+  >.albumsAndPhotos
+    // background: green
     display: flex
-    margin-top: 208px
+    margin-top: 108px
     outline: yellow
     min-height: 701px
     flex-flow: row wrap
     align-items: center
     justify-content: left
     box-sizing: border-box
+    >button
+      border: none
     
 .modalChooseFooter
   display: flex

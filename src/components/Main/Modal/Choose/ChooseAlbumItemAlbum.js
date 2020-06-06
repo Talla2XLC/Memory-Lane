@@ -3,25 +3,30 @@ import { Link } from 'react-router-dom';
 
 import './ChooseAlbumItemAlbum.sass';
 
-import ChoosePhoto from './ChoosePhoto';
+import ChoosePhoto from './ChooseAlbumPhotos';
 
 export default class ChooseAlbumItemAlbum extends Component {
+  constructor(props) {
+    super(props);
 
-  // handleClick = () => {
-  //   // ReactDOM.render(
-  //     this.render() {
-  //       return (
-  //         <ChoosePhoto />,
-  //         document.getElementById("root")
-  //       )
-  //     }
-  //     // <ChoosePhoto />,
-  //     // document.getElementById("root")
-  //   // );
-  // };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    // ReactDOM.render(
+      // this.render() {
+      //   return (
+      //     <ChoosePhoto />,
+      //     document.getElementById("root")
+      //   )
+      // }
+      // <ChoosePhoto />,
+      // document.getElementById("root")
+    // );
+  }
 
   //   this.state = {
-  //     showComponent: false,
+  //    
   //   };
   //   this._hanldeClick = this._handleClick.bind(this);
   // }
@@ -38,16 +43,15 @@ export default class ChooseAlbumItemAlbum extends Component {
 
     return (
       <div className='albumItem'>
-        <button className='albumItem__picture'>
-          {/* onClick={this._handleClick}> 
-          <img src={picture} alt='storyPicture'/> */}
-           
-           
+        <button className='albumItem__picture'
+          onClick={this.handleClick}
+        > 
+          <img src={picture} alt='storyPicture'/>
         </button>
 
-        <Link className='albumItem__title' to={`/albums/${id}`}>
+        <button className='albumItem__title'>
           {title}
-        </Link>
+        </button>
       </div>
     );
   }

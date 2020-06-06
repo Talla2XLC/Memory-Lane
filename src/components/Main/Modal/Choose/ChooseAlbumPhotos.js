@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { getAlbums } from '../../../../actions/actionAlbums';
 import { modalClose } from '../../../../actions/modalClose';
 
-import FormPortal from '../../UserRegistrationPortal';
+import Portal from '../Portal';
 
 import { ButtonContainer } from '../../Button';
 
@@ -50,7 +50,7 @@ class ModalChoosePhoto extends Component {
       <>
         { 
           modalOpened &&
-            <FormPortal>
+            <Portal>
               <div className='modalOverlay'>
                 <div className='modalWindow'>
                   <div className='modalHeader'>
@@ -84,7 +84,7 @@ class ModalChoosePhoto extends Component {
                   </div>
                 </div>
               </div>
-            </FormPortal>
+            </Portal>
         }
       </>
     );
