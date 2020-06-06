@@ -14,22 +14,19 @@ class UploadPhoto extends Component {
     this.setDropdownImages = this.setDropdownImages.bind(this);
 
     this.state = {
-      selectedAlbum: '',
+      selectedAlbum: 0,
       dropdownOpened: false,
       imagesToUpload: [],
       uploadComplete: false
     };
   }
 
-  static getDerivedStateFromProps(props, state) {
-    if (props.location.state) {
-      return {
-        selectedAlbum: props.location.state.albumId
-      };
+  componentDidMount() {
+    if (this.props.location.state) {
+      this.setState({
+        selectedAlbum: this.props.location.state.albumId
+      });
     }
-    return {
-      selectedAlbum: 0
-    };
   }
 
   uploadImage() {
@@ -96,8 +93,8 @@ class UploadPhoto extends Component {
         <>
           <SelectNewPhoto
             albums={albums}
+            selectedAlbum={albums.find(album => album.id === selectedAlbum) ?? albums[0]}
             dropdownOpened={dropdownOpened}
-            selectedAlbum={selectedAlbum}
             imagesToUpload={imagesToUpload}
             toggleDropdown={this.handleToggleDropdown}
             dropdownSelect={this.handleDropdownSelect}

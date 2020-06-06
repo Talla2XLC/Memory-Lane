@@ -14,7 +14,7 @@ export default class AlbumsItem extends Component {
   }
 
   render() {
-    const { isDesc, isImg, gridType, url, isSelected, id, view, name, author, date, coordinates } = this.props;
+    const { isDesc, isImg, gridType, url, isSelected, id, view, name, author, date, coordinates, tags, persons } = this.props;
     const desc = isDesc ? this.props.desc : '';
 
     const img = isImg ?
@@ -27,7 +27,9 @@ export default class AlbumsItem extends Component {
             name: name,
             author: author,
             date: date,
-            coordinates: coordinates
+            coordinates: coordinates,
+            tags: tags,
+            persons: persons
           }
         }}
         className='photo-link'

@@ -23,7 +23,7 @@ class Album extends Component {
   }
 
   componentDidMount() {
-    if (this.props.album) {
+    if (this.props.album.photo) {
       this.setState({isEmpty: false, images: this.props.album.photo});
     }
   }
@@ -97,14 +97,16 @@ class Album extends Component {
     const { isEmpty, images } = this.state;
     const { album } = this.props;
 
-    const imagesItem = images.map(image => {
+    const imagesItem = images ? images.map(image => {
       return <AlbumsItem
         key={image.id}
         id = {image.id}
         view={this.state.rowItemView ? 'flex-row' : 'flex-column'}
         url={image.content_url} name={image.photo_name}
         author={image.author}
-        desc = {image.description}
+        desc={image.description}
+        tags={image.tags}
+        persons={image.persons}
         coordinates={image.coordinates}
         gridType={this.state.gridType}
         isDesc={!(this.state.gridType === 'smallRowView' || this.state.gridType === 'noPreview')}
@@ -112,7 +114,7 @@ class Album extends Component {
         selectId={this.selectImage}
         isSelected={this.state.itemSelected.includes(image.id)}
       />;
-    });
+    }) : [];
 
     return (
       isEmpty ?

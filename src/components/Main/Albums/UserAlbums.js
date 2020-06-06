@@ -6,6 +6,7 @@ import { Link } from  'react-router-dom';
 import Sorting from '../General/Sorting/Sorting';
 import DropdownAction from '../General/DropdownAction/DropdownAction';
 import axios from 'axios';
+import { ReactComponent as FamilySvg } from '../svg/family.svg';
 
 class UserAlbums extends Component {
   constructor(props) {
@@ -107,10 +108,17 @@ class UserAlbums extends Component {
 
 	  const albumsItems = userAlbums.map((album, index) =>
 	    (
-	        <div key={album.id}>
+	        <div key={album.id} className='album-item'>
 	        <Link className='userAlbumsLink' to={`/albums/${index}`}>
-	          <div className='imgWrap'>	      
-	            <img className='imgWrap__img' src={album.photo[album.photo.length - 1].content_url} alt='albumPreview'/>
+	          <div className='imgWrap'>
+	            {album.photo ? 
+	              <img className='imgWrap__img' src={album.photo[album.photo.length - 1].content_url} alt='albumPreview'/>
+	              :
+	              <div className='album-empty'>
+	                <FamilySvg className='album-empty-svg' />
+	                <span className='album-empty-txt text3'>Здесь пока нет ни одной фотографии</span>
+	              </div>
+	            }
 	          </div>
 	        </Link>
 	          <div className='albumName'>

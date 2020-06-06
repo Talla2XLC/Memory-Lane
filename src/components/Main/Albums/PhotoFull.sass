@@ -1,5 +1,9 @@
 .photo-full
   display: flex
+  flex-flow: row nowrap
+
+.photo-full-main
+  display: flex
   flex-flow: column nowrap
   justify-content: flex-start
   align-items: flex-start
@@ -13,6 +17,8 @@
     flex-flow: column nowrap
     align-items: flex-end
     margin: 20px 0
+    border-radius: 10px
+    overflow: hidden
   &-contentZone
     display: flex
     flex-flow: column nowrap
@@ -30,4 +36,11 @@
   margin-bottom: 30px
   cursor: pointer
 
+.photo-full-right
+  margin-top: 130px
+  display: flex
+  flex-flow: column nowrap
+  align-items: flex-start
+  &-item
+    margin-bottom: 24px
 

@@ -4,7 +4,7 @@ import './EmptyBlock.sass';
 
 import { ReactComponent as FamilySvg } from '../svg/family.svg';
 import { ButtonContainer } from '../Button';
-import {Link} from "react-router-dom";
+import {Link} from 'react-router-dom';
 
 export default class EmptyBlock extends Component {
   render() {
@@ -14,7 +14,7 @@ export default class EmptyBlock extends Component {
       <div className='emptyBlock'>
         <FamilySvg className='familySvg' />
         <div className='head2'>Здесь пока нет ни одной записи</div>
-        <Link className='dropdownLink' to={{ pathname: '/albums/add', state: { albumId: albumId} }} >
+        <Link className='dropdownLink' to={{ pathname: '/photo/add', state: { albumId: albumId} }} >
           <ButtonContainer className='emptyNewsBlockButton'>
             Загрузить
           </ButtonContainer>
