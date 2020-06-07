@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ReactComponent as IconSearch } from './svg/searchIcon.svg';
-import { ReactComponent as FilterSearch } from './svg/searchIcon.svg';
-import styled from 'styled-components';
+// import { ReactComponent as FilterSearch } from './svg/searchIcon.svg';
+// import styled from 'styled-components';
 
 import './ChooseAlbumSearch.sass';
 

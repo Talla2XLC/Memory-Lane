@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import { BrowserRouter } from 'react-router-dom';
 // <BrowserRouter></BrowserRouter>
 
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 import { connect } from 'react-redux';
 
