@@ -1,33 +1,23 @@
 import React, { Component } from 'react';
-import { ReactComponent as IconSearch } from './svg/searchIcon.svg';
-import { ReactComponent as FilterSearch } from './svg/filterIcon.svg';
 import styled from 'styled-components';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import './Search.sass';
 
 class Search extends Component {
-  state = {
-	query: '',
-	results: [],
-	filtered: '',
-	isOpen: false
-  };
+  constructor(props) {
+    super(props)
+	this.state = {
+		results: [],
+		filtered: '',
+		isOpen: false
+	};
+
+    this.handleClick();
+  }
 
   handleClick = () => {
-   	const { query, results } = this.state;
-	const { token } = this.props;
-
-	this.setState({ isOpen: true }); 
-		
-	// const results[0] = 5;
-		
-	// const results[0] = content.filter((person) => {                         													 // save matches in state in people array
-    //     return person.album.indexOf(query) >= 0;           													 // returns the values ​​of an array of objects by indices (.toLowerCase()?)
-    // });
-
-	// this.setState({ results });
-
+	const { token, query } = this.props;
   	axios
 	  .post(
 		'http://api.memory-lane.ru/search',
@@ -42,20 +32,18 @@ class Search extends Component {
 	    }
 	  )
 	  .then(res => {
-		// console.log(res);
-		// console.warn(res.data);
-		// const resultNotFoundMsg = !res.data.content.length
-		// 	? 'There are no more search results. Please try a new search.'
-		// 	: '';
+	  console.warn(res);
+	if(res) {
 		this.setState({
 		  results: res.data.conten,
-		  // message: resultNotFoundMsg,
 		  loading: false,
 		  isOpen: true
-		});
-
-		console.log(res.data.conten[0].album);
-		console.log(res.data.conten.map(item => item.album.album_name));
+		}); 
+		console.log(res.data.conten[0].story);
+	} else {
+		  console.error(res.data.error);
+	  }
+    
 	  })
 	  .catch((error) => {
 		if (axios.isCancel(error) || error) {
@@ -64,38 +52,17 @@ class Search extends Component {
 			message: 'Failed to fetch results. Please check network',
 		  });
 		}
-	  });
+	  }); 
   };
-	
-//   renderPhotoResults = () => {
-//   }
-  
-  renderAlbumResults = () => {
-	const { results } = this.state;
-    return (
-      <div className="results-container">
-        { results.map((result) => {
-          return (
-            <a key={result.album.id} href='/#' className="result-items">
-              <h6 className="image-username">{result.album.album_name}</h6>
-              <div className="image-wrapper">
-                <img className="image" src='/#' alt="/#"/>
-              </div>
-            </a>
-          );
-        })}
-	  </div>
-	)
-  }
 
   renderStoryResults = () => {
-	const { results } = this.state;
+  const { results, isOpen } = this.state;
 	return (
 	  <div className="results-container">
 		{ results.map((result) => {
 		  return (
-			<a key={result.album.id} href='/#' className="result-items">
-			  <h6 className="image-username">{result.album.album_name}</h6>
+			<a key={result.story.id} href='/#' className="result-items">
+			  <h6 className="image-username">{result.story.story_name}</h6>
 			  <div className="image-wrapper">
 				<img className="image" src='/#' alt="/#"/>
 			  </div>
@@ -106,74 +73,23 @@ class Search extends Component {
 	)
   }
 
-//   renderPersonResults = () => {
-//   }
-
-  handleChange = (event) => {												 
-    const { value } = event.target;                                       													 // destructuring applied instead const value = event.target.value;
-	this.setState({ query: value });
-  }
-  // для автоподсказок 
-  // mapAlbum = (item, i) => {
-  //   return <li className='mini-suggest__item' key={i}>{item.album.album_name}<b>{i}</b></li>;
-  // }
-	
-  // mapStory = (item, i) => {
-  //   return <li className='mini-suggest__item' key={i}>{item.story.story_name}<b>{i}</b></li>;	  	
-  // }
-
   render = () => {
-	const { results, isOpen } = this.state; 	
-
     return (
-      <SearchWrapper>
-        <div className='search'>
-		  <button 
-			className='search-submit'
-			onClick={ this.handleClick }
-		  >
-            <IconSearch />
-          </button>
-		  <input 
-			className='input' 
-			placeholder='Поиск' 
-			type='text'
-			onChange={this.handleChange}
-			onKeyPress={event => {
-              if (event.key === "Enter") {
-                this.handleClick();
-              }
-            }}
-		  />
-		  <button 
-			className='search-filter'
-		  >
-            <FilterSearch />
-          </button>
-        </div>
-		  { this.renderAlbumResults() }
-		  { this.renderStoryResults() }
-          {/* <div className='search__list'>
-            <ul>
-              { isOpen ? results.map(this.mapAlbum) : '' }
-            </ul>
-			<ul>
-			  { isOpen ? results.map(this.mapStory) : '' }				
-			</ul>
-          </div> */}
-      </SearchWrapper>
+      <div>
+	    { this.renderStoryResults() }	  
+	  </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
 	return {
+	  query: state.searchQueryInfo.query,
 	  token: state.session.sessionID
 	};
-  };
-  
-export default connect(mapStateToProps)(Search);
+};
 
+export default connect(mapStateToProps)(Search);
 
 const SearchWrapper = styled.div`
   margin-right: 17px;

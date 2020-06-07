@@ -20,7 +20,8 @@ import DownloadPhoto from './components/Main/Albums/UploadPhoto/UploadPhoto';
 import StoryView from './components/Main/Stories/StoryView';
 import Profile from './components/Main/UserProfile/UserProfile';
 import StoryAdd from './components/Main/Stories/StoryAdd';
-import Search from './components/Main/Header/Search/Search';
+import SearchResult from './components/Main/Search/SearchQueryResult';
+import PageNotFound from './components/Main/PageNotFound';
 
 export default class Router extends Component {
 
@@ -35,14 +36,14 @@ export default class Router extends Component {
           </Route>
           <Route exact path='/persons/' component={ Persons } />
 
-          <Route exact path='/search/' component={ Search } />
+          <Route exact path='/search/:query' component={ SearchResult } />
           <Route exact path='/albums/' component={ UsersAlbums } />
           <Route exact path='/photo/add/' component={ DownloadPhoto } />
           <Route exact path='/albums/:id' component={ Album } />
           {/* <Route exact path='/albums/addalbums/' component={ UsersAlbums } /> */}
           <Route exact path='/photo/:id' component={ Photo } />
           <Route exact path='/stories/' component={ Stories } />
-          <Route exact path='/stories/add/' component={ StoryAdd } />
+          <Route exact path='/stories/add/' component={ StoryAdd} />
           <Route path='/stories/:id' component={ StoryView } />
           <Route exact path='/services/' component={ Services } />
           <Route exact path='/userfullname/' >
@@ -53,6 +54,8 @@ export default class Router extends Component {
           <Route exact path='/register/' component={ UserRegistration } />
 
           <Redirect to='/'/>
+
+          {/* <Route exact to='/404' component={ PageNotFound } /> */}
         </Switch>) : (
           <Switch>
             <Route exact path='/auth/' component={ UserAuthorization } />
