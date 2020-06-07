@@ -23,12 +23,13 @@ class AddPerson extends Component {
       city: '',
       gender: '',
       imagesToUpload: '',
-      tags: []
+      tags: [],
+      birthday: ''
     };
   }
 
   addPerson = () => {
-    const { lastName, firstName, patronymic, gender, roleInFamily, city, imagesToUpload, input } = this.state;
+    const { lastName, firstName, patronymic, gender, roleInFamily, city, imagesToUpload, birthday } = this.state;
     const { sessionID } = this.props;
     const data = new FormData();
     data.append('last_name', lastName);
@@ -38,6 +39,7 @@ class AddPerson extends Component {
     data.append('city', city);
     data.append('gender', gender);
     data.append('ico_url', imagesToUpload[0]);
+    data.append('birthday', birthday);
     // data.append('input', input);
     axios
       .post(
@@ -78,7 +80,7 @@ class AddPerson extends Component {
 
 
   render() {
-    const { lastName, firstName, patronymic, roleInFamily, city, imagesToUpload, tags } = this.state;
+    const { lastName, firstName, patronymic, roleInFamily, city, imagesToUpload, tags, birthday } = this.state;
     return (
       <div className='setPersonContainer'>
         <div className='head1 title'> Создание персоны </div>
@@ -103,6 +105,7 @@ class AddPerson extends Component {
                 placeholder=' '
                 type='text'
                 onChange={this.handleInput}
+                required={lastName  ? true : false}
                 value={lastName}/>
             </div>
 
@@ -115,6 +118,7 @@ class AddPerson extends Component {
                 placeholder=' '
                 type='text'
                 onChange={this.handleInput}
+                required={firstName  ? true : false}
                 value={firstName}/>
             </div>
 
@@ -127,6 +131,7 @@ class AddPerson extends Component {
                 placeholder=' '
                 type='text'
                 onChange={this.handleInput}
+                required={patronymic  ? true : false}
                 value={patronymic}/>
             </div>
 
@@ -148,11 +153,18 @@ class AddPerson extends Component {
                   onChange={this.handleInput}/> Женщина<br/>
               </form>
             </div>
-            {/* <div className='infoGroup'>
-              <label className='infoGroup__name' htmlFor='date'>Дата рождения:</label>
-              <input
+            <div className='infoGroup'>
+              <label htmlFor='birthday' className='infoGroup__name'>Дата рождения:</label>
+              <input 
+              className=' infoGroup__input dateInput'
+                type='date' 
+                id='birthday' 
+                name='birthday'
+                value={birthday}
+                onChange={this.handleInput}
+                required={birthday  ? true : false}
               />
-            </div> */}
+            </div>
             <div className='infoGroup'>
               <label className='infoGroup__name' htmlFor='city'>Место рождения:</label>
               <input
@@ -162,6 +174,7 @@ class AddPerson extends Component {
                 placeholder=' '
                 type='text'
                 onChange={this.handleInput}
+                required={city  ? true : false}
                 value={city}/>
             </div>
             <div className='infoGroup'>
@@ -173,6 +186,7 @@ class AddPerson extends Component {
                 placeholder=' '
                 type='text'
                 onChange={this.handleInput}
+                required={roleInFamily  ? true : false}
                 value={roleInFamily}/>
             </div>
             {/* <div className='infoGroup'>
@@ -192,6 +206,12 @@ class AddPerson extends Component {
             <Link className='setPerson__button' to={'/persons/'}>
               <ButtonContainer onClick={this.addPerson}>Сохранить</ButtonContainer>
             </Link>
+            <Link className='cancelButton setPerson__button' to={'/persons/'}>
+              <ButtonContainer white={true}>Отмена</ButtonContainer>
+            </Link>
+
+
+
 
           </div>
         </div>

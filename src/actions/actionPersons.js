@@ -32,6 +32,7 @@ export const getPersons = () => dispatch => {
       }
     )
     .then(res => {
+      console.log(res)
       dispatch(getPersonsSucces(res.data));
     })
     .catch(error => dispatch(getPersonsFailed(error)));

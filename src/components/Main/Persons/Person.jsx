@@ -34,11 +34,9 @@ class Person extends Component {
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `${sessionID}`
-            // 'Origin': 'http://localhost:3000'
           }
         })
       .then(res => {
-        // console.log(res);
         if (res.data.result) {
           this.props.downloadPersons();
         } else {
@@ -58,7 +56,9 @@ class Person extends Component {
     const currentId = this.props.match.params.id;
     const userPersons =  this.props.persons;
     const currentPerson = userPersons.find( item =>  item.id === currentId);
-
+    const day = currentPerson.birthday ? currentPerson.birthday.substr(8,2) : '';
+    const month = currentPerson.birthday ? currentPerson.birthday.substr(5,2) : '';
+    const year = currentPerson.birthday ? currentPerson.birthday.substr(0,4) : '';
     const {edit} = this.state;
 
     return (
@@ -72,6 +72,10 @@ class Person extends Component {
               <div className='infoGroup'>
                 <div className='infoGroup__name'>Пол: </div>
                 <div className='textTransform'>{currentPerson.gender === 'male' ? 'мужчина' : 'женщина'  }</div>
+              </div>
+              <div className='infoGroup'>
+              <div className='infoGroup__name'>Дата: </div>
+                <div className='textTransform'>{day} {month} {year}</div>
               </div>
               <div className='infoGroup'>
                 <div className='infoGroup__name'>Степень родства: </div>

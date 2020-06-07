@@ -18,7 +18,7 @@ export default function MainContent() {
           вашу историю, чтобы остаться
           в памяти у потомков!
         </p>
-        <Link to='/photo/add'><ButtonContainer >Загрузить фото</ButtonContainer></Link>
+        <Link to='/photo/add'><ButtonContainer white={false}>Загрузить фото</ButtonContainer></Link>
       </div>
       <div className='MainContent__header-imj'>
         <HeaderImg />
