@@ -1,18 +1,22 @@
 import { combineReducers } from 'redux';
 import userInfo from './user';
 import session from './session';
-import userStories from './stories';
+import modal from './modal';
+import albums from './albums';
+import photosInfo from './photos';
+import storiesInfo from './stories';
+import persons from './persons';
 import searchQueryInfo from './searchQuery.js';
 
-import albums from './albums';
-import modal from './modal';
 const rootReducer = combineReducers({
   userInfo,
   session,
-  userStories,
+  storiesInfo,
   albums,
+  photosInfo,
   modal,
-  searchQueryInfo
+  persons,
+  searchQueryInfo 
 });
 
 export default rootReducer;

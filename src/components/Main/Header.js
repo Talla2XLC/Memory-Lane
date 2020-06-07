@@ -57,7 +57,7 @@ const mapDispatchToProps = dispatch => {
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
 
 const HeaderWrapper = styled.div`
-z-index: 5;
+z-index: 2;
 width: 100%;
 display: flex;
 justify-content: flex-start;
@@ -67,6 +67,7 @@ margin-right: auto;
 padding: 11px 0;
 box-sizing: border-box;
 background: #FFD1A9;
+padding-right: 40px;
 
 .logoLink {
   margin-left: 45px;

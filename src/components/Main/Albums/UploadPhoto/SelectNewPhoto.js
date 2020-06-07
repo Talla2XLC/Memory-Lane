@@ -33,7 +33,7 @@ class SelectNewPhoto extends Component {
 
   render() {
     const { albums, dropdownOpened, selectedAlbum, imagesToUpload } = this.props;
-    const albumName = albums[selectedAlbum] ? albums[selectedAlbum].album_name : '';
+    const albumName = selectedAlbum ? selectedAlbum.album_name : '';
 
     return (
       <div className='contentContainer'>
@@ -41,7 +41,7 @@ class SelectNewPhoto extends Component {
           <div className='head1 albumTitle'>
             Загрузка фотографий
           </div>
-          <div className='albumName'>
+          <div className='upload-albumName'>
             <div className='text1 albumDesc'>
               Альбом для загрузки фото
             </div>

@@ -26,6 +26,8 @@
   flex-flow: row wrap
   margin-top: 16px
   justify-content: space-between
+  position: relative
+  height: 100%
 
 .thumb
   display: inline-flex
@@ -48,3 +50,18 @@
   display: block
   width: auto
   height: 100%
+
+.clearBTN
+  position: absolute
+  bottom: 0
+  right: 0
+  background: rgba(130, 132, 130, 0.3)
+  border-radius: 24px
+  border: none
+  padding: 6px 10px
+  &:hover
+    background: rgba(130, 132, 130, 0.5)
+  &:active
+    background: rgba(130, 132, 130, 0.7)
+  &:focus
+    outline: none

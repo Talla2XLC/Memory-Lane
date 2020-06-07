@@ -26,6 +26,12 @@ export default function FileDropzone(props) {
     </div>)
   );
 
+  const clearFiles = () => {
+    props.setFilesToUpload([]);
+  }
+
+  const clearButton = <button className='clearBTN' onClick={clearFiles}>Очистить</button>
+
   useEffect(() => () => {
     // Make sure to revoke the data uris to avoid memory leaks
     files.forEach(file => URL.revokeObjectURL(file.preview));
@@ -40,6 +46,7 @@ export default function FileDropzone(props) {
         </div> :
         <aside className='thumb-container'>
           {thumbs}
+          {clearButton}
         </aside>
       }
     </section>

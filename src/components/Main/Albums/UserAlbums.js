@@ -6,6 +6,7 @@ import { Link } from  'react-router-dom';
 import Sorting from '../General/Sorting/Sorting';
 import DropdownAction from '../General/DropdownAction/DropdownAction';
 import axios from 'axios';
+import { ReactComponent as FamilySvg } from '../svg/family.svg';
 
 class UserAlbums extends Component {
   constructor(props) {
@@ -22,6 +23,7 @@ class UserAlbums extends Component {
       showActions: ''
     };
   }
+
   showActions(event, id) {
     event.preventDefault();
     this.setState({ showActions: id }, () => {
@@ -82,7 +84,7 @@ class UserAlbums extends Component {
 	    .post(
 	      'http://api.memory-lane.ru/db/deleteAlbum',
 	      {
-	        album_id: id
+	        id_album: id
 	      },
 	      {
 	        headers: {
@@ -92,6 +94,7 @@ class UserAlbums extends Component {
 	      }
 	    )
 	    .then(res => {
+	      console.log(res);
 	      if (res.data.result) {
 	        this.props.downloadAlbums();
 	      }
@@ -105,10 +108,17 @@ class UserAlbums extends Component {
 
 	  const albumsItems = userAlbums.map((album, index) =>
 	    (
-	        <div key={album.id}>
+	        <div key={album.id} className='album-item'>
 	        <Link className='userAlbumsLink' to={`/albums/${index}`}>
-	          <div className='imgWrap'>	      
-	            <img className='imgWrap__img' src={album.photo[album.photo.length - 1].content_url} alt='albumPreview'/>
+	          <div className='imgWrap'>
+	            {album.photo ? 
+	              <img className='imgWrap__img' src={album.photo[album.photo.length - 1].content_url} alt='albumPreview'/>
+	              :
+	              <div className='album-empty'>
+	                <FamilySvg className='album-empty-svg' />
+	                <span className='album-empty-txt text3'>Здесь пока нет ни одной фотографии</span>
+	              </div>
+	            }
 	          </div>
 	        </Link>
 	          <div className='albumName'>
@@ -125,7 +135,7 @@ class UserAlbums extends Component {
 
 	  return (
 	    loading ? <h1>Загрузка данных</h1> :
-	      <div className='contentContainer'>
+	      <div className='albums-container'>
 	        <Sorting
 	          currentPage='allAlbums'
 	          setGridType={this.setGridType}

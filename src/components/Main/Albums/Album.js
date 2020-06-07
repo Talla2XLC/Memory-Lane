@@ -4,12 +4,14 @@ import Sorting from '../General/Sorting/Sorting';
 import AlbumsItem from './PhotoItem';
 import './Album.sass';
 import EmptyBlock from '../EmptyBlock/EmptyBlock';
+import {ReactComponent as GoBack} from 'components/Main/svg/goBack.svg';
 
 class Album extends Component {
   constructor(props) {
     super(props);
     this.setGridType = this.setGridType.bind(this);
     this.selectImage = this.selectImage.bind(this);
+    this.goBack = this.goBack.bind(this);
 
     this.state = {
       images: [],
@@ -21,9 +23,13 @@ class Album extends Component {
   }
 
   componentDidMount() {
-    if (this.props.album) {
+    if (this.props.album.photo) {
       this.setState({isEmpty: false, images: this.props.album.photo});
     }
+  }
+
+  goBack() {
+    this.props.history.goBack();
   }
 
   setGridType(gridId) {
@@ -91,43 +97,50 @@ class Album extends Component {
     const { isEmpty, images } = this.state;
     const { album } = this.props;
 
-    const imagesItem = images.map(image => {
+    const imagesItem = images ? images.map(image => {
       return <AlbumsItem
         key={image.id}
         id = {image.id}
         view={this.state.rowItemView ? 'flex-row' : 'flex-column'}
         url={image.content_url} name={image.photo_name}
         author={image.author}
-        desc = {image.description}
+        desc={image.description}
+        tags={image.tags}
+        persons={image.persons}
+        coordinates={image.coordinates}
         gridType={this.state.gridType}
         isDesc={!(this.state.gridType === 'smallRowView' || this.state.gridType === 'noPreview')}
         isImg={this.state.gridType !== 'noPreview'}
         selectId={this.selectImage}
         isSelected={this.state.itemSelected.includes(image.id)}
       />;
-    });
+    }) : [];
 
     return (
-      <div className='contentContainer '>
-        {
-          isEmpty ?
-            <div className='contentContainer'>
-              <Sorting/>
-              <EmptyBlock albumId={album.id}/>
-            </div>
-            :
-            <>
-              <Sorting
-                currentPage='album'
-                setGridType={this.setGridType}
-                performAction={this.performAction}
-              />
-              <div className={'albumContent ' + this.state.gridType} >
-                { imagesItem }
-              </div>
-            </>
-        }
-      </div>
+      isEmpty ?
+        <div className='album-container'>
+          <GoBack className='go-back' onClick={this.goBack}/>
+          <h1 className='album-header'>{album.album_name}</h1>
+          <Sorting
+            currentPage='album'
+            setGridType={this.setGridType}
+            performAction={this.performAction}
+          />
+          <EmptyBlock albumId={album.id}/>
+        </div>
+        :
+        <div className='album-container'>
+          <GoBack className='go-back' onClick={this.goBack}/>
+          <h1 className='album-header'>{album.album_name}</h1>
+          <Sorting
+            currentPage='album'
+            setGridType={this.setGridType}
+            performAction={this.performAction}
+          />
+          <div className={'albumContent ' + this.state.gridType} >
+            { imagesItem }
+          </div>
+        </div>
     );
   }
 }

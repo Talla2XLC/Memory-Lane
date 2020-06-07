@@ -1,12 +1,12 @@
 import React  from 'react';
-import FormPortal from './UserRegistrationPortal';
+import Portal from './Modal/Portal';
 import styled from 'styled-components';
 
 const FormModal = ({ modalOpened, onCancel, children }) => {
   return (
     <>                                                                      
       { modalOpened &&
-        <FormPortal>
+        <Portal>
           <FormModalWrapper>
             <div className='modalOverlay'>
               <div className='modalWindow'>
@@ -20,7 +20,7 @@ const FormModal = ({ modalOpened, onCancel, children }) => {
               </div>
             </div>
           </FormModalWrapper>
-        </FormPortal>
+        </Portal>
       }
     </>
   );
