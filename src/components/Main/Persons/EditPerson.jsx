@@ -11,7 +11,6 @@ class EditPerson extends Component {
   constructor(props) {
     super(props);
     this.uploadPhoto =  this.uploadPhoto.bind(this);
-
     this.state = {
       lastName: this.props.currentPerson.last_name,
       firstName: this.props.currentPerson.first_name,
@@ -19,12 +18,12 @@ class EditPerson extends Component {
       roleInFamily: this.props.currentPerson.role_in_family,
       city: this.props.currentPerson.city,
       gender: this.props.currentPerson.gender,
-      imagesToUpload: this.props.currentPerson.ico_url
+      imagesToUpload: this.props.currentPerson.ico_url,
+      birthday: this.props.currentPerson.birthday
     };
   }
-
   editPerson = () => {
-    const { lastName, firstName, patronymic, gender, roleInFamily, city, imagesToUpload } = this.state;
+    const { lastName, firstName, patronymic, gender, roleInFamily, city, imagesToUpload, birthday } = this.state;
     const { sessionID, currentId } = this.props;
     const data = new FormData();
     data.append('last_name', lastName);
@@ -35,6 +34,7 @@ class EditPerson extends Component {
     data.append('gender', gender);
     data.append('ico_url', imagesToUpload[0]);
     data.append('id', currentId);
+    data.append('birthday', birthday);
 
     axios
       .post(
@@ -47,10 +47,8 @@ class EditPerson extends Component {
           }
         })
       .then(res => {
-        console.log(res)
         if (res.data.result) {
           this.props.downloadPersons();
-          
         } else {
           console.error(res.data.error);
         }
@@ -69,7 +67,7 @@ class EditPerson extends Component {
   }
 
   render() {
-    const { lastName, firstName, patronymic, roleInFamily, city, imagesToUpload } = this.state;
+    const { lastName, firstName, patronymic, roleInFamily, city, imagesToUpload, birthday} = this.state;
     return (
       <div className='setPersonContainer'>
         <div className='head1 title'> Изменение персоны </div>
@@ -94,6 +92,7 @@ class EditPerson extends Component {
                 placeholder=' '
                 type='text'
                 onChange={this.handleInput}
+                required={lastName  ? true : false}
                 value={lastName}/>
             </div>
 
@@ -106,6 +105,7 @@ class EditPerson extends Component {
                 placeholder=' '
                 type='text'
                 onChange={this.handleInput}
+                required={firstName  ? true : false}
                 value={firstName}/>
             </div>
 
@@ -118,6 +118,7 @@ class EditPerson extends Component {
                 placeholder=' '
                 type='text'
                 onChange={this.handleInput}
+                required={patronymic  ? true : false}
                 value={patronymic}/>
             </div>
 
@@ -139,6 +140,19 @@ class EditPerson extends Component {
             </div>
 
             <div className='infoGroup'>
+              <label className='infoGroup__name' htmlFor='birthday'>Дата рождения:</label>
+              <input
+                id='birthday'
+                name='birthday'
+                className='infoGroup__input'
+                placeholder=' '
+                type='date'
+                onChange={this.handleInput}
+                required={birthday  ? true : false}
+                value={birthday}/>
+            </div>
+
+            <div className='infoGroup'>
               <label className='infoGroup__name' htmlFor='city'>Степень родства:</label>
               <input
                 name='roleInFamily'
@@ -147,6 +161,7 @@ class EditPerson extends Component {
                 placeholder=' '
                 type='text'
                 onChange={this.handleInput}
+                required={roleInFamily  ? true : false}
                 value={roleInFamily}/>
             </div>
 
@@ -159,6 +174,7 @@ class EditPerson extends Component {
                 placeholder=' '
                 type='text'
                 onChange={this.handleInput}
+                required={city  ? true : false}
                 value={city}/>
             </div>
 
@@ -187,6 +203,9 @@ class EditPerson extends Component {
             </div>
             <Link className='setPerson__button' to={'/persons/'}>
               <ButtonContainer onClick={this.editPerson}>Сохранить</ButtonContainer>
+            </Link>
+            <Link className='cancelButton setPerson__button' to={'/persons/'}>
+              <ButtonContainer white={true}>Отмена</ButtonContainer>
             </Link>
 
           </div>

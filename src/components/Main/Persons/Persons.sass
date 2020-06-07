@@ -80,18 +80,26 @@
     float: right
 .infoGroup
   display: grid
-  grid-template-columns: 3fr 1fr
+  grid-template-columns: 1fr 3fr
   margin-bottom: 16px
   &__name
     text-align: left
   &__input 
     background: rgba(130, 132, 130, 0.1)
     border: 1px solid rgba(130, 132, 130, 0.3)
-    box-sizing: border-box
     border-radius: 10px
     width: 416px
+    outline: none
+    padding: 0 12px
+    box-sizing: border-box
+    &:hover
+      border: 1px solid #5DB07B
+    &:required
+      background-color: #FFFFFF
+
   &__checkbox
     margin: 4px 8px 0 8px
+    background: #278147
 .invitePerson
   display: flex
   float: right
@@ -109,3 +117,9 @@
   &__item
     margin-right: 5px
 
+.cancelButton
+  margin-right: 24px
+
+
+.dateInput
+  width: 200px
