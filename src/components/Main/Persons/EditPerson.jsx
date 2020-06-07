@@ -47,7 +47,6 @@ class EditPerson extends Component {
           }
         })
       .then(res => {
-        console.log(res)
         if (res.data.result) {
           this.props.downloadPersons();
         } else {
