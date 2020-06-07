@@ -9,7 +9,18 @@ import { ReactComponent as CommentsIcon } from '../svg/commentsIcon.svg';
 
 export default class StoriesItem extends Component {
   render() {
-    const { id, title, author, date, content, picture } = this.props;
+    
+    const { 
+      id,
+      content,
+      date,
+      title,
+      author,
+      city,
+      tags,
+      picture
+    } = this.props;
+
 
     let options = {
       dateStyle: 'medium',
@@ -20,11 +31,41 @@ export default class StoriesItem extends Component {
 
     return (
       <div className='story'>
-        <Link className='story__photo' to={`/stories/${id}`}>
+        <Link
+          className='story__photo'
+          to={{ 
+            pathname: `/stories/${id}`,
+            state: {
+              id: {id},
+              content: {content},
+              date: {date},
+              title: {title},
+              author: {author},
+              city: {city},
+              tags: {tags},
+              picture: {picture}
+            }
+          }}
+        >
           <img src={picture} alt='storyPicture'/>
         </Link>
         <div className='story__info'>
-          <Link className='head2 story__title' to={`/stories/${id}`}>
+          <Link
+            className='head2 story__title'
+            to={{
+              pathname: `/stories/${id}`,
+              state: {
+                id: {id},
+                content: {content},
+                date: {date},
+                title: {title},
+                author: {author},
+                city: {city},
+                tags: {tags},
+                picture: {picture}
+              }
+            }}
+          >
             {title}
           </Link>
           <div className='text3 story__authorDateContainer'>

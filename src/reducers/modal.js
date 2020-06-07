@@ -1,5 +1,7 @@
 const initialState = {
-  addAlbumOpened: false
+  addAlbumOpened: false,
+  chooseAlbumOpened: false,
+  choosePhotoOpened: false
 };
 
 export default function modalReducer(state = initialState, action) {
@@ -13,6 +15,26 @@ export default function modalReducer(state = initialState, action) {
       return {
         ...state,
         addAlbumOpened: false
+      };
+    case 'OPEN_MODAL_CHOOSE_ALBUM':
+      return {
+        ...state,
+        chooseAlbumOpened: true
+      };
+    case 'CLOSE_MODAL_CHOOSE_ALBUM':
+      return {
+        ...state,
+        chooseAlbumOpened: false
+      };
+    case 'OPEN_MODAL_CHOOSE_PHOTO':
+      return {
+        ...state,
+        choosePhotoOpened: true
+      };
+    case 'CLOSE_MODAL_CHOOSE_PHOTO':
+      return {
+        ...state,
+        choosePhotoOpened: false
       };
     default:
       return state;

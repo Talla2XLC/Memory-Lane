@@ -43,17 +43,27 @@
     // 1st margin-right 15
     // 2nd margin-right 20
 
-.storyAdd
-  padding: 30px 150px 0 30px
+.storyBackwards
+  display: flex
+  margin: 30px 49px
+  background: transparent
+  border: none
+  &:active
+    outline: none
+
+.storyNew
+  padding: 0 150px 0 30px
   box-sizing: border-box
   margin-left: 102px
+  // background: yellow
   input
+    border-radius: 0px
     border: none
     outline: none
   &__desk
     text-align: left
-    display: flex
-    flex-direction: column
+    // display: flex
+    // flex-direction: column
   &__name
     width: 772px
     height: 36px
@@ -63,16 +73,40 @@
   &__tags
     width: 652px
     height: 32px
-  &__content
-    width: 772px
-    height: 27px
-    margin-top: 32px
-    text-align: left
-    font-size: 18px
-    overflow: hidden
-    resize: none
-    outline: none
-    border: 1px dashed transparent
+  &__wrapper
+    // min-height: 200px
+    position: relative
+    // background: coral
+    display: flex
+    align-items: flex-start
+    // margin-top: 32px
+    overflow: none
+    >textarea
+      width: 772px
+      height: 27px
+      margin-bottom: 34px
+      text-align: left
+      font-size: 18px
+      overflow: hidden
+      resize: none
+      outline: none
+      border: 1px dashed transparent
+      padding-left: 10px
+    >button
+      position: absolute
+      margin-left: -35px
+      // margin-bottom: 50px
+      width: 40px
+      background: transparent
+      border: none
+      cursor: pointer
+      &:hover
+        opacity: 0.5
+      &:active
+        opacity: 0.7
+      &:focus
+        outline: none
+    
 
     // display: block
     // width: 100%
@@ -85,6 +119,7 @@
     height: 24px
     margin-top: 12px
     color: #3B3E3C
+  
   // &__photo
   //   box-sizing: border-box
   //   display: flex
@@ -92,13 +127,40 @@
   //   flex-flow: row nowrap
   //   margin: 32px 0
   >button
-    position: fixed
-    left: 323px
-    bottom: 24px
-    margin-left: 126px
-    margin-bottom: 34px
+    // position: fixed
+    // left: 323px
+    // bottom: 24px
+    margin: 41px 0
     font-weight: 500
     letter-spacing: 0.006em
+
+.storyView
+  margin-left: 132px
+  margin-right: 43px
+  display: flex
+  flex-flow: column nowrap
+  align-items: flex-start
+  &__title
+    margin-bottom: 32px
+  &__tags
+    color: red
+    margin-bottom: 12px
+  &__date
+    margin-bottom: 12px
+  &__author
+    margin-bottom: 12px
+  &__city
+    margin-bottom: 32px
+  &__content
+    margin-bottom: 48px 
+    text-align: left
+  &__picture
+    min-width: 505px
+    min-height: 338px
+    max-width: 861px
+    max-height: 455px
+    border: 1px solid black
+    margin-bottom: 90px
 
 .addPhotoItem
   margin: 0 5px
@@ -124,3 +186,5 @@
   &__title
     width: 100%
     margin-bottom: 10px
+
+

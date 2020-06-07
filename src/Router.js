@@ -22,7 +22,7 @@ import DownloadPhoto from './components/Main/Albums/UploadPhoto/UploadPhoto';
 // import StoryEdit from './components/Main/Stories/StoryEdit';
 import StoryView from './components/Main/Stories/StoryView';
 import Profile from './components/Main/UserProfile/UserProfile';
-import StoryAdd from './components/Main/Stories/StoryAdd';
+import StoryNew from './components/Main/Stories/StoryNew';
 import EditPerson from './components/Main/Persons/EditPerson';
 
 export default class Router extends Component {
@@ -42,13 +42,11 @@ export default class Router extends Component {
           <Route exact path='/photo/add/' component={ DownloadPhoto } />
           <Route exact path='/albums/:id' component={ Album } />
           <Route exact path='/persons/:id' component={ Person } />
-          <Route exact path='/persons/edit/:id'component={ EditPerson }/>         
-   
-       
+          <Route exact path='/persons/edit/:id'component={ EditPerson }/>
           {/* <Route exact path='/albums/addalbums/' component={ UsersAlbums } /> */}
           <Route exact path='/photo/:id' component={ Photo } />
           <Route exact path='/stories/' component={ Stories } />
-          <Route exact path='/stories/add/' component={ StoryAdd } />
+          <Route exact path='/stories/add/' component={ StoryNew } />
           <Route path='/stories/:id' component={ StoryView } />
           <Route exact path='/services/' component={ Services } />
           <Route exact path='/userfullname/' >

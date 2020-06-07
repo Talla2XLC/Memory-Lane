@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import DropdownView from './DropdownView';
 import DropdownAction from "../DropdownAction/DropdownAction";
-
 import {ReactComponent as Arrow} from './svg/arrow.svg';
 import {ReactComponent as Plus} from '../../svg/plus.svg';
 import {connect} from 'react-redux';
@@ -81,6 +80,21 @@ class Sorting extends Component {
               {addPerson}
             </div>
           </SortingContainer>;
+        case 'stories':
+          return <SortingContainer>
+            <div className='left-sorting'>
+              {date}
+              {person}
+            </div>
+            <div className='right-sorting-stories'>
+              <Link to={'add'}>
+                Создать историю
+              </Link>
+              <Link to={'add'} >
+                <Plus className='right-sorting-stories-plus'/>
+              </Link>
+            </div>
+          </SortingContainer>;
 
         default:
           return '';
@@ -95,7 +109,7 @@ class Sorting extends Component {
 
 export const SortingContainer = styled.div`
 height: 76px;
-z-index: 2;
+z-index: 1;
 width: 100%;
 position:sticky;
 top: 0;
@@ -121,6 +135,17 @@ background: #F6F6F6;
   flex-flow: row nowrap;
   margin-left: auto;
 }
+.right-sorting-stories {
+  display: flex;
+  
+  flex-flow: row nowrap;
+  margin-left: auto;
+}
+.right-sorting-stories > a:first-child {
+  color: #3B3E3C;
+  margin-right: 12px; 
+}
+
 .arrow {
   margin-left: 4px;
 }

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import FormPortal from '../UserRegistrationPortal';
+import Portal from './Portal';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
 import {modalClose} from '../../../actions/modalClose';
@@ -11,12 +11,15 @@ class MainModal extends Component {
     return (
       <>
         { modalOpened &&
-          <FormPortal>
+          <Portal>
             <FormModalWrapper>
               <div className='modalOverlay'>
                 <div className='modalWindow'>
                   <div className='modalHeader'>
-                    <button className='times' onClick={e => {closeModal(modalType);}} />
+                    <button
+                      className='times'
+                      onClick={e => closeModal(modalType)}
+                    />
                   </div>
                   <div className='modalBody'>
                     {children}
@@ -25,7 +28,7 @@ class MainModal extends Component {
                 </div>
               </div>
             </FormModalWrapper>
-          </FormPortal>
+          </Portal>
         }
       </>
     );

@@ -54,7 +54,7 @@ const mapDispatchToProps = dispatch => {
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
 
 const HeaderWrapper = styled.div`
-z-index: 5;
+z-index: 2;
 width: 100%;
 display: flex;
 justify-content: flex-start;
