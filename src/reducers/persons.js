@@ -34,11 +34,6 @@ export default function personsReducer(state = initialState, action) {
         roleInFamily: action.roleInFamily,
         city: action.city
       };
-    case 'SET_ICO': 
-      return {
-        ...state,
-        ico: action.ico
-      };
     default:
       return state;
   }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 import { Link } from  'react-router-dom';
 import  Sorting  from '../General/Sorting/Sorting';
 import './Persons.sass';
@@ -28,6 +29,25 @@ class Persons extends Component {
 	      return;
 	  }
   }
+
+  // getAlbums = () => {
+  //   const { sessionID } = this.props;
+  //   console.log(sessionID)
+  //   axios
+  //     .post(
+  //       'http://api.memory-lane.ru/db/getHistory',
+  //       {
+  //         headers: {
+  //           'Content-Type': 'multipart/form-data',
+  //           'Authorization': `${sessionID}`
+  //         }
+  //       })
+  //     .then(res => {
+  //       console.log(res)
+  //     })
+  //     .catch(error => console.error(error));
+  // }
+
 
   render() {
     const { loading } = this.props;

@@ -15,10 +15,8 @@ const getAlbumsFailed = error => ({
 
 
 export const getAlbums = () => dispatch => {
-
   dispatch(getAlbumsStarted());
   const token = localStorage.getItem('token');
-
   axios
     .post(
       'http://api.memory-lane.ru/db/getAlbum',

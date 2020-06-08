@@ -8,6 +8,7 @@ import { getPersons } from '../../../actions/actionPersons';
 import {ReactComponent as EmtyPhoto} from './svg/emptyPhotoBlock.svg';
 import {ReactComponent as EmtyStory} from './svg/emptyStoryBlock.svg';
 import { Link } from 'react-router-dom';
+import PersonsContent from './PersonsContent';
 
 class Person extends Component {
   constructor(props) {
@@ -91,20 +92,9 @@ class Person extends Component {
             <ButtonContainer className='personItem__button' onClick={this.deletePerson}>Удалить</ButtonContainer>
             </Link>
           </div>
-          <div className='personFoto'>
-            <div className='head3 title'>Фото с персоной</div>
-            <div className='personFoto__container'>
-              <EmtyPhoto/>
-            </div>
+          <PersonsContent/>
           </div>
-          <div className='personStory'> 
-            <div className='head3 title'>Истории с персоной</div>
-            <div className='personStory__container'>
-              <EmtyStory/>
-            </div> 
 
-          </div>
-        </div>
         :
         <EditPerson 
           currentId={currentId}
