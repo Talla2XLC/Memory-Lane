@@ -10,10 +10,15 @@ class PhotoFull extends Component {
   constructor(props) {
     super(props);
     this.goBack = this.goBack.bind(this);
+    this.setEditing = this.setEditing.bind(this);
 
     this.state = {
       editing: false
     };
+  }
+
+  setEditing() {
+    this.setState({editing: true});
   }
 
   goBack() {
@@ -56,7 +61,8 @@ class PhotoFull extends Component {
           <PhotoFullRight
             tags={tags}
             date={date}
-            pesons={persons}
+            persons={persons}
+            setEditing={this.setEditing}
           />
         }
 

@@ -2,6 +2,15 @@ import React, { Component } from 'react';
 import {ReactComponent as EditSVG} from '../svg/edit.svg';
 
 class PhotoFullRight extends Component {
+  constructor(props) {
+    super(props);
+    this.handleEdit = this.handleEdit.bind(this);
+  }
+
+  handleEdit() {
+    this.props.setEditing();
+  }
+
   render() {
     const { tags, date, persons } = this.props;
 
@@ -21,7 +30,7 @@ class PhotoFullRight extends Component {
         </div>
         <div className='photo-full-right-item photo-full-right-date'>
           <span className='photo-full-right-span text3'>Примерная дата:</span>
-          {date}
+          <span className='text3'>{date ?? 'не определена'}</span>
         </div>
         <div className='photo-full-right-item photo-full-right-persons'>
           <span className='photo-full-right-span text3'>Персоны на фото:</span>
@@ -43,7 +52,7 @@ class PhotoFullRight extends Component {
         <div className='photo-full-right-BTN'>
           <button className='photo-full-editBTN'>
             <EditSVG/>
-            <span className='photo-full-editBTN-span text3'>Редактировать</span>
+            <span className='photo-full-editBTN-span text3' onClick={this.handleEdit}>Редактировать</span>
           </button>
         </div>
       </div>
