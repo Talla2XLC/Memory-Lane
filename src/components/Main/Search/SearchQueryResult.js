@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './Search.sass';
 
@@ -11,11 +12,13 @@ class Search extends Component {
 		filtered: ''
 	};
 
-    this.handleClick();
+	this.componentDidMount();
+	this.cancel = '';
   }
 
-  handleClick = () => {
+  componentDidMount = () => {
 	const { token, query } = this.props;
+
   	axios
 	  .post(
 		'http://api.memory-lane.ru/search',
@@ -31,12 +34,12 @@ class Search extends Component {
 	  )
 	  .then(res => {
 	  console.warn(res);
-	if(res) {
+	  if(res) {
 		this.setState({
 		  results: res.data.conten
 		}); 
 		console.log(res.data.conten[0].story);
-	} else {
+	  } else {
 		  console.error(res.data.error);
 	  }
     
@@ -100,8 +103,9 @@ class Search extends Component {
 const mapStateToProps = (state) => {
 	return {
 	  query: state.searchQueryInfo.query,
+	  isOpen: state.searchQueryInfo.isOpen,
 	  token: state.session.sessionID
 	};
 };
 
-export default connect(mapStateToProps)(Search);
+export default connect(mapStateToProps)(withRouter(Search));
