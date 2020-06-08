@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './PhotoFull.sass';
 import InteractionIcons from 'components/Main/General/InteractionIcons';
 import AvatarButton from 'components/Main/Header/AvatarButton';
-import PhotoFullRight from "./PhotoFullRight";
+import PhotoFullRight from './PhotoFullRight';
 import {connect} from 'react-redux';
 import { ReactComponent as GoBack } from 'components/Main/svg/goBack.svg';
 
@@ -51,11 +51,15 @@ class PhotoFull extends Component {
           </div>
           <div className='face' />
         </div>
-        <PhotoFullRight
-          tags={tags}
-          date={date}
-          pesons={persons}
-        />
+        {this.state.editing ?
+          '' :
+          <PhotoFullRight
+            tags={tags}
+            date={date}
+            pesons={persons}
+          />
+        }
+
       </div>
     );
   }
