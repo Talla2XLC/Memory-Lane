@@ -101,6 +101,7 @@ box-sizing: border-box;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+  padding-bottom: 40px;
 }
 `;
 

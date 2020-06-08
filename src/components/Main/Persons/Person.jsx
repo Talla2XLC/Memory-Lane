@@ -74,7 +74,7 @@ class Person extends Component {
                 <div className='textTransform'>{currentPerson.gender === 'male' ? 'мужчина' : 'женщина'  }</div>
               </div>
               <div className='infoGroup'>
-              <div className='infoGroup__name'>Дата: </div>
+                <div className='infoGroup__name'>Дата: </div>
                 <div className='textTransform'>{day} {month} {year}</div>
               </div>
               <div className='infoGroup'>
@@ -88,7 +88,7 @@ class Person extends Component {
             </div>
             <ButtonContainer className='personItem__button' onClick={this.editOn}>Редактировать</ButtonContainer>
             <Link  to={'/persons/'}>
-            <ButtonContainer className='personItem__button' onClick={this.deletePerson}>Удалить</ButtonContainer>
+              <ButtonContainer className='personItem__button' onClick={this.deletePerson}>Удалить</ButtonContainer>
             </Link>
           </div>
           <div className='personFoto'>
