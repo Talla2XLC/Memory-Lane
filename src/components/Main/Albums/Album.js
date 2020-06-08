@@ -120,13 +120,12 @@ class Album extends Component {
       isEmpty ?
         <div className='album-container'>
           <GoBack className='go-back' onClick={this.goBack}/>
-          <h1 className='album-header'>{album.album_name}</h1>
           <Sorting
             currentPage='album'
             setGridType={this.setGridType}
             performAction={this.performAction}
           />
-          <EmptyBlock albumId={album.id}/>
+          <EmptyBlock />
         </div>
         :
         <div className='album-container'>
@@ -148,7 +147,7 @@ class Album extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    album: state.albums.albums[props.match.params.id],
+    album: state.albums.albums.find(album => album.id === props.match.params.id),
     token: state.session.sessionID
   };
 };

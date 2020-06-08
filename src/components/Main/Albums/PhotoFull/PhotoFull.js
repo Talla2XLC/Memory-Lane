@@ -3,6 +3,7 @@ import './PhotoFull.sass';
 import InteractionIcons from 'components/Main/General/InteractionIcons';
 import AvatarButton from 'components/Main/Header/AvatarButton';
 import PhotoFullRight from './PhotoFullRight';
+import PhotoFullRightEdit from './PhotoFullRightEdit';
 import {connect} from 'react-redux';
 import { ReactComponent as GoBack } from 'components/Main/svg/goBack.svg';
 
@@ -17,8 +18,8 @@ class PhotoFull extends Component {
     };
   }
 
-  setEditing() {
-    this.setState({editing: true});
+  setEditing(status) {
+    this.setState({editing: status});
   }
 
   goBack() {
@@ -57,7 +58,12 @@ class PhotoFull extends Component {
           <div className='face' />
         </div>
         {this.state.editing ?
-          '' :
+          <PhotoFullRightEdit
+            tags={tags}
+            date={date}
+            persons={persons}
+            setEditing={this.setEditing}
+          /> :
           <PhotoFullRight
             tags={tags}
             date={date}

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import {ReactComponent as EditSVG} from '../svg/edit.svg';
 
-class PhotoFullRight extends Component {
+class PhotoFullRightEdit extends Component {
   constructor(props) {
     super(props);
     this.handleEdit = this.handleEdit.bind(this);
   }
 
   handleEdit() {
-    this.props.setEditing(true);
+    this.props.setEditing(false);
   }
 
   render() {
@@ -60,4 +60,4 @@ class PhotoFullRight extends Component {
   }
 }
 
-export default PhotoFullRight;
+export default PhotoFullRightEdit;

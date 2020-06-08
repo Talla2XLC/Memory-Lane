@@ -94,7 +94,6 @@ class UserAlbums extends Component {
 	      }
 	    )
 	    .then(res => {
-	      console.log(res);
 	      if (res.data.result) {
 	        this.props.downloadAlbums();
 	      }
@@ -109,7 +108,7 @@ class UserAlbums extends Component {
 	  const albumsItems = userAlbums.map((album, index) =>
 	    (
 	        <div key={album.id} className='album-item'>
-	        <Link className='userAlbumsLink' to={`/albums/${index}`}>
+	        <Link className='userAlbumsLink' to={`/albums/${album.id}`}>
 	          <div className='imgWrap'>
 	            {album.photo ? 
 	              <img className='imgWrap__img' src={album.photo[album.photo.length - 1].content_url} alt='albumPreview'/>

@@ -110,7 +110,7 @@ export default class StoryNew extends Component {
         dropdownOpened
       } = this.state;
 
-      const { loading, albums, history } = this.props;
+    const { loading, history } = this.props;
 
     if (hasCreated) return <Redirect to='/stories'/>
 
@@ -177,7 +177,7 @@ export default class StoryNew extends Component {
               />
 
               <div className='storyNew__photoStore'>
-                <img />
+                <img alt='story'/>
               </div>
 
               <div className='storyNew__wrapper'>

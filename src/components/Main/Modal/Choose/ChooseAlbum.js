@@ -15,8 +15,6 @@ import AlbumItem from './ChooseAlbumItemAlbum';
 
 import './ChooseAlbum.sass';
 
-import axios from 'axios';
-
 class ModalChooseAlbum extends Component {
   constructor(props) {
     super(props);

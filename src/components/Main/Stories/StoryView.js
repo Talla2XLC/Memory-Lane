@@ -8,8 +8,7 @@ import './Stories.sass';
 export default class StoryView extends Component {
 
   render() {    
-    const { 
-      id,
+    const {
       content,
       date,
       title,
