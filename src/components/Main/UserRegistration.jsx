@@ -66,9 +66,9 @@ export default class UserRegistration extends Component {
 		emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
 		fieldValidationErrors.email = emailValid ? '' : 'Неверно введён email';
 
-		if (emailValid) {
-				fieldErrorStyle.email = '';
-		} 
+		  if (emailValid) {
+	        fieldErrorStyle.email = '';
+		  } 
 			
 	    break;
 
