@@ -95,6 +95,17 @@ class Sorting extends Component {
               </Link>
             </div>
           </SortingContainer>;
+        case 'search':
+          return <SortingContainer>
+            <div className='left-sorting'>
+              {alphabet}
+              {/* {date}
+              {fullness} */}
+            </div>
+            <div className='right-sorting-album'>
+              <DropdownView currentPage={page} setGridType={setGridType}/>
+            </div>
+          </SortingContainer>;
 
         default:
           return '';

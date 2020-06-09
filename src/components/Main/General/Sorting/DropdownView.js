@@ -49,6 +49,14 @@ class DropdownView extends Component {
             { name: 'Маленькая плитка', id: 3}
           ]
         });
+      case 'search':
+        this.setState({
+          viewData: [
+            { name: 'Большая плитка', id: 1},
+            { name: 'Средняя плитка', id: 2},
+            { name: 'Маленькая плитка', id: 3}
+          ]
+        });
         break;
       default:
         break;

@@ -1,13 +1,13 @@
-.heading 
-  font-size: 30px
-  padding: 16px 0
-  color: #444
-  text-align: center
+// .heading 
+//   font-size: 30px
+//   padding: 16px 0
+//   color: #444
+//   text-align: center
 
-.container
-  margin: 36px auto
-  width: 100%
-  max-width: 800px
+// .container
+//   margin: 36px auto
+//   width: 100%
+//   max-width: 800px
 
 .search-label
   position: relative
@@ -29,70 +29,126 @@
   right: 18px
 
 //Result Container
-.results-container
-  display: flex
-  flex-flow: wrap
+// .results-container
+//   display: flex
+//   flex-flow: wrap
 
 .result-items
   position: relative
-  padding: 16px
-  border: 1px solid #898989
-  margin: 16px
+  // padding: 16px
+  // border: 1px solid #898989
+  // margin: 16px
   text-align: center
-  min-width: 200px
+  width: 100%
   background: linear-gradient(180deg, rgba(59, 62, 60, 0) 73.54%, #3B3E3C 100%)
   border-radius: 5px
 
-.image-username
-  color: #ff7f50
-  font-size: 18px
-  position: absolute
-  bottom: 0
-  right: 0
-  margin: 0
-  background-color: rgba( 0 ,0 ,0 , 0.8 )
-  padding: 5px 10px
+// .image-username
+//   color: #ff7f50
+//   font-size: 18px
+//   position: absolute
+//   bottom: 0
+//   right: 0
+//   margin: 0
+//   background-color: rgba( 0 ,0 ,0 , 0.8 )
+//   padding: 5px 10px
 
-.image-wrapper
-  display: flex
-  justify-content: center
-  align-self: center
-  box-sizing: border-box
-  height: 100%
+// .image-wrapper
+//   display: flex
+//   justify-content: center
+//   align-self: center
+//   box-sizing: border-box
+//   height: 100%
 
 .image
   width: 100%
   height: 200px
+  border-radius: 10px
 
 
 //Loader
-.search-loading
-  position: absolute
-  left: 0
-  right: 0
-  margin: auto
+// .search-loading
+//   position: absolute
+//   left: 0
+//   right: 0
+//   margin: auto
 
 //Show and hide
-.show
-  display: inline-block
+// .show
+//   display: inline-block
 
-.hide
-  display: none
+// .hide
+//   display: none
 
 //Prev and next
 
-.nav-link-container
-  margin: 20px 0
-  display: flex
-  justify-content: flex-end
+// .nav-link-container
+//   margin: 20px 0
+//   display: flex
+//   justify-content: flex-end
 
-.nav-link
-  color: #555
-  text-decoration: none
-  border: 1px solid #898989
-  padding: 10px 20px
-  margin-right: 10px
+// .nav-link
+//   color: #555
+//   text-decoration: none
+//   border: 1px solid #898989
+//   padding: 10px 20px
+//   margin-right: 10px
 
-.greyed-out
-  background: #f1f1f1
-  opacity: 0.5
+// .greyed-out
+//   background: #f1f1f1
+//   opacity: 0.5
+
+
+
+.searchWrapSmall
+  grid-template-columns: repeat(6, 1fr)
+  display: grid
+  wrap: no-wrap
+  gap: 29px 38px
+
+.searchWrapMiddle
+  grid-template-columns: repeat(4, 1fr)
+  display: grid
+  wrap: no-wrap
+  gap: 29px 38px
+
+.searchWrapBig
+  grid-template-columns: repeat(3, 1fr)
+  display: grid
+  wrap: wrap
+  gap: 29px 38px
+
+.searchContainer
+  text-align: left
+  padding: 64px 44px 0 44px
+  box-sizing: border-box
+
+.searchTitle
+  margin: 24px 0 16px 0
+
+.storyContainer
+  grid-template-columns: repeat(2, 1fr)
+  display: grid
+  wrap: wrap
+  gap: 29px 38px
+
+.storyItem
+  display: grid 
+  grid-template-columns: 1fr 1fr
+  grid-template-areas: 'img text'
+  &__text
+    grid-area: text
+    width: 327px
+    padding-left: 10px
+    box-sizing: border-box
+  &__img
+    grid-area: img
+.itemTitle
+  color: #3B3E3C
+
+.searchLink
+  width: 100%
+
+.searchImage
+  width: 100%
+  border-radius: 10px
