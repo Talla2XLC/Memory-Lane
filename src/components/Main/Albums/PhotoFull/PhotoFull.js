@@ -27,8 +27,9 @@ class PhotoFull extends Component {
   }
 
   render() {
-    const { url, name, author, date, coordinates, desc, persons } = this.props.location.props;
+    const { url, name, author, date, coordinates, desc } = this.props.location.props;
     const tags = this.props.location.props.tags ? JSON.parse(this.props.location.props.tags) : false;
+    const persons = this.props.location.props.persons ? JSON.parse(this.props.location.props.persons) : false;
     const coords = coordinates ? JSON.parse(coordinates) : false;
 
     const img = <img className={'img'} src={url} alt='gallery_pic'/>;
