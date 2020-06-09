@@ -65,6 +65,8 @@ padding: 11px 0;
 box-sizing: border-box;
 background: #FFD1A9;
 padding-right: 40px;
+position: sticky;
+top: 0;
 
 .logoLink {
   margin-left: 45px;

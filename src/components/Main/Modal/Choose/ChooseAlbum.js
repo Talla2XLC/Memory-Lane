@@ -1,16 +1,11 @@
 import React, {Component} from 'react';
-
 import {Link} from 'react-router-dom';
-
-// import PerfectScrollbar from 'react-perfect-scrollbar';
-
 import {connect} from 'react-redux';
 
 import {getAlbums} from '../../../../actions/actionAlbums';
 import {modalClose} from '../../../../actions/modalClose';
 
 import Portal from '../Portal';
-
 import {ButtonContainer} from '../../Button';
 import {ReactComponent as Plus} from '../../svg/plus.svg';
 
@@ -20,10 +15,8 @@ import AlbumItem from './ChooseAlbumItemAlbum';
 
 import './ChooseAlbum.sass';
 
-import axios from 'axios';
-
 class ModalChooseAlbum extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -38,7 +31,7 @@ class ModalChooseAlbum extends Component {
   chooseAlbum() {
     this.setState({currentAlbum: this.props.album.id});
 
-    console.log(this.state)
+    console.log(this.state);
   }
 
   goToAlbumContent() {
@@ -48,14 +41,14 @@ class ModalChooseAlbum extends Component {
   render() {
     const { modalOpened, modalType, closeModal, albums } = this.props;
 
-    const storiesAlbums = Object.values(albums).map(album =>
-        <AlbumItem 
-          key={album.id}
-          id={album.id}
-          title={album.album_name}
-          picture={album.ico_url}
-        />
-      )
+    const storiesAlbums = albums ? Object.values(albums).map(album =>
+      <AlbumItem 
+        key={album.id}
+        id={album.id}
+        title={album.album_name}
+        picture={album.ico_url}
+      />
+    ) : '';
     
     return (
       <>
@@ -74,25 +67,25 @@ class ModalChooseAlbum extends Component {
                     />
                   </div>
                   {/* <PerfectScrollbar component='div' style={{ right: 0 }}> */}
-                    <div className='modalChooseBody'>
-                      <div className='searchAndNewAlbum'>
-                        {/* DIFFERENT PROPS TO THE SEARCH FOR PLACEHOLDER */}
-                        <ChooseAlbumSearch/>
-                        {!this.state.goToAlbumPhotos ?
-                          <div className='searchAndNewAlbumAddAlbum'>
-                            <Link to={'#'}>
+                  <div className='modalChooseBody'>
+                    <div className='searchAndNewAlbum'>
+                      {/* DIFFERENT PROPS TO THE SEARCH FOR PLACEHOLDER */}
+                      <ChooseAlbumSearch/>
+                      {!this.state.goToAlbumPhotos ?
+                        <div className='searchAndNewAlbumAddAlbum'>
+                          <Link to={'#'}>
                               Создать альбом
-                            </Link>
-                            <Link to={'#'}>
-                              <Plus className='searchAndNewAlbumAddAlbumPlus'/>
-                            </Link>
-                          </div>
+                          </Link>
+                          <Link to={'#'}>
+                            <Plus className='searchAndNewAlbumAddAlbumPlus'/>
+                          </Link>
+                        </div>
                         : null}
-                      </div>
-                      <div className='albumsAndPhotos'>
-                        {!this.state.goToAlbumPhotos ? storiesAlbums : 'Render here Album content component'}
-                      </div>
                     </div>
+                    <div className='albumsAndPhotos'>
+                      {!this.state.goToAlbumPhotos ? storiesAlbums : 'Render here Album content component'}
+                    </div>
+                  </div>
                   {/* </PerfectScrollbar> */}
                   <div className='modalChooseFooter'>
                     <div className='modaChooseContentBottom'>
@@ -116,7 +109,7 @@ class ModalChooseAlbum extends Component {
         }
       </>
     );
-  };
+  }
 }
 
 const mapStateToProps = state => {

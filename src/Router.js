@@ -14,7 +14,7 @@ import AddPerson from './components/Main/Persons/AddPerson';
 import Person from './components/Main/Persons/Person';
 // import Albums from './components/Main/Albums/Photos';
 import Album from './components/Main/Albums/Album';
-import Photo from './components/Main/Albums/PhotoFull';
+import Photo from './components/Main/Albums/PhotoFull/PhotoFull';
 import Stories from './components/Main/Stories/Stories';
 import Services from './components/Main/Services';
 import Learn from './components/Main/Learn';
