@@ -8,7 +8,6 @@ class Search extends Component {
 
   constructor(props) {
     super(props);
-    this.setGridType = this.setGridType.bind(this)
     this.state = {
       results: [],
       filtered: '',
@@ -97,7 +96,7 @@ class Search extends Component {
   // 		</div>
   // 	  )
   //   }
-  setGridType(gridId) {
+  setGridType = (gridId) => {
     switch (gridId) {
       case 1:
         this.setState({styleType: 'searchWrapBig'});
@@ -115,10 +114,13 @@ class Search extends Component {
   render = () => {
     return (
       <div className='searchContainer'>
-			 <div className='head1'>Результаты поиска</div>
+			<div className='head1'>Результаты поиска</div>
         <Sorting  currentPage='search' setGridType={this.setGridType}/> 
-
         <div>
+          <div className='head3 searchTitle'>Истории</div> 
+          { this.renderStoryResults() } 
+        </div> 
+        {/* <div>
           <div className='head3 searchTitle'>Фотографии</div>
           <div className={this.state.styleType}>
             <div>
@@ -146,7 +148,7 @@ class Search extends Component {
               <div className='text3 itemTitle'>Название</div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div>
           <div className='head3 searchTitle'>Альбомы</div>
@@ -178,7 +180,7 @@ class Search extends Component {
           </div>
         </div>
 
-        <div>
+        {/* <div>
           <div className='head3 searchTitle'>Персоны</div>
           <div className={this.state.styleType}>
             <div>
@@ -206,12 +208,7 @@ class Search extends Component {
               <div className='text3 itemTitle'>Название</div>
             </div>
           </div>
-        </div>
-
-        <div>
-          <div className='head3 searchTitle'>Истории</div> 
-          { this.renderStoryResults() } 
-        </div>
+        </div> */}
 
 
         {/* { this.renderAlbumResults() }	    */}
