@@ -21,12 +21,12 @@ export default class UserRegistration extends Component {
 	password: '',
 	openEye: false,
 	formErrors: {
-	email: '',
-	password: {
-	  message1: '', 
-	  message2: '', 
-	  message3: ''
-	}
+	  email: '',
+	  password: {
+	    message1: '', 
+	    message2: '', 
+	    message3: ''
+	  }
     },
 	formErrorStyle: {
 	  email: '',

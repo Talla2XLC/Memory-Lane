@@ -4,10 +4,10 @@
 //   color: #444
 //   text-align: center
 
-// .container
-//   margin: 36px auto
-//   width: 100%
-//   max-width: 800px
+.container
+  margin: 36px auto
+  width: 100%
+  max-width: 800px
 
 .search-label
   position: relative
@@ -29,9 +29,11 @@
   right: 18px
 
 //Result Container
-// .results-container
-//   display: flex
-//   flex-flow: wrap
+.results-container
+  display: flex
+  flex-flow: wrap
+  //width: 149px
+  //height: 118px
 
 .result-items
   position: relative
@@ -43,26 +45,27 @@
   background: linear-gradient(180deg, rgba(59, 62, 60, 0) 73.54%, #3B3E3C 100%)
   border-radius: 5px
 
-// .image-username
-//   color: #ff7f50
-//   font-size: 18px
-//   position: absolute
-//   bottom: 0
-//   right: 0
-//   margin: 0
-//   background-color: rgba( 0 ,0 ,0 , 0.8 )
-//   padding: 5px 10px
+.image-username
+  color: #ff7f50
+  font-size: 18px
+  position: absolute
+  bottom: 0
+  right: 0
+  margin: 0
+  background-color: rgba( 0 ,0 ,0 , 0.8 )
+  padding: 5px 10px
 
-// .image-wrapper
-//   display: flex
-//   justify-content: center
-//   align-self: center
-//   box-sizing: border-box
-//   height: 100%
+.image-wrapper
+  display: flex
+  justify-content: center
+  align-self: center
+  box-sizing: border-box
+  height: 100%
 
 .image
   width: 100%
-  height: 158px
+  //width: 149px
+  //height: 200px
   border-radius: 10px
 
 
@@ -97,8 +100,6 @@
 // .greyed-out
 //   background: #f1f1f1
 //   opacity: 0.5
-
-
 
 .searchWrapSmall
   grid-template-columns: repeat(6, 1fr)
@@ -136,19 +137,33 @@
   display: grid 
   grid-template-columns: 1fr 1fr
   grid-template-areas: 'img text'
+  //overflow: hidden
   &__text
     grid-area: text
     width: 327px
     padding-left: 10px
     box-sizing: border-box
+    //height: 144px
+    text-overflow: ellipsis
+    //overflow: hidden
+    &:hover
+      //overflow: visible
   &__img
     grid-area: img
 .itemTitle
   color: #3B3E3C
+  margin-bottom: 4px
 
 .searchLink
   width: 100%
+  overflow: hidden
 
 .searchImage
   width: 100%
   border-radius: 10px
+
+.albumsContainer
+  grid-template-columns: repeat(2, 1fr)
+  display: grid
+  wrap: wrap
+  gap: 29px 38px
