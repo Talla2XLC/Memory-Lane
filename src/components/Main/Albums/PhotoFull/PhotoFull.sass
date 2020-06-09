@@ -50,6 +50,9 @@
     align-items: flex-start
   &-span
     display: block
+    color: #3B3E3C
+  &-tags-list
+    color: #5DB07B
 
 .photo-full-editBTN
   background: none
@@ -57,3 +60,13 @@
   >span
     margin-left: 6px
     color: #3B3E3C
+    padding-bottom: 3px
+  &:focus
+    outline: none
+  &:hover >span
+    border-bottom: 1px solid #3B3E3C
+  &:active >span
+    color: #5DB07B
+    border-bottom: 1px solid #5DB07B
+  &:active >svg >path
+    stroke: #5DB07B

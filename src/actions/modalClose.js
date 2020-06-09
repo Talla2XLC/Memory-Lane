@@ -14,6 +14,7 @@ export const modalClose = type => {
         break;
       case 'chooseAlbum':
         dispatch(closeChooseAlbum());
+        break;
       default:
         break;
     }

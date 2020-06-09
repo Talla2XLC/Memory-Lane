@@ -6,14 +6,11 @@ import { ButtonContainer } from '../Button';
 import { getPersons } from '../../../actions/actionPersons';
 import FileInput from './FileInput';
 import './Persons.sass';
-// import TagsInput from './TagsInput';
-// import { ReactComponent as TegIcon } from './svg/addTegIcon.svg';
 
 class AddPerson extends Component {
   constructor(props) {
     super(props);
     this.uploadPhoto =  this.uploadPhoto.bind(this);
-    // this.setTegs =  this.setTegs.bind(this);
 
     this.state = {
       lastName: '',
@@ -71,13 +68,6 @@ class AddPerson extends Component {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   }
-
-  // setTegs(newText) {
-  //   this.setState({
-  //     tags: [...this.state.tags, newText]
-  //   });
-  // }
-
 
   render() {
     const { lastName, firstName, patronymic, roleInFamily, city, imagesToUpload, tags, birthday } = this.state;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import SelectNewPhoto from './SelectNewPhoto';
 import { Redirect } from 'react-router-dom';
-
+import { getAlbums } from 'actions/actionAlbums';
 import './UploadPhoto.sass';
 import axios from 'axios';
 
@@ -81,6 +81,7 @@ class UploadPhoto extends Component {
   }
 
   setUploadComplete() {
+    this.props.downloadAlbums();
     this.setState({ uploadComplete: true });
   }
 
@@ -118,6 +119,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    downloadAlbums: () => {
+      dispatch(getAlbums());
+    }
   };
 };
 

@@ -16,7 +16,7 @@ export default function FileInput(props) {
   return (
     <section className='icoInput'>
       <div className='text1'>Главная фотография</div>
-      <div {...getRootProps()}>
+      <div className='icoInput-txt' {...getRootProps()}>
         <div className='text3'>Изменить</div>
         <input {...getInputProps()} />
       </div>
