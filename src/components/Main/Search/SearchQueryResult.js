@@ -5,34 +5,23 @@ import { connect } from 'react-redux';
 import './Search.sass';
 import Sorting from '../General/Sorting/Sorting';
 class Search extends Component {
-  constructor(props) {
-    super(props)
-	this.state = {
-		results: [],
-		filtered: ''
-	};
 
-	this.componentDidMount();
-	this.cancel = '';
+  constructor(props) {
+    super(props);
+    this.setGridType = this.setGridType.bind(this)
+    this.state = {
+      results: [],
+      filtered: '',
+      styleType: 'searchWrapMiddle'
+    };
+
+    this.componentDidMount();
+    this.cancel = '';
   }
 
   componentDidMount = () => {
-	const { token, query } = this.props;
-  setGridType(gridId) {
-    switch (gridId) {
-      case 1:
-        this.setState({styleType: 'searchWrapBig'});
-        break;
-      case 2:
-        this.setState({styleType: 'searchWrapMiddle'});
-        break;
-      case 3:
-        this.setState({styleType: 'searchWrapSmall'});
-        break;
-      default:
-        return;
-    }
-  }
+    const { token, query } = this.props;
+
   	axios
 	  .post(
         'http://api.memory-lane.ru/search',
@@ -48,21 +37,12 @@ class Search extends Component {
 	  )
 	  .then(res => {
 	  console.warn(res);
-<<<<<<< HEAD
         if (res) {
           this.setState({
 		  results: res.data.conten
           }); 
           // console.log(res.data.conten[0].story);
         } else {
-=======
-	  if(res) {
-		this.setState({
-		  results: res.data.conten
-		}); 
-		console.log(res.data.conten[0].story);
-	  } else {
->>>>>>> b2dda5d02fbe9e90d76a1e814fa905e0b0f75c78
 		  console.error(res.data.error);
 	  }
 	  })
@@ -117,7 +97,21 @@ class Search extends Component {
   // 		</div>
   // 	  )
   //   }
-
+  setGridType(gridId) {
+    switch (gridId) {
+      case 1:
+        this.setState({styleType: 'searchWrapBig'});
+        break;
+      case 2:
+        this.setState({styleType: 'searchWrapMiddle'});
+        break;
+      case 3:
+        this.setState({styleType: 'searchWrapSmall'});
+        break;
+      default:
+        return;
+    }
+  }
   render = () => {
     return (
       <div className='searchContainer'>
