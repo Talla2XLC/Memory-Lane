@@ -27,7 +27,6 @@ class EditPerson extends Component {
       tags: JSON.parse(this.props.currentPerson.tag)
     };
   }
-
   editPerson = () => {
     const { lastName, firstName, patronymic, gender, roleInFamily, city, imagesToUpload, birthday, tags } = this.state;
     const jsonTags = JSON.stringify(tags);
