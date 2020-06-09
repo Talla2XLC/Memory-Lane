@@ -9,6 +9,7 @@ export default class TagsInput extends Component {
       newTagText: ''
     };
   }
+  
   addTags = (e) => {
     const newText = this.state.newTagText;
     if (e.key === 'Enter' && e.target.value !== '') {
@@ -18,41 +19,38 @@ export default class TagsInput extends Component {
       });
     }
   }
+
   removeTags = index => {
-    // this.props.unsetTegs(index)
-    console.log(index)
+    this.props.unSetTegs(index);
   };
 
-
-  // setTags([...tags.filter(tag => tags.indexOf(tag) !== index)]);
   handleInput = e => {
     const { value} = e.target;
     this.setState({ newTagText: value});
   }
+
   render() {
     return (
       <div className='tags-input'>
         <input
           type='text'
-          className='infoGroup__input'
+          className='infoGroup__input tagsInput'
           onChange={this.handleInput}
           onKeyUp={event => this.addTags(event)}
           value={this.state.newTagText}
-          // value={this.props.tags}
+          placeholder='Press enter to add tags'
         />
         <div className='tagWrap' >
-
-          { this.props.tags.map(item => (
-                      <>
-            <div
-            // onClick={this.removeTags(item)}
-            // key={item.id}
-            >{item}</div>
-            <div>x</div>
+          { this.props.tags.map((tag, index) => (
+            <>
+              <div
+                className='tags' 
+                key={index}
+              >{tag}</div>
+              <div className='deleteTag' onClick={() => this.removeTags(index)} />
             </>
           ))}
         </div>
-        {/* <TegIcon onClick={this.addTags}/> */}
       </div>
     );
   }

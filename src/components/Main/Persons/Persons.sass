@@ -5,7 +5,6 @@
 .textTransform
   text-transform: capitalize
   
-
 .persons
   padding: 0 44px
   box-sizing: border-box
@@ -36,7 +35,6 @@
   display: grid
   wrap: no-wrap
   gap: 29px 38px
-
 
 
 .personItem
@@ -96,16 +94,17 @@
       border: 1px solid #5DB07B
     &:required
       background-color: #FFFFFF
-
   &__checkbox
     margin: 4px 8px 0 8px
     background: #278147
+
 .invitePerson
   display: flex
   float: right
   margin: 20px 0
   &__margin
     margin: 8px 30px 0 0
+
 .tag 
   clear: both
   margin: 20px 0
@@ -114,12 +113,51 @@
 
 .tagWrap
   display: flex
+  clear: both
+  flex-wrap: wrap
+  padding: 15px 0 
+  box-sizing: border-box
   &__item
     margin-right: 5px
 
 .cancelButton
   margin-right: 24px
 
-
 .dateInput
   width: 200px
+
+.deleteTag 
+  width: 20px
+  height: 32px
+  margin-right: 10px
+
+.deleteTag:hover 
+  opacity: 1
+
+.deleteTag:before, .deleteTag:after 
+  position: absolute
+  content: ' '
+  border-radius: 5px
+  height: 15px
+  margin-top: 4px
+  width: 2px
+  background-color: #5DB07B
+
+.deleteTag:before 
+  transform: rotate(45deg)
+
+.deleteTag:after 
+  transform: rotate(-45deg)
+
+.tagsInput
+  width: inherit!important
+  float: left
+  background: #fff!important
+  &::placeholder 
+   color: #5DB07B
+   font-size: 14px
+
+.tags
+  clear: both
+
+

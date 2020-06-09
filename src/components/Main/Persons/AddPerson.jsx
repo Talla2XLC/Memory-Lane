@@ -14,6 +14,7 @@ class AddPerson extends Component {
     super(props);
     this.uploadPhoto =  this.uploadPhoto.bind(this);
     this.setTegs =  this.setTegs.bind(this);
+    this.unSetTegs = this.unSetTegs.bind(this);
 
     this.state = {
       lastName: '',
@@ -29,9 +30,11 @@ class AddPerson extends Component {
   }
 
   addPerson = () => {
-    const { lastName, firstName, patronymic, gender, roleInFamily, city, imagesToUpload, birthday } = this.state;
+    const { lastName, firstName, patronymic, gender, roleInFamily, city, imagesToUpload, birthday, tags } = this.state;
     const { sessionID } = this.props;
     const data = new FormData();
+    const jsonTags = JSON.stringify(tags);
+
     data.append('last_name', lastName);
     data.append('first_name', firstName);
     data.append('patronymic', patronymic);
@@ -40,7 +43,8 @@ class AddPerson extends Component {
     data.append('gender', gender);
     data.append('ico_url', imagesToUpload[0]);
     data.append('birthday', birthday);
-    // data.append('input', input);
+    data.append('tag', jsonTags);
+
     axios
       .post(
         'http://api.memory-lane.ru/db/setPerson',
@@ -52,6 +56,8 @@ class AddPerson extends Component {
           }
         })
       .then(res => {
+        console.log(res)
+        this.props.downloadPersons();
         if (res.data.result) {
           this.props.downloadPersons();
         } else {
@@ -77,14 +83,16 @@ class AddPerson extends Component {
       tags: [...this.state.tags, newText]
     });
   }
-  // unsetTegs(newText) {
-  //   this.setState({
-  //     tags: [...this.state.tags.filter(tag => tags.indexOf(tag) !== index)]
-  //   });
-  // }
+
+  unSetTegs(index) {
+    const {tags} = this.state;
+    this.setState({
+      tags: [...this.state.tags.filter(tag => tags.indexOf(tag) !== index)]
+    });
+  }
 
   render() {
-    const { lastName, firstName, patronymic, roleInFamily, city, imagesToUpload, tags, birthday } = this.state;
+    const { lastName, firstName, patronymic, roleInFamily, city, imagesToUpload, tags, birthday} = this.state;
     return (
       <div className='setPersonContainer'>
         <div className='head1 title'> Создание персоны </div>
@@ -202,10 +210,10 @@ class AddPerson extends Component {
             <div className='infoGroup'>
               <div className='infoGroup__name'> Теги:</div>
               <TagsInput
-                className='infoGroup__input'
+                // className='infoGroup__input'
                 tags={tags}
                 setTegs={this.setTegs}
-                unsetTegs={this.unsetTegs}
+                unSetTegs={this.unSetTegs}
               />
             </div>
             <Link className='setPerson__button' to={'/persons/'}>

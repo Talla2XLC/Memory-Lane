@@ -50,9 +50,10 @@ class Persons extends Component {
 
 
   render() {
+
     const { loading } = this.props;
     const userPersons = this.props.persons;
-
+    console.log(userPersons)
 	  const personItems = userPersons.map(item =>
       (<div key={item.id}>
         <Link className='persons__link' to={`/persons/${item.id}`}>   

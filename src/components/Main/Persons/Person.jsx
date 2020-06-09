@@ -62,6 +62,7 @@ class Person extends Component {
     const year = currentPerson.birthday ? currentPerson.birthday.substr(0,4) : '';
     const {edit} = this.state;
 
+
     return (
       !edit ? 
         <div className='personItem'>
