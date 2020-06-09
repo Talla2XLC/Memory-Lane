@@ -14,6 +14,7 @@ export const modalOpen = (type) => {
         break;
       case 'chooseAlbum':
         dispatch(openChooseAlbum());
+        break;
       default:
         break;
     }

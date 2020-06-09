@@ -55,6 +55,7 @@ class AddPerson extends Component {
           }
         })
       .then(res => {
+        console.log(res)
         this.props.downloadPersons();
         if (res.data.result) {
           this.props.downloadPersons();
