@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from  'react-router-dom';
 import  Sorting  from '../General/Sorting/Sorting';
-import './Persons.sass';
+import './PersonsCatalog.sass';
 
 
 class Persons extends Component {
@@ -32,11 +32,10 @@ class Persons extends Component {
   render() {
     const { loading } = this.props;
     const userPersons = this.props.persons;
-
 	  const personItems = userPersons.map(item =>
       (<div key={item.id}>
         <Link className='persons__link' to={`/persons/${item.id}`}>   
-          <img className='persons__img' src={(item.ico_url.length > 0) ? item.ico_url : 'http://placehold.it/365x365'} alt='persons icon'/>
+          <img className={(this.state.styleType + '__img') } src={(item.ico_url.length > 0) ? item.ico_url : 'http://placehold.it/365x365'} alt='persons icon'/>
         </Link> 
         <div className='head3 persons__align persons__name'>
           {item.last_name}  {item.first_name} {item.patronymic}

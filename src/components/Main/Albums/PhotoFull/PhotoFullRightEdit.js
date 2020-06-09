@@ -1,3 +1,4 @@
+
 import React, {Component} from 'react';
 import {ReactComponent as EditSVG} from '../svg/edit.svg';
 import {ReactComponent as XMark} from '../svg/xMark.svg';
