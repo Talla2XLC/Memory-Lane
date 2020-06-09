@@ -23,7 +23,7 @@ class Album extends Component {
   }
 
   componentDidMount() {
-    if (this.props.album.photo) {
+    if (this.props.album) {
       this.setState({isEmpty: false, images: this.props.album.photo});
     }
   }
@@ -147,7 +147,7 @@ class Album extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    album: state.albums.albums.find(album => album.id === props.match.params.id),
+    album: state.albums.albums.find(album => album.id == props.match.params.id),
     token: state.session.sessionID
   };
 };
