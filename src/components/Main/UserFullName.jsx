@@ -148,131 +148,131 @@ class UserFullName extends Component {
 	  const { firstName, lastName, dobDay, dobMonth, dobYear } = this.state;
 
 	  return (
-		<div className='container-form'>
-			<div className='formWrapper'>
-			<div className='formWrapperItem__titleContainer'>
-				<h2 className='titleContainerItem__title title_position_bottom'>Давайте познакомимся</h2>
-			</div>
+	    <div className='container-form'>
+	      <div className='formWrapper'>
+	        <div className='formWrapperItem__titleContainer'>
+	          <h2 className='titleContainerItem__title title_position_bottom'>Давайте познакомимся</h2>
+	        </div>
 
-			<div className='formContainerItem__form'>
+	        <div className='formContainerItem__form'>
 			    <div>
-					<legend>Имя</legend>
-						<input
-							name='firstName'
-							type='text'
-							size='0'
-							placeholder='Имя'
-							value={firstName}
-							onChange={this.handleInput}
-							required
-						/>
-				</div>
-				<div className='form-password'>
-					<legend>Фамилия</legend>	
-						<input
-							name='lastName'
-							type='text'
-							placeholder='Фамилия'
-							onChange={this.handleInput}
-							value={lastName}
-						/>
-				</div>
+	            <legend>Имя</legend>
+	            <input
+	              name='firstName'
+	              type='text'
+	              size='0'
+	              placeholder='Имя'
+	              value={firstName}
+	              onChange={this.handleInput}
+	              required
+	            />
+	          </div>
+	          <div className='form-password'>
+	            <legend>Фамилия</legend>	
+	            <input
+	              name='lastName'
+	              type='text'
+	              placeholder='Фамилия'
+	              onChange={this.handleInput}
+	              value={lastName}
+	            />
+	          </div>
 
-				<div class="genderWrapper">
-					<div>
+	          <div className='genderWrapper'>
+	            <div>
 						
-						<RadioGroup name="gender">
-							<Radio
-							  value="male"
-							  radioClass="genderRadio_input"
-							  increaseArea="20%"
+	              <RadioGroup name='gender'>
+	                <Radio
+							  value='male'
+							  radioClass='genderRadio_input'
+							  increaseArea='20%'
 							  label="<span class='gender__label'>Мужчина</span>"
 							  onClick={this.handleInput}
-							/>
-							<Radio
-							  value="female"
-							  radioClass="genderRadio_input"
-							  increaseArea="20%"
-							  label="Женщина"
+	                />
+	                <Radio
+							  value='female'
+							  radioClass='genderRadio_input'
+							  increaseArea='20%'
+							  label='Женщина'
 							  onClick={this.handleInput}
-							/>
-						</RadioGroup>
+	                />
+	              </RadioGroup>
 
-					</div>
-				</div>
+	            </div>
+	          </div>
 
-				<div className='dobWrapper'>
-					<legend>Дата рождения</legend>
-					<div>
-						<div className='dayWrapper'>
-							<span>День</span>
-							<input 
-								style={{width: 60, height: 48}}
-								onChange={this.handleInput}
-								placeholder='ДД'
-								type='number'
-								name='dobDay' 
-								value={dobDay} 
-								min='1' 
-								max='31'
-								list='numbList'
-							/>
-							{/* <datalist id="numbList">
+	          <div className='dobWrapper'>
+	            <legend>Дата рождения</legend>
+	            <div>
+	              <div className='dayWrapper'>
+	                <span>День</span>
+	                <input 
+	                  style={{width: 60, height: 48}}
+	                  onChange={this.handleInput}
+	                  placeholder='ДД'
+	                  type='number'
+	                  name='dobDay' 
+	                  value={dobDay} 
+	                  min='1' 
+	                  max='31'
+	                  list='numbList'
+	                />
+	                {/* <datalist id="numbList">
 								<option value="1" />
 							</datalist> */}
-						</div>
+	              </div>
 
-						<div className='monthWrapper'>
-							<span>Месяц</span>
-							<input 
-								style={{width: 73, height: 48}}
-								onChange={this.handleInput}
-								placeholder='ММ'
-								type='number'
-								name='dobMonth' 
-								value={dobMonth} 
-								min='1' 
-								max='12'
-							/>
-						</div>
-						<div className='yearWrapper'>
-							<span>Год</span>
-							<input 
-								style={{width: 179, height: 48}}
-								onChange={this.handleInput}
-								placeholder='ГГГГ'
-								type='number'
-								name='dobYear' 
-								value={dobYear} 
-								min="1"
-								max='9999'
-							/>
-						</div>
-					</div>
-				</div>
+	              <div className='monthWrapper'>
+	                <span>Месяц</span>
+	                <input 
+	                  style={{width: 73, height: 48}}
+	                  onChange={this.handleInput}
+	                  placeholder='ММ'
+	                  type='number'
+	                  name='dobMonth' 
+	                  value={dobMonth} 
+	                  min='1' 
+	                  max='12'
+	                />
+	              </div>
+	              <div className='yearWrapper'>
+	                <span>Год</span>
+	                <input 
+	                  style={{width: 179, height: 48}}
+	                  onChange={this.handleInput}
+	                  placeholder='ГГГГ'
+	                  type='number'
+	                  name='dobYear' 
+	                  value={dobYear} 
+	                  min='1'
+	                  max='9999'
+	                />
+	              </div>
+	            </div>
+	          </div>
 
-				<div className='btnContainer-fullname position-btn_top'>
-					<ButtonContainer
-						className='btn-skip'
-						type='submit'
-						onClick={this.skipIntroduce}
-					>
+	          <div className='btnContainer-fullname position-btn_top'>
+	            <ButtonContainer
+	              className='btn-skip'
+	              type='submit'
+	              onClick={this.skipIntroduce}
+	            >
 						Пропустить
-					</ButtonContainer>
+	            </ButtonContainer>
 
-					<ButtonContainer
-						className='btn-introduce'
-						type='submit'
-						value='Представиться'
-						onClick={this.introduceUser}
-					>
+	            <ButtonContainer
+	              className='btn-introduce'
+	              type='submit'
+	              value='Представиться'
+	              onClick={this.introduceUser}
+	            >
 						Представиться
-					</ButtonContainer>
-				</div>
-			</div>
-			{/* Modal window here */}
-			</div>
-		</div>
+	            </ButtonContainer>
+	          </div>
+	        </div>
+	        {/* Modal window here */}
+	      </div>
+	    </div>
 	  );
 	}
 }

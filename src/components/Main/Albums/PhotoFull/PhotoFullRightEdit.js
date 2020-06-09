@@ -20,11 +20,13 @@ class PhotoFullRightEdit extends Component {
           <span className='photo-full-right-span text3'>Тэги:</span>
           <div className='photo-full-right-tags-list'>
             {tags ? tags.map((tag, index) => {
-              return <span
+              /*return <input
                 key={index}
+                type='text'
+                className='photo-full-right-tags-edit'
               >
                 {'#' + tag}
-              </span>;
+              </input>;*/
             }) : 'Тэги отсуствуют'}
           </div>
         </div>

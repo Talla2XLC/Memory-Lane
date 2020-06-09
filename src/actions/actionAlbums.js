@@ -31,6 +31,7 @@ export const getAlbums = () => dispatch => {
       }
     )
     .then(res => {
+      console.log(res);
       dispatch(getAlbumsSucces(res.data.content));
     })
     .catch(error => dispatch(getAlbumsFailed(error.message)));
