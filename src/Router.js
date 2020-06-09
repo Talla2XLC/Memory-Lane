@@ -38,7 +38,7 @@ export default class Router extends Component {
           <Route exact path='/'>
             { hasFullName === false ? <Redirect to='/userfullname/' /> : <MainContent />}
           </Route>
-          <Route exact path='/search/:query' component={ SearchResult } />
+          <Route exact path='/search/:query' render={ props => <SearchResult key={props.match.params.query} /> } />
           <Route exact path='/persons/' component={ Persons } />
           <Route exact path='/persons/add/' component={ AddPerson } />
           <Route exact path='/albums/' component={ UsersAlbums } />

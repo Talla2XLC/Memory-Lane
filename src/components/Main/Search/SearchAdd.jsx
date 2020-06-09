@@ -9,14 +9,12 @@ import { querySearch } from '../../../actions/actionSearchQuery';
 class SearchAdd extends Component {  
     state = {
       query: '',
-      results: [],
-      isOpen: false
+      results: []
     };
 
   handleClick = () => {
-    const { query} = this.state;
+    const { query } = this.state;
     const { addQuery } = this.props;
-    this.setState({ isOpen: true });
 
     addQuery(query);
     this.props.history.push('/search/' + query);

@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './Search.sass';
 import Sorting from '../General/Sorting/Sorting';
 class Search extends Component {
   constructor(props) {
-    super(props);
-    this.setGridType = this.setGridType.bind(this);
-    this.state = {
-      results: [],
-      filtered: '',
-      styleType: 'searchWrapMiddle'
-    };
-		
-    this.handleClick();
+    super(props)
+	this.state = {
+		results: [],
+		filtered: ''
+	};
+
+	this.componentDidMount();
+	this.cancel = '';
   }
+
+  componentDidMount = () => {
+	const { token, query } = this.props;
   setGridType(gridId) {
     switch (gridId) {
       case 1:
@@ -30,9 +33,6 @@ class Search extends Component {
         return;
     }
   }
-	
-  handleClick = () => {
-    const { token, query } = this.props;
   	axios
 	  .post(
         'http://api.memory-lane.ru/search',
@@ -48,12 +48,21 @@ class Search extends Component {
 	  )
 	  .then(res => {
 	  console.warn(res);
+<<<<<<< HEAD
         if (res) {
           this.setState({
 		  results: res.data.conten
           }); 
           // console.log(res.data.conten[0].story);
         } else {
+=======
+	  if(res) {
+		this.setState({
+		  results: res.data.conten
+		}); 
+		console.log(res.data.conten[0].story);
+	  } else {
+>>>>>>> b2dda5d02fbe9e90d76a1e814fa905e0b0f75c78
 		  console.error(res.data.error);
 	  }
 	  })
@@ -220,8 +229,9 @@ class Search extends Component {
 const mapStateToProps = (state) => {
   return {
 	  query: state.searchQueryInfo.query,
+	  isOpen: state.searchQueryInfo.isOpen,
 	  token: state.session.sessionID
   };
 };
 
-export default connect(mapStateToProps)(Search);
+export default connect(mapStateToProps)(withRouter(Search));
