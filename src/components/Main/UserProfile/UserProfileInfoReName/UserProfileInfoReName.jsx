@@ -18,7 +18,7 @@ class UserProfileInfoReName extends Component {
       birthday_month: this.props.currentUser.birthday ? this.props.currentUser.birthday.substr(5,2) : '',
       birthday_year: this.props.currentUser.birthday ? this.props.currentUser.birthday.substr(0,4) : ''
     }
-  }
+  };
 
   checkGender = e => {
     e.persist();

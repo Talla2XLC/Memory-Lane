@@ -74,6 +74,29 @@
     width: 365px
   &__button
     float: right
+  &__ico
+    display: flex
+    flex-flow: column nowrap
+    align-items: center
+.icoInput
+  display: flex
+  flex-flow: column nowrap
+  align-items: center
+  &-txt
+    cursor: pointer
+    border-bottom: 1px solid #3B3E3C
+    >div
+      color: #3B3E3C
+      font-size: 14px
+      line-height: 18px
+    &:focus
+      outline: none
+    &:hover
+      border-bottom: 1px solid #5DB07B
+    &:active
+      border-bottom: 1px solid #5DB07B
+      >div
+        color: #5DB07B
 .infoGroup
   display: grid
   grid-template-columns: 1fr 3fr

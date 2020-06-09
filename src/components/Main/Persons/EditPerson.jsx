@@ -170,7 +170,7 @@ class EditPerson extends Component {
                 type='date'
                 onChange={this.handleInput}
                 required={birthday  ? true : false}
-                value={birthday}/>
+                value={birthday ?? undefined}/>
             </div>
 
             <div className='infoGroup'>
