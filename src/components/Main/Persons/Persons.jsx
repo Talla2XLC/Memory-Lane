@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import { Link } from  'react-router-dom';
 import  Sorting  from '../General/Sorting/Sorting';
-import './Persons.sass';
+import './PersonsCatalog.sass';
 
 
 class Persons extends Component {
@@ -30,34 +29,13 @@ class Persons extends Component {
 	  }
   }
 
-  // getAlbums = () => {
-  //   const { sessionID } = this.props;
-  //   console.log(sessionID)
-  //   axios
-  //     .post(
-  //       'http://api.memory-lane.ru/db/getHistory',
-  //       {
-  //         headers: {
-  //           'Content-Type': 'multipart/form-data',
-  //           'Authorization': `${sessionID}`
-  //         }
-  //       })
-  //     .then(res => {
-  //       console.log(res)
-  //     })
-  //     .catch(error => console.error(error));
-  // }
-
-
   render() {
-
     const { loading } = this.props;
     const userPersons = this.props.persons;
-    console.log(userPersons)
 	  const personItems = userPersons.map(item =>
       (<div key={item.id}>
         <Link className='persons__link' to={`/persons/${item.id}`}>   
-          <img className='persons__img' src={(item.ico_url.length > 0) ? item.ico_url : 'http://placehold.it/365x365'} alt='persons icon'/>
+          <img className={(this.state.styleType + '__img') } src={(item.ico_url.length > 0) ? item.ico_url : 'http://placehold.it/365x365'} alt='persons icon'/>
         </Link> 
         <div className='head3 persons__align persons__name'>
           {item.last_name}  {item.first_name} {item.patronymic}

@@ -1,0 +1,81 @@
+.setPersonContainer
+  padding: 64px  44px 0 28px
+.setPerson
+  display: grid
+  grid-template-columns: 2fr 5fr
+  margin-top: 33px
+  &__text
+    width: 60%
+    margin-left: 30px
+    width: 600px
+  &__img
+    width: 365px
+  &__button
+    float: right
+.infoGroup
+  display: grid
+  grid-template-columns: 1fr 3fr
+  margin-bottom: 16px
+  &__name
+    text-align: left
+  &__input 
+    background: rgba(130, 132, 130, 0.1)
+    border: 1px solid rgba(130, 132, 130, 0.3)
+    border-radius: 10px
+    width: 416px
+    outline: none
+    padding: 0 12px
+    box-sizing: border-box
+    &:hover
+      border: 1px solid #5DB07B
+    &:required
+      background-color: #FFFFFF
+  &__checkbox
+    margin: 4px 8px 0 8px
+    background: #278147
+
+
+.dateInput
+  width: 200px
+
+.genderForm
+  display: flex
+  width: 400px
+
+.tagWrap
+  display: flex
+  clear: both
+  flex-wrap: wrap
+  padding: 15px 0 
+  box-sizing: border-box
+  &__item
+    margin-right: 5px
+
+.deleteTag 
+  width: 20px
+  height: 32px
+  margin-right: 10px
+  &:before
+    transform: rotate(45deg)
+  &:after 
+    transform: rotate(-45deg)
+
+.deleteTag:before, .deleteTag:after 
+  position: absolute
+  content: ' '
+  border-radius: 5px
+  height: 15px
+  margin-top: 4px
+  width: 2px
+  background-color: #5DB07B
+
+.tagsInput
+  width: inherit!important
+  float: left
+  background: #fff!important
+  &::placeholder 
+   color: #5DB07B
+   font-size: 14px
+
+.cancelButton
+  margin-right: 24px

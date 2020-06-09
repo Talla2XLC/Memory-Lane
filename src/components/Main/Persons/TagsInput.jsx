@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { ReactComponent as TegIcon } from './svg/addTegIcon.svg';
-import './Persons.sass';
+import './AddAndEdit.sass';
+
 export default class TagsInput extends Component {
   constructor(props) {
     super(props);
@@ -9,7 +9,7 @@ export default class TagsInput extends Component {
       newTagText: ''
     };
   }
-  
+
   addTags = (e) => {
     const newText = this.state.newTagText;
     if (e.key === 'Enter' && e.target.value !== '') {
@@ -43,10 +43,7 @@ export default class TagsInput extends Component {
         <div className='tagWrap' >
           { this.props.tags.map((tag, index) => (
             <>
-              <div
-                className='tags' 
-                key={index}
-              >{tag}</div>
+              <div className='tags' key={index}>{tag}</div>
               <div className='deleteTag' onClick={() => this.removeTags(index)} />
             </>
           ))}

@@ -1,36 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
-import './Persons.sass';
+import './PersonItem.sass';
+import {ReactComponent as EmtyPhoto} from './svg/emptyPhotoBlock.svg';
+import {ReactComponent as EmtyStory} from './svg/emptyStoryBlock.svg';
+
 class PersonsContent extends Component {
-  // getAlbums = () => {
-  //   const { sessionID } = this.props;
-  //   axios
-  //     .post(
-  //       '',
-  //       {
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //           'Authorization': `${sessionID}`
-  //         }
-  //       })
-  //     .then(res => {
-  //       console.log(res);
-  //     })
-  //     .catch(error => console.error(error));
-  // }
   render() {
     return (
       <div>
         <div className='personFoto'>
           <div className='head3 title'>Фото с персоной</div>
-          <div className='personFoto__container'>
-            привет, я контент
-            {/* <button onClick={this.getAlbums} /> */}
-          </div>
+          { this.props.images != null ? 
+            <div className='personFotoContainer'>
+              {
+                this.props.images.map( item => (
+                  <div>
+                    <img className='personFoto__img' src={item.content_url} alt='persons photo item'/>
+                  </div>
+                ))
+              }
+            </div>
+            :
+            <EmtyPhoto/>
+          }
         </div>
         <div className='personStory'> 
           <div className='head3 title'>Истории с персоной</div>
+          <EmtyStory className='personEmtyBlock'/>
           <div className='personStory__container' /> 
         </div>
       </div>
@@ -38,10 +34,10 @@ class PersonsContent extends Component {
     );
   }
 }
+
 const mapStateToProps = (state) => {
   return {
     sessionID: state.session.sessionID
   };
 };
-
 export default connect(mapStateToProps)(PersonsContent);
