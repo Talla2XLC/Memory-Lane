@@ -41,12 +41,13 @@ export default class TagsInput extends Component {
           placeholder='Press enter to add tags'
         />
         <div className='tagWrap' >
-          { this.props.tags.map((tag, index) => (
-            <>
-              <div className='tags' key={index}>{tag}</div>
-              <div className='deleteTag' onClick={() => this.removeTags(index)} />
-            </>
-          ))}
+          { this.props.tags != null ?
+            this.props.tags.map((tag, index) => (
+              <>
+                <div className='tags' key={index}>{tag}</div>
+                <div className='deleteTag' onClick={() => this.removeTags(index)} />
+              </>
+            )) : <div/>}
         </div>
       </div>
     );
