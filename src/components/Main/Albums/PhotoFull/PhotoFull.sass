@@ -19,6 +19,7 @@
     margin: 20px 0
     border-radius: 10px
     overflow: hidden
+    position: relative
     >img
       margin-bottom: 10px
   &-contentZone
@@ -48,6 +49,7 @@
     display: flex
     flex-flow: column nowrap
     align-items: flex-start
+    width: 100%
   &-span
     display: block
     color: #3B3E3C
@@ -80,6 +82,12 @@
     &-input
       padding: 4px 12px
 
+.photo-full-right-person
+  &-edit
+    position: relative
+    width: 100%
+    text-align: left
+
 .xMark
   position: absolute
   top: 35%
@@ -88,3 +96,29 @@
 
 .addBtn
   cursor: pointer
+
+.face
+  border: 2px solid #FFFFFF
+  position: absolute
+  box-sizing: border-box
+  border-radius: 10px
+  display: flex
+  flex-flow: column nowrap
+
+.showFace-radio
+  cursor: pointer
+  >rect
+    transition: 0.4s ease-out
+  >circle
+    transition: 0.4s ease-out
+
+.showFace-active
+  >rect
+    fill: #5DB07B
+    stroke: #5DB07B
+  >circle
+    cx: 27
+    fill: #278147
+
+.cancel-BTN
+  background: white

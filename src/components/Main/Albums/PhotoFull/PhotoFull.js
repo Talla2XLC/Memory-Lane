@@ -12,9 +12,11 @@ class PhotoFull extends Component {
     super(props);
     this.goBack = this.goBack.bind(this);
     this.setEditing = this.setEditing.bind(this);
+    this.setShowFace = this.setShowFace.bind(this);
 
     this.state = {
-      editing: false
+      editing: false,
+      showFace: false
     };
   }
 
@@ -22,23 +24,44 @@ class PhotoFull extends Component {
     this.setState({editing: status});
   }
 
+  setShowFace(status) {
+    this.setState({showFace: status});
+  }
+
   goBack() {
     this.props.history.goBack();
   }
 
   render() {
-    const { url, name, author, date, coordinates, desc } = this.props.location.props;
+    const { url, name, date, coordinates, desc, token } = this.props.location.props;
+    const { personsList } = this.props;
+    const { showFace } = this.state;
+
     const tags = this.props.location.props.tags ? JSON.parse(this.props.location.props.tags) : false;
     const persons = this.props.location.props.persons ? JSON.parse(this.props.location.props.persons) : false;
     const coords = coordinates ? JSON.parse(coordinates) : false;
 
     const img = <img className={'img'} src={url} alt='gallery_pic'/>;
 
+    const faceBorder = coords ? coords.map((params, index) => (
+      <div key={index} className='face' style={{
+        width: params.WH[0],
+        height: params.WH[1],
+        top: params.coord[1],
+        left: params.coord[0]
+      }}>
+        <span>{personsList.find(pers => pers.id == persons[index]).first_name }</span>
+        <span>{personsList.find(pers => pers.id == persons[index]).last_name }</span>
+      </div>
+    )) : '';
+
     const imgDiv =
       <div className={'img-div photo-full-main-img'}>
         {img}
+        {showFace ? faceBorder : ''}
         <InteractionIcons fileUrl={url}/>
       </div>;
+
     return (
       <div className={'photo-full'}>
         <div className='photo-full-main'>
@@ -56,7 +79,6 @@ class PhotoFull extends Component {
             </div>
             <div className='text3'>{date}</div>
           </div>
-          <div className='face' />
         </div>
         {this.state.editing ?
           <PhotoFullRightEdit
@@ -64,15 +86,21 @@ class PhotoFull extends Component {
             date={date}
             persons={persons}
             setEditing={this.setEditing}
+            allPersons={personsList}
+            token={token}
+            showFace={showFace}
+            setShowFace={this.setShowFace}
           /> :
           <PhotoFullRight
             tags={tags}
             date={date}
             persons={persons}
             setEditing={this.setEditing}
+            allPersons={personsList}
+            showFace={showFace}
+            setShowFace={this.setShowFace}
           />
         }
-
       </div>
     );
   }
@@ -80,7 +108,9 @@ class PhotoFull extends Component {
 
 const mapStateToProps = state => {
   return {
-    currentUser: state.userInfo.currentUser
+    currentUser: state.userInfo.currentUser,
+    personsList: state.persons.persons,
+    token: state.session.sessionID
   };
 };
 

@@ -1,13 +1,19 @@
-
 import React, {Component} from 'react';
-import {ReactComponent as EditSVG} from '../svg/edit.svg';
 import {ReactComponent as XMark} from '../svg/xMark.svg';
 import {ReactComponent as AddBTN} from '../svg/addButton.svg';
+import DropdownPersons from '../../General/DropdownPersons/DropdownPersons';
+import {connect} from 'react-redux';
+import {ReactComponent as RadioBTN} from '../svg/radioBTN.svg';
+import {ButtonContainer} from '../../Button';
+import { getAlbums } from 'actions/actionAlbums';
+import axios from 'axios';
 
 class PhotoFullRightEdit extends Component {
   constructor(props) {
     super(props);
     this.handleEdit = this.handleEdit.bind(this);
+    this.addPerson = this.addPerson.bind(this);
+    this.handleShowFace = this.handleShowFace.bind(this);
   }
 
   state = {
@@ -20,6 +26,10 @@ class PhotoFullRightEdit extends Component {
 
   handleEdit() {
     this.props.setEditing(false);
+  }
+
+  handleShowFace(status) {
+    this.props.setShowFace(status);
   }
 
   handleTagsInput = e => {
@@ -89,12 +99,11 @@ class PhotoFullRightEdit extends Component {
     });
   }
 
-  newPerson(e) {
-    e.preventDefault();
+  addPerson(id) {
     this.setState(prevState => {
       const newPersons = prevState.newPhotoState.persons;
-      if (!newPersons.includes('')) {
-        newPersons.push('');
+      if (!newPersons.includes(id.toString())) {
+        newPersons.push(id.toString());
       }
 
       return {
@@ -106,8 +115,45 @@ class PhotoFullRightEdit extends Component {
     });
   }
 
+  commitChanges = () => {
+    /*const { tags, persons, date } = this.state.newPhotoState;
+    const { downloadAlbums, token } = this.props;
+
+    const newData = {
+      tags: tags,
+      persons: persons,
+      date: date
+    };
+
+    Object.keys(newData).length ?
+      (axios
+        .post(
+          'http://api.memory-lane.ru/db/setAccount',
+          newData,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `${token}`
+            }
+          })
+        .then(res => {
+          console.log(res);
+          if (res.data.result) {	// res.status === 200
+            this.handleSetEditing(false);
+            getUserInfo();
+          } else {	// res.status !== 200
+            console.error(res.data.error);
+            alert(`${res.data.error}`);
+          }
+        })
+        .catch(error => console.error(error))
+      )
+      : this.handleSetEditing(false);*/
+  }
+
   render() {
     const { tags, date, persons } = this.state.newPhotoState;
+    const { allPersons, showFace } = this.props;
 
     const tagsList = tags ? tags.map((tag, index) => (
       <label
@@ -131,7 +177,7 @@ class PhotoFullRightEdit extends Component {
         key={index}
         className='photo-full-right-person-edit'
       >
-        <span className='text3'>{person}</span>
+        <span className='text3'>{allPersons.find(pers => pers.id == person).first_name + ' ' + allPersons.find(pers => pers.id == person).last_name}</span>
         <XMark className='xMark' onClick={e => this.clearPerson(e, index)} />
       </div>
     )) : 'Персоны не отмечены';
@@ -152,23 +198,38 @@ class PhotoFullRightEdit extends Component {
         <div className='photo-full-right-item photo-full-right-persons'>
           <span className='photo-full-right-span text3'>Персоны на фото:</span>
           {personsList}
-          <AddBTN className='addBtn' onClick={e => this.newPerson(e)} />
+          <DropdownPersons persons={allPersons} selectPerson={this.addPerson}/>
         </div>
         <div className='photo-full-right-item photo-full-right-place'>
           <span className='photo-full-right-span text3'>Место:</span>
         </div>
         <div className='photo-full-right-item photo-full-right-showFace'>
           <span className='photo-full-right-span text3'>Показать персоны на фото</span>
+          <RadioBTN
+            className={showFace ? 'showFace-radio showFace-active' : 'showFace-radio'}
+            onClick={showFace ? () => this.handleShowFace(false) : () => this.handleShowFace(true)}
+          />
         </div>
         <div className='photo-full-right-BTN'>
-          <button className='photo-full-editBTN'>
-            <EditSVG/>
-            <span className='photo-full-editBTN-span text3' onClick={this.handleEdit}>Отмена</span>
-          </button>
+          <ButtonContainer className='choicePhoto__button cancel-BTN' white={true} onClick={this.handleEdit}>Отмена</ButtonContainer>
+          <ButtonContainer className='choicePhoto__button cancel-BTN' onClick={this.commitChanges}>Готово</ButtonContainer>
         </div>
       </div>
     );
   }
 }
 
-export default PhotoFullRightEdit;
+const mapStateToProps = state => {
+  return {
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    downloadAlbums: () => {
+      dispatch(getAlbums());
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PhotoFullRightEdit);
