@@ -41,11 +41,11 @@ class Persons extends Component {
           {item.last_name}  {item.first_name} {item.patronymic}
         </div>
         <div className=' text1 persons__align'>
-        132 фотографии
+          {item.images ? item.images.length : 'Нет связанных фотографий'}
         </div>
-        <div className='text1 persons__align'>
+        {/*<div className='text1 persons__align'>
         4 истории
-        </div>
+        </div>*/}
       </div>
       )
     );

@@ -14,29 +14,28 @@ class UploadPhoto extends Component {
     this.setDropdownImages = this.setDropdownImages.bind(this);
 
     this.state = {
-      selectedAlbum: 0,
+      selectedAlbum: null,
       dropdownOpened: false,
       imagesToUpload: [],
       uploadComplete: false
     };
   }
 
-  componentDidMount() {
-    if (this.props.location.state) {
-      this.setState({
-        selectedAlbum: this.props.location.state.albumId
-      });
-    }
-  }
-
   uploadImage() {
-    const { token } = this.props;
-    const { imagesToUpload, selectedAlbum } = this.state;
+    const { token, albums } = this.props;
+    const { imagesToUpload } = this.state;
     const data = new FormData();
+    const selectedAlbum = albums[0].id;
+    if (this.props.location.state) {
+      selectedAlbum = this.props.location.state.albumId;
+    }
+
     for (let x = 0; x < imagesToUpload.length; x++) {
       data.append('images[]', imagesToUpload[x]);
     }
     data.append('id_album', selectedAlbum);
+
+    console.log(data.values);
 
     if (imagesToUpload.length > 0)
       axios
@@ -51,6 +50,9 @@ class UploadPhoto extends Component {
           })
         .then(res => {
           if (res.data.result) {		// res.status === 200
+            this.setState({
+              selectedAlbum: selectedAlbum
+            });
             this.setUploadComplete();
           } else {	// res.status !== 200
             console.error(res);

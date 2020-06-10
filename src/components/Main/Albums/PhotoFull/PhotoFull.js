@@ -33,8 +33,8 @@ class PhotoFull extends Component {
   }
 
   render() {
-    const { url, name, date, coordinates, desc, token } = this.props.location.props;
-    const { personsList } = this.props;
+    const { url, name, date, coordinates, desc, id  } = this.props.location.props;
+    const { personsList, token } = this.props;
     const { showFace } = this.state;
 
     const tags = this.props.location.props.tags ? JSON.parse(this.props.location.props.tags) : false;
@@ -50,8 +50,14 @@ class PhotoFull extends Component {
         top: params.coord[1],
         left: params.coord[0]
       }}>
-        <span>{personsList.find(pers => pers.id == persons[index]).first_name }</span>
-        <span>{personsList.find(pers => pers.id == persons[index]).last_name }</span>
+        {persons ?
+          <>
+            <span className='face-span'>{personsList.find(pers => pers.id == persons[index]).first_name }</span>
+            <span className='face-span'>{personsList.find(pers => pers.id == persons[index]).last_name }</span>
+            <span className='face-span'>{'Возраст: ' + params.age + ' лет' }</span>
+          </> : ''
+        }
+
       </div>
     )) : '';
 
@@ -90,6 +96,7 @@ class PhotoFull extends Component {
             token={token}
             showFace={showFace}
             setShowFace={this.setShowFace}
+            photoId={id}
           /> :
           <PhotoFullRight
             tags={tags}

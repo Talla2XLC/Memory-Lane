@@ -25,9 +25,9 @@ class Main extends Component {
       navItems: [
         { endpoint: 'persons', title: 'Персоны', icon: <PersonsIcon/>  },
         { endpoint: 'albums', title: 'Альбомы', icon: <AlbumsIcon />  },
-        { endpoint: 'stories', title: 'Истории', icon: <StoryIcon/>   },
+        { endpoint: 'stories', title: 'Истории', icon: <StoryIcon/>   }/*,
         { endpoint: 'services', title: 'Сервисы', icon: <ServiceIcon/>   },
-        { endpoint: 'learn', title: 'Обучение', icon: <EducationIcon/>   }
+        { endpoint: 'learn', title: 'Обучение', icon: <EducationIcon/>   }*/
       ]
     };
   }

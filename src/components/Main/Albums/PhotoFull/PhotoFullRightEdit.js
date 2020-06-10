@@ -86,8 +86,10 @@ class PhotoFullRightEdit extends Component {
     e.preventDefault();
     this.setState(prevState => {
       const newTags = prevState.newPhotoState.tags;
-      if (!newTags.includes('')) {
-        newTags.push('');
+      if (newTags) {
+        if (!newTags.includes('')) {
+          newTags.push('');
+        }
       }
 
       return {
@@ -101,9 +103,13 @@ class PhotoFullRightEdit extends Component {
 
   addPerson(id) {
     this.setState(prevState => {
-      const newPersons = prevState.newPhotoState.persons;
-      if (!newPersons.includes(id.toString())) {
-        newPersons.push(id.toString());
+      let newPersons = prevState.newPhotoState.persons;
+      if (newPersons) {
+        if (!newPersons.includes(id.toString())) {
+          newPersons.push(id.toString());
+        }
+      } else {
+        newPersons = [id.toString()];
       }
 
       return {
@@ -116,19 +122,20 @@ class PhotoFullRightEdit extends Component {
   }
 
   commitChanges = () => {
-    /*const { tags, persons, date } = this.state.newPhotoState;
-    const { downloadAlbums, token } = this.props;
+    const { downloadAlbums, token, photoId } = this.props;
+    const persons = this.state.newPhotoState.persons;
+    const tags = this.state.newPhotoState.tags;
 
     const newData = {
-      tags: tags,
-      persons: persons,
-      date: date
+      id: photoId,
+      tags: tags ?? [],
+      persons: persons
     };
 
     Object.keys(newData).length ?
       (axios
         .post(
-          'http://api.memory-lane.ru/db/setAccount',
+          'http://api.memory-lane.ru/db/updateImages',
           newData,
           {
             headers: {
@@ -139,8 +146,8 @@ class PhotoFullRightEdit extends Component {
         .then(res => {
           console.log(res);
           if (res.data.result) {	// res.status === 200
-            this.handleSetEditing(false);
-            getUserInfo();
+            this.handleEdit();
+            downloadAlbums();
           } else {	// res.status !== 200
             console.error(res.data.error);
             alert(`${res.data.error}`);
@@ -148,7 +155,7 @@ class PhotoFullRightEdit extends Component {
         })
         .catch(error => console.error(error))
       )
-      : this.handleSetEditing(false);*/
+      : this.handleEdit();
   }
 
   render() {
