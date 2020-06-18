@@ -4,6 +4,8 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './Search.sass';
 import Sorting from '../General/Sorting/Sorting';
+// import StoryItem from '../Stories/StoryItem';
+// import StoriesEmpty from '../Stories/StoriesEmpty';
 
 class Search extends Component {
 
@@ -18,11 +20,15 @@ class Search extends Component {
     };
 
     this.componentDidMount();
-    this.cancel = '';
   }
 
+//   static getDerivedStateFromError = () => {
+//     // Обновите состояние так, чтобы следующий рендер показал запасной интерфейс.
+//     return { message: 'Failed to fetch results. Please check network'};
+//   }
+
   componentDidMount = () => {
-    const { token, query } = this.props;
+	const { token, query } = this.props;
 
   	axios
 	  .post(
@@ -40,15 +46,19 @@ class Search extends Component {
 	  .then(res => {
         if (res) {
           this.setState({
-		    results: res.data.conten
-          }); 
-        } else {
-		  console.error(res.data.error);
-	  }
+			results: res.data.conten,
+			// message: 'Failed to fetch results. Please check network'
+		  }); 
+		//   console.log(res);
+	    } else {
+		    this.setState({
+			loading: false,
+			message: 'Failed to fetch results. Please check network'
+		  });
+		}
 	  })
 	  .catch((error) => {
         if (error) {
-		  console.loge(error);
 		  this.setState({
             loading: false,
             message: 'Failed to fetch results. Please check network'
@@ -57,40 +67,89 @@ class Search extends Component {
 	  }); 
   };
 
+
+
+//   renderStoryResults = () => {
+//     const { loading, stories } = this.props;
+
+//     if (loading) return <h1>Загрузка данных</h1>;
+
+//     const storyItems = Object.values(stories).map(story =>
+//         <StoryItem 
+//           key={story.id}
+//           id={story.id}
+//           content={story.content}
+//           // Change date below to user input data
+//           // date={story.date}
+//           date={story.date_updated}
+//           title={story.story_name}
+//           author={story.author}
+//           city={story.city}
+//           tags={story.tags}
+//           picture={story.ico_url}
+//         />
+//       )
+    
+//     return (
+//       Object.keys(stories).length === 0 ?
+//       <div className='contentContainer'> <StoriesEmpty/> </div> :
+//         <div className='contentContainer'>
+//           <Sorting
+//             currentPage='stories'
+//           />
+//           <div className='stories'>
+//             {storyItems}
+//           </div>
+//         </div>
+//     );
+//   };
+
   renderStoryResults = () => {
 	const { results } = this.state;
-	const { stories } = this.props;
+    const { 
+		id, 
+		content, 
+		story_name, 
+		date_updated, 
+		author, 
+		city, 
+		tags, 
+		ico_url 
+	} = this.props.stories;
 
-	const { 
-		id,
-		content,
-		date,
-		title,
-		author,
-		city,
-		tags,
-		picture
-	} = this.props;
+	// const { 
+	// 	id,
+	// 	content,
+	// 	date,
+	// 	title,
+	// 	author,
+	// 	city,
+	// 	tags,
+	// 	picture
+	//   } = this.props;
+
+	console.log(this.props.stories);
 
     return (
 	  <div className='storyContainer'>
         { results.map((result) => {
 		  return (
             <div className='storyItem'>
+				
               <div className='storyItem__img'>
 				<Link 
 				  key={result.story.id} 
 				  to={{ 
 					pathname: `/stories/${result.story.id}`,
 					state: {
-					  id: {id},
-					  content: {content},
-					  date: {date},
-					  title: {title},
-					  author: {author},
-					  city: {city},
-					  tags: {tags},
-					  picture: {picture}
+					  id: id,
+					  content: content,
+					  date: date_updated,
+					  title: story_name,
+					  author: author,
+					  city: city,
+					  tags: tags,
+					  picture: ico_url
 					}
 				  }}
 				>
@@ -99,24 +158,25 @@ class Search extends Component {
 				</Link>
               </div>
                 <Link
+				  key={result.story.id} 
 				  to={{ 
 					pathname: `/stories/${result.story.id}`,
 					state: {
-					  id: {id},
-					  content: {content},
-					  date: {date},
-					  title: {title},
-					  author: {author},
-					  city: {city},
-					  tags: {tags},
-					  picture: {picture}
+					  id: id,
+					  content: content,
+					  date: date_updated,
+					  title: story_name,
+					  author: author,
+					  city: city,
+					  tags: tags,
+					  picture: ico_url
 					}
 				  }}				  
-				>
-					{title}
+				 >
+					{/* {title} */}
                   <div className='storyItem__text'>
                     {/* <h6 className='image-username'>{result.story.story_name}</h6> */}
-                    {/* <div className='head3 itemTitle'>{result.story.story_name}</div> */}
+                    <div className='head3 itemTitle'>{result.story.story_name}</div>
                     {/* <div className='text1'>{stories.content}</div> */}
 					<div className='text1'>
 					  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
@@ -133,30 +193,28 @@ class Search extends Component {
 		  );
         })}
 	  </div>
-    );
+	);
   }
 
   renderAlbumsResults = () => {
-	const { results } = this.state;
-
+	const { results, message } = this.state;
 	const { 
-		isDesc, 
-		isImg, 
-		gridType, 
-		url, 
-		isSelected, 
 		id, 
-		view, 
-		name, 
+		content_url, 
 		author, 
-		date, 
-		coordinates, 
+		description, 
+		album_name,
 		tags, 
-		persons 
-	} = this.props;
+		persons, 
+		coordinates, 
+		photo_name 
+	} = this.props.albums;
 
-	console.log(this.props);
-  
+	// const photo_url = this.props.albums.photo[0].content_url;
+    // console.log(this.props.albums);
+	if (message) {
+		return (<p className="message">{ message }</p>);
+	} else {
     return (
 	  <div className='storyContainer'>
         { results.map((result) => {
@@ -164,15 +222,15 @@ class Search extends Component {
             <div className='storyItem'>
               <div className='storyItem__img'>
 				<Link 
-				  key={result.story.id} 
+				  key={result.album.id}
 				  to={{ 
 					pathname: `/albums/${result.album.id}`,
 					state: {
-						url: url,
+						url: content_url,
 						id: id,
-						name: name,
+						name: album_name,
 						author: author,
-						date: date,
+						// date: date,
 						coordinates: coordinates,
 						tags: tags,
 						persons: persons
@@ -180,14 +238,14 @@ class Search extends Component {
 				  }}
 				>
 				  <img className='image' src='http://placehold.it/365x365' alt='storyPicture'/>
-				  {/* <img src={picture} alt='storyPicture'/> */}
+				  {/* <img src={(result.album.id === albums.id) ? albums.photo[albums.photo.length - 1].content_url : 'http://placehold.it/365x365'} alt='storyPicture'/> */}
 				</Link>
               </div>
             </div>
 		  );
         })}
 	  </div>
-    );
+    );}
   }
 
   setGridType = (gridId) => {
@@ -206,15 +264,27 @@ class Search extends Component {
     }
   }
 
+//   componentDidCatch = () => {
+// 	this.setState({ message: 'Failed to fetch results. Please check network'});
+//   }
+
+
   render = () => {
+	{/*	Error Message*/}
+	const { message } = this.state;
+	
+
+	if (message) {
+	return (<p className="message">{ message }</p>);
+    } else {
     return (
       <div className='searchContainer'>
 			<div className='head1'>Результаты поиска</div>
         <Sorting  currentPage='search' setGridType={this.setGridType}/> 
-		{/* <div>
+		<div>
           <div className='head3 searchTitle'>Альбомы</div>
 		  { this.renderAlbumsResults() }
-        </div> */}
+        </div>
         <div>
           <div className='head3 searchTitle'>Истории</div> 
           { this.renderStoryResults() } 
@@ -281,7 +351,7 @@ class Search extends Component {
 
         {/* { this.renderAlbumResults() }	    */}
 	  </div>
-    );
+    );}
   }
 }
 
@@ -290,6 +360,7 @@ const mapStateToProps = (state) => {
 	  query: state.searchQueryInfo.query,
 	  isOpen: state.searchQueryInfo.isOpen,
 	  stories: state.storiesInfo.stories,
+	  albums: state.albums.albums,
 	  token: state.session.sessionID
   };
 };

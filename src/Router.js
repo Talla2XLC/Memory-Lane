@@ -58,10 +58,10 @@ export default class Router extends Component {
           <Route exact path='/learn/' component={ Learn } />
           <Route exact path='/profile/' component={ Profile } />
           <Route exact path='/register/' component={ UserRegistration } />
+          {/* <Route exact path='*' component={ PageNotFound } /> */}
 
           <Redirect to='/'/>
 
-          {/* <Route exact to='/404' component={ PageNotFound } /> */}
         </Switch>) : (
           <Switch>
             <Route exact path='/auth/' component={ UserAuthorization } />
