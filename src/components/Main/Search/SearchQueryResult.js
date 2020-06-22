@@ -128,7 +128,7 @@ class Search extends Component {
 	// 	picture
 	//   } = this.props;
 
-	console.log(this.props.stories);
+	console.log(this.props);
 
     return (
 	  <div className='storyContainer'>
@@ -285,10 +285,10 @@ class Search extends Component {
           <div className='head3 searchTitle'>Альбомы</div>
 		  { this.renderAlbumsResults() }
         </div>
-        <div>
+        {/* <div>
           <div className='head3 searchTitle'>Истории</div> 
           { this.renderStoryResults() } 
-        </div> 
+        </div>  */}
         {/* <div>
           <div className='head3 searchTitle'>Фотографии</div>
           <div className={this.state.styleType}>
@@ -361,6 +361,7 @@ const mapStateToProps = (state) => {
 	  isOpen: state.searchQueryInfo.isOpen,
 	  stories: state.storiesInfo.stories,
 	  albums: state.albums.albums,
+	  persons: state.persons.persons,
 	  token: state.session.sessionID
   };
 };
