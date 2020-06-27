@@ -17,9 +17,7 @@ class Search extends Component {
 	  message: '',
 	  loading: false,
       styleType: 'searchWrapMiddle'
-    };
-
-    this.componentDidMount();
+	};
   }
 
 //   static getDerivedStateFromError = () => {
@@ -27,7 +25,7 @@ class Search extends Component {
 //     return { message: 'Failed to fetch results. Please check network'};
 //   }
 
-  componentDidMount = () => {
+  componentDidMount() {
 	const { token, query } = this.props;
 
   	axios
@@ -44,18 +42,24 @@ class Search extends Component {
 	    }
 	  )
 	  .then(res => {
+		console.log(res);
+		console.warn(res);
         if (res) {
           this.setState({
 			results: res.data.conten,
 			// message: 'Failed to fetch results. Please check network'
 		  }); 
 		//   console.log(res);
-	    } else {
-		    this.setState({
-			loading: false,
-			message: 'Failed to fetch results. Please check network'
-		  });
-		}
+		} else {	// res.status !== 200
+		console.error(res.data.error);
+		alert(`${res.data.error}`);
+	  }
+		// else {
+		//  this.setState({
+		// 	loading: false,
+		// 	message: 'Failed to fetch results. Please check network'
+		//   });
+		// }
 	  })
 	  .catch((error) => {
         if (error) {
@@ -127,8 +131,6 @@ class Search extends Component {
 	// 	tags,
 	// 	picture
 	//   } = this.props;
-
-	console.log(this.props);
 
     return (
 	  <div className='storyContainer'>
@@ -218,6 +220,7 @@ class Search extends Component {
     return (
 	  <div className='storyContainer'>
         { results.map((result) => {
+		  console.log(result);
 		  return (
             <div className='storyItem'>
               <div className='storyItem__img'>
@@ -270,7 +273,7 @@ class Search extends Component {
 
 
   render = () => {
-	{/*	Error Message*/}
+	  
 	const { message } = this.state;
 	
 
@@ -298,47 +301,11 @@ class Search extends Component {
               </a>
               <div className='text3 itemTitle'>Название</div>
             </div>
-            <div>
-              <a className='searchLink'>
-                <img className='searchImage' src='http://placehold.it/365x365' alt='/#'/>
-              </a>
-              <div className='text3 itemTitle'>Название</div>
-            </div>
-            <div>
-              <a className='searchLink'>
-                <img className='searchImage' src='http://placehold.it/365x365' alt='/#'/>
-              </a>
-              <div className='text3 itemTitle'>Название</div>
-            </div>
-            <div>
-              <a className='searchLink'>
-                <img className='searchImage' src='http://placehold.it/365x365' alt='/#'/>
-              </a>
-              <div className='text3 itemTitle'>Название</div>
-            </div>
           </div>
         </div> */}
         {/* <div>
           <div className='head3 searchTitle'>Персоны</div>
           <div className={this.state.styleType}>
-            <div>
-              <a className='searchLink'>
-                <img className='searchImage' src='http://placehold.it/365x365' alt='/#'/>
-              </a>
-              <div className='text3 itemTitle'>Название</div>
-            </div>
-            <div>
-              <a className='searchLink'>
-                <img className='searchImage' src='http://placehold.it/365x365' alt='/#'/>
-              </a>
-              <div className='text3 itemTitle'>Название</div>
-            </div>
-            <div>
-              <a className='searchLink'>
-                <img className='searchImage' src='http://placehold.it/365x365' alt='/#'/>
-              </a>
-              <div className='text3 itemTitle'>Название</div>
-            </div>
             <div>
               <a className='searchLink'>
                 <img className='searchImage' src='http://placehold.it/365x365' alt='/#'/>
