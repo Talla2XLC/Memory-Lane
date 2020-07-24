@@ -10,7 +10,7 @@ class SearchAdd extends Component {
     state = {
       query: '',
       results: []
-    };
+    };		
 
   handleClick = () => {
     const { query } = this.state;
@@ -60,6 +60,7 @@ class SearchAdd extends Component {
 
 const mapStateToProps = (state) => {
 	return {
+		token: state.session.sessionID
 	};
 };
 

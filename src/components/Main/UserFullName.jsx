@@ -183,18 +183,18 @@ class UserFullName extends Component {
 						
 	              <RadioGroup name='gender'>
 	                <Radio
-							  value='male'
-							  radioClass='genderRadio_input'
-							  increaseArea='20%'
-							  label="<span class='gender__label'>Мужчина</span>"
-							  onClick={this.handleInput}
+					  value='male'
+					  radioClass='genderRadio_input'
+					  increaseArea='20%'
+					  label="<span class='gender__label'>Мужчина</span>"
+					  onClick={this.handleInput}
 	                />
 	                <Radio
-							  value='female'
-							  radioClass='genderRadio_input'
-							  increaseArea='20%'
-							  label='Женщина'
-							  onClick={this.handleInput}
+					  value='female'
+					  radioClass='genderRadio_input'
+					  increaseArea='20%'
+					  label='Женщина'
+					  onClick={this.handleInput}
 	                />
 	              </RadioGroup>
 
