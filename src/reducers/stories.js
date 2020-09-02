@@ -1,6 +1,6 @@
 const initialState = {
   loading: true,
-  stories: null,
+  stories: '',
   error: null
 };
 
@@ -9,7 +9,8 @@ export default function storiesInfo(state = initialState, action) {
     case 'GET_STORIES_START':
       return {
         ...state,
-        loading: true
+        loading: true,
+        // stories: []
       };
     case 'GET_STORIES_SUCCESS':
       return {
@@ -24,7 +25,7 @@ export default function storiesInfo(state = initialState, action) {
         ...state,
         loading: false,
         isAuthorized: false,   // Not sure about this
-        error: action.payload.err
+        error: action.payload.error
       };
     default:
       return state;

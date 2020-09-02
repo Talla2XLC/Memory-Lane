@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Search from './Header/Search';
+import SearchAdd from './Search/SearchAdd';
 import Notice from './Header/Notice';
 import AddSection from './Header/Add_section';
 import AvatarButton from './Header/AvatarButton';
@@ -26,7 +26,9 @@ class Header extends Component {
           <div className='logoDot'/>
         </a>
         <div className='header__center'>
-          <Search/>
+          {/* <Search/> */}
+          <SearchAdd />
+          {/* <SearchQueryAdd/> */}
           <AddSection/>
         </div>
         <div className='header__right'>

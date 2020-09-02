@@ -6,6 +6,7 @@ import albums from './albums';
 import photosInfo from './photos';
 import storiesInfo from './stories';
 import persons from './persons';
+import searchQueryInfo from './searchQuery.js';
 
 const rootReducer = combineReducers({
   userInfo,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   albums,
   photosInfo,
   modal,
-  persons
+  persons,
+  searchQueryInfo 
 });
 
 export default rootReducer;

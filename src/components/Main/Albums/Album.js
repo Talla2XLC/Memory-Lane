@@ -97,6 +97,8 @@ class Album extends Component {
     const { isEmpty, images } = this.state;
     const { album, loading } = this.props;
 
+    // console.log(album);
+
     const imagesItem = images ? images.map(image => {
       return <AlbumsItem
         key={image.id}

@@ -22,6 +22,8 @@ import DownloadPhoto from './components/Main/Albums/UploadPhoto/UploadPhoto';
 // import StoryEdit from './components/Main/Stories/StoryEdit';
 import StoryView from './components/Main/Stories/StoryView';
 import Profile from './components/Main/UserProfile/UserProfile';
+import SearchResult from './components/Main/Search/SearchQueryResult';
+import PageNotFound from './components/Main/PageNotFound';
 import StoryNew from './components/Main/Stories/StoryNew';
 import EditPerson from './components/Main/Persons/EditPerson';
 
@@ -36,6 +38,7 @@ export default class Router extends Component {
           <Route exact path='/'>
             { hasFullName === false ? <Redirect to='/userfullname/' /> : <MainContent />}
           </Route>
+          <Route exact path='/search/:query' render={ props => <SearchResult key={props.match.params.query} /> } />
           <Route exact path='/persons/' component={ Persons } />
           <Route exact path='/persons/add/' component={ AddPerson } />
           <Route exact path='/albums/' component={ UsersAlbums } />
@@ -55,8 +58,10 @@ export default class Router extends Component {
           <Route exact path='/learn/' component={ Learn } />
           <Route exact path='/profile/' component={ Profile } />
           <Route exact path='/register/' component={ UserRegistration } />
+          {/* <Route exact path='*' component={ PageNotFound } /> */}
 
           <Redirect to='/'/>
+
         </Switch>) : (
           <Switch>
             <Route exact path='/auth/' component={ UserAuthorization } />

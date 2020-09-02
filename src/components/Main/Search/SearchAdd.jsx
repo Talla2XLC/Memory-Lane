@@ -1,54 +1,78 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import styled from 'styled-components';
 import { ReactComponent as IconSearch } from './svg/searchIcon.svg';
 import { ReactComponent as FilterSearch } from './svg/filterIcon.svg';
-import styled from 'styled-components';
-// import './Search.sass';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { querySearch } from '../../../actions/actionSearchQuery';
 
-
-export default class Search extends Component {
+class SearchAdd extends Component {  
     state = {
-      // filtered: people
-    }
+      query: '',
+      results: []
+    };		
 
-    // handleClick () => {
+  handleClick = () => {
+    const { query } = this.state;
+    const { addQuery } = this.props;
 
-    // }
+    addQuery(query);
+    this.props.history.push('/search/' + query);
 
-    // handleChange = (event) => {												 
-    //     const {value} = event.target;                                       													 // destructuring applied instead const value = event.target.value;
+  }
 
-    //     const filtered = people.filter((person) => {                         													 // save matches in state in people array
-    //         return person.name.indexOf(value) >= 0;           													 // returns the values ​​of an array of objects by indices (.toLowerCase()?)
-    // });
+  handleChange = (event) => {												 
+    const { value } = event.target;                                       													 // destructuring applied instead const value = event.target.value;
+	  this.setState({ query: value });
+  }
 
-    //     this.setState({ filtered });
-    // }
-
-    mapPerson = (person, i) => {
-      return <li className='mini-suggest__item' key={i}>{person.name}<b>{i}</b></li>;
-    }
-
-    render = () => {
-      return (
-        <SearchWrapper>
-          <div className='search'>
-            <button className='search-submit'>
-              <IconSearch />
-            </button>
-            <input className='input' placeholder='Поиск' type='text'/>
-            <button className='search-filter'>
-              <FilterSearch />
-            </button>
-          </div>
-          <div className='search__list'>
-            <ul>
-              {/* {this.state.filtered.map(this.mapPerson)} */}
-            </ul>
-          </div>
-        </SearchWrapper>
-      );
-    }
+  render() {
+    return (
+      <SearchWrapper>
+        <div className='search'>
+          <button
+            className='search-submit' 
+            onClick={this.handleClick}
+          > 
+          <IconSearch />
+          </button>
+          <input 
+            className='input' 
+            placeholder='Поиск' 
+            type='text'
+            onChange={this.handleChange}
+            onKeyPress={event => {
+              if (event.key === "Enter") {
+                this.handleClick();
+              }
+            }}
+          />
+          <button 
+            className='search-filter'
+          >
+            <FilterSearch />
+          </button> 
+        </div>
+      </SearchWrapper>
+    );
+  }
 }
+
+const mapStateToProps = (state) => {
+	return {
+		token: state.session.sessionID
+	};
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+		addQuery: (query) => {
+			dispatch(querySearch(query));
+		}
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SearchAdd));
 
 const SearchWrapper = styled.div`
   margin-right: 17px;

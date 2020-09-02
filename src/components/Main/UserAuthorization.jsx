@@ -9,6 +9,7 @@ import { ReactComponent as FormFB }	from './svg/form_fb.svg';
 import { ReactComponent as FormG }	from './svg/form_g.svg';
 import { ReactComponent as FormIns }	from './svg/form_ins.svg';
 import { ReactComponent as EyeClosed }	from './svg/eye_closed.svg';
+import { ReactComponent as EyeOpen }	from './svg/eye_open.svg';
 
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -17,14 +18,14 @@ import { sessionCheck } from '../../actions/sessionCheck';
 import { fetchUserFullName } from '../../actions/actionUserFullName';
 
 class UserAuthorization extends Component {
-	state = {
-	  email: '',
-	  password: '',
-	  emailError: false,
-	  passwordError: false,
-	  hasLoggedIn: false,
-	  openEye: false
-	};
+  state = {
+	email: '',
+	password: '',
+	emailError: false,
+	passwordError: false,
+	hasLoggedIn: false,
+	openEye: false
+  };
 	
 	handleInput = e => {
 	  const { name, value } = e.target;
@@ -120,7 +121,7 @@ class UserAuthorization extends Component {
 						// onClick={this.clickEye}
 						onClick={() => this.setState({ openEye: !openEye })}
 					>
-					    <EyeClosed/>
+					    {openEye ? <EyeOpen/> : <EyeClosed/>}
 					</button>
 				</div>
 				{/* <PasswordErrorMessage passwordError={this.state.passwordError} /> */}

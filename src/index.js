@@ -22,6 +22,8 @@ import { sessionCheck } from './actions/sessionCheck';
 import { fetchUserFullName } from './actions/actionUserFullName';
 import { getAlbums } from './actions/actionAlbums';
 import { getPersons } from './actions/actionPersons';
+import { fetchStories } from './actions/actionStories';
+// import { querySearch } from './actions/actionSearchQuery';
 
 const store = createStore(
   rootReducer,
@@ -35,6 +37,8 @@ store.dispatch(sessionCheck(store.getState().session.sessionID));
 store.dispatch(fetchUserFullName());
 store.dispatch(getAlbums());
 store.dispatch(getPersons());
+store.dispatch(fetchStories());
+// store.dispatch(querySearch());
 
 ReactDOM.render(
   <React.StrictMode>
