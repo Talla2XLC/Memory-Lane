@@ -95,7 +95,7 @@ class Album extends Component {
 
   render() {
     const { isEmpty, images } = this.state;
-    const { album } = this.props;
+    const { album, loading } = this.props;
 
     // console.log(album);
 
@@ -119,29 +119,30 @@ class Album extends Component {
     }) : [];
 
     return (
-      isEmpty ?
-        <div className='album-container'>
-          <GoBack className='go-back' onClick={this.goBack}/>
-          <Sorting
-            currentPage='album'
-            setGridType={this.setGridType}
-            performAction={this.performAction}
-          />
-          <EmptyBlock />
-        </div>
-        :
-        <div className='album-container'>
-          <GoBack className='go-back' onClick={this.goBack}/>
-          <h1 className='album-header'>{album.album_name}</h1>
-          <Sorting
-            currentPage='album'
-            setGridType={this.setGridType}
-            performAction={this.performAction}
-          />
-          <div className={'albumContent ' + this.state.gridType} >
-            { imagesItem }
+      loading ? <h1>Загрузка данных</h1> :
+        isEmpty ?
+          <div className='album-container'>
+            <GoBack className='go-back' onClick={this.goBack}/>
+            <Sorting
+              currentPage='album'
+              setGridType={this.setGridType}
+              performAction={this.performAction}
+            />
+            <EmptyBlock />
           </div>
-        </div>
+          :
+          <div className='album-container'>
+            <GoBack className='go-back' onClick={this.goBack}/>
+            <h1 className='album-header'>{album.album_name}</h1>
+            <Sorting
+              currentPage='album'
+              setGridType={this.setGridType}
+              performAction={this.performAction}
+            />
+            <div className={'albumContent ' + this.state.gridType} >
+              { imagesItem }
+            </div>
+          </div>
     );
   }
 }
@@ -150,6 +151,7 @@ class Album extends Component {
 const mapStateToProps = (state, props) => {
   return {
     album: state.albums.albums.find(album => album.id == props.match.params.id),
+    loading: state.albums.loading,
     token: state.session.sessionID
   };
 };

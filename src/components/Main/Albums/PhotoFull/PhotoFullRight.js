@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
 import {ReactComponent as EditSVG} from '../svg/edit.svg';
+import {ReactComponent as RadioBTN} from '../svg/radioBTN.svg';
 
 class PhotoFullRight extends Component {
   constructor(props) {
     super(props);
     this.handleEdit = this.handleEdit.bind(this);
+    this.handleShowFace = this.handleShowFace.bind(this);
   }
 
   handleEdit() {
     this.props.setEditing(true);
   }
 
+  handleShowFace(status) {
+    this.props.setShowFace(status);
+  }
+
   render() {
-    const { tags, date, persons } = this.props;
+    const { tags, date, persons, allPersons, showFace } = this.props;
 
     return (
       <div className='photo-full-right'>
@@ -34,12 +40,12 @@ class PhotoFullRight extends Component {
         </div>
         <div className='photo-full-right-item photo-full-right-persons'>
           <span className='photo-full-right-span text3'>Персоны на фото:</span>
-          {persons ? tags.map((person, index) => {
+          {persons ? persons.map((person, index) => {
             return <span
               className='text3'
               key={index}
             >
-              {person}
+              {allPersons.find(pers => pers.id == person).first_name + ' ' + allPersons.find(pers => pers.id == person).last_name}
             </span>;
           }) : 'Не отмечены'}
         </div>
@@ -48,6 +54,10 @@ class PhotoFullRight extends Component {
         </div>
         <div className='photo-full-right-item photo-full-right-showFace'>
           <span className='photo-full-right-span text3'>Показать персоны на фото</span>
+          <RadioBTN
+            className={showFace ? 'showFace-radio showFace-active' : 'showFace-radio'}
+            onClick={showFace ? () => this.handleShowFace(false) : () => this.handleShowFace(true)}
+          />
         </div>
         <div className='photo-full-right-BTN'>
           <button className='photo-full-editBTN'>
