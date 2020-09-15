@@ -4,8 +4,6 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './Search.sass';
 import Sorting from '../General/Sorting/Sorting';
-// import StoryItem from '../Stories/StoryItem';
-// import StoriesEmpty from '../Stories/StoriesEmpty';
 
 class Search extends Component {
 
@@ -19,6 +17,7 @@ class Search extends Component {
       styleType: 'searchWrapMiddle'
 	};
   }
+
   componentDidMount() {
 	const { token, query } = this.props;
 
@@ -38,9 +37,10 @@ class Search extends Component {
 	    }
 	  )
 	  .then(res => {
-		if (res.data.conten) {
+		console.log(res.data.content);
+		if (res.data.content) {
           this.setState({
-			results: res.data.conten,
+			results: res.data.content,
 		  }); 
 	  	} else {
 			this.setState({
@@ -57,41 +57,6 @@ class Search extends Component {
         }
 	  }); 
   };
-
-//   renderStoryResults = () => {
-//     const { loading, stories } = this.props;
-
-//     if (loading) return <h1>Загрузка данных</h1>;
-
-//     const storyItems = Object.values(stories).map(story =>
-//         <StoryItem 
-//           key={story.id}
-//           id={story.id}
-//           content={story.content}
-//           // Change date below to user input data
-//           // date={story.date}
-//           date={story.date_updated}
-//           title={story.story_name}
-//           author={story.author}
-//           city={story.city}
-//           tags={story.tags}
-//           picture={story.ico_url}
-//         />
-//       )
-    
-//     return (
-//       Object.keys(stories).length === 0 ?
-//       <div className='contentContainer'> <StoriesEmpty/> </div> :
-//         <div className='contentContainer'>
-//           <Sorting
-//             currentPage='stories'
-//           />
-//           <div className='stories'>
-//             {storyItems}
-//           </div>
-//         </div>
-//     );
-//   };
 
   renderStoryResults = () => {
 	const { results, message } = this.state;
@@ -181,6 +146,7 @@ class Search extends Component {
 					</Link> */}
 				</div>
 			);}
+			return (<p className="message">{ message }</p>);
 			})}
 		</div>
 	    );
@@ -193,12 +159,12 @@ class Search extends Component {
 		id, 
 		content_url, 
 		author, 
-		description, 
+		// description, 
 		album_name,
 		tags, 
 		persons, 
 		coordinates, 
-		photo_name 
+		// photo_name 
 	} = this.props.albums;
 	
 	// console.log(results);
@@ -211,6 +177,7 @@ class Search extends Component {
 	  <div className='storyContainer'>
         { results.map((result) => {
 		//   console.log(result);
+		if (result.album) {
 		  return (
             <div className='storyItem'>
               <div className='storyItem__img'>
@@ -235,7 +202,8 @@ class Search extends Component {
 				</Link>
               </div>
             </div>
-		  );
+		  );}
+		  return (<p className="message">{ message }</p>);
         })}
 	  </div>
     );}

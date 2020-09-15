@@ -23,7 +23,7 @@ import DownloadPhoto from './components/Main/Albums/UploadPhoto/UploadPhoto';
 import StoryView from './components/Main/Stories/StoryView';
 import Profile from './components/Main/UserProfile/UserProfile';
 import SearchResult from './components/Main/Search/SearchQueryResult';
-import PageNotFound from './components/Main/PageNotFound';
+// import PageNotFound from './components/Main/PageNotFound';
 import StoryNew from './components/Main/Stories/StoryNew';
 import EditPerson from './components/Main/Persons/EditPerson';
 
