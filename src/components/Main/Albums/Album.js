@@ -150,7 +150,7 @@ class Album extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    album: state.albums.albums.find(album => album.id == props.match.params.id),
+    album: state.albums.albums.find(album => album.id === props.match.params.id),
     loading: state.albums.loading,
     token: state.session.sessionID
   };

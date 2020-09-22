@@ -25,7 +25,7 @@ class UploadPhoto extends Component {
     const { token, albums } = this.props;
     const { imagesToUpload } = this.state;
     const data = new FormData();
-    const selectedAlbum = albums[0].id;
+    let selectedAlbum = albums[0].id;
     if (this.props.location.state) {
       selectedAlbum = this.props.location.state.albumId;
     }
