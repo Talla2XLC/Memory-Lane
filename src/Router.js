@@ -22,7 +22,7 @@ import DownloadPhoto from './components/Main/Albums/UploadPhoto/UploadPhoto';
 // import StoryEdit from './components/Main/Stories/StoryEdit';
 import StoryView from './components/Main/Stories/StoryView';
 import Profile from './components/Main/UserProfile/UserProfile';
-import SearchResult from './components/Main/Search/SearchQueryResult';
+import SearchResult from './components/Main/Search/SearchResult';
 // import PageNotFound from './components/Main/PageNotFound';
 import StoryNew from './components/Main/Stories/StoryNew';
 import EditPerson from './components/Main/Persons/EditPerson';
@@ -34,7 +34,8 @@ export default class Router extends Component {
 
     return (
       isAuthorized ?
-        (<Switch>
+        (
+        <Switch>
           <Route exact path='/'>
             { hasFullName === false ? <Redirect to='/userfullname/' /> : <MainContent />}
           </Route>
@@ -71,6 +72,7 @@ export default class Router extends Component {
 
             <Redirect to='/auth' />
           </Switch>
+          
         )
     );
   }
