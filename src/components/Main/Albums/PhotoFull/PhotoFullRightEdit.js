@@ -184,7 +184,7 @@ class PhotoFullRightEdit extends Component {
         key={index}
         className='photo-full-right-person-edit'
       >
-        <span className='text3'>{allPersons.find(pers => pers.id == person).first_name + ' ' + allPersons.find(pers => pers.id == person).last_name}</span>
+        <span className='text3'>{allPersons.find(pers => pers.id === person).first_name + ' ' + allPersons.find(pers => pers.id === person).last_name}</span>
         <XMark className='xMark' onClick={e => this.clearPerson(e, index)} />
       </div>
     )) : 'Персоны не отмечены';

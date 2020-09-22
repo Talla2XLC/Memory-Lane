@@ -216,13 +216,6 @@ class AddPerson extends Component {
             <Link className='cancelButton setPerson__button' to={'/persons/'}>
               <ButtonContainer white={true}>Отмена</ButtonContainer>
             </Link>
-
-
-
-
-            <Link className='cancelButton setPerson__button' to={'/persons/'}>
-              <ButtonContainer white={true}>Отмена</ButtonContainer>
-            </Link>
           </div>
         </div>
       </div>

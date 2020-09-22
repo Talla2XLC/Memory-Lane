@@ -52,8 +52,8 @@ class PhotoFull extends Component {
       }}>
         {persons ?
           <>
-            <span className='face-span'>{personsList.find(pers => pers.id == persons[index]).first_name }</span>
-            <span className='face-span'>{personsList.find(pers => pers.id == persons[index]).last_name }</span>
+            <span className='face-span'>{personsList.find(pers => pers.id === persons[index]).first_name }</span>
+            <span className='face-span'>{personsList.find(pers => pers.id === persons[index]).last_name }</span>
             <span className='face-span'>{'Возраст: ' + params.age + ' лет' }</span>
           </> : ''
         }

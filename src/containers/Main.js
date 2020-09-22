@@ -11,8 +11,8 @@ import styled from 'styled-components';
 import { ReactComponent as PersonsIcon } from './svg/personsIcon.svg';
 import { ReactComponent as AlbumsIcon } from './svg/albumsIcon.svg';
 import { ReactComponent as StoryIcon } from './svg/storyIcon.svg';
-import { ReactComponent as ServiceIcon } from './svg/serviceIcon.svg';
-import { ReactComponent as EducationIcon } from './svg/educationIcon.svg';
+// import { ReactComponent as ServiceIcon } from './svg/serviceIcon.svg';
+// import { ReactComponent as EducationIcon } from './svg/educationIcon.svg';
 
 import MainModal  from '../components/Main/Modal/MainModal';
 import ModalAddAlbum  from '../components/Main/Modal/addAlbum';
@@ -43,6 +43,8 @@ class Main extends Component {
         modalAddAlbumOpened,
         modalChooseAlbumOpened
       } = this.props;
+
+      console.log(this.props);
 
     return (
       <BrowserRouter>

@@ -45,7 +45,7 @@ class PhotoFullRight extends Component {
               className='text3'
               key={index}
             >
-              {allPersons.find(pers => pers.id == person).first_name + ' ' + allPersons.find(pers => pers.id == person).last_name}
+              {allPersons.find(pers => pers.id === person).first_name + ' ' + allPersons.find(pers => pers.id === person).last_name}
             </span>;
           }) : 'Не отмечены'}
         </div>
