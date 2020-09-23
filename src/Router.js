@@ -28,42 +28,41 @@ import StoryNew from './components/Main/Stories/StoryNew';
 import EditPerson from './components/Main/Persons/EditPerson';
 
 export default class Router extends Component {
-
   render() {
     const { isAuthorized, hasFullName } = this.props;
 
     return (
       isAuthorized ?
         (
-        <Switch>
-          <Route exact path='/'>
-            { hasFullName === false ? <Redirect to='/userfullname/' /> : <MainContent />}
-          </Route>
-          <Route exact path='/search/:query' render={ props => <SearchResult key={props.match.params.query} /> } />
-          <Route exact path='/persons/' component={ Persons } />
-          <Route exact path='/persons/add/' component={ AddPerson } />
-          <Route exact path='/albums/' component={ UsersAlbums } />
-          <Route exact path='/photo/add/' component={ DownloadPhoto } />
-          <Route exact path='/albums/:id' component={ Album } />
-          <Route exact path='/persons/:id' component={ Person } />
-          <Route exact path='/persons/edit/:id'component={ EditPerson }/>
-          {/* <Route exact path='/albums/addalbums/' component={ UsersAlbums } /> */}
-          <Route exact path='/photo/:id' component={ Photo } />
-          <Route exact path='/stories/' component={ Stories } />
-          <Route exact path='/stories/add/' component={ StoryNew } />
-          <Route path='/stories/:id' component={ StoryView } />
-          <Route exact path='/services/' component={ Services } />
-          <Route exact path='/userfullname/' >
-            { hasFullName === false ? <UserFullName /> : <Redirect to='/' />}
-          </Route>
-          <Route exact path='/learn/' component={ Learn } />
-          <Route exact path='/profile/' component={ Profile } />
-          <Route exact path='/register/' component={ UserRegistration } />
-          {/* <Route exact path='*' component={ PageNotFound } /> */}
+          <Switch>
+            <Route exact path='/'>
+              { hasFullName === false ? <Redirect to='/userfullname/' /> : <MainContent />}
+            </Route>
+            <Route exact path='/search/:query' render={ props => <SearchResult key={props.match.params.query} /> } />
+            <Route exact path='/persons/' component={ Persons } />
+            <Route exact path='/persons/add/' component={ AddPerson } />
+            <Route exact path='/albums/' component={ UsersAlbums } />
+            <Route exact path='/photo/add/' component={ DownloadPhoto } />
+            <Route exact path='/albums/:id' component={ Album } />
+            <Route exact path='/persons/:id' component={ Person } />
+            <Route exact path='/persons/edit/:id'component={ EditPerson }/>
+            {/* <Route exact path='/albums/addalbums/' component={ UsersAlbums } /> */}
+            <Route exact path='/photo/:id' component={ Photo } />
+            <Route exact path='/stories/' component={ Stories } />
+            <Route exact path='/stories/add/' component={ StoryNew } />
+            <Route path='/stories/:id' component={ StoryView } />
+            <Route exact path='/services/' component={ Services } />
+            <Route exact path='/userfullname/' >
+              { hasFullName === false ? <UserFullName /> : <Redirect to='/' />}
+            </Route>
+            <Route exact path='/learn/' component={ Learn } />
+            <Route exact path='/profile/' component={ Profile } />
+            <Route exact path='/register/' component={ UserRegistration } />
+            {/* <Route exact path='*' component={ PageNotFound } /> */}
 
-          <Redirect to='/'/>
+            <Redirect to='/'/>
 
-        </Switch>) : (
+          </Switch>) : (
           <Switch>
             <Route exact path='/auth/' component={ UserAuthorization } />
             <Route exact path='/register/' component={ UserRegistration } />
@@ -72,10 +71,7 @@ export default class Router extends Component {
 
             <Redirect to='/auth' />
           </Switch>
-          
         )
     );
   }
 }
-
-
