@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ButtonContainer = styled.button`
 background: ${props => 
-    props.white ? '#F6F6F6' : '#5DB07B'};
+    props.white ? '#F6F6F6' : '#2795FB'};
 box-shadow: ${props => 
     props.white ? 'none' : '0px 1px 3px rgba(0, 0, 0, 0.3)'};
 border-radius: 24px;
