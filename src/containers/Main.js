@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header from '../components/Main/Header';
+
 import MainNav from '../components/Main/MainNav';
 import Content from '../components/Main/Content';
 import { BrowserRouter } from 'react-router-dom';
@@ -54,11 +54,13 @@ class Main extends Component {
               <h1>Загрузка данных</h1> :
               (hasFullName || askedToIntroduce) ?
                 <MainWrapper className='Main'>
-                  <Header />
+
                   <PerfectScrollbar component='div'>
                     <div className='central-content'>
                       <MainNav navItems={navItems}/>
+
                       <Content isAuthorized={isAuthorized}/>
+
                     </div>
                   </PerfectScrollbar>
                   <MainModal

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Router from '../../Router';
 import ScrollToTop from './Router/ScrollToTop';
 import styled from 'styled-components';
+import Header from '../Main/Header';
 
 export default class Content extends Component {
 
@@ -11,6 +12,7 @@ export default class Content extends Component {
 
     return (
       <ContentWrap>
+        <Header/>
         <ScrollToTop />
         <Router isAuthorized={isAuthorized}/>  
       </ContentWrap>
