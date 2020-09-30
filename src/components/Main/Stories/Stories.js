@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import { fetchStories } from '../../../actions/actionStories';
+import { fetchStories } from '../../../redux/actions/actionStories';
 
 import StoryItem from './StoryItem';
-import Sorting from '../General/Sorting/Sorting';
+import Sorting from '../generalUi/sorting/Sorting';
 import StoriesEmpty from './StoriesEmpty';
 
 import './Stories.sass';
@@ -22,8 +22,6 @@ class Stories extends Component {
   render() {
     const { loading, stories } = this.props;
 
-    if (loading) return <h1>Загрузка данных</h1>;
-
     const storyItems = Object.values(stories).map(story =>
         <StoryItem 
           key={story.id}
@@ -41,6 +39,7 @@ class Stories extends Component {
       )
     
     return (
+      loading ? <h1>Загрузка данных</h1>:
       Object.keys(stories).length === 0 ?
       <div className='contentContainer'> <StoriesEmpty/> </div> :
         <div className='contentContainer'>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Router from '../../Router';
-import ScrollToTop from './Router/ScrollToTop';
+import ScrollToTop from '../../utils/ScrollToTop';
 import styled from 'styled-components';
 
 export default class Content extends Component {

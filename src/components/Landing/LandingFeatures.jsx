@@ -1,7 +1,7 @@
 import React from 'react';
 import './LandingFeatures.sass'
-import FaceRecognition from './LandingFeatures/LandingFeaturesService/faceRecognition.jsx';
-import ColorizationPhotos from './LandingFeatures/LandingFeaturesService/ColorizationPhotos';
+import FaceRecognition from './landingFeatures/landingFeaturesService/faceRecognition.jsx';
+import ColorizationPhotos from './landingFeatures/landingFeaturesService/ColorizationPhotos';
 
 const LandingFeatures = () => {
   return (

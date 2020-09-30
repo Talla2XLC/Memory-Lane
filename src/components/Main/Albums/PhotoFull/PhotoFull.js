@@ -5,7 +5,7 @@ import AvatarButton from 'components/Main/Header/AvatarButton';
 import PhotoFullRight from './PhotoFullRight';
 import PhotoFullRightEdit from './PhotoFullRightEdit';
 import {connect} from 'react-redux';
-import { ReactComponent as GoBack } from 'components/Main/svg/goBack.svg';
+import { ReactComponent as GoBack } from '../../../../assets/Images/General/goBack.svg';
 
 class PhotoFull extends Component {
   constructor(props) {

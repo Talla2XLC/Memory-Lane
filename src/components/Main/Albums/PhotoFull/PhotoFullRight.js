@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {ReactComponent as EditSVG} from '../svg/edit.svg';
-import {ReactComponent as RadioBTN} from '../svg/radioBTN.svg';
+import {ReactComponent as EditSVG} from '../../../../assets/Images/Album/edit.svg';
+import {ReactComponent as RadioBTN} from '../../../../assets/Images/Album/radioBTN.svg';
 
 class PhotoFullRight extends Component {
   constructor(props) {

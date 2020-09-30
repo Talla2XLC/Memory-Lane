@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import SearchAdd from './Search/SearchBar';
-import Notice from './Header/Notice';
-import AddSection from './Header/Add_section';
-import AvatarButton from './Header/AvatarButton';
+import Notice from './header/Notice';
+import AddSection from './header/Add_section';
+import AvatarButton from './header/AvatarButton';
 
 import styled from 'styled-components';
 import {connect} from 'react-redux';

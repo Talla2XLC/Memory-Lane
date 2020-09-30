@@ -3,10 +3,10 @@ import { withRouter } from 'react-router-dom';
 
 import './Stories.sass';
 
-import Sorting from '../General/Sorting/Sorting';
+import Sorting from '../generalUi/sorting/Sorting';
 
 import { ReactComponent as GuySvg } from '../svg/guy_with_magnifier.svg';
-import { ButtonContainer } from '../Button';
+import { ButtonContainer } from '../generalUi/Button';
 
 class StoriesEmpty extends Component {
   constructor(props) {

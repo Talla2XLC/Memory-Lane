@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './PhotoItem.sass';
-import InteractionIcons from 'components/Main/General/InteractionIcons';
+import InteractionIcons from './photoFull/node_modules/components/Main/General/InteractionIcons';
 import { Link } from  'react-router-dom';
 
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from  'react-router-dom';
-import  Sorting  from '../General/Sorting/Sorting';
+import  Sorting  from '../generalUi/sorting/Sorting';
 import './PersonsCatalog.sass';
 
 

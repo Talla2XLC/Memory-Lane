@@ -4,7 +4,7 @@ import { ReactComponent as IconSearch } from "./svg/searchIcon.svg";
 import { ReactComponent as FilterSearch } from "./svg/filterIcon.svg";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { querySearch } from "../../../actions/actionSearchQuery";
+import { querySearch } from "../../../redux/actions/actionSearchQuery";
 
 class SearchAdd extends Component {
   state = {

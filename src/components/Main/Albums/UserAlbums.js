@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { getAlbums } from 'actions/actionAlbums';
+import { getAlbums } from './photoFull/node_modules/actions/actionAlbums';
 import './UserAlbums.sass';
 import { Link } from  'react-router-dom';
-import Sorting from '../General/Sorting/Sorting';
-import DropdownAction from '../General/DropdownAction/DropdownAction';
+import Sorting from '../generalUi/sorting/Sorting';
+import DropdownAction from '../generalUi/DropdownAction/DropdownAction';
 import axios from 'axios';
-import { ReactComponent as FamilySvg } from '../svg/family.svg';
+import { ReactComponent as FamilySvg } from '../../../assets/Images/Album/family.svg';
 
 class UserAlbums extends Component {
   constructor(props) {
