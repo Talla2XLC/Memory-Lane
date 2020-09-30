@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import './DropdownAlbumsList.sass';
-import {ReactComponent as CurrentAlbumIco} from '../svg/currentAlbum.svg';
-import {ReactComponent as NewAlbumIco} from '../svg/newAlbum.svg';
-import {modalOpen} from 'actions/modalOpen';
+import {ReactComponent as CurrentAlbumIco} from '../../../../assets/Images/Album/currentAlbum.svg';
+import {ReactComponent as NewAlbumIco} from '../../../../assets/Images/Album/newAlbum.svg';
+import {modalOpen} from '../../generalUi/sorting/node_modules/actions/modalOpen';
 import {connect} from 'react-redux';
 
 class DropdownAlbumsList extends Component {

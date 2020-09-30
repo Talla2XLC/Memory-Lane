@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import {ButtonContainer} from '../../Button';
+import {ButtonContainer} from '../../generalUi/Button';
 import DropdownAlbumsList from './DropdownAlbumsList';
 import FileDropzone from './FileDropzone';
 import FileInput from './FileInput';
 
-import {ReactComponent as DropdownIcon} from '../svg/dropdownArrow.svg';
+import {ReactComponent as DropdownIcon} from '../../../../assets/Images/Album/dropdownArrow.svg';
 import './SelectNewPhoto.sass';
 
 class SelectNewPhoto extends Component {

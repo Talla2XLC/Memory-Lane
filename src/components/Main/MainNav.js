@@ -12,7 +12,7 @@ export default class MainNav extends Component {
     const { navItems } = this.props;
       
     const navigationItems = navItems.map(navItem =>
-      ( 
+      (
         <Link className='navigation-item-link' key={ shortid.generate() } to={ `/${navItem.endpoint}/` }>
           <div className='navigation-item navFont'>
             <div className='navItemSVG'>{ navItem.icon }</div>
@@ -23,10 +23,6 @@ export default class MainNav extends Component {
     );
     return (
       <div className='MainNav'>
-                <a className='logoLink' href='/'>
-          <div className='logo logoFont'>Memory Lane</div> 
-           <div className='logoDot'/>
-        </a>
         { navigationItems }
       </div>
     );

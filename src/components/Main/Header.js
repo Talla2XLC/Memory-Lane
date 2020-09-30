@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import SearchAdd from './Search/SearchBar';
-import Notice from './Header/Notice';
-import AddSection from './Header/Add_section';
-import AvatarButton from './Header/AvatarButton';
+import Notice from './header/Notice';
+import AddSection from './header/Add_section';
+import AvatarButton from './header/AvatarButton';
 
 import styled from 'styled-components';
 import {connect} from 'react-redux';
@@ -21,7 +21,10 @@ class Header extends Component {
 
     return (
       <HeaderWrapper className='headerDiv'>
-
+        <a className='logoLink' href='/'>
+          <div className='logo logoFont'>Memory Lane</div>
+          <div className='logoDot'/>
+        </a>
         <div className='header__center'>
           {/* <Search/> */}
           <SearchAdd />
@@ -62,13 +65,26 @@ margin-left: auto;
 margin-right: auto;
 padding: 11px 0;
 box-sizing: border-box;
+background: #FFD1A9;
 padding-right: 40px;
 position: sticky;
 top: 0;
-background-color: #F6F6F6;
 
-
-
+.logoLink {
+  margin-left: 45px;
+}
+.logo {
+  float: left;
+  margin-right: 9px;
+}
+.logoDot {
+  width: 7px;
+  height: 7px;
+  background: #5DB07B;
+  border-radius: 10px;
+  float: left;
+  margin-top: 24px;
+}
 
 .header__center{
   display: flex;

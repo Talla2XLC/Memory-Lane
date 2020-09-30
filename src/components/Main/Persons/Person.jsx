@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { getPersons } from '../../../actions/actionPersons';
+import { getPersons } from '../../../redux/actions/actionPersons';
 import EditPerson from './EditPerson';
 import PersonsContent from './PersonsContent';
-import {ButtonContainer} from '../Button';
+import {ButtonContainer} from '../generalUi/Button';
 import './PersonItem.sass';
 
 class Person extends Component {

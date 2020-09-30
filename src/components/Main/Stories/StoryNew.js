@@ -1,28 +1,28 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 // import PerfectScrollbar from 'react-perfect-scrollbar';
-import {Redirect} from 'react-router-dom';
+import { Redirect, Link } from "react-router-dom";
 
-import './Stories.sass';
+import "./Stories.sass";
 
-import {ButtonContainer} from '../Button';
+import { ButtonContainer } from "../generalUi/Button";
 
-import StoriesDropDown from './StoriesDropdown';
-import {ReactComponent as Plus} from '../svg/plus.svg';
-import {ReactComponent as StoryBackwards} from '../../Main/svg/back_arrow.svg';
+import StoriesDropDown from "./StoriesDropdown";
+import { ReactComponent as Plus } from "../svg/plus.svg";
+import { ReactComponent as StoryBackwards } from "../../Main/svg/back_arrow.svg";
 
-import axios from 'axios';
+import axios from "axios";
 
 export default class StoryNew extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      storyName: '',
-      author: '',
-      date: '',
-      tags: '',
-      city: '',
-      content: '',
+      storyName: "",
+      author: "",
+      date: "",
+      tags: "",
+      city: "",
+      content: "",
       hasCreated: false,
       dropdownOpened: false,
       // images: [],
@@ -35,54 +35,56 @@ export default class StoryNew extends Component {
     this.handleShowDropdown = this.handleShowDropdown.bind(this);
   }
 
-
   storyNew() {
     const { storyName, author, date, tags, city, content } = this.state;
-    const token = localStorage.getItem('token');
-
+    const token = localStorage.getItem("token");
+    // this.props.history.push("/stories/add");
     axios
       .post(
-        'http://api.memory-lane.ru/db/setHistory',
+        "http://api.memory-lane.ru/db/setHistory",
         {
           story_name: storyName,
           author: author,
           date: date,
           tags: tags,
           city: city,
-          content: content
+          content: content,
         },
         {
           headers: {
-            'Content-Type': 'application/json',
-            'Authorization': token
-          }
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
         }
       )
-	    .then(res => {
-        if (res.data.result) {	// res.status === 200
+      .then((res) => {
+        if (res.data.result) {
+          // res.status === 200
+          // console.log(res);
           this.setState({ hasCreated: true });
-	      } else {	// res.status !== 200
-	        console.error(res.data.error);
-	        alert(`${res.data.error}`);
-	      }
-	    })
-	    .catch(error => console.error(error));
-  };
+        } else {
+          // res.status !== 200
+          console.error(res.data.error);
+          alert(`${res.data.error}`);
+        }
+      })
+      .catch((error) => console.error(error));
+  }
 
   handleInput(e) {
     const { name, value } = e.target;
 
     this.setState({ [name]: value });
-  };
-  
+  }
+
   handleTextArea(e) {
     const { name, value, style, scrollHeight } = e.target;
 
-    style.height = 'auto';
-    style.height = scrollHeight + 1 + 'px';
+    style.height = "auto";
+    style.height = scrollHeight + 1 + "px";
 
     this.setState({ [name]: value });
-  };
+  }
 
   // uploadFileHandler(event) {
   //   event.persist();
@@ -95,123 +97,120 @@ export default class StoryNew extends Component {
     e.preventDefault();
 
     this.setState({ dropdownOpened: !this.state.dropdownOpened });
-  };
+  }
 
   render() {
-    const 
-      { 
-        storyName,
-        author,
-        date,
-        tags,
-        city,
-        content,
-        hasCreated,
-        dropdownOpened
-      } = this.state;
+    const {
+      storyName,
+      author,
+      date,
+      tags,
+      city,
+      content,
+      hasCreated,
+      dropdownOpened,
+    } = this.state;
 
     const { loading, history } = this.props;
+    
+    return loading ? (
+      <h1>Загрузка данных</h1>
+    ) : (
+      // (<PerfectScrollbar>
+      <>
+        <button className="storyBackwards" onClick={history.goBack}>
+          <StoryBackwards />
+        </button>
+        <div className="storyNew">
+          <form className="storyNew__desk">
+            <input
+              className="head2 storyNew__name"
+              type="text"
+              name="storyName"
+              value={storyName}
+              placeholder="Название истории"
+              onChange={this.handleInput}
+            />
 
-    if (hasCreated) return <Redirect to='/stories'/>
+            {/* TODO: Dynamic tags appearance (react-tag-input) */}
+            <input
+              className="head2 storyNew__tags"
+              type="text"
+              name="tags"
+              value={tags}
+              placeholder="Теги"
+              onChange={this.handleInput}
+            />
 
-    return (
-      loading ?
-        <h1>Загрузка данных</h1> :
-        // (<PerfectScrollbar>
-        <>
-          <button
-            className='storyBackwards'
-            onClick={history.goBack}
-          >
-            <StoryBackwards/>
-          </button>
-          <div className='storyNew'>
+            {/* TODO: date from calendar here */}
+            <input
+              className="text3 storyNew__input"
+              type="text"
+              name="date"
+              value={date}
+              placeholder="Дата"
+              onChange={this.handleInput}
+            />
 
-            <form className='storyNew__desk'>
-              <input
-                className='head2 storyNew__name'
-                type='text'
-                name='storyName'
-                value={storyName}
-                placeholder='Название истории'
-                onChange={this.handleInput}
-              />
+            {/* TODO: selecting persons here */}
+            <input
+              className="text3 storyNew__input"
+              type="text"
+              name="author"
+              value={author}
+              placeholder="О ком"
+              onChange={this.handleInput}
+            />
 
-              { /* TODO: Dynamic tags appearance (react-tag-input) */ }
-              <input
-                className='head2 storyNew__tags'
-                type='text'
-                name='tags'
-                value={tags}
-                placeholder='Теги'
-                onChange={this.handleInput}
-              />
+            <input
+              className="text3 storyNew__input"
+              type="text"
+              name="city"
+              value={city}
+              placeholder="Город"
+              onChange={this.handleInput}
+            />
 
-              { /* TODO: date from calendar here */ }
-              <input
-                className='text3 storyNew__input'
-                type='text'
-                name='date'
-                value={date}
-                placeholder='Дата'
-                onChange={this.handleInput}
-              />
+            <div className="storyNew__photoStore">
+              <img alt="story" />
+            </div>
 
-              { /* TODO: selecting persons here */ }
-              <input
-                className='text3 storyNew__input'
-                type='text'
-                name='author'
-                value={author}
-                placeholder='О ком'
-                onChange={this.handleInput}
-              />
-
-              <input
-                className='text3 storyNew__input'
-                type='text'
-                name='city'
-                value={city}
-                placeholder='Город'
-                onChange={this.handleInput}
-              />
-
-              <div className='storyNew__photoStore'>
-                <img alt='story'/>
-              </div>
-
-              <div className='storyNew__wrapper'>
-                <button onClick={this.handleShowDropdown}>
-                  <Plus/>
-                </button>
-                {
-                  dropdownOpened ?
-                    <StoriesDropDown
-                      // currentAlbum={albumName ?? 'Новый альбом'}
-                      // albums={albums}
-                      handleSelect={this.handleDropdownSelect}
-                    /> :
-                    null
-                }
-                <textarea
-                  className='text1 storyNew__content'
-                  name='content'
-                  value={content}
-                  placeholder='История'
-                  onChange={this.handleTextArea}
+            <div className="storyNew__wrapper">
+              <button onClick={this.handleShowDropdown}>
+                <Plus />
+              </button>
+              {dropdownOpened ? (
+                <StoriesDropDown
+                  // currentAlbum={albumName ?? 'Новый альбом'}
+                  // albums={albums}
+                  handleSelect={this.handleDropdownSelect}
                 />
-              </div>     
-            </form>
-
-            <ButtonContainer
-              style={{ display: (storyName || author || date || tags || city || content) ? 'flex' : 'none' }}
-              onClick={this.storyNew}
-            >
+              ) : null}
+              <textarea
+                className="text1 storyNew__content"
+                name="content"
+                value={content}
+                placeholder="История"
+                onChange={this.handleTextArea}
+              />
+            </div>
+          </form>
+          <Link
+            style={{
+              display:
+                storyName || author || date || tags || city || content
+                  ? "flex"
+                  : "none",
+            }}
+            to={"/stories/"}
+          >
+            <ButtonContainer onClick={this.storyNew}>
               Опубликовать
             </ButtonContainer>
-          </div>
-        </>
-        // </PerfectScrollbar>)
+          </Link>
+        </div>
+      </>
     );
-  };
+    // </PerfectScrollbar>)
+  }
 }

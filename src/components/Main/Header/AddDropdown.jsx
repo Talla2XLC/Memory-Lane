@@ -3,7 +3,7 @@ import { ReactComponent as IconAddSection } from './svg/addIcon.svg';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
-import {modalOpen} from '../../../actions/modalOpen';
+import {modalOpen} from '../../../redux/actions/modalOpen';
 import { ReactComponent as NewAlbumSVG } from './svg/newAlbum.svg';
 import { ReactComponent as NewInterviewSVG } from './svg/newInterview.svg';
 import { ReactComponent as NewPersonSVG } from './svg/newPerson.svg';

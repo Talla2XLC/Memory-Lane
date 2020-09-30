@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './EmptyBlock.sass';
 
 import { ReactComponent as FamilySvg } from '../svg/family.svg';
-import { ButtonContainer } from '../Button';
+import { ButtonContainer } from '../generalUi/Button';
 import {Link} from 'react-router-dom';
 
 export default class EmptyBlock extends Component {

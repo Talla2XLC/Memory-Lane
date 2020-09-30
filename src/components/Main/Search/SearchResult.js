@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import "./Search.sass";
-import Sorting from "../General/Sorting/Sorting";
+import Sorting from "../generalUi/sorting/Sorting";
 
 class Search extends Component {
   constructor(props) {
@@ -42,6 +42,7 @@ class Search extends Component {
             results: res.data.content,
           });
         } else {
+          // console.error(res.data.error);
           this.setState({
             message: "Failed to fetch results",
           });

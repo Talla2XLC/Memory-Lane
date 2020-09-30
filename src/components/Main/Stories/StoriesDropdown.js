@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { modalOpen } from '../../../actions/modalOpen';
+import { modalOpen } from '../../../redux/actions/modalOpen';
 import { connect } from 'react-redux';
 
 import './StoriesDropdown.sass';

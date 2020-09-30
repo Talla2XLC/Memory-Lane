@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
 import './App.sass';
 
-import Landing from './containers/Landing.js';
+import Landing from './pages/landing/Landing.js';
 
-import Main from './containers/Main.js';
+import Main from './components/main/Main.js';
 
 export default class App extends Component {
-  state = {
-    showLanding: false
-  }
+
+  static path = '/';
 
   render() {
-    const { showLanding } = this.state;
-
     return (
       <div className='App'>
-        { showLanding ? <Landing/> : <Main/> }
+        <Main/>
       </div>
     );
   }

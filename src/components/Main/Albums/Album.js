@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import Sorting from '../General/Sorting/Sorting';
+import Sorting from '../generalUi/sorting/Sorting';
 import AlbumsItem from './PhotoItem';
 import './Album.sass';
-import EmptyBlock from '../EmptyBlock/EmptyBlock';
-import {ReactComponent as GoBack} from 'components/Main/svg/goBack.svg';
+import EmptyBlock from '../emptyBlock/EmptyBlock';
+import {ReactComponent as GoBack} from '../../../assets/Images/General/goBack.svg';
 
 class Album extends Component {
   constructor(props) {
@@ -119,7 +119,7 @@ class Album extends Component {
     }) : [];
 
     return (
-      loading ? <h1>Загрузка данных</h1> :
+      // loading ? <h1>Загрузка данных</h1> :
         isEmpty ?
           <div className='album-container'>
             <GoBack className='go-back' onClick={this.goBack}/>
