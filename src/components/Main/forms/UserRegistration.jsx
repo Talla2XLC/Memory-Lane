@@ -346,7 +346,11 @@ export default class UserRegistration extends Component {
               </span>
             </div>
           </div>
-
+          <div className='c-registration__link'>
+            <Link className='registration__link' to='/auth'>
+              Войти в систему
+            </Link>
+          </div>
           {/* Change messages in modal window according to server response */}
           <RegistrationModal
             title="registration successful"

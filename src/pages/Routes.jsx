@@ -1,6 +1,18 @@
 import React, { Component } from "react";
 import { Switch, Route, Redirect, IndexRedirect } from "react-router-dom";
 
+import {
+  Home,
+  Auth,
+  Albums,
+  Persons,
+  Profile,
+  Registration,
+  Stories,
+  Services,
+  PageNotFound,
+} from "./Main.jsx";
+
 import UserRegistration from "./components/Main/UserRegistration";
 import UserRegistrationCompleting from "./components/Main/UserRegistrationCompleting";
 import UserFullName from "./components/Main/UserFullName";
@@ -77,7 +89,7 @@ export default class Routers extends Component {
           <Route exact path="/userfullname/" component={UserFullName} />
           <Route exact path="/" component={Landing} />
 
-          <Route path="*"> 
+          <Route path="*">
             <IndexRedirect to="/404/" />
             <Route path="/404/" component={PageNotFound} />
           </Route>

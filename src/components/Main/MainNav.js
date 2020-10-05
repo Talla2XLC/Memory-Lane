@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import shortid from 'shortid';
 import './MainNav.sass';
 
@@ -13,12 +13,12 @@ export default class MainNav extends Component {
       
     const navigationItems = navItems.map(navItem =>
       (
-        <Link className='navigation-item-link' key={ shortid.generate() } to={ `/${navItem.endpoint}/` }>
+        <NavLink className='navigation-item-link' key={ shortid.generate() } exact to={ `/${navItem.endpoint}/` }>
           <div className='navigation-item navFont'>
             <div className='navItemSVG'>{ navItem.icon }</div>
             { navItem.title }
           </div>
-        </Link>
+        </NavLink>
       ) 
     );
     return (
