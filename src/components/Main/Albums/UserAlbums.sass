@@ -3,7 +3,7 @@
   flex-flow: column nowrap
   justify-content: flex-start
   align-items: flex-start
-  padding: 0 40px
+  padding: 0 43px
 
 .iconsMargin
   margin: 0 10px
@@ -48,6 +48,8 @@
   display: grid
   wrap: no-wrap
   gap: 29px 38px
+  max-height: 200px
+
 
 .userAlbumsWrapSmall
   grid-template-columns: repeat(6, 1fr)
@@ -57,20 +59,36 @@
 
 .imgWrap
   position: relative
+  border-radius: 5px
   &__img
     width: 100%
     background: linear-gradient(180deg, rgba(59, 62, 60, 0) 73.54%, #3B3E3C 100%)
     border-radius: 5px
-
 .albumName
   justify-content: space-between
   text-align: left
   margin-top: 8px
   width: 100%
 
-.albumName-span
+.bigName
   color: #3B3E3C
-  font-weight: bold
+  font-family: Rubik
+  font-style: normal
+  font-weight: 500
+
+.smallName
+  color: #3B3E3C
+  font-family: Rubik
+  font-style: normal
+  font-weight: 400
+  font-size: 16px
+
+.middleName
+  color: #3B3E3C
+  font-family: Rubik
+  font-style: normal
+  font-weight: 400
+  font-size: 16px
 
 .actionsForAlbums
   position: relative
@@ -90,6 +108,7 @@
   flex-flow: column nowrap
   align-items: stretch
 
+
 .userAlbumsLink 
   width: 100%
   flex-grow: 1
@@ -103,5 +122,4 @@
 .album-empty-svg
   width: 100%
 
-.album-empty-svg
 

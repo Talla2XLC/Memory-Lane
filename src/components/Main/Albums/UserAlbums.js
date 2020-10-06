@@ -19,7 +19,8 @@ class UserAlbums extends Component {
     this.state = {
       albumName: '',
       description: '',
-      styleType: 'userAlbumsWrapBig',
+			styleType: 'userAlbumsWrapBig',
+			nameType: 'bigName',
       showActions: ''
     };
   }
@@ -43,22 +44,25 @@ class UserAlbums extends Component {
 	setGridType(gridId) {
 	  switch (gridId) {
 	    case 1:
-	      this.setState({styleType: 'userAlbumsWrapBig'});
+				this.setState({styleType: 'userAlbumsWrapBig'});
+				this.setState({nameType: 'bigName'});
 	      this.setState({rowItemView: false});
 	      break;
 	    case 2:
-	      this.setState({styleType: 'userAlbumsWrapMiddle'});
+				this.setState({styleType: 'userAlbumsWrapMiddle'});
+				this.setState({nameType: 'middleName'});
 	      this.setState({rowItemView: false});
 	      break;
 	    case 3:
-	      this.setState({styleType: 'userAlbumsWrapSmall'});
+				this.setState({styleType: 'userAlbumsWrapSmall'});
+				this.setState({nameType: 'smallName'});
 	      this.setState({rowItemView: true});
 	      break;
 	    default:
 	      return;
 	  }
 	}
-	
+
 	performAction(actionId, albumId) {
 	  switch (actionId) {
 	    case 1:
@@ -100,7 +104,7 @@ class UserAlbums extends Component {
 	    })
 	    .catch(error => console.error(error));
 	}
-  
+
 	render() {
 	  const { loading, albums } = this.props;
 	  const userAlbums = albums ?? [];
@@ -110,18 +114,18 @@ class UserAlbums extends Component {
 	        <div key={album.id} className='album-item'>
 	        <Link className='userAlbumsLink' to={`/albums/${album.id}`}>
 	          <div className='imgWrap'>
-	            {album.photo ? 
+	            {album.photo ?
 	              <img className='imgWrap__img' src={album.photo[album.photo.length - 1].content_url} alt='albumPreview'/>
 	              :
 	              <div className='album-empty'>
 	                <FamilySvg className='album-empty-svg' />
-	                <span className='album-empty-txt text3'>Здесь пока нет ни одной фотографии</span>
+	                {/* <span className='album-empty-txt text3'>Здесь пока нет ни одной фотографии</span> */}
 	              </div>
 	            }
 	          </div>
 	        </Link>
 	          <div className='albumName'>
-	            <span className='albumName-span'>{album.album_name}</span>
+	            <span className={this.state.nameType}>{album.album_name}</span>
 	          <DropdownAction
 	            currentPage='allAlbums'
 	            albumId={album.id}
@@ -148,21 +152,17 @@ class UserAlbums extends Component {
 	}
 }
 
-const mapStateToProps = (state) => {
-  return {
-    loading: state.albums.loading,
-    albums: state.albums.albums,
-    token: state.session.sessionID
-  };
-};
+const mapStateToProps = state => ({
+  loading: state.albums.loading,
+  albums: state.albums.albums,
+  token: state.session.sessionID
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    downloadAlbums: () => {
-      dispatch(getAlbums());
-    }
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  downloadAlbums: () => {
+    dispatch(getAlbums());
+  }
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserAlbums);
 

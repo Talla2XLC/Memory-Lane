@@ -9,7 +9,7 @@ border-radius: 24px;
 border-style: none;
 padding: 10px 24px;
 color: ${props => 
-    props.white ? '#5DB07B' : '#FFFFFF'};
+    props.white ? '#2795FB' : '#FFFFFF'};
 font-style: normal;
 font-weight: 500;
 font-size: 18px;
@@ -18,7 +18,7 @@ letter-spacing: 0.006em;
 cursor: pointer;
 outline: none;
 border: ${props => 
-    props.white ? '2px solid #5DB07B' : 'none'};
+    props.white ? '2px solid #2795FB' : 'none'};
 &:hover{
   background: ${ props => 
     props.white ? '#F6F6F6' : '#278147'};

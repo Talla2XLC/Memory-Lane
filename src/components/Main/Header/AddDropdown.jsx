@@ -99,7 +99,7 @@ padding: 10px 0;
     background: #BDE1CA;
   }
   &:active {
-    background: #5DB07B;
+    background: ##2795FB;
     color: white;
     >svg>path {
       fill: white;

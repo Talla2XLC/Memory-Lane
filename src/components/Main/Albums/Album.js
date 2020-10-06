@@ -34,62 +34,62 @@ class Album extends Component {
 
   setGridType(gridId) {
     switch (gridId) {
-      case 1:
-        this.setState({gridType: 'bigColView'});
-        this.setState({rowItemView: false});
-        break;
-      case 2:
-        this.setState({gridType: 'smallColView'});
-        this.setState({rowItemView: false});
-        break;
-      case 3:
-        this.setState({gridType: 'bigRowView'});
-        this.setState({rowItemView: true});
-        break;
-      case 4:
-        this.setState({gridType: 'smallRowView'});
-        this.setState({rowItemView: true});
-        break;
-      case 5:
-        this.setState({gridType: 'noPreview'});
-        this.setState({rowItemView: false});
-        break;
-      default:
-        return;
+    case 1:
+      this.setState({gridType: 'bigColView'});
+      this.setState({rowItemView: false});
+      break;
+    case 2:
+      this.setState({gridType: 'smallColView'});
+      this.setState({rowItemView: false});
+      break;
+    case 3:
+      this.setState({gridType: 'bigRowView'});
+      this.setState({rowItemView: true});
+      break;
+    case 4:
+      this.setState({gridType: 'smallRowView'});
+      this.setState({rowItemView: true});
+      break;
+    case 5:
+      this.setState({gridType: 'noPreview'});
+      this.setState({rowItemView: false});
+      break;
+    default:
+      return;
     }
   }
 
   selectImage(id, action) {
     const newItemArr = this.state.itemSelected;
     switch (action) {
-      case 'add':
-        newItemArr.push(id);
-        break;
-      case 'del':
-        newItemArr.splice(newItemArr.indexOf(id), 1);
-        break;
-      default:
-        return;
+    case 'add':
+      newItemArr.push(id);
+      break;
+    case 'del':
+      newItemArr.splice(newItemArr.indexOf(id), 1);
+      break;
+    default:
+      return;
     }
     this.setState({itemSelected: newItemArr});
   }
 
   performAction(id) {
     switch (id) {
-      case 1:
-        break;
-      case 2:
-        break;
-      case 3:
-        break;
-      case 4:
-        break;
-      case 5:
-        break;
-      case 6:
-        break;
-      default:
-        break;
+    case 1:
+      break;
+    case 2:
+      break;
+    case 3:
+      break;
+    case 4:
+      break;
+    case 5:
+      break;
+    case 6:
+      break;
+    default:
+      break;
     }
   }
 
@@ -99,24 +99,22 @@ class Album extends Component {
 
     // console.log(album);
 
-    const imagesItem = images ? images.map(image => {
-      return <AlbumsItem
-        key={image.id}
-        id = {image.id}
-        view={this.state.rowItemView ? 'flex-row' : 'flex-column'}
-        url={image.content_url} name={image.photo_name}
-        author={image.author}
-        desc={image.description}
-        tags={image.tags}
-        persons={image.persons}
-        coordinates={image.coordinates}
-        gridType={this.state.gridType}
-        isDesc={!(this.state.gridType === 'smallRowView' || this.state.gridType === 'noPreview')}
-        isImg={this.state.gridType !== 'noPreview'}
-        selectId={this.selectImage}
-        isSelected={this.state.itemSelected.includes(image.id)}
-      />;
-    }) : [];
+    const imagesItem = images ? images.map(image => <AlbumsItem
+      key={image.id}
+      id = {image.id}
+      view={this.state.rowItemView ? 'flex-row' : 'flex-column'}
+      url={image.content_url} name={image.photo_name}
+      author={image.author}
+      desc={image.description}
+      tags={image.tags}
+      persons={image.persons}
+      coordinates={image.coordinates}
+      gridType={this.state.gridType}
+      isDesc={!(this.state.gridType === 'smallRowView' || this.state.gridType === 'noPreview')}
+      isImg={this.state.gridType !== 'noPreview'}
+      selectId={this.selectImage}
+      isSelected={this.state.itemSelected.includes(image.id)}
+    />) : [];
 
     return (
       loading ? <h1>Загрузка данных</h1> :
@@ -132,8 +130,11 @@ class Album extends Component {
           </div>
           :
           <div className='album-container'>
-            <GoBack className='go-back' onClick={this.goBack}/>
-            <h1 className='album-header'>{album.album_name}</h1>
+            <div className='album-header-container'>
+              <GoBack className='go-back' onClick={this.goBack}/>
+              <h1 className='album-header'>{album.album_name}</h1>
+            </div>
+
             <Sorting
               currentPage='album'
               setGridType={this.setGridType}
@@ -148,12 +149,10 @@ class Album extends Component {
 }
 
 
-const mapStateToProps = (state, props) => {
-  return {
-    album: state.albums.albums.find(album => album.id === props.match.params.id),
-    loading: state.albums.loading,
-    token: state.session.sessionID
-  };
-};
+const mapStateToProps = (state, props) => ({
+  album: state.albums.albums.find(album => album.id === props.match.params.id),
+  loading: state.albums.loading,
+  token: state.session.sessionID
+});
 
 export default connect(mapStateToProps)(Album);

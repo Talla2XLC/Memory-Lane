@@ -58,6 +58,7 @@ class ModalAddAlbumContent extends Component {
         <div className='modal-content-middle'>
           <p>Введите название</p>
           <input
+            maxLength='20'
             name='albumName'
             className='add-album-input'
             placeholder='Название альбома'
@@ -75,21 +76,17 @@ class ModalAddAlbumContent extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    sessionID: state.session.sessionID
-  };
-};
+const mapStateToProps = state => ({
+  sessionID: state.session.sessionID
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    closeModal: type => {
-      dispatch(modalClose(type));
-    },
-    downloadAlbums: () => {
-      dispatch(getAlbums());
-    }
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  closeModal: type => {
+    dispatch(modalClose(type));
+  },
+  downloadAlbums: () => {
+    dispatch(getAlbums());
+  }
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalAddAlbumContent);
