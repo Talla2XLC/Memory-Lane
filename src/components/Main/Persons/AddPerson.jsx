@@ -7,6 +7,7 @@ import { getPersons } from '../../../actions/actionPersons';
 import FileInput from './FileInput';
 import TagsInput from './TagsInput';
 import './AddAndEdit.sass';
+import {ReactComponent as GoBack} from 'components/Main/svg/goBack.svg';
 
 class AddPerson extends Component {
   constructor(props) {
@@ -94,7 +95,12 @@ class AddPerson extends Component {
     const { lastName, firstName, patronymic, roleInFamily, city, imagesToUpload, tags, birthday} = this.state;
     return (
       <div className='setPersonContainer'>
-        <div className='head1 title'> Создание персоны </div>
+        <div className='person-header-container'>
+        <GoBack className='go-back' 
+        // onClick={this.goBack}
+        />
+        <div className='head1 title'>Редактирование персоны </div>
+        </div>
         <div className='setPerson'>
           <div className='setPerson__ico' > 
             <img className='setPerson__img' src={(imagesToUpload.length > 0) ? this.state.imagesToUpload[0].preview : 'http://placehold.it/365x365'} alt='persons icon'/>

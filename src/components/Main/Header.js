@@ -73,7 +73,7 @@ background-color: #F6F6F6;
 .header__center{
   display: flex;
   justify-content: flex-start;
-  margin-left: 85px;
+  margin-left: 43px;
 }
 
 .header__right{
