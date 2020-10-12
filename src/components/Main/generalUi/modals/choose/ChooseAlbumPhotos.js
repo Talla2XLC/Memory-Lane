@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-// import { BrowserRouter } from 'react-router-dom';
-// <BrowserRouter></BrowserRouter>
 
 // import styled from 'styled-components';
 
 import { connect } from 'react-redux';
 
-import { getAlbums } from '../../../../actions/actionAlbums';
-import { modalClose } from '../../../../actions/modalClose';
+import { getAlbums } from '../../../../../redux/actions/actionAlbums';
+import { modalClose } from '../../../../../redux/actions/modalClose';
 
 import Portal from '../Portal';
 
@@ -17,8 +15,6 @@ import ChooseAlbumSearch from './ChooseAlbumSearch';
 import AlbumItem from './ChooseAlbumItemAlbum';
 
 import './ChooseAlbum.sass';
-
-import axios from 'axios';
 
 class ModalChoosePhoto extends Component {
 

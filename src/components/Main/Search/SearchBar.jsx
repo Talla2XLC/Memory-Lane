@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { ReactComponent as IconSearch } from "./svg/searchIcon.svg";
-import { ReactComponent as FilterSearch } from "./svg/filterIcon.svg";
+import { ReactComponent as IconSearch } from "../../../assets/Images/search/searchIcon.svg";
+import { ReactComponent as FilterSearch } from "../../../assets/Images/search/filterIcon.svg";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { querySearch } from "../../../redux/actions/actionSearchQuery";

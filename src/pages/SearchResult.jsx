@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import SearchResult from "../components/Main/Search/SearchResult";
+import SearchResult from "../components/Main/search/SearchResult";
 
 export default class SearchResultPage extends Component {
   // static path = '/home';
   render() {
     return(
-      // <SearchResult/>
-      <div>Результаты поиска</div>
+      <SearchResult/>
     );
   }
 }

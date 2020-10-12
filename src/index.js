@@ -34,13 +34,6 @@ const store = createStore(
   )
 );
 
-// const composerEnhancer = composeWithDevTools({
-//   name: `Redux`,
-//   realtime: true,
-//   trace: true,
-//   traceLimit: 25
-// });
-
 store.dispatch(sessionCheck(store.getState().session.sessionID));
 store.dispatch(fetchUserFullName());
 store.dispatch(getAlbums());

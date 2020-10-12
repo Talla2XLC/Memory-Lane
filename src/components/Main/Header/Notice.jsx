@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ReactComponent as IconBell } from './svg/bellIcon.svg';
+import { ReactComponent as IconBell } from '../../../assets/Images/header/bellIcon.svg';
 import styled from 'styled-components';
 
 export default class Notice extends Component {

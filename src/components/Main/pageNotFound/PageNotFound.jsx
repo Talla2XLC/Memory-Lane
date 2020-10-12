@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import { ButtonContainer } from "../generalUi/Button.jsx";
-import { Redirect, Link } from "react-router-dom";
+import { 
+  // Redirect, 
+  Link 
+} from "react-router-dom";
 import "./PageNotFound.sass";
 
 export default class PageNotFound extends Component {
+  // <Redirect to="" />
   render() {
     return (
       <div>

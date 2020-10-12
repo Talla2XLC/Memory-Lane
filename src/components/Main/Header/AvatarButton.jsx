@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-
-import { ReactComponent as AvatarFemale } from './svg/avatarFemale.svg';
-import { ReactComponent as AvatarMale } from './svg/avatarMale.svg';
-import { ReactComponent as AvatarUndefined } from './svg/avatarUndefined.svg';
+import { ReactComponent as AvatarFemale } from '../../../assets/Images/header/avatarFemale.svg';
+import { ReactComponent as AvatarMale } from '../../../assets/Images/header/avatarMale.svg';
+import { ReactComponent as AvatarUndefined } from '../../../assets/Images/header/avatarUndefined.svg';
 
 class AvatarButton extends Component {
   fetchUserAvatar(gender) {

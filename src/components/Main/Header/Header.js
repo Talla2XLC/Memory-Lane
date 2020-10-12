@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import SearchAdd from '../Search/SearchBar';
+import SearchAdd from '../search/SearchBar';
 import Notice from './Notice';
 import AddSection from './Add_section';
 import AvatarButton from './AvatarButton';

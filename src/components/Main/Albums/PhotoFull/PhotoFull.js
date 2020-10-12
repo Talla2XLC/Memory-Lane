@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './PhotoFull.sass';
 import InteractionIcons from '../../generalUi/InteractionIcons/InteractionIcons';
-import AvatarButton from '../../Header/AvatarButton';
+import AvatarButton from '../../header/AvatarButton';
 import PhotoFullRight from './PhotoFullRight';
 import PhotoFullRightEdit from './PhotoFullRightEdit';
 import {connect} from 'react-redux';

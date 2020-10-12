@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ReactComponent as IconSearch } from './svg/searchIcon.svg';
+import { ReactComponent as IconSearch } from '../../../../../assets/Images/modals/searchIcon.svg';
 
 import './ChooseAlbumSearch.sass';
 

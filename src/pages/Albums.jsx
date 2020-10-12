@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Album from "../components/Main/Albums/UserAlbums";
-import styled from 'styled-components';
+import Album from "../components/Main/albums/UserAlbums";
+// import styled from 'styled-components';
 
 export default class AlbumPage extends Component {
   static path = '/albums/';
@@ -10,8 +10,6 @@ export default class AlbumPage extends Component {
         );
       }
 }
-
-{/* <div>Альбомы</div> */}
 
 // const AlbumWrapper = styled.div`
 // background-color: #F6F6F6;

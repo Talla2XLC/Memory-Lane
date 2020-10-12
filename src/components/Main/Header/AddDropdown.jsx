@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { ReactComponent as IconAddSection } from './svg/addIcon.svg';
+import { ReactComponent as IconAddSection } from '../../../assets/Images/header/addIcon.svg';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
 import {modalOpen} from '../../../redux/actions/modalOpen';
-import { ReactComponent as NewAlbumSVG } from './svg/newAlbum.svg';
-import { ReactComponent as NewInterviewSVG } from './svg/newInterview.svg';
-import { ReactComponent as NewPersonSVG } from './svg/newPerson.svg';
-import { ReactComponent as NewPhotoSVG } from './svg/newPhoto.svg';
-import { ReactComponent as NewStorySVG } from './svg/newStory.svg';
+import { ReactComponent as NewAlbumSVG } from '../../../assets/Images/header/newAlbum.svg';
+import { ReactComponent as NewInterviewSVG } from '../../../assets/Images/header/newInterview.svg';
+import { ReactComponent as NewPersonSVG } from '../../../assets/Images/header/newPerson.svg';
+import { ReactComponent as NewPhotoSVG } from '../../../assets/Images/header/newPhoto.svg';
+import { ReactComponent as NewStorySVG } from '../../../assets/Images/header/newStory.svg';
 
 class AddDropdown extends Component {
   constructor(props) {

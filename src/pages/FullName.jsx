@@ -5,8 +5,7 @@ export default class UserFullName extends Component {
   static path = '/fullname';
   render() {
     return(
-      // <FullName/>
-      <div>Давай познакомимся</div>
+      <FullName/>
     );
   }
 }

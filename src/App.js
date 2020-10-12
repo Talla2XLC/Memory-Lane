@@ -5,13 +5,13 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import styled from 'styled-components';
 
 import Routes from './pages/Routes';
-import Header from './components/Main/Header/Header';
+import Header from './components/Main/header/Header';
 import MainNav from './components/Main/mainNav/MainNav';
 import Content from './components/Main/generalUi/Content';
 import MainModal  from './components/Main/generalUi/modals/MainModal';
 import ModalAddAlbum  from './components/Main/generalUi/modals/addAlbum';
 import ModalChooseAlbum  from './components/Main/generalUi/modals/choose/ChooseAlbum';
-import Landing from './pages/landing/Landing.js';
+// import Landing from './pages/landing/Landing.js';
 
 import './App.sass';
 

@@ -1,16 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import './UserProfileNav.sass';
 
 const UserProfaleNav = () => {
   return (
     <div className='UserProfaleNav'>
       <ul>
-        <li><a href='/#' className='active'>Учетная запись</a></li>
-        <li><a href='/#'>Проекты</a></li>
-        <li><a href='/#'>Конфиденциальность</a></li>
-        <li><a href='/#'>Уведомления</a></li>
-        <li><a href='/#'>Мой тариф</a></li>
-        <li><a href='/#'>Участники</a></li>
+        <Link to='/' className='active'>Учетная запись</Link>
+        <Link to='/'>Проекты</Link>
+        <Link to='/'>Конфиденциальность</Link>
+        <Link to='/'>Уведомления</Link>
+        <Link to='/'>Мой тариф</Link>
+        <Link to='/'>Участники</Link>
       </ul>
     </div>
   );
