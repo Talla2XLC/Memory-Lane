@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {modalClose} from '../../../redux/actions/modalClose';
-import {getAlbums} from '../../../redux/actions/actionAlbums';
+import {modalClose} from '../../../../redux/actions/modalClose';
+import {getAlbums} from '../../../../redux/actions/actionAlbums';
 import axios from 'axios';
-import {ButtonContainer} from '../../../assets/stylesModules/Button';
+import {ButtonContainer} from '../Button';
 import './addAlbum.sass';
 
 class ModalAddAlbumContent extends Component {

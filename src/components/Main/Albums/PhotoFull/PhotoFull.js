@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './PhotoFull.sass';
-import InteractionIcons from 'components/Main/General/InteractionIcons';
-import AvatarButton from 'components/Main/Header/AvatarButton';
+import InteractionIcons from '../../generalUi/InteractionIcons/InteractionIcons';
+import AvatarButton from '../../Header/AvatarButton';
 import PhotoFullRight from './PhotoFullRight';
 import PhotoFullRightEdit from './PhotoFullRightEdit';
 import {connect} from 'react-redux';
-import { ReactComponent as GoBack } from '../../../../assets/Images/General/goBack.svg';
+import { ReactComponent as GoBack } from '../../../../assets/Images/general/goBack.svg';
 
 class PhotoFull extends Component {
   constructor(props) {

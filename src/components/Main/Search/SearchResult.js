@@ -117,6 +117,7 @@ class Search extends Component {
                       />
                       {/* <img src={picture} alt='storyPicture'/> */}
                     </Link>
+                    {/* <Route path="" Component={} /> */}
                   </div>
                   {/* <Link
 					key={result.story.id} 

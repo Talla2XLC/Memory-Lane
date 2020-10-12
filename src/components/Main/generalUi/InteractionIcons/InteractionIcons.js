@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import {ReactComponent as DownloadIcon} from './DropdownAction/svg/downloadIcon.svg';
+import {ReactComponent as DownloadIcon} from '../../../../assets/Images/dropdownAction/downloadIcon.svg';
 // import {ReactComponent as ShareIcon} from './DropdownAction/svg/shareIcon.svg';
 // import {ReactComponent as CommentsIcon} from '../svg/commentsIcon.svg';
 import './InteractionIcons.sass';
-
 
 export default class InteractionIcons extends Component {
   render() {

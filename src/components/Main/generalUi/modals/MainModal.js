@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Portal from './Portal';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
-import {modalClose} from '../../../redux/actions/modalClose';
+import {modalClose} from '../../../../redux/actions/modalClose';
 
 class MainModal extends Component {
   render() {

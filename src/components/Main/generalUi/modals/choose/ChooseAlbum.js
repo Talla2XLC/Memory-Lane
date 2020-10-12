@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import {getAlbums} from '../../../../redux/actions/actionAlbums';
-import {modalClose} from '../../../../redux/actions/modalClose';
+import {getAlbums} from '../../../../../redux/actions/actionAlbums';
+import {modalClose} from '../../../../../redux/actions/modalClose';
 
 import Portal from '../Portal';
-import {ButtonContainer} from '../../../../assets/stylesModules/Button';
-import {ReactComponent as Plus} from '../../svg/plus.svg';
+import {ButtonContainer} from '../../Button';
+import {ReactComponent as Plus} from '../../../../../assets/Images/general/plus.svg';
 
 import ChooseAlbumSearch from './ChooseAlbumSearch';
 

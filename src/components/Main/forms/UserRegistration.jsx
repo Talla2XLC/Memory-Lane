@@ -1,18 +1,17 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 import "./UserFormStyle.sass";
-import { ButtonContainer } from "./Button.jsx.js";
+import { ButtonContainer } from "../generalUi/Button";
 
-// import Portal from "./Modal/Portal";
 import RegistrationModal from "./UserRegistrationModal";
 
-import { ReactComponent as FormVK } from "./svg/form_vk.svg";
-import { ReactComponent as FormFB } from "./svg/form_fb.svg";
-import { ReactComponent as FormG } from "./svg/form_g.svg";
-import { ReactComponent as FormIns } from "./svg/form_ins.svg";
-import { ReactComponent as EyeClosed } from "./svg/eye_closed.svg";
-import { ReactComponent as EyeOpen } from "./svg/eye_open.svg";
+import { ReactComponent as FormVK } from "../../../assets/Images/forms/form_vk.svg";
+import { ReactComponent as FormFB } from "../../../assets/Images/forms/form_fb.svg";
+import { ReactComponent as FormG } from "../../../assets/Images/forms/form_g.svg";
+import { ReactComponent as FormIns } from "../../../assets/Images/forms/form_ins.svg";
+import { ReactComponent as EyeClosed } from "../../../assets/Images/forms/eye_closed.svg";
+import { ReactComponent as EyeOpen } from "../../../assets/Images/forms/eye_open.svg";
 
 import axios from "axios";
 
@@ -232,27 +231,24 @@ export default class UserRegistration extends Component {
 
           <div className="formContainerItem__icons">
             <div className="container__icons">
-              <a className="socials-icon" href="https://vk.com/" alt="vk">
+              <a className="socials-icon" href="https://vk.com/">
                 <FormVK />
               </a>
               <a
                 className="socials-icon"
                 href="https://www.instagram.com/"
-                alt="ins"
               >
                 <FormIns />
               </a>
               <a
                 className="socials-icon"
                 href="https://ru-ru.facebook.com/"
-                alt="facebook"
               >
                 <FormFB />
               </a>
               <a
                 className="socials-icon"
                 href="https://www.google.com/"
-                alt="google"
               >
                 <FormG />
               </a>
@@ -268,14 +264,13 @@ export default class UserRegistration extends Component {
             <hr />
           </div>
 
-          <div className="formContainerItem__form">
+          <fieldset className="formContainerItem__form">
             <div>
-              <legend>Эл. почта</legend>
+              <label>Эл. почта</label>
               <input
                 className={formErrorStyle.email}
                 name="email"
                 type="email"
-                size="0"
                 placeholder="Введите электронную почту"
                 value={email}
                 onChange={this.handleInput}
@@ -284,7 +279,7 @@ export default class UserRegistration extends Component {
             </div>
 
             <div className="form-password">
-              <legend>Пароль</legend>
+              <label>Пароль</label>
               <input
                 id="password"
                 className={formErrorStyle.password.inputStatus}
@@ -345,7 +340,7 @@ export default class UserRegistration extends Component {
                 конфиденциальности
               </span>
             </div>
-          </div>
+          </fieldset>
           <div className='c-registration__link'>
             <Link className='registration__link' to='/auth'>
               Войти в систему

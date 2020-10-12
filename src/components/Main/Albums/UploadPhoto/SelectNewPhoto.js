@@ -4,7 +4,7 @@ import DropdownAlbumsList from './DropdownAlbumsList';
 import FileDropzone from './FileDropzone';
 import FileInput from './FileInput';
 
-import {ReactComponent as DropdownIcon} from '../../../../assets/Images/Album/dropdownArrow.svg';
+import {ReactComponent as DropdownIcon} from '../../../../assets/Images/albums/dropdownArrow.svg';
 import './SelectNewPhoto.sass';
 
 class SelectNewPhoto extends Component {

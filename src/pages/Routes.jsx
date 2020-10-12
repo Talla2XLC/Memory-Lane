@@ -1,56 +1,34 @@
 import React, { Component } from "react";
-import { Switch, Route, Redirect, IndexRedirect } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
+import { connect } from 'react-redux';
 
 import {
   Home,
-  Auth,
-  Albums,
+  UserAuthorization,
+  Album,
+  AlbumItem,
+  Photo,
+  DownloadPhoto,
   Persons,
   Profile,
-  Registration,
+  UserRegistration,
+  UserFullName,
   Stories,
   Services,
   PageNotFound,
+  SearchResult
 } from "./Main.jsx";
 
-import UserRegistration from "./components/Main/UserRegistration";
-import UserRegistrationCompleting from "./components/Main/UserRegistrationCompleting";
-import UserFullName from "./components/Main/UserFullName";
-import UserAuthorization from "../components/main/forms/UserAuthorization";
-import Funnel from "../components/Main/Funnel";
-import Persons from "../components/Main/persons/Persons";
-import MainContent from "../components/main/home/MainContent";
-import UsersAlbums from "../components/Main/albums/UserAlbums";
-// import Persons from './components/Main/Persons';
-import AddPerson from "../components/Main/persons/AddPerson";
-import Person from "../components/Main/persons/Person";
-// import Albums from './components/Main/Albums/Photos';
-import Album from "../components/Main/albums/Album";
-import Photo from "../components/Main/albums/photoFull/PhotoFull";
-import Stories from "../components/Main/stories/Stories";
-import Services from "../components/main/services/Services";
-import Learn from "../components/main/learn/Learn";
-import DownloadPhoto from "../components/Main/albums/uploadPhoto/UploadPhoto";
-// import StoryEdit from './components/Main/Stories/StoryEdit';
-import StoryView from "../components/Main/stories/StoryView";
-import Profile from "../components/Main/userProfile/UserProfile";
-import SearchResult from "../components/Main/Search/SearchResult";
-import PageNotFound from "./components/Main/pageNotFound";
-import StoryNew from "../components/Main/stories/StoryNew";
-import EditPerson from "../components/Main/persons/EditPerson";
-import Landing from "./landing/Landing";
-
-export default class Routers extends Component {
+class Routers extends Component {
   render() {
     const { isAuthorized, hasFullName } = this.props;
 
     if (isAuthorized) {
       return (
         <Switch>
-          <Redirect from="/" to="/home" />
-          <Route exact path="/home">
-            {<MainContent />}
-          </Route>
+          <Route exact path="/" component={Home} />
+          {/* <Redirect from="/" to="/home" /> */}
+          <Route exact path="/home" component={Home} />
 
           <Route
             exact
@@ -58,43 +36,69 @@ export default class Routers extends Component {
             render={(props) => <SearchResult key={props.match.params.query} />}
           />
           <Route exact path="/persons/" component={Persons} />
-          <Route exact path="/persons/add/" component={AddPerson} />
-          <Route exact path="/albums/" component={UsersAlbums} />
-          <Route exact path="/photo/add/" component={DownloadPhoto} />
-          <Route exact path="/albums/:id" component={Album} />
-          <Route exact path="/persons/:id" component={Person} />
-          <Route exact path="/persons/edit/:id" component={EditPerson} />
+          <Route exact path="/albums/" component={Album} />
+          <Route exact path="/albums/:id" component={AlbumItem} />
+          <Route exact path="/photo/add/" component={DownloadPhoto} /> 
           <Route exact path="/photo/:id" component={Photo} />
+          <Route exact path="/profile/" component={Profile} />
+          {/* <Route exact path="/persons/add/" component={AddPerson} /> */}
+          {/* <Route exact path="/persons/:id" component={Persons} /> */}
+          {/* <Route exact path="/persons/edit/:id" component={EditPerson} />
           <Route exact path="/stories/" component={Stories} />
           <Route exact path="/stories/add/" component={StoryNew} />
           <Route path="/stories/:id" component={StoryView} />
           <Route exact path="/services/" component={Services} />
-          <Route exact path="/learn/" component={Learn} />
-          <Route exact path="/profile/" component={Profile} />
+          <Route exact path="/learn/" component={Learn} /> */}
 
           {/* <Route path="*" component={PageNotFound} /> */}
+          <Route path="*">
+            <Redirect to="/404/" />
+            <Route path="/404/" component={PageNotFound} />
+          </Route>
         </Switch>
       );
-    } else {
+    } 
+    
+    else {
       return (
         <Switch>
+          <Route exact path="/" component={UserAuthorization} />
           <Route exact path="/auth/" component={UserAuthorization} />
           <Route exact path="/register/" component={UserRegistration} />
-          <Route
+          {/* <Route
             exact
             path="/check/auth-email/"
             component={UserRegistrationCompleting}
-          />
-          <Route exact path="/funnel/" component={Funnel} />
+          /> */}
+          {/* <Route exact path="/funnel/" component={Funnel} /> */}
           <Route exact path="/userfullname/" component={UserFullName} />
-          <Route exact path="/" component={Landing} />
+          {/* <Route exact path="/" component={Landing} /> */}
 
-          <Route path="*">
-            <IndexRedirect to="/404/" />
+          {/* <Route path="*">
+            <Redirect to="/404/" />
             <Route path="/404/" component={PageNotFound} />
-          </Route>
+          </Route> */}
         </Switch>
       );
     }
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    loading: state.userInfo.loading,
+    isAuthorized: state.session.isAuthorized,
+    currentUser: state.userInfo.currentUser,
+    hasFullName: !!(state.userInfo.currentUser.first_name || state.userInfo.currentUser.last_name),
+    askedToIntroduce: state.userInfo.currentUser.asked_to_introduce,
+    modalAddAlbumOpened: state.modal.addAlbumOpened,
+    modalChooseAlbumOpened: state.modal.chooseAlbumOpened
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Routers);

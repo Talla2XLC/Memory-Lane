@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import SelectNewPhoto from './SelectNewPhoto';
 import { Redirect } from 'react-router-dom';
-import { getAlbums } from '../photoFull/node_modules/actions/actionAlbums';
+import { getAlbums } from '../../../../redux/actions/actionAlbums';
 import './UploadPhoto.sass';
 import axios from 'axios';
 

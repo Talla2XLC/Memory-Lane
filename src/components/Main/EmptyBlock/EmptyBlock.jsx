@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import './EmptyBlock.sass';
 
-import { ReactComponent as FamilySvg } from '../svg/family.svg';
+import { ReactComponent as FamilySvg } from '../../../assets/Images/emptyBlock/family.svg';
 import { ButtonContainer } from '../generalUi/Button';
 import {Link} from 'react-router-dom';
 

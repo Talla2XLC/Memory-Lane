@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import './UserProfile.sass';
-import UserProfileNav from './userProfileNav/UserProfileNav';
-import UserProfileInfo from './userProfileInfo/UserProfileInfo';
-import UserProfileInfoReName from './userProfileInfoReName/UserProfileInfoReName';
+import UserProfileNav from './UserProfileNav/UserProfileNav';
+import UserProfileInfo from './UserProfileInfo/UserProfileInfo';
+import UserProfileInfoReName from './UserProfileInfoReName/UserProfileInfoReName';
 import { connect } from 'react-redux';
 
 

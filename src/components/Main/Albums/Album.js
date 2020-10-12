@@ -3,8 +3,8 @@ import {connect} from 'react-redux';
 import Sorting from '../generalUi/sorting/Sorting';
 import AlbumsItem from './PhotoItem';
 import './Album.sass';
-import EmptyBlock from '../emptyBlock/EmptyBlock';
-import {ReactComponent as GoBack} from '../../../assets/Images/General/goBack.svg';
+import EmptyBlock from '../EmptyBlock/EmptyBlock';
+import {ReactComponent as GoBack} from '../../../assets/Images/general/goBack.svg';
 
 class Album extends Component {
   constructor(props) {

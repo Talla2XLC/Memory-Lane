@@ -1,5 +1,5 @@
 import React  from 'react';
-import Portal from './Modal/Portal';
+import Portal from '../generalUi/modals/Portal';
 import styled from 'styled-components';
 
 const FormModal = ({ modalOpened, onCancel, children }) => {
@@ -47,7 +47,7 @@ const FormModalWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  heigth: 320px;
+  height: 320px;
 }
 
 // .modalHeader,

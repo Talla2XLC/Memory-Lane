@@ -3,7 +3,7 @@ import './UserProfileInfoReName.sass';
 import axios from 'axios';
 import {connect} from 'react-redux';
 
-import { fetchUserFullName } from 'actions/actionUserFullName';
+import { fetchUserFullName } from '../../../../redux/actions/actionUserFullName';
 
 class UserProfileInfoReName extends Component {
   state = {

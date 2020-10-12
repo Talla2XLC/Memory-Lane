@@ -1,8 +1,8 @@
 import React from 'react';
 import './MainContent.sass';
-import NewsFeed from '../NewsFeed';
+import NewsFeed from './NewsFeed';
 import { ButtonContainer } from '../generalUi/Button.jsx';
-import { ReactComponent as HeaderImg } from './svg/Image.svg';
+import { ReactComponent as HeaderImg } from '../../../assets/Images/general/Image.svg';
 import {Link} from "react-router-dom";
 
 export default function MainContent() {

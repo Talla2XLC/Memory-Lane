@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import {ReactComponent as XMark} from '../../../../assets/Images//Album/xMark.svg';
-import {ReactComponent as AddBTN} from '../../../../assets/Images/Album/addButton.svg';
+import {ReactComponent as XMark} from '../../../../assets/Images/albums/xMark.svg';
+import {ReactComponent as AddBTN} from '../../../../assets/Images/albums/addButton.svg';
 import DropdownPersons from '../../generalUi/dropdownPersons/DropdownPersons';
 import {connect} from 'react-redux';
-import {ReactComponent as RadioBTN} from '../../../../assets/Images//Album/radioBTN.svg';
+import {ReactComponent as RadioBTN} from '../../../../assets/Images/albums/radioBTN.svg';
 import {ButtonContainer} from '../../generalUi/Button';
-import { getAlbums } from '../uploadPhoto/node_modules/actions/actionAlbums';
+import { getAlbums } from '../../../../redux/actions/actionAlbums';
 import axios from 'axios';
 
 class PhotoFullRightEdit extends Component {

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import DropdownView from './DropdownView';
-import DropdownAction from "../DropdownAction/DropdownAction";
-import {ReactComponent as Arrow} from './svg/arrow.svg';
-import {ReactComponent as Plus} from '../../svg/plus.svg';
+import DropdownAction from "../dropdownAction/DropdownAction";
+import {ReactComponent as Arrow} from '../../../../assets/Images/sorting/arrow.svg';
+import {ReactComponent as Plus} from '../../../../assets/Images/general/plus.svg';
 import {connect} from 'react-redux';
-import {modalOpen} from '../../albums/uploadPhoto/node_modules/actions/modalOpen';
+import {modalOpen} from '../../../../redux/actions/modalOpen';
 import { Link } from  'react-router-dom';
 class Sorting extends Component {
   render() {

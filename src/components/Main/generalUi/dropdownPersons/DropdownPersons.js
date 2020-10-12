@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './DropdownPersons.sass';
-import {ReactComponent as AddBTN} from '../../Albums/svg/addButton.svg';
+import {ReactComponent as AddBTN} from '../../../../assets/Images/albums/addButton.svg';
 
 class DropdownPersons extends Component {
   constructor(props) {

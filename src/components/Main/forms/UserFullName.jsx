@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { fetchUserFullName } from "../../actions/actionUserFullName";
-import { askedToIntroduce } from "../../actions/actionUserHasIntroduced";
+import { fetchUserFullName } from "../../../redux/actions/actionUserFullName";
+import { askedToIntroduce } from "../../../redux/actions/actionUserHasIntroduced";
 
 import "./UserFormStyle.sass";
 import { Radio, RadioGroup } from "react-icheck";
-import { ButtonContainer } from "./Button.jsx";
+import { ButtonContainer } from "../generalUi/Button.jsx";
 
 // import { Tooltip } from './_UserRegistrationTooltip';
 

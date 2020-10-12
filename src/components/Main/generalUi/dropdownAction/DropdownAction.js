@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 // import './DropdownAction.sass';
-import {ReactComponent as Dots} from './svg/dots.svg';
-import {ReactComponent as Share} from './svg/shareIcon.svg';
-import {ReactComponent as Copy} from './svg/copyIcon.svg';
-import {ReactComponent as Delete} from './svg/deleteIcon.svg';
-import {ReactComponent as Download} from './svg/downloadIcon.svg';
-import {ReactComponent as Rename} from './svg/reNameIcon.svg';
-import {ReactComponent as Move} from './svg/move.svg';
-import {ReactComponent as Arrow} from '../Sorting/svg/arrow.svg';
+import {ReactComponent as Dots} from '../../../../assets/Images/dropdownAction/dots.svg';
+import {ReactComponent as Share} from '../../../../assets/Images/dropdownAction/shareIcon.svg';
+import {ReactComponent as Copy} from '../../../../assets/Images/dropdownAction/copyIcon.svg';
+import {ReactComponent as Delete} from '../../../../assets/Images/dropdownAction/deleteIcon.svg';
+import {ReactComponent as Download} from '../../../../assets/Images/dropdownAction/downloadIcon.svg';
+import {ReactComponent as Rename} from '../../../../assets/Images/dropdownAction/reNameIcon.svg';
+import {ReactComponent as Move} from '../../../../assets/Images/dropdownAction/move.svg';
+import {ReactComponent as Arrow} from '../../../../assets/Images/sorting/arrow.svg';
 
 class DropdownAction extends Component {
   constructor(props) {

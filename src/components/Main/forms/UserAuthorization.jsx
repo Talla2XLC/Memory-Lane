@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 import './UserFormStyle.sass';
 import { ButtonContainer } from '../generalUi/Button.jsx';
 
-import { ReactComponent as FormVK }	from '../../../assets/Images/General/form_vk.svg';
-import { ReactComponent as FormFB }	from '../../../assets/Images/General/form_fb.svg';
-import { ReactComponent as FormG }	from '../../../assets/Images/General/form_g.svg';
-import { ReactComponent as FormIns }	from '../../../assets/Images/General/form_ins.svg';
-import { ReactComponent as EyeClosed }	from '../../../assets/Images/General/eye_closed.svg';
-import { ReactComponent as EyeOpen }	from '../../../assets/Images/General/eye_open.svg';
+import { ReactComponent as FormVK }	from '../../../assets/Images/forms/form_vk.svg';
+import { ReactComponent as FormFB }	from '../../../assets/Images/forms/form_fb.svg';
+import { ReactComponent as FormG }	from '../../../assets/Images/forms/form_g.svg';
+import { ReactComponent as FormIns }	from '../../../assets/Images/forms/form_ins.svg';
+import { ReactComponent as EyeClosed }	from '../../../assets/Images/forms/eye_closed.svg';
+import { ReactComponent as EyeOpen }	from '../../../assets/Images/forms/eye_open.svg';
 
 import axios from 'axios';
 import { connect } from 'react-redux';

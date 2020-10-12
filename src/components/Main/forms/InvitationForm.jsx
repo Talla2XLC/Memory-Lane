@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './UserFormStyle.sass';
 // import { Tooltip } from './UserRegistrationTooltip';
-import { ReactComponent as FormVK }   from '../../../assets/Images/General/form_vk.svg';
-import { ReactComponent as FormFB }   from '../../../assets/Images/General/form_fb.svg';
-import { ReactComponent as FormG }    from '../../../assets/Images/General/form_g.svg';
-import { ReactComponent as FormIns }   from '../../../assets/Images/General/form_ins.svg';
+import { ReactComponent as FormVK }   from '../../../assets/Images/forms/form_vk.svg';
+import { ReactComponent as FormFB }   from '../../../assets/Images/forms/form_fb.svg';
+import { ReactComponent as FormG }    from '../../../assets/Images/forms/form_g.svg';
+import { ReactComponent as FormIns }   from '../../../assets/Images/forms/form_ins.svg';
 
 export default class InvitationForm extends Component {
 state = {

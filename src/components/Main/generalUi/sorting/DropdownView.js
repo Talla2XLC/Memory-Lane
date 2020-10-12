@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './DropdownView.sass';
-import {ReactComponent as Arrow} from './svg/arrow.svg';
-import { ReactComponent as BigCol } from './svg/bigCol.svg';
-import { ReactComponent as MedCol } from './svg/medCol.svg';
-import { ReactComponent as MedRow } from './svg/medRow.svg';
-import { ReactComponent as SmallRow } from './svg/smallRow.svg';
-import { ReactComponent as NoPreview } from './svg/noPreview.svg';
+import {ReactComponent as Arrow} from '../../../../assets/Images/sorting/arrow.svg';
+import { ReactComponent as BigCol } from '../../../../assets/Images/sorting/bigCol.svg';
+import { ReactComponent as MedCol } from '../../../../assets/Images/sorting/medCol.svg';
+import { ReactComponent as MedRow } from '../../../../assets/Images/sorting/medRow.svg';
+import { ReactComponent as SmallRow } from '../../../../assets/Images/sorting/smallRow.svg';
+import { ReactComponent as NoPreview } from '../../../../assets/Images/sorting/noPreview.svg';
 
 class DropdownView extends Component {
   constructor(props) {
