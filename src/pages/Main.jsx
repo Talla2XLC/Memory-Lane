@@ -1,6 +1,8 @@
 export { default as Home } from './Home';
 export { default as UserAuthorization } from './Auth';
 export { default as Registration } from './Registration';
+export { default as UserRegistrationCompleting } from './RegistrationCompleting';
+export { default as Landing } from './landing/Landing';
 export { default as Album } from './Albums';
 export { default as AlbumItem } from '../components/Main/albums/Album';
 export { default as DownloadPhoto } from '../components/Main/albums/uploadPhoto/UploadPhoto';

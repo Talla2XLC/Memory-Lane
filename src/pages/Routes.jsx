@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { connect } from 'react-redux';
 
 import {
   Home,
+  Landing,
   UserAuthorization,
   Album,
   AlbumItem,
@@ -12,27 +12,39 @@ import {
   Persons,
   Profile,
   UserRegistration,
+  UserRegistrationCompleting,
   UserFullName,
   Stories,
-  // Services,
+  Services,
   PageNotFound,
   SearchResult
 } from "./Main.jsx";
 
-class Routers extends Component {
+export default class Routers extends Component {
+  // state = {
+  //   isAuthorized: false
+  // };
+
+  // componentDidMount() {
+  //   const { 
+  //     isAuthorized, 
+  //     hasFullName 
+  //   } = this.props;
+
+  //   this.setState({ isAuthorized });
+  // }
+
   render() {
     const { 
       isAuthorized, 
       // hasFullName 
     } = this.props;
 
-    if (isAuthorized) {
       return (
+        <>
+        { isAuthorized &&
         <Switch>
-          <Route exact path="/" component={Home} />
-          {/* <Redirect from="/" to="/home" /> */}
           <Route exact path="/home" component={Home} />
-
           <Route
             exact
             path="/search/:query"
@@ -45,63 +57,42 @@ class Routers extends Component {
           <Route exact path="/photo/:id" component={Photo} />
           <Route exact path="/stories/" component={Stories} />
           <Route exact path="/profile/" component={Profile} />
+          <Route exact path="/services/" component={Services} />
           {/* <Route exact path="/persons/add/" component={AddPerson} /> */}
           {/* <Route exact path="/persons/:id" component={Persons} /> */}
           {/* <Route exact path="/persons/edit/:id" component={EditPerson} />
           <Route exact path="/stories/add/" component={StoryNew} />
           <Route path="/stories/:id" component={StoryView} />
-          <Route exact path="/services/" component={Services} />
           <Route exact path="/learn/" component={Learn} /> */}
 
-          {/* <Route path="*" component={PageNotFound} /> */}
-          <Route path="*">
-            <Redirect to="/404/" />
-            <Route path="/404/" component={PageNotFound} />
+          <Route exact path="/">
+            <Redirect to="/home" />
+            <Route path="/home" component={Home} />
           </Route>
-        </Switch>
-      );
-    } 
-    
-    else {
-      return (
-        <Switch>
-          <Route exact path="/" component={UserAuthorization} />
-          <Route exact path="/auth/" component={UserAuthorization} />
-          <Route exact path="/register/" component={UserRegistration} />
-          {/* <Route
-            exact
-            path="/check/auth-email/"
-            component={UserRegistrationCompleting}
-          /> */}
-          {/* <Route exact path="/funnel/" component={Funnel} /> */}
-          <Route exact path="/userfullname/" component={UserFullName} />
-          {/* <Route exact path="/" component={Landing} /> */}
-
+          <Route path="*" component={PageNotFound} />
           {/* <Route path="*">
             <Redirect to="/404/" />
             <Route path="/404/" component={PageNotFound} />
           </Route> */}
+
+        </Switch>} 
+        {!isAuthorized &&
+        <Switch>
+        <Route exact path="/auth/" component={UserAuthorization} />
+        <Route exact path="/register/" component={UserRegistration} />
+        <Route exact path="/userfullname/" component={UserFullName} />
+        <Route
+            exact
+            path="/check/auth-email/"
+            component={UserRegistrationCompleting}
+          />
+        {/* <Route exact path="/funnel/" component={Funnel} /> */}
+        <Route exact path="/" component={Landing} />
+        <Route path="*" component={PageNotFound} />
         </Switch>
+        }
+        </>
       );
-    }
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    loading: state.userInfo.loading,
-    isAuthorized: state.session.isAuthorized,
-    currentUser: state.userInfo.currentUser,
-    hasFullName: !!(state.userInfo.currentUser.first_name || state.userInfo.currentUser.last_name),
-    askedToIntroduce: state.userInfo.currentUser.asked_to_introduce,
-    modalAddAlbumOpened: state.modal.addAlbumOpened,
-    modalChooseAlbumOpened: state.modal.chooseAlbumOpened
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Routers);

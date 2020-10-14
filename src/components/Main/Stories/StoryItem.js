@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 import './Stories.sass';
 
-import { ReactComponent as DownloadIcon } from '../General/DropdownAction/svg/downloadIcon.svg';
-import { ReactComponent as ShareIcon } from '../General/DropdownAction/svg/shareIcon.svg';
-import { ReactComponent as CommentsIcon } from '../svg/commentsIcon.svg';
+import { ReactComponent as DownloadIcon } from '../../../assets/Images/dropdownAction/downloadIcon.svg';
+import { ReactComponent as ShareIcon } from '../../../assets/Images/dropdownAction/shareIcon.svg';
+import { ReactComponent as CommentsIcon } from '../../../assets/Images/general/commentsIcon.svg';
 
 export default class StoriesItem extends Component {
   render() {

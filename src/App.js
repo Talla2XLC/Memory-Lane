@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { BrowserRouter, Redirect, Switch } from 'react-router-dom';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import styled from 'styled-components';
 
@@ -11,7 +10,6 @@ import Content from './components/Main/generalUi/Content';
 import MainModal  from './components/Main/generalUi/modals/MainModal';
 import ModalAddAlbum  from './components/Main/generalUi/modals/addAlbum';
 import ModalChooseAlbum  from './components/Main/generalUi/modals/choose/ChooseAlbum';
-// import Landing from './pages/landing/Landing.js';
 
 import './App.sass';
 
@@ -23,6 +21,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isAuthorized: false,
       navItems: [
         { endpoint: 'persons', title: 'Персоны', icon: <PersonsIcon/>  },
         { endpoint: 'albums', title: 'Альбомы', icon: <AlbumsIcon />  },
@@ -32,51 +31,46 @@ class App extends Component {
       ]
     };
   }
+
   render() {
     const { navItems } = this.state;
     const 
       {
-        loading,
-        isAuthorized,
-        hasFullName,
-        askedToIntroduce,
+        isAuthorized, 
         modalAddAlbumOpened,
         modalChooseAlbumOpened
       } = this.props;
 
-    return (
-      <div className='App'>
-        {
-          isAuthorized ?
-            (
-              loading ?
-              <h1>Загрузка данных</h1> :
-              (hasFullName || askedToIntroduce) ?
-                <MainWrapper className='Main'>
-                  <Header />
-                  <PerfectScrollbar component='div'>
-                    <div className='central-content'>
-                      <MainNav navItems={navItems}/>
-                      <Content isAuthorized={isAuthorized}/>
-                    </div>
-                  </PerfectScrollbar>
-                  <MainModal
-                    modalOpened={modalAddAlbumOpened}
-                    modalType={'addAlbum'}
-                  >
-                    <ModalAddAlbum/>
-                  </MainModal>
-                  <ModalChooseAlbum
-                    modalOpened={modalChooseAlbumOpened}
-                    modalType={'chooseAlbum'}
-                  />
-                </MainWrapper> : 
-                <Routes />
-            )
-            : <Routes />
-        }
-      </div>
-    );
+      // console.log(this.props);
+      return (
+        <>
+        { isAuthorized &&
+        <div className='App'>
+      <MainWrapper className='Main'>
+        <PerfectScrollbar component='div'>
+        <Header />
+        <div className='central-content'>
+        <MainNav navItems={navItems} />
+        <Content />     
+        </div>
+        </PerfectScrollbar>
+        <MainModal
+          modalOpened={modalAddAlbumOpened}
+          modalType={'addAlbum'}
+        >
+          <ModalAddAlbum/>
+        </MainModal>
+        <ModalChooseAlbum
+          modalOpened={modalChooseAlbumOpened}
+          modalType={'chooseAlbum'}
+          />
+      </MainWrapper>
+      <Routes isAuthorized={isAuthorized} />
+            
+        </div>} 
+        { !isAuthorized && <div className='App'><Routes isAuthorized={isAuthorized} /></div>}
+      </>
+      ); 
   }
 }
 
@@ -84,7 +78,7 @@ const MainWrapper = styled.div`
 background-color: #F6F6F6;
 display: flex;
 flex-flow: column nowrap;
-height: 100vh;
+// height: 100vh;
 width: 100%;
 min-width: 1340px;
 overflow: hidden;
@@ -107,11 +101,7 @@ box-sizing: border-box;
 
 const mapStateToProps = state => {
   return {
-    loading: state.userInfo.loading,
     isAuthorized: state.session.isAuthorized,
-    currentUser: state.userInfo.currentUser,
-    hasFullName: !!(state.userInfo.currentUser.first_name || state.userInfo.currentUser.last_name),
-    askedToIntroduce: state.userInfo.currentUser.asked_to_introduce,
     modalAddAlbumOpened: state.modal.addAlbumOpened,
     modalChooseAlbumOpened: state.modal.chooseAlbumOpened
   };

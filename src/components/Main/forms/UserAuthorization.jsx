@@ -54,7 +54,8 @@ class UserAuthorization extends Component {
 	        localStorage.setItem('token', res.data.token);
 	        setSessionID(res.data.token);
 	       	checkSessionID(res.data.token);
-	        checkUserName();
+					checkUserName();
+					this.setState({ hasLoggedIn: true })
 	      } else {	// res.status !== 200
 	        console.error(res.data.error);
 	        alert(`${res.data.error}`);
@@ -130,13 +131,17 @@ class UserAuthorization extends Component {
 						Забыли пароль?
 					</a>
 				</div>
-				<ButtonContainer
+				<Link
 					className='btn-auth'
-					type='submit'
+					to={this.state.hasLoggedIn ? '/' : false}
 					onClick={this.LogInUser}
 				>
+				<ButtonContainer
+					type='submit'
+					>
 					Войти
 				</ButtonContainer>
+				</Link>
 			
 			</div>
 

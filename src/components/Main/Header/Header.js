@@ -4,6 +4,7 @@ import Notice from './Notice';
 import AddSection from './Add_section';
 import AvatarButton from './AvatarButton';
 
+import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import {connect} from 'react-redux';
 
@@ -21,10 +22,10 @@ class Header extends Component {
 
     return (
       <HeaderWrapper className='headerDiv'>
-        <a className='logoLink' href='/'>
+        <Link className='logoLink' to='/home'>
           <div className='logo logoFont'>Memory Lane</div>
           <div className='logoDot'/>
-        </a>
+        </Link>
         <div className='header__center'>
           {/* <Search/> */}
           <SearchAdd />

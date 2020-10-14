@@ -5,7 +5,7 @@ import './Stories.sass';
 
 import Sorting from '../generalUi/sorting/Sorting';
 
-import { ReactComponent as GuySvg } from '../svg/guy_with_magnifier.svg';
+import { ReactComponent as GuySvg } from '../../../assets/Images/general/guy_with_magnifier.svg';
 import { ButtonContainer } from '../generalUi/Button';
 
 class StoriesEmpty extends Component {
