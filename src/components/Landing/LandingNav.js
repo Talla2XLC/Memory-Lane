@@ -26,13 +26,7 @@ class LandingNav extends Component {
       behavior: "smooth"
     });
   } 
-  
-  // openAuthorization(e) {
-  //   e.preventDefault();
-  //   let sr = this.props;
-  //   console.log(sr);
-  // }
-  
+
   render() {
     return (
       <nav className="landing-nav">
@@ -40,7 +34,6 @@ class LandingNav extends Component {
         <button className="nav-btn about-btn" onClick={ this.scrollToAbout }>О проекте</button>
         <button className="nav-btn features-btn" onClick={ this.scrollToFeatures }>Возможности</button>
         <button className="nav-btn form-btn" onClick={ this.scrollToBottom }>Регистрация</button>
-        {/* <button className="nav-btn login-btn" onClick={ this.openAuthorization }>Вход</button> */}
         <Link to="/auth" className="nav-btn login-btn">Вход</Link>
       </nav>
     );

@@ -70,11 +70,6 @@ export default class Routers extends Component {
             <Route path="/home" component={Home} />
           </Route>
           <Route path="*" component={PageNotFound} />
-          {/* <Route path="*">
-            <Redirect to="/404/" />
-            <Route path="/404/" component={PageNotFound} />
-          </Route> */}
-
         </Switch>} 
         {!isAuthorized &&
         <Switch>

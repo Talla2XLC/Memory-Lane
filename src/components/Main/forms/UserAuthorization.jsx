@@ -133,7 +133,7 @@ class UserAuthorization extends Component {
 				</div>
 				<Link
 					className='btn-auth'
-					to={this.state.hasLoggedIn ? '/' : false}
+					to={this.state.hasLoggedIn ? '/' : ''}
 					onClick={this.LogInUser}
 				>
 				<ButtonContainer
