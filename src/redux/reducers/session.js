@@ -1,24 +1,24 @@
 const initialState = {
-  sessionID: localStorage.getItem('token'),
-  isAuthorized: false
+  sessionID: localStorage.getItem("token"),
+  isAuthorized: false,
 };
 
 export default function userInfo(state = initialState, action) {
   switch (action.type) {
-    case 'SESSION_ID_SET':
+    case "SESSION_ID_SET":
       return {
         ...state,
-        sessionID: action.payload
+        sessionID: action.payload,
       };
-    case 'SESSION_ID_VALID':
+    case "SESSION_ID_VALID":
       return {
         ...state,
-        isAuthorized: true
+        isAuthorized: true,
       };
-    case 'SESSION_ID_NOT_VALID':
+    case "SESSION_ID_NOT_VALID":
       return {
         ...state,
-        isAuthorized: false
+        isAuthorized: false,
       };
     default:
       return state;

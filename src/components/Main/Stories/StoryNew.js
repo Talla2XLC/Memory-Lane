@@ -112,7 +112,7 @@ export default class StoryNew extends Component {
     } = this.state;
 
     const { loading, history } = this.props;
-    
+
     return loading ? (
       <h1>Загрузка данных</h1>
     ) : (

@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
-import './Stories.sass';
+import "./Stories.sass";
 
-import Sorting from '../generalUi/sorting/Sorting';
+import Sorting from "../generalUi/sorting/Sorting";
 
-import { ReactComponent as GuySvg } from '../../../assets/Images/general/guy_with_magnifier.svg';
-import { ButtonContainer } from '../generalUi/Button';
+import { ReactComponent as GuySvg } from "../../../assets/Images/general/guy_with_magnifier.svg";
+import { ButtonContainer } from "../generalUi/Button";
 
 class StoriesEmpty extends Component {
   constructor(props) {
@@ -17,20 +17,18 @@ class StoriesEmpty extends Component {
 
   forwardToAddStory() {
     const { history } = this.props;
-    
-    history.push('/stories/add');
+
+    history.push("/stories/add");
   }
-  
+
   render() {
     return (
-      <div className='emptyBlock'>
-        <Sorting
-          currentPage='stories'
-        />
-        <GuySvg className='guySvg'/>
-        <div className='head2'>Здесь пока нет ни одной истории</div>
+      <div className="emptyBlock">
+        <Sorting currentPage="stories" />
+        <GuySvg className="guySvg" />
+        <div className="head2">Здесь пока нет ни одной истории</div>
         <ButtonContainer
-          className='emptyNewsBlockButton'
+          className="emptyNewsBlockButton"
           onClick={this.forwardToAddStory}
         >
           Написать

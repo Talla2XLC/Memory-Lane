@@ -1,35 +1,35 @@
-import axios from 'axios';
+import axios from "axios";
 
 const fetchStoriesStart = () => ({
-  type: 'GET_STORIES_START'
+  type: "GET_STORIES_START",
 });
 
-const fetchStoriesSuccess = stories => ({
-  type: 'GET_STORIES_SUCCESS',
-  payload: stories
+const fetchStoriesSuccess = (stories) => ({
+  type: "GET_STORIES_SUCCESS",
+  payload: stories,
 });
 
-const fetchStoriesFailed = error => ({
-  type: 'GET_STORIES_FAILED',
-  payload: error
+const fetchStoriesFailed = (error) => ({
+  type: "GET_STORIES_FAILED",
+  payload: error,
 });
 
-export const fetchStories = () => dispatch => {
+export const fetchStories = () => (dispatch) => {
   dispatch(fetchStoriesStart());
 
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
 
   axios
     .post(
-      'http://api.memory-lane.ru/db/getHistory',
+      "http://api.memory-lane.ru/db/getHistory",
       {},
       {
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': token
-        }
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
       }
     )
-    .then(res => dispatch(fetchStoriesSuccess(res.data)))
-    .catch(error => dispatch(fetchStoriesFailed(error.message)));
+    .then((res) => dispatch(fetchStoriesSuccess(res.data)))
+    .catch((error) => dispatch(fetchStoriesFailed(error.message)));
 };

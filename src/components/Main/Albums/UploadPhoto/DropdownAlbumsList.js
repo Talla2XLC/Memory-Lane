@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
-import './DropdownAlbumsList.sass';
-import {ReactComponent as CurrentAlbumIco} from '../../../../assets/Images/albums/currentAlbum.svg';
-import {ReactComponent as NewAlbumIco} from '../../../../assets/Images/albums/newAlbum.svg';
-import {modalOpen} from '../../../../redux/actions/modalOpen';
-import {connect} from 'react-redux';
+import React, { Component } from "react";
+import "./DropdownAlbumsList.sass";
+import { ReactComponent as CurrentAlbumIco } from "../../../../assets/Images/albums/currentAlbum.svg";
+import { ReactComponent as NewAlbumIco } from "../../../../assets/Images/albums/newAlbum.svg";
+import { modalOpen } from "../../../../redux/actions/modalOpen";
+import { connect } from "react-redux";
 
 class DropdownAlbumsList extends Component {
   handleItemSelect(id) {
@@ -12,49 +12,50 @@ class DropdownAlbumsList extends Component {
 
   render() {
     const { openModalAddAlbum } = this.props;
-    const albums = typeof this.props.albums === 'object' ? Object.values(this.props.albums) : [];
+    const albums =
+      typeof this.props.albums === "object"
+        ? Object.values(this.props.albums)
+        : [];
 
-    const newAlbumsItem =
+    const newAlbumsItem = (
       <button
-        className='dropdown-albums-btn new-album-btn'
+        className="dropdown-albums-btn new-album-btn"
         onClick={openModalAddAlbum}
       >
-        <NewAlbumIco className='dropdown-albums-svg' />
+        <NewAlbumIco className="dropdown-albums-svg" />
         Создать новый альбом
       </button>
-
-    const albumsItems = albums.map( album =>
-      (
-        <button
-          key={album.id}
-          className='dropdown-albums-btn'
-          onClick={() => this.handleItemSelect(album.id)}
-        >
-          <CurrentAlbumIco className='dropdown-albums-svg' />
-          {album.album_name}
-        </button>
-      )
     );
 
+    const albumsItems = albums.map((album) => (
+      <button
+        key={album.id}
+        className="dropdown-albums-btn"
+        onClick={() => this.handleItemSelect(album.id)}
+      >
+        <CurrentAlbumIco className="dropdown-albums-svg" />
+        {album.album_name}
+      </button>
+    ));
+
     return (
-      <div className='dropdown-albums text1'>
-        { newAlbumsItem }
-        { albumsItems }
+      <div className="dropdown-albums text1">
+        {newAlbumsItem}
+        {albumsItems}
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  return {
-  };
+  return {};
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     openModalAddAlbum: () => {
-      dispatch(modalOpen('addAlbum'));
-    }
+      dispatch(modalOpen("addAlbum"));
+    },
   };
 };
 

@@ -1,37 +1,37 @@
-import axios from 'axios';
+import axios from "axios";
 
 const askedToIntroduceStarted = () => ({
-  type: 'SKIP_INTRODUCE_START'
+  type: "SKIP_INTRODUCE_START",
 });
 
-const askedToIntroduceSucess = user => ({
-  type: 'SKIP_INTRODUCE_SUCCESS',
-  payload: user
+const askedToIntroduceSucess = (user) => ({
+  type: "SKIP_INTRODUCE_SUCCESS",
+  payload: user,
 });
 
-const askedToIntroduceFailed = error => ({
-  type: 'SKIP_INTRODUCE_FAILED',
-  payload: error
+const askedToIntroduceFailed = (error) => ({
+  type: "SKIP_INTRODUCE_FAILED",
+  payload: error,
 });
 
-export const askedToIntroduce = () => dispatch => {
+export const askedToIntroduce = () => (dispatch) => {
   dispatch(askedToIntroduceStarted());
 
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
 
   axios
     .post(
-      'http://api.memory-lane.ru/db/setAccount',
+      "http://api.memory-lane.ru/db/setAccount",
       {},
       {
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `${token}`
-        }
+          "Content-Type": "application/json",
+          Authorization: `${token}`,
+        },
       }
     )
-    .then(res => {
+    .then((res) => {
       dispatch(askedToIntroduceSucess(res.data));
     })
-    .catch(error => dispatch(askedToIntroduceFailed(error.message)));
+    .catch((error) => dispatch(askedToIntroduceFailed(error.message)));
 };

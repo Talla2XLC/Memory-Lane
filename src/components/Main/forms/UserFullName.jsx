@@ -6,8 +6,6 @@ import "./UserFormStyle.sass";
 import { Radio, RadioGroup } from "react-icheck";
 import { ButtonContainer } from "../generalUi/Button.jsx";
 
-// import { Tooltip } from './_UserRegistrationTooltip';
-
 import axios from "axios";
 import { connect } from "react-redux";
 

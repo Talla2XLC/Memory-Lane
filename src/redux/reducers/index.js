@@ -1,13 +1,13 @@
-import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
-import userInfo from './user';
-import session from './session';
-import modal from './modal';
-import albums from './albums';
-import photosInfo from './photos';
-import storiesInfo from './stories';
-import persons from './persons';
-import searchQueryInfo from './searchQuery.js';
+import { combineReducers } from "redux";
+import { routerReducer } from "react-router-redux";
+import userInfo from "./user";
+import session from "./session";
+import modal from "./modal";
+import albums from "./albums";
+import photosInfo from "./photos";
+import storiesInfo from "./stories";
+import persons from "./persons";
+import searchQueryInfo from "./searchQuery.js";
 
 const rootReducer = combineReducers({
   routing: routerReducer,
@@ -18,7 +18,7 @@ const rootReducer = combineReducers({
   photosInfo,
   modal,
   persons,
-  searchQueryInfo 
+  searchQueryInfo,
 });
 
 export default rootReducer;

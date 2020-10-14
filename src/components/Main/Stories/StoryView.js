@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
-import PerfectScrollbar from 'react-perfect-scrollbar';
+import React, { Component } from "react";
+import PerfectScrollbar from "react-perfect-scrollbar";
 
-import {ReactComponent as StoryBackwards} from '../../Main/svg/back_arrow.svg';
+import { ReactComponent as StoryBackwards } from "../../Main/svg/back_arrow.svg";
 
-import './Stories.sass';
+import "./Stories.sass";
 
 export default class StoryView extends Component {
-
-  render() {    
+  render() {
     const {
       content,
       date,
@@ -15,29 +14,30 @@ export default class StoryView extends Component {
       author,
       city,
       tags,
-      picture
+      picture,
     } = this.props.location.state;
 
     return (
       <PerfectScrollbar>
-        <button
-          className='storyBackwards'
-          onClick={this.props.history.goBack}
-        >
-          <StoryBackwards/>
+        <button className="storyBackwards" onClick={this.props.history.goBack}>
+          <StoryBackwards />
         </button>
-        <div className='storyView'>
-          <div className='head2 storyView__title'>{title.title}</div>
-          <div className='storyView__tags'>Здесь должны быть теги<br/>{tags.tags}</div>
-          <div className='text3 storyView__date'>{date.date}</div>
-          <div className='text3 storyView__author'>{author.author}</div>
-          <div className='text3 storyView__city'>{city.city}</div>
-          <div className='text1 storyView__content'>{content.content}</div>
-          <div className='storyView__picture'>
-            <img src={picture.picture} alt='storyPicture'/>
+        <div className="storyView">
+          <div className="head2 storyView__title">{title.title}</div>
+          <div className="storyView__tags">
+            Здесь должны быть теги
+            <br />
+            {tags.tags}
+          </div>
+          <div className="text3 storyView__date">{date.date}</div>
+          <div className="text3 storyView__author">{author.author}</div>
+          <div className="text3 storyView__city">{city.city}</div>
+          <div className="text1 storyView__content">{content.content}</div>
+          <div className="storyView__picture">
+            <img src={picture.picture} alt="storyPicture" />
           </div>
         </div>
       </PerfectScrollbar>
     );
-  };
+  }
 }

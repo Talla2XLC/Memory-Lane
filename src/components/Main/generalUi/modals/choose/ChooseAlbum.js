@@ -1,19 +1,19 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-import {getAlbums} from '../../../../../redux/actions/actionAlbums';
-import {modalClose} from '../../../../../redux/actions/modalClose';
+import { getAlbums } from "../../../../../redux/actions/actionAlbums";
+import { modalClose } from "../../../../../redux/actions/modalClose";
 
-import Portal from '../Portal';
-import {ButtonContainer} from '../../Button';
-import {ReactComponent as Plus} from '../../../../../assets/Images/general/plus.svg';
+import Portal from "../Portal";
+import { ButtonContainer } from "../../Button";
+import { ReactComponent as Plus } from "../../../../../assets/Images/general/plus.svg";
 
-import ChooseAlbumSearch from './ChooseAlbumSearch';
+import ChooseAlbumSearch from "./ChooseAlbumSearch";
 
-import AlbumItem from './ChooseAlbumItemAlbum';
+import AlbumItem from "./ChooseAlbumItemAlbum";
 
-import './ChooseAlbum.sass';
+import "./ChooseAlbum.sass";
 
 class ModalChooseAlbum extends Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class ModalChooseAlbum extends Component {
 
     this.state = {
       currentAlbum: null,
-      goToAlbumPhotos: false
+      goToAlbumPhotos: false,
     };
 
     this.chooseAlbum = this.chooseAlbum.bind(this);
@@ -29,104 +29,107 @@ class ModalChooseAlbum extends Component {
   }
 
   chooseAlbum() {
-    this.setState({currentAlbum: this.props.album.id});
+    this.setState({ currentAlbum: this.props.album.id });
 
     console.log(this.state);
   }
 
   goToAlbumContent() {
-    this.state.currentAlbum === null ? alert('Выберите альбом!') : this.setState({goToAlbumPhotos: true});
+    this.state.currentAlbum === null
+      ? alert("Выберите альбом!")
+      : this.setState({ goToAlbumPhotos: true });
   }
 
   render() {
     const { modalOpened, modalType, closeModal, albums } = this.props;
 
-    const storiesAlbums = albums ? Object.values(albums).map(album =>
-      <AlbumItem 
-        key={album.id}
-        id={album.id}
-        title={album.album_name}
-        picture={album.ico_url}
-      />
-    ) : '';
-    
+    const storiesAlbums = albums
+      ? Object.values(albums).map((album) => (
+          <AlbumItem
+            key={album.id}
+            id={album.id}
+            title={album.album_name}
+            picture={album.ico_url}
+          />
+        ))
+      : "";
+
     return (
       <>
-        { 
-          modalOpened &&
-            <Portal>
-              <div className='modalChooseOverlay'>
-                <div className='modalChooseWindow'>
-                  <div className='modalChooseHeader'>
-                    <div className='head3 modalChooseTitle'>
-                      {!this.state.goToAlbumPhotos ? 'Выберите альбом' : 'Выберите фотографию'}
-                    </div>
+        {modalOpened && (
+          <Portal>
+            <div className="modalChooseOverlay">
+              <div className="modalChooseWindow">
+                <div className="modalChooseHeader">
+                  <div className="head3 modalChooseTitle">
+                    {!this.state.goToAlbumPhotos
+                      ? "Выберите альбом"
+                      : "Выберите фотографию"}
+                  </div>
+                  <button
+                    className="modalChooseHeaderButton"
+                    onClick={(e) => closeModal(modalType)}
+                  />
+                </div>
+                {/* <PerfectScrollbar component='div' style={{ right: 0 }}> */}
+                <div className="modalChooseBody">
+                  <div className="searchAndNewAlbum">
+                    {/* DIFFERENT PROPS TO THE SEARCH FOR PLACEHOLDER */}
+                    <ChooseAlbumSearch />
+                    {!this.state.goToAlbumPhotos ? (
+                      <div className="searchAndNewAlbumAddAlbum">
+                        <Link to={"#"}>Создать альбом</Link>
+                        <Link to={"#"}>
+                          <Plus className="searchAndNewAlbumAddAlbumPlus" />
+                        </Link>
+                      </div>
+                    ) : null}
+                  </div>
+                  <div className="albumsAndPhotos">
+                    {!this.state.goToAlbumPhotos
+                      ? storiesAlbums
+                      : "Render here Album content component"}
+                  </div>
+                </div>
+                {/* </PerfectScrollbar> */}
+                <div className="modalChooseFooter">
+                  <div className="modaChooseContentBottom">
                     <button
-                      className='modalChooseHeaderButton'
-                      onClick={e => closeModal(modalType)}
-                    />
-                  </div>
-                  {/* <PerfectScrollbar component='div' style={{ right: 0 }}> */}
-                  <div className='modalChooseBody'>
-                    <div className='searchAndNewAlbum'>
-                      {/* DIFFERENT PROPS TO THE SEARCH FOR PLACEHOLDER */}
-                      <ChooseAlbumSearch/>
-                      {!this.state.goToAlbumPhotos ?
-                        <div className='searchAndNewAlbumAddAlbum'>
-                          <Link to={'#'}>
-                              Создать альбом
-                          </Link>
-                          <Link to={'#'}>
-                            <Plus className='searchAndNewAlbumAddAlbumPlus'/>
-                          </Link>
-                        </div>
-                        : null}
-                    </div>
-                    <div className='albumsAndPhotos'>
-                      {!this.state.goToAlbumPhotos ? storiesAlbums : 'Render here Album content component'}
-                    </div>
-                  </div>
-                  {/* </PerfectScrollbar> */}
-                  <div className='modalChooseFooter'>
-                    <div className='modaChooseContentBottom'>
-                      <button
-                        className='modaChooseCancelBtn'
-                        onClick={e => closeModal(modalType)}
-                      >
-                        Отмена
-                      </button>
+                      className="modaChooseCancelBtn"
+                      onClick={(e) => closeModal(modalType)}
+                    >
+                      Отмена
+                    </button>
 
-                      <ButtonContainer
-                        onClick={this.goToAlbumContent}
-                      >
-                        Выбрать
-                      </ButtonContainer>
-                    </div>
+                    <ButtonContainer onClick={this.goToAlbumContent}>
+                      Выбрать
+                    </ButtonContainer>
                   </div>
                 </div>
               </div>
-            </Portal>
-        }
+            </div>
+          </Portal>
+        )}
       </>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     sessionID: state.session.sessionID,
-    albums: state.albums.albums
+    albums: state.albums.albums,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    closeModal: type => {
+    closeModal: (type) => {
       dispatch(modalClose(type));
     },
     downloadAlbums: () => {
       dispatch(getAlbums());
-    }
+    },
   };
 };
 

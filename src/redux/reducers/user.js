@@ -1,63 +1,63 @@
 const initialState = {
   loading: true,
-  users: '',
+  users: "",
   error: null,
-  currentUser: false
+  currentUser: false,
 };
 
 export default function userInfo(state = initialState, action) {
   switch (action.type) {
-    case 'USER_GET_STARTED':
+    case "USER_GET_STARTED":
       return {
         ...state,
-        loading: true
+        loading: true,
       };
-    case 'USER_GET_SUCCESS':
+    case "USER_GET_SUCCESS":
       return {
         ...state,
         loading: false,
         error: null,
-        users: action.payload
+        users: action.payload,
       };
-    case 'USER_GET_FAILED':
+    case "USER_GET_FAILED":
       return {
         ...state,
         loading: false,
-        error: action.payload.err
+        error: action.payload.err,
       };
-    case 'GET_USER_DATA_START':
+    case "GET_USER_DATA_START":
       return {
         ...state,
-        loading: true
+        loading: true,
       };
-    case 'GET_USER_DATA_SUCCESS':
+    case "GET_USER_DATA_SUCCESS":
       return {
         ...state,
         error: null,
         loading: false,
-        currentUser: action.payload
+        currentUser: action.payload,
       };
-    case 'GET_USER_DATA_FAILED':
+    case "GET_USER_DATA_FAILED":
       return {
         ...state,
-        error: action.payload.error
+        error: action.payload.error,
       };
-    case 'SKIP_INTRODUCE_START':
+    case "SKIP_INTRODUCE_START":
       return {
         ...state,
-        loading: true
+        loading: true,
       };
-    case 'SKIP_INTRODUCE_SUCCESS':
+    case "SKIP_INTRODUCE_SUCCESS":
       return {
         ...state,
         error: null,
         loading: false,
-        currentUser: action.payload
+        currentUser: action.payload,
       };
-    case 'SKIP_INTRODUCE_FAILED':
+    case "SKIP_INTRODUCE_FAILED":
       return {
         ...state,
-        error: action.payload.error
+        error: action.payload.error,
       };
     default:
       return state;

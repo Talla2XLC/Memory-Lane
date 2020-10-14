@@ -105,7 +105,7 @@ export default class UserRegistration extends Component {
         passwordValid: passwordValid,
       },
       this.validateForm
-      );
+    );
   };
 
   clickValidateField = (name) => {
@@ -234,22 +234,13 @@ export default class UserRegistration extends Component {
               <a className="socials-icon" href="https://vk.com/">
                 <FormVK />
               </a>
-              <a
-                className="socials-icon"
-                href="https://www.instagram.com/"
-              >
+              <a className="socials-icon" href="https://www.instagram.com/">
                 <FormIns />
               </a>
-              <a
-                className="socials-icon"
-                href="https://ru-ru.facebook.com/"
-              >
+              <a className="socials-icon" href="https://ru-ru.facebook.com/">
                 <FormFB />
               </a>
-              <a
-                className="socials-icon"
-                href="https://www.google.com/"
-              >
+              <a className="socials-icon" href="https://www.google.com/">
                 <FormG />
               </a>
             </div>
@@ -341,8 +332,8 @@ export default class UserRegistration extends Component {
               </span>
             </div>
           </fieldset>
-          <div className='c-registration__link'>
-            <Link className='registration__link' to='/auth'>
+          <div className="c-registration__link">
+            <Link className="registration__link" to="/auth">
               Войти в систему
             </Link>
           </div>

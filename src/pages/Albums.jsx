@@ -1,14 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import Album from "../components/Main/albums/UserAlbums";
 // import styled from 'styled-components';
 
 export default class AlbumPage extends Component {
-  static path = '/albums/';
+  static path = "/albums/";
   render() {
-    return(
-        <Album />
-        );
-      }
+    return <Album />;
+  }
 }
 
 // const AlbumWrapper = styled.div`

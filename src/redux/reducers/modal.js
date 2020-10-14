@@ -1,43 +1,42 @@
 const initialState = {
   addAlbumOpened: false,
   chooseAlbumOpened: false,
-  choosePhotoOpened: false
+  choosePhotoOpened: false,
 };
 
 export default function modalReducer(state = initialState, action) {
   switch (action.type) {
-    case 'OPEN_MODAL_ADD_ALBUM':
+    case "OPEN_MODAL_ADD_ALBUM":
       return {
         ...state,
-        addAlbumOpened: true
+        addAlbumOpened: true,
       };
-    case 'CLOSE_MODAL_ADD_ALBUM':
+    case "CLOSE_MODAL_ADD_ALBUM":
       return {
         ...state,
-        addAlbumOpened: false
+        addAlbumOpened: false,
       };
-    case 'OPEN_MODAL_CHOOSE_ALBUM':
+    case "OPEN_MODAL_CHOOSE_ALBUM":
       return {
         ...state,
-        chooseAlbumOpened: true
+        chooseAlbumOpened: true,
       };
-    case 'CLOSE_MODAL_CHOOSE_ALBUM':
+    case "CLOSE_MODAL_CHOOSE_ALBUM":
       return {
         ...state,
-        chooseAlbumOpened: false
+        chooseAlbumOpened: false,
       };
-    case 'OPEN_MODAL_CHOOSE_PHOTO':
+    case "OPEN_MODAL_CHOOSE_PHOTO":
       return {
         ...state,
-        choosePhotoOpened: true
+        choosePhotoOpened: true,
       };
-    case 'CLOSE_MODAL_CHOOSE_PHOTO':
+    case "CLOSE_MODAL_CHOOSE_PHOTO":
       return {
         ...state,
-        choosePhotoOpened: false
+        choosePhotoOpened: false,
       };
     default:
       return state;
   }
 }
-

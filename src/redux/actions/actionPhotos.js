@@ -1,41 +1,41 @@
-import axios from 'axios';
+import axios from "axios";
 
 const fetchPhotosStart = () => ({
-  type: 'GET_PHOTOS_START'
+  type: "GET_PHOTOS_START",
 });
 
-const fetchPhotosSuccess = photos => ({
-  type: 'GET_PHOTOS_SUCCESS',
-  payload: photos
+const fetchPhotosSuccess = (photos) => ({
+  type: "GET_PHOTOS_SUCCESS",
+  payload: photos,
 });
 
-const fetchPhotosFailed = error => ({
-  type: 'GET_PHOTOS_FAILED',
-  payload: error
+const fetchPhotosFailed = (error) => ({
+  type: "GET_PHOTOS_FAILED",
+  payload: error,
 });
 
-export const fetchPhotos = () => dispatch => {
+export const fetchPhotos = () => (dispatch) => {
   dispatch(fetchPhotosStart());
 
-  console.log('ActionPhotos', this.props);
-  console.log('ActionPhotos', this.state);
+  console.log("ActionPhotos", this.props);
+  console.log("ActionPhotos", this.state);
 
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
 
   axios
     .post(
       // 'http://api.memory-lane.ru/db/get/images',
-      'http://api.memory-lane.ru/get/images',
+      "http://api.memory-lane.ru/get/images",
       {
         // id_album: idAlbum
       },
       {
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': token
-        }
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
       }
     )
-    .then(res => dispatch(fetchPhotosSuccess(res.data)))
-    .catch(error => dispatch(fetchPhotosFailed(error.message)));
+    .then((res) => dispatch(fetchPhotosSuccess(res.data)))
+    .catch((error) => dispatch(fetchPhotosFailed(error.message)));
 };

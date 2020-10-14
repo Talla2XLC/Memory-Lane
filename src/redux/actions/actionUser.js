@@ -1,41 +1,41 @@
-import axios from 'axios';
+import axios from "axios";
 
 const userGetStarted = () => ({
-  type: 'USER_GET_STARTED'
+  type: "USER_GET_STARTED",
 });
 
-const userGetSuccess = users => ({
-  type: 'USER_GET_SUCCESS',
-  payload: users
+const userGetSuccess = (users) => ({
+  type: "USER_GET_SUCCESS",
+  payload: users,
 });
 
-const userGetFailed = err => ({
-  type: 'USER_GET_FAILED',
+const userGetFailed = (err) => ({
+  type: "USER_GET_FAILED",
   payload: {
-    err
-  }
+    err,
+  },
 });
 
-export const getUsers = (lim = '') => {
+export const getUsers = (lim = "") => {
   return (dispatch, getState) => {
     dispatch(userGetStarted());
 
     axios
       .post(
-        'http://api.memory-lane.ru/db/getUsers/all',
+        "http://api.memory-lane.ru/db/getUsers/all",
         {
-          limit: lim
+          limit: lim,
         },
         {
           headers: {
-            'Content-Type': 'application/json'
-          }
+            "Content-Type": "application/json",
+          },
         }
       )
-      .then(res => {
+      .then((res) => {
         dispatch(userGetSuccess(res.data));
       })
-      .catch(err => {
+      .catch((err) => {
         dispatch(userGetFailed(err.message));
       });
   };

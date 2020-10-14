@@ -1,6 +1,6 @@
-const setSessionID = sessionID => ({
-  type: 'SESSION_ID_SET',
-  payload: sessionID
+const setSessionID = (sessionID) => ({
+  type: "SESSION_ID_SET",
+  payload: sessionID,
 });
 
 export const setSession = (id) => {

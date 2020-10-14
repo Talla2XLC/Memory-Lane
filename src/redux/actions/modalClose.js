@@ -1,18 +1,18 @@
 const closeAddAlbum = () => ({
-  type: 'CLOSE_MODAL_ADD_ALBUM'
+  type: "CLOSE_MODAL_ADD_ALBUM",
 });
 
 const closeChooseAlbum = () => ({
-  type: 'CLOSE_MODAL_CHOOSE_ALBUM'
+  type: "CLOSE_MODAL_CHOOSE_ALBUM",
 });
 
-export const modalClose = type => {
+export const modalClose = (type) => {
   return (dispatch) => {
     switch (type) {
-      case 'addAlbum':
+      case "addAlbum":
         dispatch(closeAddAlbum());
         break;
-      case 'chooseAlbum':
+      case "chooseAlbum":
         dispatch(closeChooseAlbum());
         break;
       default:
