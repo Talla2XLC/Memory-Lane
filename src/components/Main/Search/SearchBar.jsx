@@ -16,8 +16,10 @@ class SearchAdd extends Component {
     const { query } = this.state;
     const { addQuery } = this.props;
 
-    addQuery(query);
-    this.props.history.push("/search/" + query);
+    if (query) {
+      addQuery(query);
+      this.props.history.push("/search/" + query);
+    }
   };
 
   handleChange = (event) => {

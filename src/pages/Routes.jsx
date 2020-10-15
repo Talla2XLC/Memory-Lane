@@ -17,26 +17,13 @@ import {
   Stories,
   StoryNew,
   StoryView,
-  Services,
-  Learn,
+  // Services,
+  // Learn,
   PageNotFound,
   SearchResult,
 } from "./Main.jsx";
 
 export default class Routers extends Component {
-  // state = {
-  //   isAuthorized: false
-  // };
-
-  // componentDidMount() {
-  //   const {
-  //     isAuthorized,
-  //     hasFullName
-  //   } = this.props;
-
-  //   this.setState({ isAuthorized });
-  // }
-
   render() {
     const {
       isAuthorized,
@@ -64,12 +51,14 @@ export default class Routers extends Component {
             <Route exact path="/stories/add/" component={StoryNew} />
             <Route path="/stories/:id" component={StoryView} />
             <Route exact path="/profile/" component={Profile} />
+
+            {/* 
             <Route exact path="/services/" component={Services} />
             <Route exact path="/learn/" component={Learn} />
-            {/* <Route exact path="/persons/add/" component={AddPerson} /> */}
-            {/* <Route exact path="/persons/:id" component={Persons} /> */}
-            {/* <Route exact path="/persons/edit/:id" component={EditPerson} />
-          <Route exact path="/learn/" component={Learn} /> */}
+            <Route exact path="/persons/:id" component={Persons} /> 
+            <Route exact path="/persons/add/" component={AddPerson} /> 
+            <Route exact path="/persons/edit/:id" component={EditPerson} />
+            */}
 
             <Route exact path="/">
               <Redirect to="/home" />
