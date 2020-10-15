@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PerfectScrollbar from "react-perfect-scrollbar";
 
-import { ReactComponent as StoryBackwards } from "../../Main/svg/back_arrow.svg";
+import { ReactComponent as StoryBackwards } from "../../../assets/Images/general/back_arrow.svg";
 
 import "./Stories.sass";
 

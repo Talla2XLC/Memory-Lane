@@ -15,6 +15,8 @@ import {
   UserRegistrationCompleting,
   UserFullName,
   Stories,
+  StoryNew,
+  StoryView,
   Services,
   Learn,
   PageNotFound,
@@ -59,14 +61,14 @@ export default class Routers extends Component {
             <Route exact path="/photo/add/" component={DownloadPhoto} />
             <Route exact path="/photo/:id" component={Photo} />
             <Route exact path="/stories/" component={Stories} />
+            <Route exact path="/stories/add/" component={StoryNew} />
+            <Route path="/stories/:id" component={StoryView} />
             <Route exact path="/profile/" component={Profile} />
             <Route exact path="/services/" component={Services} />
             <Route exact path="/learn/" component={Learn} />
             {/* <Route exact path="/persons/add/" component={AddPerson} /> */}
             {/* <Route exact path="/persons/:id" component={Persons} /> */}
             {/* <Route exact path="/persons/edit/:id" component={EditPerson} />
-          <Route exact path="/stories/add/" component={StoryNew} />
-          <Route path="/stories/:id" component={StoryView} />
           <Route exact path="/learn/" component={Learn} /> */}
 
             <Route exact path="/">

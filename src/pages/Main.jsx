@@ -11,6 +11,8 @@ export { default as Persons } from "./Persons";
 export { default as Profile } from "./Profile";
 export { default as UserRegistration } from "./Registration";
 export { default as Stories } from "./Stories";
+export { default as StoryNew } from "../components/Main/stories/StoryNew";
+export { default as StoryView } from "../components/Main/stories/StoryView";
 export { default as Services } from "./Services";
 export { default as Learn } from "./Learn";
 export { default as PageNotFound } from "./PageNotFound";

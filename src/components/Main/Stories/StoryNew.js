@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 // import PerfectScrollbar from 'react-perfect-scrollbar';
-import { Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import "./Stories.sass";
 
 import { ButtonContainer } from "../generalUi/Button";
 
 import StoriesDropDown from "./StoriesDropdown";
-import { ReactComponent as Plus } from "../svg/plus.svg";
-import { ReactComponent as StoryBackwards } from "../../Main/svg/back_arrow.svg";
+import { ReactComponent as Plus } from "../../../assets/Images/general/plus.svg";
+import { ReactComponent as StoryBackwards } from "../../../assets/Images/general/back_arrow.svg";
 
 import axios from "axios";
 
@@ -23,8 +23,8 @@ export default class StoryNew extends Component {
       tags: "",
       city: "",
       content: "",
-      hasCreated: false,
       dropdownOpened: false,
+      // hasCreated: false,
       // images: [],
       // imagesToUpload: []
     };
@@ -107,7 +107,7 @@ export default class StoryNew extends Component {
       tags,
       city,
       content,
-      hasCreated,
+      // hasCreated,
       dropdownOpened,
     } = this.state;
 
