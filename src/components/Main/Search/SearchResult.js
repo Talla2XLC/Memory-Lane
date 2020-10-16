@@ -35,8 +35,8 @@ class Search extends Component {
         }
       )
       .then((res) => {
-        console.log(res.data.content);
-        console.log(res);
+        // console.log(res.data.content);
+        // console.log(res);
         if (res.data.content) {
           this.setState({
             results: res.data.content,
@@ -71,6 +71,7 @@ class Search extends Component {
     } = this.props.stories;
 
     // console.log(results);
+    console.log(this.props.stories);
 
     // const {
     // 	id,
@@ -92,7 +93,7 @@ class Search extends Component {
             if (result.story) {
               return (
                 <div className="storyItem">
-                  {console.log(result)}
+                  {/* {console.log(result)} */}
                   <div className="storyItem__img">
                     <Link
                       key={result.story.id}

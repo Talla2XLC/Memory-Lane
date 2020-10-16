@@ -70,6 +70,7 @@ const HeaderWrapper = styled.div`
   background: #ffd1a9;
   padding-right: 40px;
   position: sticky;
+  // position: fixed;
   top: 0;
 
   .logoLink {

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./PersonItem.sass";
-import { ReactComponent as EmtyPhoto } from "./svg/emptyPhotoBlock.svg";
-import { ReactComponent as EmtyStory } from "./svg/emptyStoryBlock.svg";
+import { ReactComponent as EmtyPhoto } from "../../../assets/Images/persons/emptyPhotoBlock.svg";
+import { ReactComponent as EmtyStory } from "../../../assets/Images/persons/emptyStoryBlock.svg";
 
 class PersonsContent extends Component {
   render() {
