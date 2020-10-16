@@ -203,6 +203,26 @@ class UserFullName extends Component {
                     onClick={this.handleInput}
                   />
                 </RadioGroup>
+
+                {/* <div>
+                  <label>
+                    <div className="genderRadio_input">
+                      <input type="radio" name="gender" value="male" />
+                        <ins className="iCheck-helper"></ins>
+                      </div>
+                      <span>
+                        <span className="gender__label">Мужчина</span>
+                      </span>
+                  </label>
+                  <label>
+                    <div className="genderRadio_input">
+                      <input type="radio" name="gender" value="female" />
+                        <ins className="iCheck-helper"></ins>
+                    </div>
+                    <span>Женщина</span>
+                  </label>
+                </div> */}
+                
               </div>
             </div>
 
