@@ -10,6 +10,7 @@ class SearchAdd extends Component {
   state = {
     query: "",
     results: [],
+    filterHoverColor: "themeBlackout",
   };
 
   handleClick = () => {
@@ -22,12 +23,13 @@ class SearchAdd extends Component {
     }
   };
 
-  handleChange = (event) => {
-    const { value } = event.target; // destructuring applied instead const value = event.target.value;
+  handleChange = (e) => {
+    const { value } = e.target; // destructuring applied instead const value = event.target.value;
     this.setState({ query: value });
   };
 
   render() {
+    // console.log(this.state.filterHoverColor);
     return (
       <SearchWrapper>
         <div className="search">
@@ -35,17 +37,23 @@ class SearchAdd extends Component {
             <IconSearch />
           </button>
           <input
-            className="input"
+            className={"input " + this.state.filterHoverColor}
             placeholder="Поиск"
             type="text"
             onChange={this.handleChange}
+            onMouseEnter={() =>
+              this.setState({ filterHoverColor: "themeBlackout" })
+            }
+            onMouseLeave={() => this.setState({ filterHoverColor: "" })}
+            onFocus={() => this.setState({ filterHoverColor: "themeBlackout" })}
             onKeyPress={(event) => {
               if (event.key === "Enter") {
                 this.handleClick();
               }
             }}
           />
-          <button className="search-filter">
+
+          <button className={"search-filter " + this.state.filterHoverColor}>
             <FilterSearch />
           </button>
         </div>
@@ -161,6 +169,13 @@ const SearchWrapper = styled.div`
     left: 12px;
   }
 
+  .search-submit:active,
+  .search-submit:focus,
+  .search-filter:active,
+  .search-filter:focus {
+    outline: none;
+  }
+
   .search-filter {
     right: 12px;
   }
@@ -200,5 +215,18 @@ const SearchWrapper = styled.div`
     margin: 0;
     padding: 0;
     list-style: none;
+  }
+  .themeBlackout,
+  .themeBlackout::placeholder {
+    opacity: 1;
+    color: #828482;
+  }
+
+  .themeBlackout > svg {
+    fill: #3b3e3c;
+  }
+
+  .themeBlackout > svg path {
+    fill: inherit;
   }
 `;
