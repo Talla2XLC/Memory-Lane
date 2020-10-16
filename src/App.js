@@ -6,10 +6,10 @@ import styled from "styled-components";
 import Routes from "./pages/Routes";
 import Header from "./components/Main/header/Header";
 import MainNav from "./components/Main/mainNav/MainNav";
-import Content from "./components/Main/generalUi/Content";
 import MainModal from "./components/Main/generalUi/modals/MainModal";
 import ModalAddAlbum from "./components/Main/generalUi/modals/addAlbum";
 import ModalChooseAlbum from "./components/Main/generalUi/modals/choose/ChooseAlbum";
+// import ScrollToTop from "./utils/ScrollToTop";
 
 import "./App.sass";
 
@@ -39,22 +39,27 @@ class App extends Component {
   render() {
     const { navItems } = this.state;
     const {
-      isAuthorized,
+      // isAuthorized,
       modalAddAlbumOpened,
+      sessionID,
       modalChooseAlbumOpened,
     } = this.props;
 
-    // console.log(this.props);
+    console.log(this.props);
     return (
       <>
-        {isAuthorized && (
+      {/* (isAuthorized || currentUser ) */}
+        {(sessionID ) && (
           <div className="App">
             <MainWrapper className="Main">
+              <Header />
               <PerfectScrollbar component="div">
-                <Header />
                 <div className="central-content">
                   <MainNav navItems={navItems} />
-                  <Content />
+                  <div className="central-contentItem">
+                    {/* <ScrollToTop /> */}
+                    <Routes sessionID={sessionID} />
+                  </div>
                 </div>
               </PerfectScrollbar>
               <MainModal
@@ -68,12 +73,11 @@ class App extends Component {
                 modalType={"chooseAlbum"}
               />
             </MainWrapper>
-            <Routes isAuthorized={isAuthorized} />
           </div>
         )}
-        {!isAuthorized && (
+        {(!sessionID ) && (
           <div className="App">
-            <Routes isAuthorized={isAuthorized} />
+            <Routes sessionID={sessionID} />
           </div>
         )}
       </>
@@ -104,11 +108,19 @@ const MainWrapper = styled.div`
     width: 100%;
     padding-bottom: 40px;
   }
+  
+  .central-contentItem {
+    flex-grow: 1;
+    padding-left: 315px;
+  }
+  .
 `;
 
 const mapStateToProps = (state) => {
   return {
-    isAuthorized: state.session.isAuthorized,
+    // loading: state.session.loading, // then inject before checking authorization
+    // isAuthorized: state.session.isAuthorized,
+    sessionID: state.session.sessionID,
     modalAddAlbumOpened: state.modal.addAlbumOpened,
     modalChooseAlbumOpened: state.modal.chooseAlbumOpened,
   };
