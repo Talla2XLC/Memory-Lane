@@ -1,0 +1,66 @@
+.UserProfileInfoReName
+  &__form
+    max-width: 410px
+
+    &-item
+      display: grid
+      grid-template-columns: 3fr 9fr
+      margin-bottom: 24px
+
+    &-date
+      display: grid
+      grid-template-columns: 4fr 8fr
+    &-groups
+      display: flex
+      justify-content: center
+      input
+        padding: 3px 0 3px 6px
+        margin-right: 13px
+      span
+        position: relative
+        &:before
+          content: '.'
+          position: absolute
+          top: 0
+          left: -10px
+
+
+    &-btn
+      margin-top: 46px
+      background: none
+      border: none
+      border: 1px solid #000
+      border-radius: 24px
+      padding: 11px 46px
+      span
+        font-size: 16px
+        line-height: 19px
+        font-weight: 500
+        padding-left: 34px
+        position: relative
+        &:before
+          content: ''
+          position: absolute
+          left: 0
+          width: 24px
+          height: 24px
+          background-image: url('../../../../assets/Images/userProfile/save.svg')
+
+          background-repeat: no-repeat
+          background-size: cover
+
+    &-gender
+      display: flex
+      justify-content: space-between
+
+::-webkit-input-placeholder /* Edge */
+  color: #E0E0E0
+
+::-ms-input-placeholder /* Internet Explorer 10-11 */
+  color: #E0E0E0
+
+::placeholder
+  color: #E0E0E0
+
+label
+  margin-bottom: 0 !important

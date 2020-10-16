@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { withRouter, Link } from "react-router-dom";
+
 import './LandingNav.sass';
 
-export default class LandingNav extends Component {
+class LandingNav extends Component {
 
   scrollToAbout(e){
     e.preventDefault();
@@ -19,11 +21,12 @@ export default class LandingNav extends Component {
     e.preventDefault();
     window.scrollTo({
       left: 0,
-      top: document.body.scrollHeight,
+      // top: document.body.scrollHeight,
+      top: 6000,
       behavior: "smooth"
     });
   } 
-  
+
   render() {
     return (
       <nav className="landing-nav">
@@ -31,8 +34,10 @@ export default class LandingNav extends Component {
         <button className="nav-btn about-btn" onClick={ this.scrollToAbout }>О проекте</button>
         <button className="nav-btn features-btn" onClick={ this.scrollToFeatures }>Возможности</button>
         <button className="nav-btn form-btn" onClick={ this.scrollToBottom }>Регистрация</button>
-        <button className="nav-btn login-btn">Вход</button>
+        <Link to="/auth" className="nav-btn login-btn">Вход</Link>
       </nav>
     );
   }
 }
+
+export default (withRouter(LandingNav));

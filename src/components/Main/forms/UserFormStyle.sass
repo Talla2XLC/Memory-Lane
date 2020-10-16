@@ -1,0 +1,378 @@
+//@import ../../../../../assets/stylesGlobal/media_mixins.sass
+
+// Colors
+
+$border-color: rgba(130, 132, 130, 0.3)
+$border-color_hover: #BDE1CA
+$border-color_focus: #2795FB
+
+$color-link_default: #828482
+$color-link_hover: #3B3E3C
+
+$color-socialIcons_default: #2795FB
+$color-socialIcons_hover: #278147
+$color-socialIcons_focus: #3B3E3C
+
+// Font 
+
+%text-basic
+  font-family: Roboto
+  font-style: normal
+  font-weight: normal
+  font-size: 18px
+  line-height: 27px 
+  color: #3B3E3C
+
+%button-text
+  font-family: Rubik
+  font-style: normal
+  font-weight: bold
+  font-size: 18px
+  line-height: 27px 
+  color: #3B3E3C
+
+// Headings and labels
+
+legend 
+  margin-bottom: 0!important
+
+// Link style
+
+%link-style 
+  color: #828482
+  &:hover
+    text-decoration: none!important 
+    color: #3B3E3C
+ 
+// Status style
+
+// $status-colors: ( primary: #000, success: #27BA6C, info: #03a9f4, warning: #FF8833, danger: #ff1a1a );
+
+//.message 
+  @each $status, $color in $status-colors 
+    &--#{$status}-bg 
+      color: $color  
+
+.text_color_error
+  color: red!important
+
+.status_error
+  //color: red!important // условие поставить если тип данных подходящий
+  border-color: red!important
+
+.text_color_green 
+  color: green!important   
+
+// Position of elements
+
+//.position
+
+//.position-btn_top
+  @include max-height(825)
+    margin-top: 28px!important
+    margin-bottom: 20px
+
+.title_position_bottom 
+  margin-bottom: 48px
+
+.socials-icon
+  &:nth-child(n+2) 
+    margin-left: 18px
+
+.btnContainer-fullname
+  margin-top: 48px
+
+// Buttons
+
+$button-registry: registry, 255px, 48px 0 0 0px    
+$button-auth: auth, 132px, 48px 0 0 0px
+$button-introduce: introduce, 181px, 48px 0 0 22px
+$button-skip: skip, 155px, 48px 0 0 0px
+$button-eye: show_closed, 24px
+
+.btn
+  @each $name, $width, $margin in $button-registry, $button-auth, $button-introduce, $button-skip, $button-eye 
+    &-#{$name} 
+      width: $width
+      margin: $margin 
+      @if $name == 'show_closed'
+        width: 24px
+        height: 24px
+        position: absolute
+        right: 8px
+        bottom: 12px
+        border: none
+        background-color: #fff
+        svg  
+          vertical-align: baseline
+        &:active
+          border: none
+          outline: none
+        &:focus
+          border: none
+          outline: none
+      @if $name == 'skip'
+        background: #fff!important 
+        border: solid #2795FB 2px!important 
+        box-shadow: 0px 0px 0px 2px #5DB07B!important
+        color: #2795FB!important 
+        box-shadow: 0px 0px 0px 2px #2795FB!important
+        &:hover
+            border: solid #278147 2px!important 
+            color: #278147!important 
+            box-shadow: 0px 0px 0px 2px #278147!important
+        &:focus
+            border: solid #3B3E3C 2px!important 
+            color: #3B3E3C!important 
+            box-shadow: 0px 0px 0px 2px #3B3E3C!important
+
+// Icons 
+
+
+
+// Inputs
+
+$formInput-registry: registry, 255px, 48px 0 0 0px    
+$formInput-auth: auth, 132px, 48px 0 0 0px
+$formInput-firstName: introduce, 181px, 48px 0 0 22px
+$formInput-lastName: introduce, 181px, 48px 0 0 22px
+
+input 
+  @extend %text-basic
+  background: #FFFFFF
+  border: 1px solid $border-color
+  box-sizing: border-box
+  border-radius: 10px
+  padding: 10.5px 12px
+  padding-top: 10.5px
+  &:hover
+    border: 1px solid $border-color_hover
+    outline: 0
+  &:focus
+    border: 1px solid $border-color_focus
+    outline: 0
+
+
+// Checkbox-input 
+
+// Radio-input
+
+.genderRadio_input
+  width: 20px
+  height: 20px
+  border-radius: 24px
+  cursor: pointer
+  border: 5px solid #FFF
+  box-shadow: 0px 0px 0px 2px #278147
+
+.genderRadio_input.checked
+  width: 20px
+  height: 20px
+  border-radius: 24px
+  cursor: pointer
+  background: #278147
+  box-shadow: 0px 0px 0px 2px #278147
+
+// Blocks forms
+
+.container-form 
+  display: flex
+  justify-content: flex-end
+  background: url(./form_phone_item.svg) #fff no-repeat
+  background-position: left top
+  background-size: contain
+  height: 100vh
+
+.formWrapper 
+  background-color: #fff
+  padding-top: 15vh
+  flex-basis: 705px
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: flex-start
+  min-height: 100%
+  //@include max-height(700)
+    padding-top: 5vh
+  //@include height(701, 825)
+    padding-top: 10vh
+  //@include max-width(1024)
+    margin: 0 auto
+  //@include min-width(1025)
+    flex-basis: 50%
+
+.formWrapperItem__titleContainer 
+  width: 356px
+  .titleContainerItem__title
+    @extend %text-basic
+    font-family: Rubik
+    font-weight: 500
+    font-size: 32px
+    line-height: 38px
+    color: #3B3E3C
+
+.fieldset 
+  border: 0
+
+.formContainerItem__icons
+  margin-top: 52px
+  .container__icons
+    .socials-icon
+      color: $color-socialIcons_default
+      &:hover 
+        color: $color-socialIcons_hover
+      &:focus 
+        color: $color-socialIcons_focus  
+  .formContainerItem__message
+    @extend %text-basic
+    width: 404px
+    margin-top: 12px
+    color: #3B3E3C
+    justify-content: center
+  //@include max-height(700)
+    margin-top: 33px
+  //@include height(701, 825)
+    margin-top: 40px
+
+.container__input 
+  margin-top: 12px
+  background: #FFFFFF
+  border: 1px solid $border-color
+  box-sizing: border-box
+  border-radius: 10px
+
+.formContainerItem__form 
+  margin: 0 auto
+  .form-password
+    position: relative
+  label
+    color: #828482
+    font-size: 16px
+    line-height: 24px
+    text-align: left
+    padding-left: 16px
+  .form-password label
+    margin-top: 16px
+  input[type='email'],
+  input[type='text'],
+  input[type='password'] 
+    width: 356px
+  input[type='email']::placeholder,
+  input[type='password']::placeholder, 
+  input[type='text']::placeholder
+    @extend %text-basic
+    color: #828482
+
+.c-validation-message
+  width: 356px
+  text-align: left
+  .validation-message__text 
+    @extend %text-basic
+    font-size: 12px
+    line-height: 16px
+    margin-top: 8px
+    list-style: disc
+    margin-inline-start: 15px
+
+.c-privacy-agreement
+  margin-top: 34px
+  >span
+    color: #828482
+    @extend %text-basic
+    font-size: 10px
+    line-height: 15px
+  //@include max-height(825)
+    margin-bottom: 60px
+
+.c-registration__link
+  margin-top: 32px
+  .registration__link
+    @extend %text-basic
+    font-size: 16px
+    line-height: 24px
+    color: $color-link_default
+    &:hover
+      text-decoration: none!important 
+      color: $color-link_hover     
+
+.form-or 
+  display: flex
+  column: row
+  align-items: center
+  margin: 24px 0
+  @extend %text-basic
+  hr
+    width: 156px
+    border: 1px solid rgba(130, 132, 130, 0.3)
+    margin: 10px 0px
+    &:nth-child(1)
+      margin-right: 30px      
+    &:nth-child(2)
+      margin-left: 30px
+
+.c-password-reset
+  text-align: right
+  margin-top: 8px
+  .c-password-reset__link
+    width: 124px
+    height: 24px
+    cursor: pointer
+    @extend %text-basic
+    font-size: 16px
+    line-height: 24px
+    color: #828482 
+    &:hover
+      color: #3B3E3C   
+
+.dobWrapper
+  legend
+    width: auto
+    font-weight: 500
+    font-size: 18px
+    line-height: 21px
+    color: #3B3E3C
+    padding-left: 12px
+    margin-top: 35px
+  >div
+    display: flex
+    margin-top: 8px
+    >div
+      display: flex
+      flex-direction: column
+      >span
+        font-size: 16px
+        line-height: 24px
+        text-align: center
+        color: #828482
+    >div:nth-child(n+2)
+        padding-left: 22px
+  input[type='number']
+    -moz-appearance: textfield
+    @extend %text-basic
+    color: 3b3e3c
+    text-align: center
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button
+    -webkit-appearance: none
+  input[type='number']::placeholder
+    @extend %text-basic
+    color: #828482
+    text-align: center
+    
+.genderWrapper
+  display: flex
+  margin-top: 48px
+  align-items: center
+  label
+    display: inline-flex
+    @extend %text-basic
+    align-items: center
+    flex-direction: row-reverse
+    margin-left: 12px
+    >div
+      margin-left: 9px
+  label:nth-child(2)
+    margin-left: 47px
+  span 
+    @extend %text-basic
+
