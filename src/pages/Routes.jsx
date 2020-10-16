@@ -13,7 +13,7 @@ import {
   Photo,
   DownloadPhoto,
   Persons,
-  Person,
+  // Person,
   Profile,
   UserRegistration,
   UserRegistrationCompleting,
@@ -56,7 +56,7 @@ export default class Routers extends Component {
             <Route exact path="/stories/add/" component={StoryNew} />
             <Route path="/stories/:id" component={StoryView} />
             <Route exact path="/profile/" component={Profile} />
-            <Route exact path="/persons/:id" component={Person} /> 
+            {/* <Route exact path="/persons/:id" component={Person} />  */}
             <Route exact path="/persons/add/" component={AddPerson} /> 
             <Route exact path="/persons/edit/:id" component={EditPerson} />
 
