@@ -173,7 +173,7 @@ background: #F6F6F6;
     outline: none;
   }
   &:hover .plus > path{
-    fill: #5DB07B;
+    fill: #2795FB;
   }
   &:active .plus{
     transform: rotate(45deg);

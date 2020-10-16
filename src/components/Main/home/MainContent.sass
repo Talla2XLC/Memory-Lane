@@ -21,7 +21,7 @@
  grid-template-columns: repeat(2, 1fr)
  grid-column-gap: 29px
  grid-row-gap: 48px
- margin: 30px 0 120px
+ margin: 15px 0 120px
 
  &__item
   background: #FFFFFF
@@ -58,13 +58,19 @@
   
 .MainContent
   &__header
-    padding-top: 99px
     display: flex
-    justify-content: space-around
+    justify-content: flex-end
     align-items: center
 
     text-align: left
     color: #3B3E3C
+    &_info
+      position: absolute
+      top: 134px
+      left: 406px
+    &_img
+      max-width: 524px
+
 
     &-titel
       font-weight: 500

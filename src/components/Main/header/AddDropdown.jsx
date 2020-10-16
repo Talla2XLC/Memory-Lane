@@ -99,7 +99,7 @@ const DropdownList = styled.div`
       background: #bde1ca;
     }
     &:active {
-      background: #5db07b;
+      background: ##2795fb;
       color: white;
       > svg > path {
         fill: white;

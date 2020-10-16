@@ -1,15 +1,16 @@
 .setPersonContainer
-  padding: 64px  44px 0 28px
+  padding: 47px  44px 0 28px
 .setPerson
   display: grid
-  grid-template-columns: 2fr 5fr
+  grid-template-columns: 327px 5fr
   margin-top: 33px
   &__text
     width: 60%
     margin-left: 30px
     width: 600px
   &__img
-    width: 365px
+    width: 327px
+    border-radius: 10px
   &__button
     float: right
 .infoGroup
@@ -19,7 +20,6 @@
   &__name
     text-align: left
   &__input 
-    background: rgba(130, 132, 130, 0.1)
     border: 1px solid rgba(130, 132, 130, 0.3)
     border-radius: 10px
     width: 416px
@@ -27,14 +27,15 @@
     padding: 0 12px
     box-sizing: border-box
     &:hover
-      border: 1px solid #5DB07B
+      border: 1px solid #2795FB
     &:required
       background-color: #FFFFFF
   &__checkbox
     margin: 4px 8px 0 8px
     background: #278147
 
-
+.person-header-container
+  display: flex
 .dateInput
   width: 200px
 
@@ -67,14 +68,14 @@
   height: 15px
   margin-top: 4px
   width: 2px
-  background-color: #5DB07B
+  background-color: #2795FB
 
 .tagsInput
   width: inherit!important
   float: left
   background: #fff!important
   &::placeholder 
-   color: #5DB07B
+   color: #2795FB
    font-size: 14px
 
 .cancelButton

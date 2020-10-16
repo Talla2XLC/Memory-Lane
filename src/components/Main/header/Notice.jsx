@@ -27,7 +27,6 @@ const BellWrapper = styled.div`
     cursor: pointer;
     background-color: #fff;
     background: 50% no-repeat;
-    opacity: 0.5;
     padding: 0;
   }
 

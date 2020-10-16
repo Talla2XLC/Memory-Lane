@@ -7,6 +7,7 @@ import { getPersons } from "../../../redux/actions/actionPersons";
 import FileInput from "./FileInput";
 import TagsInput from "./TagsInput";
 import "./AddAndEdit.sass";
+import { ReactComponent as GoBack } from "../../../assets/Images/general/goBack.svg";
 
 class AddPerson extends Component {
   constructor(props) {
@@ -108,9 +109,16 @@ class AddPerson extends Component {
       tags,
       birthday,
     } = this.state;
+
     return (
       <div className="setPersonContainer">
-        <div className="head1 title"> Создание персоны </div>
+        <div className="person-header-container">
+          <GoBack
+            className="go-back"
+            // onClick={this.goBack}
+          />
+          <div className="head1 title">Создание персоны </div>
+        </div>
         <div className="setPerson">
           <div className="setPerson__ico">
             <img
@@ -122,6 +130,8 @@ class AddPerson extends Component {
               }
               alt="persons icon"
             />
+            {/* <img className='setPerson__img' src='http://placehold.it/365x365' alt='persons icon'/> */}
+
             <FileInput
               imagesToUpload={imagesToUpload}
               uploadPhoto={this.uploadPhoto}
@@ -274,16 +284,12 @@ class AddPerson extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    sessionID: state.session.sessionID,
-  };
-};
-const mapDispatchToProps = (dispatch) => {
-  return {
-    downloadPersons: () => {
-      dispatch(getPersons());
-    },
-  };
-};
+const mapStateToProps = (state) => ({
+  sessionID: state.session.sessionID,
+});
+const mapDispatchToProps = (dispatch) => ({
+  downloadPersons: () => {
+    dispatch(getPersons());
+  },
+});
 export default connect(mapStateToProps, mapDispatchToProps)(AddPerson);
