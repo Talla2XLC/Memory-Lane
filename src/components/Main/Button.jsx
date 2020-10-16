@@ -21,11 +21,11 @@ border: ${props =>
     props.white ? '2px solid #2795FB' : 'none'};
 &:hover{
   background: ${ props => 
-    props.white ? '#F6F6F6' : '#278147'};
+    props.white ? '#F6F6F6' : '#2795FB'};
   border: ${props => 
-    props.white ? '2px solid #278147' : 'none'};
+    props.white ? '2px solid #2795FB' : 'none'};
       color: ${props => 
-    props.white ? '#278147' : '#FFFFFF'};
+    props.white ? '#2795FB' : '#FFFFFF'};
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
   outline: none;
 }

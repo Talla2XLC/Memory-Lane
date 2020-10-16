@@ -15,7 +15,8 @@ class PersonsContent extends Component {
               {
                 this.props.images.map( item => (
                   <div>
-                    <img className='personFoto__img' src={item.content_url} alt='persons item'/>
+                    <img className='personFoto__img' src='http://placehold.it/365x365' alt='persons item'/>
+
                   </div>
                 ))
               }

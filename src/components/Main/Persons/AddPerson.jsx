@@ -56,7 +56,7 @@ class AddPerson extends Component {
           }
         })
       .then(res => {
-        console.log(res)
+        console.log(res);
         this.props.downloadPersons();
         if (res.data.result) {
           this.props.downloadPersons();
@@ -93,23 +93,26 @@ class AddPerson extends Component {
 
   render() {
     const { lastName, firstName, patronymic, roleInFamily, city, imagesToUpload, tags, birthday} = this.state;
+
     return (
       <div className='setPersonContainer'>
         <div className='person-header-container'>
-        <GoBack className='go-back' 
-        // onClick={this.goBack}
-        />
-        <div className='head1 title'>Редактирование персоны </div>
+          <GoBack className='go-back'
+            // onClick={this.goBack}
+          />
+          <div className='head1 title'>Создание персоны </div>
         </div>
         <div className='setPerson'>
-          <div className='setPerson__ico' > 
+          <div className='setPerson__ico' >
             <img className='setPerson__img' src={(imagesToUpload.length > 0) ? this.state.imagesToUpload[0].preview : 'http://placehold.it/365x365'} alt='persons icon'/>
+            {/* <img className='setPerson__img' src='http://placehold.it/365x365' alt='persons icon'/> */}
+
             <FileInput
               imagesToUpload={imagesToUpload}
               uploadPhoto={this.uploadPhoto}/>
           </div>
           <div className='setPerson__text'>
-            
+
             <div className='infoGroup'>
               <label className='infoGroup__name' htmlFor='lastName'>Фамилия:</label>
               <input
@@ -152,35 +155,35 @@ class AddPerson extends Component {
             <div className='infoGroup'>
               <label className='infoGroup__name' htmlFor='gender'>Пол:</label>
               <form className='genderForm' action=''>
-                <input 
+                <input
                   className='infoGroup__checkbox'
                   id='gender'
                   type='radio'
-                  name='gender' 
+                  name='gender'
                   value='male'
                   onChange={this.handleInput}/> Мужчина<br/>
-                <input 
+                <input
                   className='infoGroup__checkbox'
                   type='radio'
-                  name='gender' 
-                  value='famale'              
+                  name='gender'
+                  value='famale'
                   onChange={this.handleInput}/> Женщина<br/>
               </form>
             </div>
 
             <div className='infoGroup'>
               <label htmlFor='birthday' className='infoGroup__name'>Дата рождения:</label>
-              <input 
+              <input
                 className=' infoGroup__input dateInput'
-                type='date' 
-                id='birthday' 
+                type='date'
+                id='birthday'
                 name='birthday'
                 value={birthday}
                 onChange={this.handleInput}
                 required={birthday  ? true : false}
               />
             </div>
-            
+
             <div className='infoGroup'>
               <label className='infoGroup__name' htmlFor='city'>Место рождения:</label>
               <input
@@ -229,18 +232,14 @@ class AddPerson extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    sessionID: state.session.sessionID
-  };
-};
-const mapDispatchToProps = (dispatch) => {
-  return {
-    downloadPersons: () => {
-      dispatch(getPersons());
-    }
-  };
-};
+const mapStateToProps = state => ({
+  sessionID: state.session.sessionID
+});
+const mapDispatchToProps = dispatch => ({
+  downloadPersons: () => {
+    dispatch(getPersons());
+  }
+});
 export default connect(mapStateToProps, mapDispatchToProps)(AddPerson);
 
 

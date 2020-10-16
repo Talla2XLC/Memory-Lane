@@ -93,7 +93,6 @@ width: 100%;
 min-width: 1340px;
 overflow: hidden;
 justify-content: stretch;
-
 box-sizing: border-box;
 
 .scrollbar-container {
