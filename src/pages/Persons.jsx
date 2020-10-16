@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Persons from "../components/Main/persons/Persons.jsx";
+import Persons from "../components/main/persons/Persons.jsx";
 
 export default class PersonsPage extends Component {
   static path = "/persons/";

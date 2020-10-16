@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import FullName from "../components/Main/forms/UserFullName";
+import FullName from "../components/main/forms/UserFullName";
 
 export default class UserFullName extends Component {
   static path = "/fullname";

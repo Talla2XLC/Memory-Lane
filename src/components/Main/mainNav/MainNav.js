@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import shortid from "shortid";
 import "./MainNav.sass";
 
-export default class MainNav extends Component {
+class MainNav extends Component {
   static propTypes = {
     navItems: PropTypes.array.isRequired,
   };
@@ -14,6 +14,12 @@ export default class MainNav extends Component {
     const navigationItems = navItems.map((navItem) => (
       <NavLink
         className="navigation-item-link"
+        activeStyle={{
+          backgroundColor: "rgba(39, 149, 251, 0.1)",
+          borderRadius: "10px",
+          width: "100px",
+          height: "94px"
+        }}
         key={shortid.generate()}
         exact
         to={`/${navItem.endpoint}/`}
@@ -27,3 +33,5 @@ export default class MainNav extends Component {
     return <div className="MainNav">{navigationItems}</div>;
   }
 }
+
+export default (withRouter(MainNav));
