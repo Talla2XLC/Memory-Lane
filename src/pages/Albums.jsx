@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Album from "../components/Main/albums/UserAlbums";
+import Album from "../components/main/albums/UserAlbums";
 // import styled from 'styled-components';
 
 export default class AlbumPage extends Component {
