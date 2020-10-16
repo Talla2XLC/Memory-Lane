@@ -65,7 +65,9 @@ class Person extends Component {
           <div className='head1 title'>{currentPerson.last_name} {currentPerson.first_name} {currentPerson.patronymic}</div>
           <div  className='personInfo'>
             <div className='head3 title'>Главное фото</div>
-            <img className='personInfo__ico' src={currentPerson.ico_url} alt='persons icon'/>
+            {/* <img className='personInfo__ico' src={currentPerson.ico_url} alt='persons icon'/> */}
+            <img className='personInfo__ico' src='http://placehold.it/326x326' alt='persons icon'/>
+            
             <div className='personInfo__text'>
               <div className='personInfo__item'>
                 <div className='infoGroup__name'>Пол:</div>
@@ -80,7 +82,7 @@ class Person extends Component {
                 <div className='textTransform'>{currentPerson.city}</div>
               </div>
               <div className='personInfo__item'>
-                <div className='infoGroup__name'>Дата рождения: </div><br/>
+                <div className='infoGroup__name'>Дата рождения: </div>
                 <div className='textTransform'>{day}.{month}.{year}</div>
               </div>
             </div>

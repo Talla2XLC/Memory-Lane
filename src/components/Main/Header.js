@@ -60,7 +60,7 @@ justify-content: flex-start;
 align-items: center;
 margin-left: auto;
 margin-right: auto;
-padding: 11px 0;
+padding: 11px 0 0 43px;
 box-sizing: border-box;
 padding-right: 40px;
 position: sticky;
@@ -73,7 +73,6 @@ background-color: #F6F6F6;
 .header__center{
   display: flex;
   justify-content: flex-start;
-  margin-left: 43px;
 }
 
 .header__right{

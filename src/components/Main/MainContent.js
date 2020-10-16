@@ -9,7 +9,7 @@ export default function MainContent() {
   return <div className='contentContainer'>
 
     <div className='MainContent__header'>
-      <div className='MainContent__header-info'>
+      <div className='MainContent__header_info'>
         <h2 className='MainContent__header-titel'>
           Здравствуйте!
         </h2>
@@ -20,7 +20,7 @@ export default function MainContent() {
         </p>
         <Link to='/photo/add'><ButtonContainer white={false}>Перейти</ButtonContainer></Link>
       </div>
-      <div className='MainContent__header-imj'>
+      <div className='MainContent__header_img'>
         <HeaderImg />
       </div>
     </div>
