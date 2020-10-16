@@ -6,7 +6,7 @@ export { default as Landing } from "./landing/Landing";
 export { default as UserAlbums } from "./Albums";
 export { default as AlbumItem } from "../components/Main/albums/Album";
 export { default as DownloadPhoto } from "../components/Main/albums/uploadPhoto/UploadPhoto";
-export { default as Photo } from "../components/Main/album/photoFull/PhotoFull";
+export { default as Photo } from "../components/Main/albums/photoFull/PhotoFull";
 export { default as Persons } from "./Persons";
 export { default as Person } from "../components/Main/persons/Person";
 export { default as AddPerson } from "../components/Main/persons/AddPerson";
