@@ -68,7 +68,8 @@ const HeaderWrapper = styled.div`
   padding: 11px 0;
   box-sizing: border-box;
   padding-right: 40px;
-  position: sticky;
+  // position: sticky;
+  position: fixed;
   top: 0;
   background: #ffd1a9;
   // background-color: #F6F6F6;

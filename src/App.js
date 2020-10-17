@@ -106,6 +106,7 @@ const MainWrapper = styled.div`
     margin-right: auto;
     width: 100%;
     padding-bottom: 40px;
+    margin-top: 70px;
   }
   
   .central-contentItem {
