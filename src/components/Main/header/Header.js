@@ -67,11 +67,11 @@ const HeaderWrapper = styled.div`
   margin-right: auto;
   padding: 11px 0;
   box-sizing: border-box;
-  background: #ffd1a9;
   padding-right: 40px;
   position: sticky;
-  // position: fixed;
   top: 0;
+  background: #ffd1a9;
+  // background-color: #F6F6F6;
 
   .logoLink {
     margin-left: 45px;
@@ -83,7 +83,7 @@ const HeaderWrapper = styled.div`
   .logoDot {
     width: 7px;
     height: 7px;
-    background: #5db07b;
+    background: #2795FB;;
     border-radius: 10px;
     float: left;
     margin-top: 24px;
@@ -91,8 +91,10 @@ const HeaderWrapper = styled.div`
 
   .header__center {
     display: flex;
-    justify-content: flex-start;
+    // justify-content: flex-start;
     margin-left: 85px;
+    align-items: center;
+    //margin-left: auto;
   }
 
   .header__right {
@@ -105,7 +107,7 @@ const HeaderWrapper = styled.div`
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: #ffd1a9;
+    background-color: #FFD1A9;
   }
 
   .userName {
