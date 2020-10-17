@@ -48,7 +48,6 @@ class App extends Component {
     console.log(this.props);
     return (
       <>
-      {/* (isAuthorized || currentUser ) */}
         {(sessionID ) && (
           <div className="App">
             <MainWrapper className="Main">
