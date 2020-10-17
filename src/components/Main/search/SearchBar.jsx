@@ -10,7 +10,8 @@ class SearchAdd extends Component {
   state = {
     query: "",
     results: [],
-    filterHoverColor: "themeBlackout",
+    filterHoverColor: "",
+    filterFocusColor: "",
   };
 
   handleClick = () => {
@@ -37,7 +38,7 @@ class SearchAdd extends Component {
             <IconSearch />
           </button>
           <input
-            className={"input " + this.state.filterHoverColor}
+            className={`input ${this.state.filterHoverColor} ${this.state.filterFocusColor}`}
             placeholder="Поиск"
             type="text"
             onChange={this.handleChange}
@@ -45,7 +46,8 @@ class SearchAdd extends Component {
               this.setState({ filterHoverColor: "themeBlackout" })
             }
             onMouseLeave={() => this.setState({ filterHoverColor: "" })}
-            onFocus={() => this.setState({ filterHoverColor: "themeBlackout" })}
+            onFocus={() => this.setState({ filterFocusColor: "themeBlackout" })}
+            onBlur={() => this.setState({ filterFocusColor: "" })}
             onKeyPress={(event) => {
               if (event.key === "Enter") {
                 this.handleClick();
@@ -53,7 +55,7 @@ class SearchAdd extends Component {
             }}
           />
 
-          <button className={"search-filter " + this.state.filterHoverColor}>
+          <button className={`search-filter ${this.state.filterHoverColor} ${this.state.filterFocusColor}`}>
             <FilterSearch />
           </button>
         </div>

@@ -120,7 +120,7 @@ class Sorting extends Component {
 
 export const SortingContainer = styled.div`
 height: 76px;
-z-index: 1;
+// z-index: 1;
 width: 100%;
 position:sticky;
 top: 0;
