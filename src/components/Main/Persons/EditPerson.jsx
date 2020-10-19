@@ -95,8 +95,8 @@ class EditPerson extends Component {
         <div className='head1 title'> Изменение персоны </div>
         <div className='setPerson'>
           <div className='setPerson__ico' > 
-            {/* <img className='setPerson__img' src={(typeof imagesToUpload === 'string') ? this.state.imagesToUpload : this.state.imagesToUpload[0].preview} alt='persons icon'/> */}
-             <img className='setPerson__img' src='http://placehold.it/365x365' alt='persons icon'/> 
+            <img className='setPerson__img' src={(typeof imagesToUpload === 'string') ? this.state.imagesToUpload : this.state.imagesToUpload[0].preview} alt='persons icon'/>
+             {/* <img className='setPerson__img' src='http://placehold.it/365x365' alt='persons icon'/>  */}
             <FileInput
               imagesToUpload={imagesToUpload}
               uploadPhoto={this.uploadPhoto}

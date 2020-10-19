@@ -19,7 +19,7 @@ class Person extends Component {
 
   deletePerson = () => {
     const { sessionID } = this.props;
-    const currentId = this.props.match.params.id;   
+    const currentId = this.props.match.params.id;
     const data = new FormData();
     data.append('id', currentId);
     axios
@@ -58,6 +58,7 @@ class Person extends Component {
     const month = currentPerson.birthday ? currentPerson.birthday.substr(5, 2) : '';
     const year = currentPerson.birthday ? currentPerson.birthday.substr(0, 4) : '';
     const {edit} = this.state;
+
 
     return (
       !edit ? 

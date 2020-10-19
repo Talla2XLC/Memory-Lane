@@ -65,6 +65,7 @@ class AddPerson extends Component {
         }
       })
       .catch(error => console.error(error));
+     
   }
 
   uploadPhoto(files) {
@@ -105,7 +106,7 @@ class AddPerson extends Component {
         <div className='setPerson'>
           <div className='setPerson__ico' >
             <img className='setPerson__img' src={(imagesToUpload.length > 0) ? this.state.imagesToUpload[0].preview : 'http://placehold.it/365x365'} alt='persons icon'/>
-            {/* <img className='setPerson__img' src='http://placehold.it/365x365' alt='persons icon'/> */}
+
 
             <FileInput
               imagesToUpload={imagesToUpload}
