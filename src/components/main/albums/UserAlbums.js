@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getAlbums } from "../../redux/actions/actionAlbums";
+import { getAlbums } from "../../../redux/actions/actionAlbums";
 import "./UserAlbums.sass";
 import { Link } from "react-router-dom";
 import Sorting from "../generalUi/sorting/Sorting";
