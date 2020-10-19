@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 
-import { ReactComponent as AvatarFemale } from './svg/avatarFemale.svg';
-import { ReactComponent as AvatarMale } from './svg/avatarMale.svg';
-import { ReactComponent as AvatarUndefined } from './svg/avatarUndefined.svg';
-import { ReactComponent as Profile } from './svg/Profile.svg';
-import { ReactComponent as Setting } from './svg/Setting.svg';
-import { ReactComponent as Reference } from './svg/Reference.svg';
-import { ReactComponent as Exit } from './svg/Exit.svg';
+import { ReactComponent as AvatarFemale } from '../../../assets/Images/header/avatarFemale.svg';
+import { ReactComponent as AvatarMale } from '../../../assets/Images/header/avatarMale.svg';
+import { ReactComponent as AvatarUndefined } from '../../../assets/Images/header/avatarUndefined.svg';
+import { ReactComponent as Profile } from '../../../assets/Images/header/Profile.svg';
+import { ReactComponent as Setting } from '../../../assets/Images/header/Setting.svg';
+import { ReactComponent as Reference } from '../../../assets/Images/header/Reference.svg';
+import { ReactComponent as Exit } from '../../../assets/Images/header/Exit.svg';
 
 class AvatarButton extends Component {
   constructor(props) {
