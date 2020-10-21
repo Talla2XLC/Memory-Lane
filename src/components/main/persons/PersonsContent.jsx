@@ -8,30 +8,30 @@ class PersonsContent extends Component {
   render() {
     return (
       <div>
-        <div className="personFoto">
-          <div className="head3 title">Фото с персоной</div>
-          {this.props.images != null ? (
-            <div className="personFotoContainer">
-              {this.props.images.map((item) => (
-                <div>
-                  <img
-                    className="personFoto__img"
-                    src={item.content_url}
-                    alt="persons item"
-                  />
-                </div>
-              ))}
+        <div className='personFoto'>
+          <div className='head3 title'>Фото с персоной</div>
+          { this.props.images != null ? 
+            <div className='personFotoContainer'>
+              {
+                this.props.images.map( item => (
+                  <div>
+                    <img className='personFoto__img' src='http://placehold.it/365x365' alt='persons item'/>
+
+                  </div>
+                ))
+              }
             </div>
-          ) : (
-            <EmtyPhoto />
-          )}
+            :
+            <EmtyPhoto/>
+          }
         </div>
-        <div className="personStory">
-          <div className="head3 title">Истории с персоной</div>
-          <EmtyStory className="personEmtyBlock" />
-          <div className="personStory__container" />
+        <div className='personStory'> 
+          <div className='head3 title'>Истории с персоной</div>
+          <EmtyStory className='personEmtyBlock'/>
+          <div className='personStory__container' /> 
         </div>
       </div>
+
     );
   }
 }

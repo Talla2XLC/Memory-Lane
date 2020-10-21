@@ -51,13 +51,18 @@ class App extends Component {
         {(sessionID ) && (
           <div className="App">
             <MainWrapper className="Main">
-              <Header />
+            {/* <MainNav navItems={navItems} /> */}
+              {/* <Header /> */}
               <PerfectScrollbar component="div">
                 <div className="central-content">
                   <MainNav navItems={navItems} />
+                  {/* <Header /> */}
+                  {/* <Header /> */}
                   <div className="central-contentItem">
                     {/* <ScrollToTop /> */}
+                    <Header />
                     <Routes sessionID={sessionID} />
+                    {/* <Header /> */}
                   </div>
                 </div>
               </PerfectScrollbar>
@@ -106,7 +111,7 @@ const MainWrapper = styled.div`
     margin-right: auto;
     width: 100%;
     padding-bottom: 40px;
-    margin-top: 70px;
+    // margin-top: 70px;
   }
   
   .central-contentItem {

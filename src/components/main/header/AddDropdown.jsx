@@ -70,72 +70,71 @@ class AddDropdown extends Component {
   }
 }
 
+
 const DropdownList = styled.div`
-  position: absolute;
-  top: 39px;
+position: absolute;
+top: 39px;
+display: flex;
+z-index: 10;
+flex-flow: column nowrap;
+justify-content: flex-start;
+align-items: flex-start;
+box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+border-radius: 10px;
+background: #FFFFFF;
+overflow: hidden;
+padding: 10px 0;
+.dropdownLink {
+  box-sizing: border-box;
   display: flex;
-  z-index: 10;
-  flex-flow: column nowrap;
+  flex-flow: row nowrap;
   justify-content: flex-start;
-  align-items: flex-start;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  background: #ffffff;
-  overflow: hidden;
-  padding: 10px 0;
-  .dropdownLink {
-    box-sizing: border-box;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 6px 30px 6px 14px;
-    width: 100%;
-    background: none;
-    border: none;
-    color: #3b3e3c;
-    text-decoration: none;
-    &:hover {
-      background: #bde1ca;
+  align-items: center;
+  padding: 6px 30px 6px 14px;
+  width: 100%;
+  background: none;
+  border: none;
+  color: #3B3E3C;
+  text-decoration: none;
+  &:hover {
+    background: #BDE1CA;
+  }
+  &:active {
+    background: #2795FB;
+    color: white;
+    >svg>path {
+      fill: white;
     }
-    &:active {
-      background: ##2795fb;
+    >button {
       color: white;
-      > svg > path {
-        fill: white;
-      }
-      > button {
-        color: white;
-      }
-    }
-    > svg {
-      margin-right: 16px;
     }
   }
-  .dropdownButton-add {
-    width: 100%;
-    background: none;
-    border: none;
-    padding: 0;
-    width: 100%;
-    text-align: left;
-    white-space: nowrap;
-    &:focus {
-      outline: none;
-    }
+  > svg {
+    margin-right: 16px;
   }
+}
+.dropdownButton-add {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  width: 100%;
+  text-align: left;
+  white-space: nowrap;
+  &:focus {
+    outline: none;
+  }
+}
 `;
-
-const mapStateToProps = (state) => {
-  return {};
-};
-
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = state => {
   return {
-    openModalAddAlbum: () => {
-      dispatch(modalOpen("addAlbum"));
-    },
   };
 };
-
+const mapDispatchToProps = dispatch => {
+  return {
+    openModalAddAlbum: () => {
+      dispatch(modalOpen('addAlbum'));
+    }
+  };
+};
 export default connect(mapStateToProps, mapDispatchToProps)(AddDropdown);

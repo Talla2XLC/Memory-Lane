@@ -21,16 +21,16 @@ export default class Notice extends Component {
 }
 
 const BellWrapper = styled.div`
-  .button__notice {
-    border: none;
-    outline: none;
-    cursor: pointer;
-    background-color: #fff;
-    background: 50% no-repeat;
-    padding: 0;
-  }
+.button__notice {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #fff;
+  background: 50% no-repeat;
+  padding: 0;
+}
+.button__notice:hover {
+  opacity: 1;
+}
 
-  .button__notice:hover {
-    opacity: 1;
-  }
 `;
