@@ -57,7 +57,7 @@ export default class Routers extends Component {
             <Route path="/stories/:id" component={StoryView} />
             <Route exact path="/profile/" component={Profile} />
             <Route exact path="/persons/:id" component={Person} /> 
-            <Route exact path="/persons/add/" component={AddPerson} /> 
+            <Route exact path="/addperson" component={AddPerson} /> 
             <Route exact path="/persons/edit/:id" component={EditPerson} />
 
             {/* 

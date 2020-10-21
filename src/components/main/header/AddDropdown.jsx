@@ -59,7 +59,7 @@ class AddDropdown extends Component {
               <NewInterviewSVG />
               <button className="dropdownButton-add">Добавить интервью</button>
             </Link>
-            <Link to="/persons/add" className="dropdownLink">
+            <Link to="/addperson" className="dropdownLink">
               <NewPersonSVG />
               <button className="dropdownButton-add">Добавить персону</button>
             </Link>
