@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-
 import { ReactComponent as AvatarFemale } from '../../../assets/Images/header/avatarFemale.svg';
 import { ReactComponent as AvatarMale } from '../../../assets/Images/header/avatarMale.svg';
 import { ReactComponent as AvatarUndefined } from '../../../assets/Images/header/avatarUndefined.svg';
@@ -15,7 +14,8 @@ class AvatarButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showMenu: false
+      showMenu: false,
+      exitFromApp: false
     };
     this.showMenu = this.showMenu.bind(this);
     this.closeMenu = this.closeMenu.bind(this);
@@ -44,6 +44,12 @@ class AvatarButton extends Component {
     }
   }
 
+  exitFromApp(e) {
+    e.preventDefault();
+    localStorage.removeItem('token');
+    window.location.href = '/auth';
+  }
+
   render() {
     const { gender } = this.props;
 
@@ -68,10 +74,15 @@ class AvatarButton extends Component {
               <Reference/>
               <button className='dropdownButton-add'>Справка</button>
             </Link>
-            <Link to='#' className='dropdownLink'>
+            <div className='dropdownLink'>
               <Exit/>
-              <button className='dropdownButton-add'>Выход</button>
-            </Link>
+              <button
+                className='dropdownButton-add'
+                onClick={this.exitFromApp.bind(this)}
+              >
+                Выход
+              </button>
+            </div>
           </DropdownList>
         ) :
           null
