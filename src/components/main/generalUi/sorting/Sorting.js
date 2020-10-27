@@ -38,7 +38,7 @@ class Sorting extends Component {
     </button>;
     
     const addPerson =
-    <Link to='/persons/add/'>
+    <Link to='/addperson'>
       <span className='createPerson'>Cоздать персону</span>
       <Plus className='plus'/>
     </Link>;

@@ -14,8 +14,17 @@ class Person extends Component {
     super(props);
     this.editOn = this.editOn.bind(this);
     this.state = {
-      edit: false
+      edit: false,
+      person: {}
     };
+  }
+
+  componentDidMount() {
+    const currentId = this.props.match.params.id; 
+    const persons =  JSON.parse(localStorage.getItem('allPersons'))
+    const currentPerson = persons.find( item =>  item.id === currentId);
+    this.setState({ person: currentPerson})
+    console.log(currentPerson)
   }
 
   deletePerson = () => {
@@ -51,9 +60,10 @@ class Person extends Component {
   }
 
   render() {
+    console.log(this.state.person)
     const currentId = this.props.match.params.id;
-    const userPersons =  this.props.persons;
-    const currentPerson = userPersons.find( item =>  item.id === currentId);
+    // const userPersons =  this.props.persons;
+    const currentPerson = this.state.person
     const images = currentPerson.images;
     const day = currentPerson.birthday ? currentPerson.birthday.substr(8, 2) : '';
     const month = currentPerson.birthday ? currentPerson.birthday.substr(5, 2) : '';

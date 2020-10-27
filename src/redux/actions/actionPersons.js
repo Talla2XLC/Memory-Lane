@@ -29,6 +29,7 @@ export const getPersons = () => (dispatch) => {
     )
     .then((res) => {
       dispatch(getPersonsSucces(res.data));
+      localStorage.setItem('allPersons', JSON.stringify(res.data))
     })
     .catch((error) => dispatch(getPersonsFailed(error)));
 };
