@@ -85,7 +85,7 @@ class UserProfileInfoReName extends Component {
 
     Object.keys(newData).length
       ? axios
-          .post("http://api.memory-lane.ru/db/setAccount", newData, {
+          .post("http://api.memory-lane.ml/db/setAccount", newData, {
             headers: {
               "Content-Type": "application/json",
               Authorization: `${token}`,

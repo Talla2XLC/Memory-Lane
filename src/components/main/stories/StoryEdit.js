@@ -32,7 +32,7 @@ export default class StoryEdit extends Component {
 
     axios
       .post(
-        "http://api.memory-lane.ru/db/updateHistory",
+        "http://api.memory-lane.ml/db/updateHistory",
         {
           story_name: "storyName",
           // story_id: 28,

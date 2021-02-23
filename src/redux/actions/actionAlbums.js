@@ -18,7 +18,7 @@ export const getAlbums = () => (dispatch) => {
   const token = localStorage.getItem("token");
   axios
     .post(
-      "http://api.memory-lane.ru/db/getAlbum",
+      "http://api.memory-lane.ml/db/getAlbum",
       {},
       {
         headers: {

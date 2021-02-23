@@ -47,7 +47,7 @@ class AddPerson extends Component {
 
     axios
       .post(
-        'http://api.memory-lane.ru/db/setPerson',
+        'http://api.memory-lane.ml/db/setPerson',
         data,
         {
           headers: {

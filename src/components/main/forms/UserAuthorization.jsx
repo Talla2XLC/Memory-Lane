@@ -39,7 +39,7 @@ class UserAuthorization extends Component {
 
     axios
       .post(
-        "http://api.memory-lane.ru/user/auth",
+        "http://api.memory-lane.ml/user/auth",
         {
           email: email,
           password: password,
@@ -153,7 +153,7 @@ class UserAuthorization extends Component {
             {/* <PasswordErrorMessage passwordError={this.state.passwordError} /> */}
             <div className="c-password-reset">
               <a
-                href="http://dev.memory-lane.ru/auth"
+                href="http://dev.memory-lane.ml/auth"
                 className="c-password-reset__link"
               >
                 Забыли пароль?

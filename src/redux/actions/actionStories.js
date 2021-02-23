@@ -21,7 +21,7 @@ export const fetchStories = () => (dispatch) => {
 
   axios
     .post(
-      "http://api.memory-lane.ru/db/getHistory",
+      "http://api.memory-lane.ml/db/getHistory",
       {},
       {
         headers: {

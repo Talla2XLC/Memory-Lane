@@ -18,7 +18,7 @@ export const getPersons = () => (dispatch) => {
   const token = localStorage.getItem("token");
   axios
     .post(
-      "http://api.memory-lane.ru/db/getPerson",
+      "http://api.memory-lane.ml/db/getPerson",
       {},
       {
         headers: {

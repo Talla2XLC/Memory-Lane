@@ -134,7 +134,7 @@ class PhotoFullRightEdit extends Component {
 
     Object.keys(newData).length
       ? axios
-          .post("http://api.memory-lane.ru/db/updateImages", newData, {
+          .post("http://api.memory-lane.ml/db/updateImages", newData, {
             headers: {
               "Content-Type": "application/json",
               Authorization: `${token}`,

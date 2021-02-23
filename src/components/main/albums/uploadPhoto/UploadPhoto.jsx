@@ -39,7 +39,7 @@ class UploadPhoto extends Component {
 
     if (imagesToUpload.length > 0)
       axios
-        .post("http://api.memory-lane.ru/upload/images", data, {
+        .post("http://api.memory-lane.ml/upload/images", data, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `${token}`,

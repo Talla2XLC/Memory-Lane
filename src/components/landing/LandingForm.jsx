@@ -173,9 +173,9 @@ export default class LandingForm extends Component {
               </div>
 
               <div className='textBasic titleItem__links'>
-                <a href='http://memory-lane.ru/' className='linksItem__link' alt='Privacy policy'>Политика конфидициальности</a>
-                <a href='http://memory-lane.ru/' className='linksItem__link' alt='Terms of Use'>Условия использования</a>
-                <a href='http://memory-lane.ru' className='linksItem__link' alt='Contact us'>Связаться с нами</a>
+                <a href='http://memory-lane.ml/' className='linksItem__link' alt='Privacy policy'>Политика конфидициальности</a>
+                <a href='http://memory-lane.ml/' className='linksItem__link' alt='Terms of Use'>Условия использования</a>
+                <a href='http://memory-lane.ml' className='linksItem__link' alt='Contact us'>Связаться с нами</a>
               </div>
 
               <div className='textBasic titleItem__footer'>

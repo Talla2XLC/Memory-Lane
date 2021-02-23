@@ -22,7 +22,7 @@ export const getUsers = (lim = "") => {
 
     axios
       .post(
-        "http://api.memory-lane.ru/db/getUsers/all",
+        "http://api.memory-lane.ml/db/getUsers/all",
         {
           limit: lim,
         },

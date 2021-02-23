@@ -92,7 +92,7 @@ class UserFullName extends Component {
 
     axios
       .post(
-        "http://api.memory-lane.ru/db/setAccount",
+        "http://api.memory-lane.ml/db/setAccount",
         {
           first_name: firstName,
           last_name: lastName,
@@ -124,7 +124,7 @@ class UserFullName extends Component {
 
     axios
       .post(
-        "http://api.memory-lane.ru/db/setAccount",
+        "http://api.memory-lane.ml/db/setAccount",
         {
           asked_to_introduce: "true",
         },
