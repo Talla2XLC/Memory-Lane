@@ -23,7 +23,7 @@ class Search extends Component {
 
     axios
       .post(
-        "http://api.memory-lane.ru/search",
+        "http://api.memory-lane.ml/search",
         {
           search: query,
         },

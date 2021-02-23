@@ -12,7 +12,7 @@ export const sessionCheck = (sessionID) => {
   return (dispatch) => {
     axios
       .post(
-        "http://api.memory-lane.ru/checkToken",
+        "http://api.memory-lane.ml/checkToken",
         {},
         {
           headers: {

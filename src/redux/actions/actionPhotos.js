@@ -24,8 +24,8 @@ export const fetchPhotos = () => (dispatch) => {
 
   axios
     .post(
-      // 'http://api.memory-lane.ru/db/get/images',
-      "http://api.memory-lane.ru/get/images",
+      // 'http://api.memory-lane.ml/db/get/images',
+      "http://api.memory-lane.ml/get/images",
       {
         // id_album: idAlbum
       },

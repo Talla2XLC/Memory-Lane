@@ -55,7 +55,7 @@ class EditPerson extends Component {
     data.append("tag", jsonTags);
 
     axios
-      .post("http://api.memory-lane.ru/db/updatePerson", data, {
+      .post("http://api.memory-lane.ml/db/updatePerson", data, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `${sessionID}`,

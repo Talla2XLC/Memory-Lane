@@ -86,7 +86,7 @@ class UserAlbums extends Component {
 	deleteAlbum(id) {
 	  axios
 	    .post(
-	      'http://api.memory-lane.ru/db/deleteAlbum',
+	      'http://api.memory-lane.ml/db/deleteAlbum',
 	      {
 	        id_album: id
 	      },

@@ -41,7 +41,7 @@ export default class StoryNew extends Component {
     // this.props.history.push("/stories/add");
     axios
       .post(
-        "http://api.memory-lane.ru/db/setHistory",
+        "http://api.memory-lane.ml/db/setHistory",
         {
           story_name: storyName,
           author: author,

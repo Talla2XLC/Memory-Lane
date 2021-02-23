@@ -17,7 +17,7 @@ export default class UserRegistrationCompleting extends Component {
 
     axios
       .post(
-        "http://api.memory-lane.ru/check/auth-email",
+        "http://api.memory-lane.ml/check/auth-email",
         {
           email: email,
           token: token,

@@ -34,7 +34,7 @@ class Person extends Component {
     data.append('id', currentId);
     axios
       .post(
-        'http://api.memory-lane.ru/db/deletePerson',
+        'http://api.memory-lane.ml/db/deletePerson',
         {
           'id': currentId
         }

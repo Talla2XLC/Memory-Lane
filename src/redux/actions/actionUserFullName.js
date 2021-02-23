@@ -21,7 +21,7 @@ export const fetchUserFullName = () => (dispatch) => {
 
   axios
     .post(
-      "http://api.memory-lane.ru/db/setAccount",
+      "http://api.memory-lane.ml/db/setAccount",
       {},
       {
         headers: {

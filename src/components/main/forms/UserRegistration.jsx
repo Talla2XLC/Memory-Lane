@@ -183,7 +183,7 @@ export default class UserRegistration extends Component {
     if (isEmailValid && isPasswordValid) {
       axios
         .post(
-          "http://api.memory-lane.ru/user/registration",
+          "http://api.memory-lane.ml/user/registration",
           {
             email: email,
             password: password,

@@ -17,7 +17,7 @@ class ModalAddAlbumContent extends Component {
 
     axios
       .post(
-        "http://api.memory-lane.ru/db/setAlbum",
+        "http://api.memory-lane.ml/db/setAlbum",
         {
           album_name: albumName,
         },
