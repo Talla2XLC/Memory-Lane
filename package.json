@@ -19,7 +19,7 @@
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "react-router-redux": "^4.0.8",
-    "react-scripts": "^3.4.4",
+    "react-scripts": "^5.0.1",
     "react-tag-input": "^6.4.3",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
@@ -56,8 +56,8 @@
     "eslint-plugin-react": "^7.21.4",
     "eslint-plugin-sonarjs": "^0.5.0",
     "install": "^0.13.0",
-    "node-sass": "^4.14.1",
-    "npm": "^7.0.3",
+    "node-sass": "^9.0.0",
+    "npm": "^9.8.0",
     "sass-loader": "^10.0.3"
   }
 }
